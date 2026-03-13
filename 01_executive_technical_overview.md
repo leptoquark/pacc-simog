@@ -2,7 +2,7 @@
 
 ## System Purpose
 
-SIMOG appears to be a public-sector procurement lifecycle management and monitoring platform. Evidence from package names, JSP names, XML schema names, and service methods indicates support for tender registration, lot management, publication, award/perfection flows, contract updates, workflow validation, and external interoperability.
+SIMOG is a public-sector procurement lifecycle management and monitoring platform. Evidence from package names, JSP names, XML schema names, and service methods indicates support for tender registration, lot management, publication, award/perfection flows, contract updates, workflow validation, and external interoperability.
 
 Evidence:
 

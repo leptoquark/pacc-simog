@@ -40,11 +40,6 @@ The documentation covers the Maven multi-module codebase rooted at `SimogParent`
 - `SimogMassLoader` as the mass-import batch subsystem
 - `SimogTEDCommon` as the TED-specific persistence and service layer
 
-## Evidence Policy
-
-- Statements marked as evidence are directly supported by source files, descriptors, or configuration.
-- Statements marked as inference are derived from code structure, naming, and runtime patterns.
-- No modern framework assumptions are introduced unless visible in code.
 
 ## SIMOG Technical Knowledge Transfer Pack — Final Synthesis
 
