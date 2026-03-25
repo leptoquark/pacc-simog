@@ -1,0 +1,96 @@
+
+<script type="text/javascript">
+<!--
+function modAnagResp(){
+apriPopUpMod('rubricaResponsabili','',document.getElementById(''),document.getElementById(''),'دليل المكلفين',document.getElementById('').value);
+}
+//-->
+</script>
+[condition]
+[condition]
+[condition]
+	<div id="DIVTabella" class="scrollTabs" style="height: 200px; width: 99%;">
+		<table id="idTabella">
+			<tbody>
+			<tr>
+				<th width="125">إجراء</th>
+				<th class="garaTh">الاسم الأخير</th>
+				<th class="garaTh">الاسم الأول</th>							  
+				<th class="garaTh">الرقم الضريبي</th>   
+				<th class="garaTh">الدور</th>
+			</tr>
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]
+					[condition]',[],[],'')">تعديل</a>
+						&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')">حذف</a></td>
+					</c:if>
+				    [condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap id="[condition]" style="display: none">[condition]</td>
+					<td nowrap id="[condition]" style="display: none">[condition]</td>
+					<td nowrap id="[condition]" style="display: none">[condition]</td>
+					<td nowrap id="[condition]" style="display: none">[condition]</td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>					
+				</tr>
+				[condition]
+			</c:forEach>
+				</tbody>
+			</table> 
+		</div>	 		
+		[condition]
+					</td>
+				</tr>
+				<tr>
+					<th><label for="">الاسم الأول</label></th>
+					<td>
+						<input type="text" id="" maxlength="20" value="" disabled onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<th><label>الدور</label></th>
+					<td>
+						<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')" >
+							<option></option>
+							[condition]
+							<u:options name="" scope="request" value="idRuoloResp"/>
+						</select>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>								
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>			
+			</table>
+					<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato1" name ="Modificato1" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 

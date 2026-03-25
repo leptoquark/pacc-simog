@@ -1,0 +1,316 @@
+
+[condition]
+[condition]
+<script type="text/javascript">
+var contAffid=[variable];
+  function setImportoDiAggiudicazione(element, noSup){
+	  	if(!(element.value.length > 0)){
+			return false;
+		}
+		if(!validatePercentage(element, noSup)){
+			return false;
+		}
+		if(document.getElementById('IMPORTO_COMPLESSIVO').value == null || document.getElementById('IMPORTO_COMPLESSIVO').value <= 0 ){
+			return false;
+		}
+		subtot = parseFloat(document.getElementById('IMPORTO_COMPLESSIVO').value.replace(/\./g,"").replace(',','.'));
+		importo = 0;
+		if(element.id == 'ribAgg'){
+		    var perc = parseFloat(element.value.replace(',','.'))/100.00
+			perc = eval(1.00-perc)		
+			importo = (parseFloat(subtot)* perc) ;
+		}else{
+			var perc = parseFloat(element.value.replace(',','.'))/100.00
+			perc = eval(1.00+perc)
+			importo = (parseFloat(subtot)* perc) ;
+		}
+		if(document.getElementById('IMPORTO_ATTUAZIONE_SICUREZZA').value == ""){
+			sicurezza = parseFloat('0');
+		}else{
+			sicurezza = parseFloat(document.getElementById('IMPORTO_ATTUAZIONE_SICUREZZA').value.replace(/\./g,"").replace(',','.'));}
+		importo = importo + sicurezza;
+		document.getElementById('euroHidden').value = addMyDotsFromCommaString(importo.toFixed(3).replace('.',','));
+		return true;
+	}
+	function copyValueElement(dest,src){
+		dest.value = src.value;
+		focusOnField(dest);
+	}
+	function modAnag(){
+	apriPopUpMod('rubrica','',document.getElementById(''),document.getElementById(''),'Rubrica Operatori Economici',document.getElementById('').value);
+	}	
+	</script>
+	<div id="dialogDitteAusiliarie"></div>
+	<table  [variable]>
+	 <colgroup>
+		<col width="60%"/>
+		<col width="40%"/>
+     </colgroup> 
+		<tr>
+			<th><label for="">[variable] Ribasso di aggiudicazione</label></th>
+			<td>
+				<input [variable] [variable] id="ribAgg" tabindex="" onblur="calcoloAggiudicazione(this,document.getElementById('percAum'),'')" style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[condition]" onchange="setFormModified('Modificato0')" >
+			</td>
+		</tr>
+			<tr>
+				<th><label for="">[variable] العرض بالزيادة</label></th>
+				<td>
+				<input [variable] [variable] id="percAum" tabindex="" onblur="calcoloAggiudicazione(document.getElementById('ribAgg'),this,'')"  style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[condition]" onchange="setFormModified('Modificato0')">			
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">مبلغ الترسية/التكليف*</label></th>
+				<td>
+				<input tabindex="" id="euro" type="text" style="text-align:right;font-weight:bold;width: 120px" name="" value="[condition]"
+					  [variable] 
+					   onchange="setFormModified('Modificato0')" 
+					   onblur="validateAmount(this)" />
+				<input id="euroHidden" type="hidden" />
+				[condition]</a>
+				</c:if>			
+				</td>
+			</tr>
+			<tr>			
+				<th><label for="">[variable] تاريخ الترسية النهائية أو تعريف إجراء التفاوض*</label></th>
+				<td>
+					<input tabindex="" style="text-align:center" [variable] [variable]  onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtaggdef" name=""  value="[condition]">
+					[condition]
+						<script type="text/javascript">
+						    Calendar.setup({
+						        inputField     :    "dtaggdef",     
+						        ifFormat       :    "%d/%m/%Y",     
+						        button         :    "CALdtaggdef",  
+							    align          :    "Tl",           
+							    singleClick    :    true
+						    });
+						</script>
+					</c:if>								
+				</td>
+				</tr>
+				<tr>			
+				<th><label for="">تاريخ توقيع العقد</label></th>
+				<td>
+					<input tabindex="" style="text-align:center" [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtstip" name=""  value="[variable]">
+					[condition]
+						<script type="text/javascript">
+						    Calendar.setup({
+						        inputField     :    "dtstip",    
+						        ifFormat       :    "%d/%m/%Y",  
+						        button         :    "CALdtstip", 
+							    align          :    "Tl",         
+							    singleClick    :    true
+						    });
+						</script>
+					</c:if>								
+				</td>
+				</tr>
+				<tr>
+				<th><label for="">المدة التعاقدية بالأيام</label></th>
+				<td>
+					<input id="durContr" tabindex="" [variable] style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[variable]" onblur="validateNumber(this)" onchange="setFormModified('Modificato0')">
+				</td>
+			</tr>
+		</table>
+		[condition]	
+		<!--gm hidden per disabilitare il tasto gestione ditte ausiliarie -->	
+		<input type="hidden" id="sottosogliaEsclusi" value="si" />
+		<input type="hidden" id="" name="" value="[condition]">
+		<div id="DIVTabella" class="scrollTabs" style="height: 200px; width: 99%;">
+			<table id="idTabella">
+				<tbody>
+					<tr>
+						<th width="125">إجراء</th>					
+						<th class="garaTh">الاسم</th>					
+						<th class="garaTh">الرقم الضريبي</th>		
+						<th class="garaTh">رمز البلد</th>
+						<th class="garaTh">النوع</th>
+						<!-- Rinaldo tiket 654 -->
+						<th class="garaTh">مبلغ الترسية</th>
+						<th class="garaTh">خصم الترسية</th>
+						<th class="garaTh">عرض بالزيادة</th>
+						<!-- ///////////////// -->
+						<th class="garaTh">Selezione</th>
+					</tr>
+					[condition] 
+					[condition]
+						<tr id="[condition]">
+							[condition]
+							[condition]				
+							[condition]',[],[],'')">تعديل</a>
+									&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')">حذف</a></td>																		   
+							</c:if>
+							[condition]">[condition]</td>																
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>   
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+ 						   ">
+								[condition]">
+ 						      [condition]">[condition]</td>
+						<td nowrap class="garaTd" id="[condition]">[condition]</td>
+						<td nowrap class="garaTd" id="[condition]">[condition]</td>
+						<!-- ///////////////// --> 	
+						       [condition]">
+                             <a title="إدارة تجميع الشركة" href="javascript:apriPopUpRubricaDittaAusiliaria('[condition]',[],[],'','rubricaRaggruppamento','','إدارة تجميع الشركة','[condition]')">إدارة تجميع الشركة</a>						 
+							      </td>
+							    </c:if>
+							    [condition]"></td>	
+							    </c:if>
+							">[condition]</td>												
+							[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>						
+							<!-- Rinaldo tiket 654 -->
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<!-- ///////////////// -->
+							<td id="[condition]" style="display: none">[condition]</td>                  
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																													
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																						
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																										
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																																		
+						   	<!-- Rinaldo tiket 654 -->
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<!-- ///////////////// -->
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																						
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td> 
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>					
+						</tr>
+						[condition]
+					</c:forEach>																
+				</tbody>
+			</table>
+		</div>	  	
+		<div>
+		<p class="garaTh">Per visualizzare/modficare il raggruppamento d'impresa premere il pulsante "Gestione Raggruppamento d'Impresa"</p>
+		</div>			
+		[condition] 	
+					    <input type="text" id="" maxlength="2" size="2" value="" disabled onchange="setFormModified('Modificato')" />
+					</td>
+					<td [variable]>
+					<div class="hmenu"><a title="تعديل البيانات الشخصية" href="javascript:modAnag();">تعديل البيانات الشخصية</a></div></td>
+					</td>
+					<td>
+						<div class="hmenu"><a title="البحث في الدليل" href="javascript:apriPopUpRubrica('rubrica','','دليل المشغلين الاقتصاديين')">البحث في الدليل</a></div>						
+					</td>					
+				</tr>
+				<tr>
+					<th><label>الاسم</label></th>
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>Aggiudicatario</label></th>
+					<td>
+						<input type="text" disabled id="" maxlength="16" value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>
+				<tr>
+					<th><label>Tipo Aggiudicatario</label></th>
+					<td colspan="2">
+						<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')">
+							<option></option>
+							<u:options name="" scope="request" />
+						</select>
+					</td>					
+				</tr>
+				<tr style="display: none;">
+				<td>
+					<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+				</td>	
+				</tr>	
+				<!-- Rinaldo tiket 654 -->
+				<tr><th><label>Importo di aggiudicazione/affidamento</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validateAmount(this);"/></td></tr>
+				<tr><th><label>Ribasso di aggiudicazione</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validatePercentage(this);"/>%</td></tr>
+				<tr><th><label>Offerta in aumento</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validatePercentage(this);"/>%</td></tr>
+				<!-- ///////////////// -->
+				<tr style="display: none;">
+					<th><label>Ruolo</label></th>
+					<td>
+						<select id="" CLASS="BOTTONE"  onchange="setFormModified('Modificato')">
+							<option value=""></option>
+							<option value="1">Mandataria</option>
+							<option value="2">Mandante</option>
+						</select>
+					</td>					
+				</tr>			
+				<tr style="display: none;">
+					<th><label>Percentuale</label></th>
+					<td>
+						<input onblur="validatePercentage(this)" type="text" id=""
+							size="6" maxlength="6"  style="text-align: right" value=""  onchange="setFormModified('Modificato')" />%
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th rowspan="2"><label>L'aggiudicatario ha fatto ricorso all'istituto dell'Avvalimento</label></th>
+					<td>
+						<input type="checkbox" id ="" value="1"  onchange="setFormModified('Modificato')" />Per i Requisiti
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>			
+						<input type="checkbox" id ="" value="2"  onchange="setFormModified('Modificato')" />Per l'Attestazione
+					</td>
+				</tr>				
+				<tr style="display: none;">
+					<th><label>Codice Fiscale Ditta Ausiliaria</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>Progressivo Raggruppamento (1)</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16" onblur="validateNumber(this)" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>			
+				<tr style="display: none;"><td><input type="text" id=""  onchange="setFormModified('Modificato')"/>
+				</td></tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a></td></tr>
+				<tr style="display: none;"><td>(1) In caso di raggruppamento indicare lo stesso 'progressivo raggruppamento' per ogni operatore economico facente parte dello stesso raggruppamento</td></tr>
+			</table>	
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">			
+		</div>		
+<input type="hidden" id="Modificato2" name ="Modificato2" value="[condition]">
+<input type="hidden" id="selected" value="0" />
+<input type="hidden" id="" name ="" value="[condition]">
+<script language=javascript type="text/javascript"> 
+		calcoloAggiudicazione(document.getElementById('ribAgg'),document.getElementById('percAum'),'');
+</script>	

@@ -1,0 +1,56 @@
+//	protected void handleException ( String code, String message, Exception e ) throws SimogException {
+//		logger.error(code + ":" + message, e);
+//		throw new SimogException(message);
+//	}
+
+/*PP
+	public final static String DB_DATE_TIME_FORMAT = "dd/MM/yyyy HH.mm.ss"; //"17/06/2007 23.08.39"
+	public static Timestamp parseTime ( String currentDate ) {	
+		try {
+			return new Timestamp(new SimpleDateFormat(DB_DATE_TIME_FORMAT).parse(currentDate).getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+*/
+
+	/* Metodo per caricare combo tipo appalto con nuova struttura db */
+//	public TableBean caricaRuoli(String idScheda, String idContratto, String idEnte)throws SQLException{
+//		PreparedStatement stmt = null;
+//		ResultSet rs = null;
+//		TableBean tb = null;
+//		try{
+//			String query="";
+//			
+//			query="select DISTINCT " +
+//			RUOLI_RESPONSABILE.T_ID_RUOLO + ","+
+//			RUOLI_RESPONSABILE.DESCRIZIONE +
+//			" from " + 
+//			RUOLI_RESPONSABILE.TABLE_NAME+
+//			","+
+//			RUOLI_RESP_SCHEDA.TABLE_NAME+
+//			" WHERE "+ RUOLI_RESP_SCHEDA.T_DATA_FINE_VALIDITA + " IS NULL AND " +
+//			RUOLI_RESPONSABILE.T_DATA_FINE_VALIDITA + " IS NULL AND " +			
+//			RUOLI_RESPONSABILE.T_ID_RUOLO+
+//			" = " +	RUOLI_RESP_SCHEDA.T_ID_RUOLO
+//			+ " AND " + RUOLI_RESP_SCHEDA.T_ID_SCHEDA + " = '" + idScheda
+//			+ "' AND " + RUOLI_RESP_SCHEDA.T_ID_CONTRATTO + " = '" + idContratto + "' "
+//			+ " AND " + RUOLI_RESP_SCHEDA.T_ID_ENTE+ " = '" + idEnte + "' ";
+//			;
+//			
+//			stmt = activeConnection.prepareStatement(query);
+//			logger.debug("Select RUOLI RESPONSABILI, query ["+query+"]");
+//			
+//			rs = stmt.executeQuery();
+//			
+//			tb = new TableBean(rs);
+//			
+//		}catch(Exception e){
+//			logger.debug("eccezione: "+e);
+//		}finally{
+//			close(rs,stmt);
+//		}
+//		return tb;
+//
+//	}

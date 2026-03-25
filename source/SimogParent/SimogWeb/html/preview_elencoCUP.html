@@ -1,0 +1,150 @@
+
+<!-- 
+	Nella pagina che include elencoCUP.jsp deve esserci la definizione delle variabili: 
+	* elencoCup : elenco degli oggetti di tipo CupLottoAgg
+	* readonlyCup : condizioni per la disabilitazione del componente e visualizzazione in sola lettura
+	* idLotto : id del lotto a cui si fa riferimento
+ -->
+<jsp:useBean id="elencoCup" type="java.util.LinkedList" class="java.util.LinkedList" scope="request"></jsp:useBean>
+<!-- le variabili sono impostate dal chiamante -->
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type="text/javascript">
+//<!--		
+    function confirmCup(prfx_valido, prfx_okutente)
+    {
+        $("input[id^='hiddenrowCUP'][id$='" + prfx_valido + "']").each(function(idx, item){
+            if( item.value == "S" ){
+                $("input[id='hiddenrowCUP" + idx + prfx_okutente + "']").attr("value","S");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").html("Si");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").css("background-color","#BBFFBB");
+            }
+        });       
+        alert("I codici CUP validati sono stati confermati, la conferma sara' memorizzata a fronte del salvataggio della scheda");
+    } 	
+	function addRowCup(args,argshidden,prefix) {
+		//Ticket ALM #2159
+		if(document.getElementById(prefix).value==null || document.getElementById(prefix).value=='')
+			alert("Inserire il codice CUP");
+		else //Fine Ticket ALM #2159
+			if(checkBeforeAdd(prefix))  {
+				if( validateRadio(prefix) )  
+				{
+					var idnext=getRowIndex(prefix); 
+					var idtable="idTabella"+prefix;
+					var table=document.getElementById(idtable); 
+					var newid="row"+prefix+(parseInt(idnext)+1);
+					var tbody=table.getElementsByTagName("TBODY")[0];
+					var row=createRow(newid,args,argshidden,prefix); 
+					tbody.appendChild(row);
+					appendHiddenTyped(row,newid,prefix,argshidden,true);
+					var idDIVTabella="DIVTabella"+prefix;
+					var numOfRows=idnext+1;
+					hideSezioneAggiungi(args,argshidden,prefix);
+					setModificato(prefix); 
+					document.getElementById("selected"+prefix).value=0;
+					afterAddRow(newid,args,argshidden,prefix,row);
+				}  
+			} 
+	}
+	function appendHiddenTyped(row,idrow,prefix,parametri,creazione) {
+		for(var j = 0;j<parametri.length;j++)  {
+			var idElement = idrow+parametri[j];
+			var field = document.getElementById(parametri[j]);
+			if( field != null ){
+				var changevalue = field.value;
+				if(creazione)  { 
+					var td = document.createElement("TD"); 
+					td.style.display = "none";
+					var hidden = document.createElement("INPUT");
+					hidden.setAttribute("name",idElement,0);
+			    	hidden.setAttribute("id","hidden"+idElement,0);
+					hidden.setAttribute("type","hidden",0);
+					hidden.value = changevalue; 
+					td.appendChild(hidden);
+					row.appendChild(td); 
+				}  else  {  
+					var hidden = document.getElementById("hidden"+idElement); 
+					hidden.value = changevalue; 
+				}
+			}  
+		} 
+	}
+	function afterAddRow(newid,args,argshidden,prefix,row){
+		//imposta il parametro numeri di righe
+		var counter = $("input[name='']").val();
+		counter++;
+		$("input[name='']").val(counter);
+		//setta le colonne con i valori di default
+		var  orbj = $("a[href*='setForModifyRow'][href*='rowCUP']")[0];
+		var par = orbj.parentNode;
+		par = par.parentNode;
+		orbj.parentNode.removeChild(orbj);
+		var ftd1 = document.createElement("td");
+		ftd1.innerHTML = "No";
+		ftd1.className="garaTd";
+		par.appendChild(ftd1);		
+		var ftd2 = document.createElement("td");
+		ftd2.innerHTML = "&nbsp;";
+		ftd2.className="garaTd";
+		par.appendChild(ftd2);		
+		var ftd3 = document.createElement("td");
+		ftd3.innerHTML = "&nbsp;";
+		ftd3.className="garaTd";
+		par.appendChild(ftd3);		
+		var ftd4 = document.createElement("td");
+		ftd4.innerHTML = "&nbsp;";
+		ftd4.className="garaTd";
+		par.appendChild(ftd4);			
+		//impostiamo l'addRow personalizzato (addRowCup)
+		var addRowElem = $("#AddMod"+prefix);
+		//var href = addRowElem.attr("href").replace("addRow", "addRowCup"); //ALM #2322
+		addRowElem.attr("href",addRowElem.attr("href"));
+	}
+//-->
+</script>
+[condition]
+	<div id="DIVTabella" class="scrollTabs" style="height: 150px; width: 99%; display: block;"><!-- class="scrollTabs"  -->
+		<table id="idTabella" width="100%" >
+			<tbody>
+			<tr> 
+			[condition]
+			[condition]
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]',[],[],'')">Modifica</> --%>
+							<a title="Cancella " href="javascript:deleteRow('[condition]',[],[],'')">Cancella</>
+						</td>
+					</c:if>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+				</tr>
+				[condition]
+				[condition]
+			</c:forEach> 
+			</tbody>		
+			</table> 			
+		</div>	 	
+		[condition]
+				</td>						
+				</tr>
+				<tr><td class="hmenu">
+						<a id="AddMod" href="javascript:addRowCup([],[],'')">Aggiungi</a>
+					</td>
+				</tr>							
+			</table>
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato7" name ="Modificato7" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+<input type="hidden" name="" value="[variable]" /> 

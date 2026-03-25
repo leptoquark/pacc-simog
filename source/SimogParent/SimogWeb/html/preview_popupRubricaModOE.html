@@ -1,0 +1,364 @@
+
+<!-- Include not found: ../include/basicHeader.inc -->
+<!-- Include not found: ../include/controlloSessione.inc -->
+<title></title>
+<base target="_self">
+</head>
+<script type="text/javascript">
+function changeTab(tabName, idmodificato) {  var scelta = true;  if (document.forms[0].elements[idmodificato].value == 1) {  scelta = confirm("Attenzione ! I dati potrebbero essere cambiati. Prosegui con il rischio di perdere i dati?");  }  if (scelta) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit();  } }
+function checkAndChange(tabName, idmodificato) {  alert("checkAndChange - funzione obsoleta"); }
+function setFormModified(idmodificato) {  if (document.getElementById("Modificato") != null) document.getElementById("Modificato").value = 1;  document.getElementById(idmodificato).value = 1; }
+function resetFormModified(idmodificato) {  document.getElementById(idmodificato).value = 0; }
+function salva(tabName) {  if (validateRadios(tabName)) {  if (confirm("I dati verranno salvati. Procedere?")) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements[''].value = "true";  }  document.forms[0].submit();  }  } }
+function salvaDue(actiontype) {  if (confirm("I dati verranno salvati. Procedere?")) {  document.forms[0].elements[''].value = actiontype;  document.forms[0].submit();  } }
+function conferma(tabName) {  if (confirm("I dati verranno confermati. Procedere?")) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements[''].value = "true";  }  document.forms[0].submit();  } }
+function aggiungi(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  setForwardPage(tabName);  document.forms[0].submit(); }
+function setForwardPage(tabName) {  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/aggiudicazioni.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/schedaSottosoglia.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/pubblicazioneEsito.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/affidatario.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/responsabileProcedimento.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/contenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addContenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/listaSoggettiPartecipanti.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "gestioneAggiudicazioni.jsp";  } }
+function reimposta(tabName) {  var scelta = true;  if (tabName == "" || tabName == "" || tabName == "" || tabName == "") {  if (document.getElementById("Modificato").value == 1) {  scelta = confirm("Attenzione! In questo modo tutte le modifiche apportate al documento andranno perse. Continuare?");  if (scelta) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit();  }  }  } else {  if (document.getElementById("Modificato0").value == 1) {  scelta = confirm("Attenzione! In questo modo tutte le modifiche apportate al documento andranno perse. Continuare?");  if (scelta) {  document.forms[0].reset();  }  }  } }
+function add(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addContenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  }  document.forms[0].submit(); }
+function changePage(servletdacaricare, idmodificato) {  var scelta = true;  if (document.forms[0].elements[idmodificato].value == 1) {  scelta = confirm("Attenzione ! I dati potrebbero essere cambiati. Prosegui con il rischio di perdere i dati?");  }  if (scelta) {  document.forms[0].action = servletdacaricare;  document.forms[0].submit();  } }
+function cancella(tabName, args) {  if (confirm("Si sta per cancellare il record. Proseguire?")) {  document.forms[0].elements[''].value = tabName;  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit();  } }
+function modificaTab(tabName, args) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit(); }
+function modifica(tabName, args) {  if (document.forms[0].elements['Modificato0'].value == 1) {  alert("Sono state apportate delle modifiche ai dati. E' necessario effettuare prima un salvataggio.");  } else {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit();  } }
+function changeFromAffidatario(tabName, idPartecipante, denPartecipante, dataInizioAggiudicatario) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].elements[''].value = idPartecipante;  document.forms[0].elements[''].value = denPartecipante;  document.forms[0].elements[''].value = dataInizioAggiudicatario;  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  document.forms[0].submit(); }
+function cerca(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit(); }
+function trim(stringa) {  while (stringa.substring(0, 1) == ' ') {  stringa = stringa.substring(1, stringa.length);  }  while (stringa.substring(0, 1) == '\n') {  stringa = stringa.substring(1, stringa.length);  }  while (stringa.substring(stringa.length - 1, stringa.length) == ' ') {  stringa = stringa.substring(0, stringa.length - 1);  }  tmpStringa = "";  for (i = 0; i < stringa.length; i = i + 1) {  if (stringa.charAt(i) == ' ' || stringa.charAt() == '%') {} else tmpStringa = tmpStringa + stringa.charAt(i);  }  return tmpStringa; }
+function cercaInRubrica(tabName) {  document.forms[0].elements[''].value = tabName;  codiceFiscale = trim(document.getElementById("codiceFiscale").value);  cognome = trim(document.getElementById('').value);  if (document.getElementById('') != null)  nome = trim(document.getElementById('').value);  else  nome = "";  if ((codiceFiscale == "" || codiceFiscale == null) && (cognome == "" || cognome == null) && (nome == "" || nome == null)) {  alert("Inserire almeno uno dei filtri di ricerca");  return;  }  if (codiceFiscale == "" || codiceFiscale == null) {  if (! ((nome.length > 1) || (cognome.length > 1))) {  alert("I filtri di ricerca per Nome e Cognome o Denominazione devono contenere almeno due caratteri");  return;  }  }  document.getElementById('cerca').disabled = true;  document.forms[0].action = 'rubrica?' + "=Cerca in rubrica";  var paramsString = "?" + "=" + "Cerca in rubrica";  document.forms[0].submit(); }
+function cercaInRubricaDittaAusiliaria(tabName) {  document.forms[0].elements[''].value = tabName;  codiceFiscale = trim(document.getElementById("codiceFiscale").value);  cognome = trim(document.getElementById('').value);  if (document.getElementById('') != null)  nome = trim(document.getElementById('').value);  else  nome = "";  if ((codiceFiscale == "" || codiceFiscale == null) && (cognome == "" || cognome == null) && (nome == "" || nome == null)) {  alert("Inserire almeno uno dei filtri di ricerca");  return;  }  if (codiceFiscale == "" || codiceFiscale == null) {  if (! ((nome.length > 1) || (cognome.length > 1))) {  alert("I filtri di ricerca per Nome e Cognome o Denominazione devono contenere almeno due caratteri");  return;  }  }  document.getElementById('cerca').disabled = true;  document.forms[0].action = 'rubricaDittaAusiliaria?' + "=Cerca in rubrica";  var paramsString = "?" + "=" + "Cerca in rubrica";  document.forms[0].submit(); }
+function loadAnnullamentJSP(tabName) {  var scelta = "Richiedere la modifica del blocco dati in esame?";  var codiceContratto = document.getElementById("CODICE_CONTRATTO");  if (codiceContratto != null && codiceContratto.value != "") {  scelta = "ATTENZIONE: L'Aggiudicazione fa parte di un contratto multi lotto. Procedendo oltre, la presente Aggiudicazione e tutte le altre Aggiudicazioni partecipanti al contratto saranno svincolate dallo stesso. Si desidera proseguire?";  }  if (confirm(scelta)) {  document.forms[0].elements[''].value = tabName;  if (document.forms[0].elements['toDo']) document.forms[0].elements['toDo'].value = "";  document.forms[0].elements[''].value = "";  document.forms[0].submit();  } }
+function richiediAnnullamento2(idMotivazioneEsito) {  var motivazione = document.forms[0].elements[idMotivazioneEsito].value;  if (trim(motivazione).length >= 10 && trim(motivazione).length <= 1000) {  return true;  } else {  alert('Inserire una motivazione di almeno 10 caratteri e minore di 1000');  return false;  } }
+function loadPages(srv, param) {  document.forms[0].elements[''].value = param;  document.forms[0].elements[''].value = "false";  changePage(srv); }
+function urlCallFromCombo(combo) {  var pick = combo.options[combo.selectedIndex].value;  if (pick != "") window.location.replace(pick); }
+function inputRadio() {  var radio1 = document.getElementById('radio1');  var radio2 = document.getElementById('radio2');  if (radio1.checked == false && radio2.checked == false) {  alert("Scegliere un tipo di richiesta");  return false;  } else {  return true;  } }
+//-->
+</script>
+<script type="text/javascript">
+var isNav4,isNav6,isIE4;
+function setBrowser(){isIE4=!1,isNav4=!1,isNav6=!1,navigator.appName.indexOf("Explorer")>=0||navigator.appName.indexOf("MSIE")>=0?isIE4=!0:(isNav4=!0,isNav6=!0)}
+setBrowser();
+function getStyleBySelector(e){if(!isNav6)return null;var t,l,r,n=document.styleSheets;for(l=n.length-1;l>=0;l--)for(t=n[l].cssRules,r=0;r<t.length;r++)if(t[r].type==CSSRule.STYLE_RULE&&t[r].selectorText==e)return t[r].style;return null}
+function getIdProperty(e,t){var l=gt(e);return null!=l&&(l=l.style)[t]?l[t]:null!=(l=getStyleBySelector("#"+e))?l[t]:null}
+function setIdProperty(e,t,n){var l=gt(e);null!=l&&((l=l.style)[t]=n)}
+function showMenu(e){null!=gt(e)&&("block"!=getIdProperty(e,"display")?(setIdProperty(e,"display","block"),document.images["img"+e].src="img/minus.gif"):(setIdProperty(e,"display","none"),document.images["img"+e].src="img/plus.gif"))}
+function showMenuNoCheck(e){null!=gt(e)&&("block"!=getIdProperty(e,"display")?(setIdProperty(e,"display","block"),document.images["img"+e].src="img/minus.gif"):(setIdProperty(e,"display","none"),document.images["img"+e].src="img/plus.gif"))}
+function showElement(e){setIdProperty(e,"display","block")}
+function hideElement(e){setIdProperty(e,"display","none")}
+function addRow(e,t,I){if(""!=I&&""!=I&&""!=I&&""!=I&&""!=I&&""!=I||0!=gt("selected"+I).value){if(""==I&&""!=gt("").value&&""!=gt("").value)alert("Sono stati indicati sia Ribasso aggiudicazione che Offerta in aumento.");else if(""==I&&0==gt("").selectedIndex)alert("SIMOG_VALIDAZIONE_104 - Tipologia del soggetto aggiudicatario/affidatario: selezionare un valore tra quelli previsti.");else if(checkBeforeAdd(I)&&(""==I||validateRadio(I))){var i=getRowIndex(I),a="idTabella"+I,A=gt(a),o="row"+I+(parseInt(i)+1),d=A.getElementsByTagName("TBODY")[0],n=createRow(o,e,t,I);d.appendChild(n),appendHidden(n,o,I,getArray(I,!1),!0);hideSezioneAggiungi(e,t,I),setModificato(I),gt("selected"+I).value=0}}else alert("E' necessario scegliere un soggetto per poter proseguire.")}
+function getArray(E,_){var I=new Array;return""==E?(I[0]="",I[1]="",_||(I[2]="",I[3]="",I[4]="",I[5]="",I[6]="",I[7]="",I[8]="",I[9]="",I[10]="")):""==E?(I[0]="",I[1]="",_||(I[2]="")):""==E?(I[0]="",I[1]="",I[2]="",_||(I[3]="",I[4]="",I[5]="",I[6]="",I[7]="",I[8]="",I[9]="",I[10]="")):""==E?(I[0]="",I[1]="",I[2]="",_||(I[3]="",I[4]="",I[5]="",I[6]="",I[7]="")):""==E?(I[0]="",I[1]="",_||(I[2]="",I[3]="",I[4]="",I[5]="",I[6]="",I[7]="")):""==E?(I[0]="",_||(I[1]="",I[2]="",I[3]="",I[4]="",I[5]="",I[6]="")):""==E?(I[0]="",I[1]=""):""==E&&(I[0]="",I[1]=""),I}
+function setModificato(I){var S=0;""==I?S=1:""==I||""==I?S=3:""==I?S=2:""==I?S=3:""==I?S=1:""==I&&(S=7),setFormModified("Modificato"+S)}
+function setButtonForAdd(d,r,n){var t=gt("AddMod"+n),a=ricreaStringa(d),e=ricreaStringa(r),i="CUP"==n?"addRowCup":"addRow";t.href="javascript:"+i+"(["+a+"],["+e+"],'"+n+"')",t.innerHTML="Aggiungi"}
+function deleteRow(e,t,i,o){if(confirm("Si sta per cancellare il record. Proseguire?")){var r=gt("inModifica"+o);null!=r&&r.value==e&&hideSezioneAggiungi(t,i,o);var d=gt(e);d.parentNode.removeChild(d);var l=gt("idTabella"+o).rows.length-1,n="DIVTabella"+o;""!=o&&(l+1>=3?setIdProperty(n,"height","200px"):setIdProperty(n,"height","150px")),setModificato(o)}}
+function getRowIndex(t){for(var e="idTabella"+t,r=gt(e).rows,n=-1,a=0;a<r.length;a++){var i=r.item(a).getAttribute("id");if(null!=i&&""!=i){var l=i.split("row"+t)[1];parseInt(l)>=parseInt(n)&&(n=l)}}return n}
+function showSezioneAggiungi(e,i,n){var g="divAgg"+n,r="showHide"+n+"Button",t=ricreaStringa(e),a=ricreaStringa(i);showElement(g);var o=gt(r);o.innerHTML="Annulla",o.href="javascript:hideSezioneAggiungi(["+t+"],["+a+"],'"+n+"')"}
+function hideSezioneAggiungi(e,i,r){var n="divAgg"+r,t="showHide"+r+"Button",a="Aggiungi "+r;""==r?a="Aggiungi Requisito":""==r&&(a="Aggiungi Posizione");var o=ricreaStringa(e),g=ricreaStringa(i);hideElement(n);var I=gt(t);I.innerHTML=a,I.href="javascript:showSezioneAggiungi(["+o+"],["+g+"],'"+r+"')";var A=ricreaArray(e,i);resetParameters(r,A),setButtonForAdd(e,i,r),""!=r&&""!=r&&""!=r&&""!=r||resetFormModified("selected"+r);var d=gt("inModifica"+r);null!=d&&d.parentNode.removeChild(d)}
+function resetParameters(_,E){for(var A=0;A<E.length;A++){var I=gt(""+E[A]);null!=I&&(""!=E[A]&&""!=E[A]&&""!=E[A]||(I.value=""),""==E[A]||""==E[A]||""==E[A]?(I.checked=!1,""==E[A]&&(gt("").checked=!1)):""==E[A]||""==E[A]||""==E[A]||""==E[A]||""==E[A]||""==E[A]||""==E[A]||""==E[A]?I.selectedIndex=0:I.value="")}}
+function ricreaStringa(r){var n="";if(0==r.length)return n;n="'";for(var t=0;t<r.length;t++)""!=r[t]&&(n+=r[t],t<r.length-1&&(n+="','"));return n+="'"}
+function ricreaArray(r,n){for(var e=new Array,a=0;a<r.length;a++)e[a]=r[a];var t=r.length;for(a=0;a<n.length;a++)e[t++]=n[a];return e}
+function MyDialogArguments(){this.Sender = null;}
+function apriPopUpRubrica(o,e,i){var r="?="+e+"&titleRubrica="+i+"&=Cerca in rubrica&from=menu";if(dialogArgs=new MyDialogArguments,dialogArgs.Sender=window,window.showModalDialog){a="dialogWidth: 800px; dialogHeight: 600px; center: 1; scroll: 1; help: 1; status: 0;";popup=window.showModalDialog(o+r,dialogArgs,a)}else{var a="width=800,height=600, chrome,centerscreen,dependent=yes,resizable=yes,scrollbars=yes,location=no,status=no,directories=no,menubar=no,toolbar=no,modal=yes,dialog=yes";popup=window.open(o+r,dialogArgs,a),popup.focus()}}
+function apriPopUpRubricaDittaAusiliaria(i,a,o,e,l,r,t,d){var g="?="+r+"&titleRubrica="+t+"&=Cerca in rubrica&from=menu&"+d;dialogArgs=new MyDialogArguments,dialogArgs.Sender=window,window.showModalDialog?popup=window.showModalDialog(l+g,dialogArgs,"dialogWidth: 600px; dialogHeight: 400px; center: 1; scroll: 1; help: 1; status: 0;"):$("#dialogDitteAusiliarie").html('<iframe style="border: 0px; " src="'+l+g+'" width="100%" height="100%"></iframe>').dialog({title:"ANAC: Autorit&agrave; Nazionale Anticorruzione",autoOpen:!1,dialogClass:"no-close",modal:!0,height:700,minWidth:1100,minHeight:600,draggable:!0,hide:"fold",show:"blind"}).dialog("open")}
+function chiudiPopUp(o){o?(window.parent.jQuery("#"+o).dialog("close"),window.parent.jQuery("#"+o).empty()):(isNav6?window.opener.focus():window.dialogArguments.Sender.focus(),window.close())}
+function selectElement(e,n,t){var d,o="selected"+e;if(isNav6){d=null!=window.opener?window.opener:t.Sender;for(var l=0;l<n.length;l++)d.gt(n[l]).value=n[++l];d.gt(o).value=1,d.gt("Modificato"+e).value=1}else{for(l=0;l<n.length;l++)window.dialogArguments.Sender.gt(n[l]).value=n[++l];window.dialogArguments.Sender.gt(o).value=1,window.dialogArguments.Sender.gt("Modificato"+e).value=1}return window.close(),!1}
+function checkBeforeAdd(e){if((""==e||""==e||""==e||""==e||""==e||""==e||""==e)&&!checkElement(e,getArray(e,!0))){var I="Hai gia' selezionato questo soggetto",S=".";return""==e?I="Hai gia' inserito un requisito per questa categoria":""!=e&&""!=e||(S=" per il ruolo in questione."),alert(I+S),!1}return!0}
+function appendHidden(e,A,d,t,E){for(var l=0;l<t.length;l++){var I,a=A+t[l],_=gt(a);if(""==t[l]||""==t[l])I=_.value;else if(""==t[l]||""==t[l]||""==t[l]||""==t[l])I=_.childNodes[0].data.charAt(0);else if(""==t[l])tablefield=_.childNodes[0].data,I=""==tablefield?"3":""==tablefield?"2":""==tablefield?"1":"0";else{var i="";null!=_.childNodes[0]&&(i=_.childNodes[0].data),I=i}if(E){var N=document.createElement("TD");(n=document.createElement("INPUT")).setAttribute("name",a,0),n.setAttribute("id","hidden"+a,0),n.setAttribute("type","hidden",0),n.value=I,N.appendChild(n),e.appendChild(N)}else{var n;void 0!==(n=gt("hidden"+a))&&null!=n&&(n.value=I)}}}
+function creaHidden(e,n){var d="idTabella"+n,l=gt(d);if(null!=l){var t=l.rows.length;setHiddenElement("nrRighe"+n,t-1,e)}}
+function setHiddenElement(e,t,n){var d=gt(n),i=document.createElement("INPUT");i.setAttribute("name",e,0),i.setAttribute("type","hidden",0),i.setAttribute("value",t,0),d.appendChild(i)}
+function setAndSave(e,I){hasErrors(document.forms[0])||validateRadios(I)&&confirm("I dati verranno salvati. Procedere?")&&(""==I?(creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I&&(creaHidden(e,""),creaHidden(e,"")),gt("").value=I,gt("").value="",gt(e).submit())}
+function setBitWise(e,a){var t=gt(e);a.checked?t.value=parseInt(t.value)+parseInt(a.value):t.value=parseInt(t.value)-parseInt(a.value)}
+function setAndConfirm(e,I){hasErrors(document.forms[0])||validateRadios(I)&&confirm("I dati verranno confermati. Procedere?")&&(""==I&&(creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")),""==I?(creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I&&(creaHidden(e,""),creaHidden(e,"")),document.forms[0].elements[""].value=I,document.forms[0].elements[""].value="",document.forms[0].submit())}
+function validateRadios(_){if(""==_)return checkRadio("","")&&checkRadio("","")&&checkRadio("","");if(""==_){return checkRadio("","")&&checkRadio("check2Y","check2N")&&checkRadio("check3Y","check3N")&&checkRadio("affidatarioY","affidatarioN")}return""==_?checkRadio("affidatarioY","affidatarioN"):""==_?checkRadio("","")&&checkRadio("","")&&checkRadio("","")&&checkRadio("",""):""==_?checkRadio("",""):""!=_||checkRadio("","")}
+function validateRadio(A){return""==A||""==A||""==A||""==A||"CUP"==A||(""==A?checkRadio("",""):""==A||""==A||""==A)}
+function checkRadio(e,t){var n=gt(e),c=gt(t);return!(!n.checked&&!c.checked)||(alert("Selezionare almeno un opzione per tutti i campi Si/No"),!1)}
+function setAndVaria(e,I){confirm("I dati verranno salvati. Procedere?")&&(""==I&&(creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")),""==I?(creaHidden(e,""),creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I?(creaHidden(e,""),creaHidden(e,"")):""==I&&(creaHidden(e,""),creaHidden(e,"")),document.forms[0].elements[""].value=I,document.forms[0].elements[""].value="",document.forms[0].submit())}
+function checkElement(e,I){var E="idTabella"+e,t=gt(E);if(null!=t){var _=t.rows.length;if(0==_)return!0;for(var l=0;l<_;l++){for(var D=!1,n=0;n<I.length;n++){var S="row"+e+l+I[n],A=gt(S),O=gt("inModifica"+e);if(null==A||null!=O&&O.value=="row"+e+l)n++;else{var d="";null!=A.childNodes[0]&&(d=A.childNodes[0].data);var N,u=gt(I[n]);if(""==e&&(d=A.innerHTML),""==I[n]){u=gt(""),N=getSelectValue(u,!1);var B="hiddenrow"+e+l+"";d=u=gt(B).value}else""==I[n]?(u=gt(""),N=getSelectValue(u,!0)):""==I[n]?(u=gt(""),N=getSelectValue(u,!0)):""==I[n]?(u=gt(""),N=getSelectValue(u,!0)):""==I[n]?(u=gt(""),N=getSelectValue(u,!0)):""==I[n]?N=getSelectValue(u,!1):""==I[n]?(u=gt(""),N=getSelectValue(u,!0)):N=u.value;if(d!=N){D=!1;break}D=!0}}if(1==D)return!1}return!0}}
+function fillRow(A,_,I,E){for(var D=0;D<_.length;D++){var e=A+_[D],N=gt(""+_[D]),S=gt(e);if(""==_[D]||""==_[D]||""==_[D]||""==_[D]||""==_[D]||""==_[D]||""==_[D]||""==_[D]){if(""==_[D]){var a,P=gt("");a=null==P?"":P.value;var O="";O=getTipoAggiudicatario(a),S.innerHTML=O,S.appendChild(document.createTextNode(O))}""==_[D]&&(N=gt("")),O="",O=""==_[D]?getSelectValue(N,!0):getSelectValue(N,!1),null!=S.childNodes[0]?S.childNodes[0].data=O:S.appendChild(document.createTextNode(O))}else if(""==_[D]||""==_[D]){var t=_[D].substring(2),L=gt(A+t);1==N.checked?"S"==N.value?L.childNodes[0].data="SI":L.childNodes[0].data="NO":"S"==N.value?L.childNodes[0].data="NO":L.childNodes[0].data="SI"}else if(""==_[D]||""==_[D]||""==_[D])t=_[D],L=gt(A+t),"S"==N.value?L.childNodes[0].data="SI":"N"==N.value?L.childNodes[0].data="NO":L.childNodes[0].data="";else if(""==_[D]){var l=gt("");t=_[D].substring(2),L=gt(A+t),1==N.checked?1==l.checked?L.childNodes[0].data="":L.childNodes[0].data="":1==l.checked?L.childNodes[0].data="":L.childNodes[0].data=""}else if(""==_[D]||""==_[D])S.value=N.value;else if(""==_[D]){var G=getSelectValue(N,!1);null!=S.childNodes[0]?S.childNodes[0].data=G:S.appendChild(document.createTextNode(G))}else null!=S.childNodes[0]?S.childNodes[0].data=N.value:S.appendChild(document.createTextNode(N.value))}if(""==E&&(null==gt("sottosogliaEsclusi")||"no"==gt("sottosogliaEsclusi").value)){var M,F=ricreaStringa(_),B=ricreaStringa(I),d=gt(""),T=gt("");M=1==d.checked?1==T.checked?"3":"1":1==T.checked?"2":"0",S=gt(A+"");var i=gt("").value,R=gt("").value,u="="+A+"&="+i+"&="+gt("").value+"&="+gt("").value+"&="+R+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+M+"&="+gt("").value+"&="+gt("").value;S.innerHTML="<a href=\"javascript:apriPopUpRubricaDittaAusiliaria('"+A+"',["+F+"],["+B+"],'"+E+"','rubricaDittaAusiliaria','','Rubrica Ditte Ausiliarie','"+u+"')\">Gestione Ditte Ausiliarie</a>"}if(""==E&&null!=gt("")||""==E&&null!=gt(""))if(F=ricreaStringa(_),B=ricreaStringa(I),u="="+A+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value,""!=gt("").value&&""!=gt("").value&&""!=gt("").value){null!=(S=gt(A+""))&&(S.innerHTML="");var c=gt(A+"");null!=c&&(c.value="")}else(S=gt(A+"")).innerHTML="<a href=\"javascript:apriPopUpRubricaDittaAusiliaria('"+A+"',["+F+"],["+B+"],'"+E+"','rubricaRaggruppamento','','Rubrica Raggruppamento Impresa','"+u+"')\">Gestione Raggruppamento d'Impresa</a>";for(D=0;D<I.length;D++)if(e=A+I[D],null!=(N=gt(""+I[D]))){if(S=gt(e),""==I[D]){N=gt("");var g=getSelectValue(N,!0);S.childNodes[0].data=g}else""==I[D]?(N=gt(""),g=getSelectValue(N,!0),S.childNodes[0].data=g):""==I[D]?(N=gt(""),g=getSelectValue(N,!0),null!=S.childNodes[0]?S.childNodes[0].data=g:S.appendChild(document.createTextNode(g))):""==I[D]?(N=gt(""),g=getSelectValue(N,!0),S.childNodes[0].data=g):""==I[D]?(N=gt(""),g=getSelectValue(N,!0),S.childNodes[0].data=g):null!=S.childNodes[0]?S.childNodes[0].data=N.value:S.appendChild(document.createTextNode(N.value));S.style.display="none"}}
+function createRow(e,t,A,_){var E=document.createElement("TR");E.setAttribute("id",e,0),(G=document.createElement("TD")).className="hmenu",G.setAttribute("nowrap","nowrap"),(F=document.createElement("A")).appendChild(document.createTextNode("Modifica"));var I=ricreaStringa(t),a=ricreaStringa(A);F.setAttribute("href","javascript:setForModifyRow('"+e+"',["+I+"],["+a+"],'"+_+"')",0),G.appendChild(F);var D=document.createElement("span");D.innerHTML="&nbsp;&nbsp;",G.appendChild(D);var d=document.createElement("A");d.appendChild(document.createTextNode("Cancella")),d.setAttribute("href","javascript:deleteRow('"+e+"',["+I+"],["+a+"],'"+_+"')",0),G.appendChild(d),E.appendChild(G);for(var i=!1,N=0;N<t.length;N++){(s=document.createElement("TD")).setAttribute("nowrap","nowrap"),s.className="garaTd";var r=e+t[N],n=gt(""+t[N]);if(""==t[N]||""==t[N]||""==t[N]||""==t[N]||""==t[N]||""==t[N]||""==t[N]){""==t[N]&&(n=gt(""));var S;S=""==t[N]?getSelectValue(n,!0):getSelectValue(n,!1),s.appendChild(document.createTextNode(S)),s.setAttribute("id",r,0)}else if(""==t[N]||""==t[N])0==i?(r=e+t[N].substring(2),1==n.checked?"S"==n.value?s.appendChild(document.createTextNode("SI")):s.appendChild(document.createTextNode("NO")):"S"==n.value?s.appendChild(document.createTextNode("NO")):s.appendChild(document.createTextNode("SI")),i=!0):(i=!1,s.style.display="none"),s.setAttribute("id",r,0);else if(""==t[N]||""==t[N]||""==t[N])r=e+t[N],"S"==n.value?s.appendChild(document.createTextNode("SI")):"N"==n.value?s.appendChild(document.createTextNode("NO")):s.appendChild(document.createTextNode("")),s.setAttribute("id",r,0);else if(""==t[N]){var l,u=gt("").value;l=getTipoAggiudicatario(u),s.appendChild(document.createTextNode(l)),s.setAttribute("id",r,0)}else if(""==t[N]){var P=gt("");r=e+t[N].substring(2),1==n.checked?1==P.checked?s.appendChild(document.createTextNode("")):s.appendChild(document.createTextNode("")):1==P.checked?s.appendChild(document.createTextNode("")):s.appendChild(document.createTextNode("")),s.setAttribute("id",r,0)}else if(""==t[N]){var c=gt(t[N]).value;(O=document.createElement("INPUT")).setAttribute("id",r,0),O.setAttribute("type","text",0),O.setAttribute("maxlength","1024",0),O.setAttribute("value",c,0),O.disabled=!0,s.appendChild(O)}else if(""==t[N]){var O;c=gt(t[N]).value,(O=document.createElement("TEXTAREA")).setAttribute("id",r,0),O.setAttribute("rows","2",0),O.setAttribute("cols","40",0),O.value=c,O.disabled=!0,s.appendChild(O)}else if(""==t[N]){var T=getSelectValue(gt(""+t[N]),!1);s.appendChild(document.createTextNode(T)),s.setAttribute("id",r,0)}else""==t[N]?("0"==(T=gt(""+t[N]).value)&&(T=""),s.appendChild(document.createTextNode(T)),s.setAttribute("id",r,0)):(s.appendChild(document.createTextNode(gt(""+t[N]).value)),s.setAttribute("id",r,0));""!=t[N]&&""!=t[N]&&""!=t[N]||(T=getSelectValue(gt(""+t[N]),!1),s.appendChild(document.createTextNode(T)),s.setAttribute("id",r,0)),E.appendChild(s)}if(""==_&&(null==gt("sottosogliaEsclusi")||"no"==gt("sottosogliaEsclusi").value)){(G=document.createElement("TD")).className="hmenu",G.setAttribute("nowrap","nowrap"),G.setAttribute("id",e+"",0),(F=document.createElement("A")).appendChild(document.createTextNode("Gestione Ditte Ausiliarie")),I=ricreaStringa(t),a=ricreaStringa(A);var p="="+e+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value;F.setAttribute("href","javascript:apriPopUpRubricaDittaAusiliaria('"+e+"',["+I+"],["+a+"],'"+_+"','rubricaDittaAusiliaria','','Rubrica Ditte Ausiliarie','"+p+"')"),G.appendChild(F),E.appendChild(G),(o=document.createElement("TD")).style.display="none";var L=e+"";(B=document.createElement("INPUT")).setAttribute("name",L,0),B.setAttribute("id","hidden"+L,0),B.setAttribute("type","hidden",0),B.value="",o.appendChild(B),E.appendChild(o)}if(""==_||""==_){var G,o,F,B;if((G=document.createElement("TD")).className="hmenu",G.setAttribute("nowrap","nowrap"),G.setAttribute("id",e+"",0),""==gt("").value||""==gt("").value||""==gt("").value)(F=document.createElement("A")).appendChild(document.createTextNode("Gestione Raggruppamento d'Impresa")),I=ricreaStringa(t),a=ricreaStringa(A),p="="+e+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value,p="="+e+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value+"&="+gt("").value,F.setAttribute("href","javascript:apriPopUpRubricaDittaAusiliaria('"+e+"',["+I+"],["+a+"],'"+_+"','rubricaRaggruppamento','','Rubrica Raggruppamento Impresa','"+p+"')"),G.appendChild(F);E.appendChild(G),(o=document.createElement("TD")).style.display="none",L=e+"",(B=document.createElement("INPUT")).setAttribute("name",L,0),B.setAttribute("id","hidden"+L,0),B.setAttribute("type","hidden",0),B.value="",o.appendChild(B),E.appendChild(o)}for(N=0;N<A.length;N++){var s=document.createElement("TD");if(r=e+A[N],n=gt(""+A[N]),""==A[N]){n=gt("");var M=getSelectValue(n,!0);s.appendChild(document.createTextNode(M))}else if(""==A[N])n=gt(""),M=getSelectValue(n,!0),s.appendChild(document.createTextNode(M));else if(""==A[N]){var C=getSelectValue(n,!0);s.appendChild(document.createTextNode(C))}else""==A[N]?(n=gt(""),M=getSelectValue(n,!0),s.appendChild(document.createTextNode(M))):""==A[N]?(n=gt(""),M=getSelectValue(n,!0),s.appendChild(document.createTextNode(M))):""==A[N]?(n=gt(""),M=getSelectValue(n,!0),s.appendChild(document.createTextNode(M))):null!=n&&s.appendChild(document.createTextNode(n.value));s.style.display="none",s.setAttribute("id",r,0),E.appendChild(s)}return E}
+function modifyRow(e,i,t,I){if(""==I&&gt("").selectedIndex<=0)alert("E' necessario scegliere un soggetto per poter proseguire.");else if(""==I&&""!=gt("").value&&""!=gt("").value)alert("Sono stati indicati sia Ribasso aggiudicazione che Offerta in aumento.");else if(""==I&&0==gt("").selectedIndex)alert("SIMOG_VALIDAZIONE_104 - Tipologia del soggetto aggiudicatario/affidatario: selezionare un valore tra quelli previsti.");else if(checkBeforeAdd(I)){var o=gt(e),a=o.getAttribute("id");fillRow(a,i,t,I),appendHidden(o,a,I,getArray(I,!1),!1),setModificato(I),hideSezioneAggiungi(i,t,I)}}
+function getSelectValue(e,t){var n="";if(e.selectedIndex>=0){var l=e.options[e.selectedIndex];n=l.text,1==t&&(n=l.value)}return n}
+function setForModifyRow(e,d,l,I){var n=ricreaArray(d,l);resetParameters(I,n);for(var t=0;t<d.length;t++){var E=e+d[t],_=gt(""+d[t]);if(""==d[t]){E=e+"";var c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data);var A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]){E=e+"";c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data);A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]){E=e+"";c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data);A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]){E=e+"";c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data);A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]){c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data);A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]){c="";null!=(N=gt(E)).childNodes[0]&&(c=N.childNodes[0].data),c=c.split(" ")[0];A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==d[t]||""==d[t]){E=e+d[t].substring(2),"SI"==(a=(N=gt(E)).childNodes[0].data)?"S"==_.value?(_.checked=!0,already=!0):_.checked=!1:"S"==_.value?_.checked=!1:(_.checked=!0,already=!0)}else if(""==d[t]||""==d[t]||""==d[t]){E=e+d[t];var a=(N=gt(E)).childNodes[0].data;_.value="SI"==a?"S":"NO"==a?"N":"",already=!0,_.selectedIndex=cercaIndex(_.options,0,_.value)}else if(""==d[t]){var o=gt("");E=e+d[t].substring(2),""==(a=(N=gt(E)).childNodes[0].data)?(_.checked=!0,o.checked=!0):""==a?(_.checked=!0,o.checked=!1):""==a?(_.checked=!1,o.checked=!0):(_.checked=!1,o.checked=!1)}else if(""==d[t]||""==d[t]){if(null!=(N=gt(E))){var D=N.value;null!=_&&(_.value=D)}}if(""==d[t]||""==d[t]||""==d[t]){var N=gt("hidden"+E);null!=(N=gt(E))&&(null!=N.innerHTML&&""!=N.innerHTML?_.value=N.innerHTML:_.value="")}else if(""==d[t]){if(null!=(N=gt("hidden"+E))){D=N.value;if(null!=_)for(i=0;i<_.length;i++)if(_.options[i].text==D){_.selectedIndex=i;break}}}if(""!=d[t]||""!=I&&""!=I)if(""==d[t]){if(null!=(N=gt("hidden"+E))){D=N.value;null!=_&&(_.value=""!=D?D:"IT")}}else{if(null!=(N=gt(E))){c="";null!=N.childNodes[0]&&(c=N.childNodes[0].data),null!=_&&(_.value=c)}}else null!=(N=gt(E))&&(null!=N.innerHTML&&""!=N.innerHTML?_.value=N.innerHTML:_.value="IT")}for(t=0;t<l.length;t++){E=e+l[t];if(null!=(N=gt(E))){c="";null!=N.childNodes[0]&&(c=N.childNodes[0].data);_=gt(""+l[t]);if(""==l[t]){N=gt(E),A=_.options;_.selectedIndex=cercaIndex(A,0,c)}else if(""==l[t]){A=(_=gt("")).options;_.selectedIndex=cercaIndex(A,0,c)}else _.value=c}}var S=gt("AddMod"+I),u=ricreaStringa(d),s=ricreaStringa(l);S.href="javascript:modifyRow('"+e+"',["+u+"],["+s+"],'"+I+"')",S.innerHTML="Modifica";var B="idTabella"+I,L=gt(B),O=gt("inModifica"+I);null==O&&((O=document.createElement("TD")).style.display="none",O.setAttribute("id","inModifica"+I,0),L.appendChild(O)),O.value=e,showSezioneAggiungi(d,l,I)}
+function cercaIndex(e,n,c){return n==e.length?-1:e[n].value==c?n:cercaIndex(e,n+1,c)}
+function getTipoAggiudicatario(A){return 1==A?"":2==A?"":3==A?"":4==A?"":5==A?"":""}
+function apriPopUpMod(e,o,a,i,l,r){if(""==a.value)alert("Nessuna anagrafica da modifcare!");else{var s="?id="+a.value+"&data="+i.value+"&="+o+"&titleRubrica="+l+"&=PopUpMod&from=menu&elem="+r;if(dialogArgs=new MyDialogArguments,dialogArgs.Sender=window,window.showModalDialog){d="dialogWidth: 800px; dialogHeight: 600px; center: 1; scroll: 1; help: 1; status: 0;";window.showModalDialog(e+s,dialogArgs,d)}else{var d="width=800,height=600, chrome,centerscreen,dependent=yes,resizable=yes,scrollbars=yes,location=no,status=no,directories=no,menubar=no,toolbar=no,modal=yes,dialog=yes";window.open(e+s,dialogArgs,d).focus()}}}
+function gt(e){return document.getElementById(e);}
+</script>
+<SCRIPT type="text/javascript">
+function utf8_encode (argString) {
+    if (argString === null || typeof argString === "undefined") {
+        return "";
+    }
+    var string = (argString + ''); // .replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    var utftext = "",
+        start, end, stringl = 0;
+    start = end = 0;
+    stringl = string.length;
+    for (var n = 0; n < stringl; n++) {
+        var c1 = string.charCodeAt(n);
+        var enc = null;
+        if (c1 < 128) {
+            end++;
+        } else if (c1 > 127 && c1 < 2048) {
+            enc = String.fromCharCode((c1 >> 6) | 192) + String.fromCharCode((c1 & 63) | 128);
+        } else {
+            enc = String.fromCharCode((c1 >> 12) | 224) + String.fromCharCode(((c1 >> 6) & 63) | 128) + String.fromCharCode((c1 & 63) | 128);
+        }
+        if (enc !== null) {
+            if (end > start) {
+                utftext += string.slice(start, end);
+            }
+            utftext += enc;
+            start = end = n + 1;
+        }
+    }
+    if (end > start) {
+        utftext += string.slice(start, stringl);
+    }
+    return utftext;
+}
+function utf8_decode (str_data) {
+    var tmp_arr = [],
+        i = 0,
+        ac = 0,
+        c1 = 0,
+        c2 = 0,
+        c3 = 0;
+    str_data += '';
+    while (i < str_data.length) {
+        c1 = str_data.charCodeAt(i);
+        if (c1 < 128) {
+            tmp_arr[ac++] = String.fromCharCode(c1);
+            i++;
+        } else if (c1 > 191 && c1 < 224) {
+            c2 = str_data.charCodeAt(i + 1);
+            tmp_arr[ac++] = String.fromCharCode(((c1 & 31) << 6) | (c2 & 63));
+            i += 2;
+        } else {
+            c2 = str_data.charCodeAt(i + 1);
+            c3 = str_data.charCodeAt(i + 2);
+            tmp_arr[ac++] = String.fromCharCode(((c1 & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+            i += 3;
+        }
+    }
+    return tmp_arr.join('');
+}
+function base64_decode (data) {
+    var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
+        ac = 0,
+        dec = "",
+        tmp_arr = [];
+    if (!data) {
+        return data;
+    }
+    data += '';
+    do { // unpack four hexets into three octets using index points in b64
+        h1 = b64.indexOf(data.charAt(i++));
+        h2 = b64.indexOf(data.charAt(i++));
+        h3 = b64.indexOf(data.charAt(i++));
+        h4 = b64.indexOf(data.charAt(i++));
+        bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
+        o1 = bits >> 16 & 0xff;
+        o2 = bits >> 8 & 0xff;
+        o3 = bits & 0xff;
+        if (h3 == 64) {
+            tmp_arr[ac++] = String.fromCharCode(o1);
+        } else if (h4 == 64) {
+            tmp_arr[ac++] = String.fromCharCode(o1, o2);
+        } else {
+            tmp_arr[ac++] = String.fromCharCode(o1, o2, o3);
+        }
+    } while (i < data.length);
+    dec = tmp_arr.join('');
+    dec = this.utf8_decode(dec);
+    return dec;
+}
+function base64_encode (data) {
+    var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
+        ac = 0,
+        enc = "",
+        tmp_arr = [];
+    if (!data) {
+        return data;
+    }
+    data = this.utf8_encode(data + '');
+    do { // pack three octets into four hexets
+        o1 = data.charCodeAt(i++);
+        o2 = data.charCodeAt(i++);
+        o3 = data.charCodeAt(i++);
+        bits = o1 << 16 | o2 << 8 | o3;
+        h1 = bits >> 18 & 0x3f;
+        h2 = bits >> 12 & 0x3f;
+        h3 = bits >> 6 & 0x3f;
+        h4 = bits & 0x3f;
+        // use hexets to index into b64, and append result to encoded string
+        tmp_arr[ac++] = b64.charAt(h1) + b64.charAt(h2) + b64.charAt(h3) + b64.charAt(h4);
+    } while (i < data.length);
+    enc = tmp_arr.join('');
+    var r = data.length % 3;
+    return (r ? enc.slice(0, r - 3) : enc) + '==='.slice(r || 3);
+}
+</SCRIPT>
+<script type="text/javascript">
+<!--
+function buildDati (){
+	var dati = [];
+	dati[0] = document.getElementById("").value;
+	dati[1] = document.getElementById("").value;
+	dati[2] = document.getElementById("").value;
+	dati[3] = document.getElementById("").value;
+	dati[4] = document.getElementById("").value;
+	dati[5] = document.getElementById("").value;
+	dati[6] = document.getElementById("").value;
+	dati[7] = document.getElementById("").value;
+	dati[8] = document.getElementById("").value;
+	dati[9] = document.getElementById("").value;
+	dati[10] = document.getElementById("").value;
+	dati[11] = document.getElementById("").value;
+	dati[12] = document.getElementById("").value;
+	dati[13] = document.getElementById("").value;
+	dati[14] = ".";
+	return base64_encode(dati.join(''));
+}
+function fillCaller (win, tom){
+	var val = tom.value;
+	var dati = base64_decode(val).split('');
+		win.document.getElementById("").value = dati[2];
+		win.document.getElementById("").value = dati[2];
+		win.document.getElementById("").value = dati[3];
+}
+function validaDati(okVal) {
+	if (okVal){
+		var wind;
+		if(isNav6){
+			win = window.opener;
+		}
+		else{
+			win = window.dialogArguments.Sender;
+		}		
+		var tom = win.document.getElementById('');
+		var tom = win.document.getElementById('');
+		tom.value = buildDati();
+		fillCaller(win, tom);
+		if(isNav6){window.opener.focus();}else{window.dialogArguments.Sender.focus();}		
+		window.close();
+		return false;
+	 }
+	 else
+	 {
+	    document.forms[0].elements[''].value = "Valida";
+	    document.forms[0].submit();
+    }
+}
+//-->
+</script>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<body>
+<div class="bodypage-e">
+<h1>Modifica dati anagrafici</h1>
+<form id="IdFormPopup" name="popupRubrica" action="rubricaR"  method="post">
+<!-- Include not found: ../include/gestisciErrore.inc -->
+<input type="hidden" name="" id="" value="">
+<div class="testo">
+<fieldset>
+	<input type="hidden" id="" name="" value="">
+	<input type="hidden" name="" value="">
+	<input type="hidden" name="" value="">
+	<input type="hidden" name="" value="">
+	<table style="width:100%;">
+			<tbody >
+				<tr>
+					<th><label>Paese Operatore Economico</label></th>
+					<td><input type="text" readonly value="" />
+					    <input type="hidden" id="" name="" value="" />
+					</td>
+				</tr>
+	<tr>
+	<th><label for="">Codice Fiscale / Partita Iva</label></th>
+	<td>
+		<input readonly type="text" id="" maxlength="20" name ="" value="<h:requestParameter defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">Denominazione</label></th>
+	<td>
+		<input  id="" type="text" maxlength="250" name ="" value="<h:requestParameter defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">Camera Commercio</label></th>
+	<td>
+		<input  id=""
+		 type="text" maxlength="50" name ="" value="<h:requestParameter defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">Partita IVA</label></th>
+	<td>
+		<input  id="" 
+		type="text" maxlength="20" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">Indirizzo</label></th>
+	<td>
+		<input  id="" 
+		type="text" maxlength="50" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+	<th><label for="">Civico</label></th>
+	<td>
+		<input  id="" 
+		 type="text" maxlength="10" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+</tr>				
+<tr>
+	<th><label for="">Citt�</label></th>
+	<td>
+		<input  id="" 
+		type="text" maxlength="50" name =""  value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+	<th><label for="">Provincia</label></th>
+	<td>
+		<input   id="" 
+		type="text" maxlength="2" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">CAP</label></th>
+	<td>
+		<input  id="" 
+		type="text" maxlength="10" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>		
+</tr>
+<tr>
+	<th><label for="">Codice Fiscale del Rappresentante</label></th>
+	<td>
+		<input  id="" 
+		type="text" maxlength="20" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+</tr>
+<tr>
+	<th><label for="">Cognome</label></th>
+	<td>
+		<input  id="" type="text" maxlength="50" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+	<th><label for="">Nome</label></th>
+	<td>
+		<input  id="" type="text" maxlength="50" name ="" value="<h:requestParameter  defaultValue="" property='' />" />
+	</td>
+</tr>
+</tbody>
+</table>
+<input type="hidden" name="id" id="id" value="<h:requestParameter property="id"/>">					 
+<input type="hidden" name="data" id="data" value="<h:requestParameter property="data"/>">					 
+<input type="hidden" name="elem" id="elem" value="<h:requestParameter property="elem"/>">					 
+<input type="hidden" name="" id="" value="<h:requestParameter property=""/>">					 
+</fieldset>
+</div>
+<input type="submit" name="" value="Salva" onclick="javascript:document.forms[0].action = 'rubrica?titleRubrica=&operazione=validaDati'; return validaDati('<h:requestParameter property="okVal" defaultValue="" />');">
+<input type="button" value="Annulla" onclick=" javascript: window.close();" > 
+<input type="hidden" name="parametri" id="parametri" value="">					 
+</form>
+</div>
+<p>Nota: I dati sono prelevati dalla scheda attualmente attiva nell'anagrafica comune</p>
+</body>
+</html>

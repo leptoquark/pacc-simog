@@ -1,0 +1,34 @@
+<definitions name='Iloginservice' targetNamespace='http://impl.wsdl.service.iam.avcp.it/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://impl.wsdl.service.iam.avcp.it/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types></types>
+ <message name='Ilogin_check_login'>
+  <part name='login' type='xsd:string'></part>
+  <part name='password' type='xsd:string'></part>
+  <part name='applicazione' type='xsd:string'></part>
+ </message>
+ <message name='Ilogin_check_loginResponse'>
+  <part name='return' type='xsd:string'></part>
+ </message>
+ <portType name='Ilogin'>
+  <operation name='check_login' parameterOrder='login password applicazione'>
+   <input message='tns:Ilogin_check_login'></input>
+   <output message='tns:Ilogin_check_loginResponse'></output>
+  </operation>
+ </portType>
+ <binding name='IloginBinding' type='tns:Ilogin'>
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='check_login'>
+   <soap:operation soapAction='check_login'/>
+   <input>
+    <soap:body namespace='http://impl.wsdl.service.iam.avcp.it/' use='literal'/>
+   </input>
+   <output>
+    <soap:body namespace='http://impl.wsdl.service.iam.avcp.it/' use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='Iloginservice'>
+  <port binding='tns:IloginBinding' name='IloginPort'>
+   <soap:address location='http://riladmin03.ril.avcp.local:8080/avcp-iam-service-v1.0'/>
+  </port>
+ </service>
+</definitions>

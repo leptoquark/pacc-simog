@@ -1,0 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/stile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" >
+<link rel="icon" href="img/animated_favicon1.gif" type="image/gif" >
+<title>SIMOG - إدارة المرفقات لرقم المناقصة []</title>
+<base target="_self" />
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript">
+<!--
+	function invioFile(){
+		if(document.getElementById('InviaFileAggiornamento').putFile.value == ''){
+			alert('Selezionare un file');
+			return false;
+		}
+		document.body.style.cursor = 'wait';
+		return true;
+	}
+	function disabilita(obj){
+		//var obj = document.getElementById("cmdConf")
+		obj.innerHTML="Attendere prego ...";
+		obj.disabled="disabled";
+	}
+	function abortFile(id){
+	document.forms[0].action='?action=abort&=' + id;
+    document.forms[0].target="";
+	document.forms[0].submit();	
+	}
+	function viewFile(id){
+		document.forms[0].action='?action=view&=' + id;
+		document.forms[0].target="_blank";
+		document.forms[0].submit();	
+		var t=setTimeout("window.close()",2000); // patch chrome
+	}
+//-->
+</script>
+</head>
+<body>
+	<form onsubmit="disabilita(this.cmdConf);" id="InviaFileAggiornamento" ENCTYPE="multipart/form-data" method="POST" action="?action=save">
+	<div class="bodypage">
+	<div class="bodypage-e">
+	<h1>Gestione Allegati</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+	<br><br>
+	<div class="hmenu">
+		<ul>
+		<li><a href="javascript:setRetVal('', false,'', document.getElementById('cmdConf').disabled );">Chiudi</a></li>
+		</ul>
+	</div>		
+	<div class="gara">
+		<fieldset>
+		<legend>Allegati inclusi</legend>
+			<div class="elencoCategorie" style="height:150px;">
+				<table background="#F1F2F8" class="TableBean" cellpadding="3" style="width:90%;">
+					<tr>
+						<th class='TableBeanTitle'>Tipo Documento</th>
+						<th class='TableBeanTitle'>Nome Documento</th>
+						<th class='TableBeanTitle'>Note</th>
+					</tr>
+					<tr class="TableBeanOdd">
+						<td></td>
+						<td align="left"></td>
+						<td align="left"></td>
+						<td><button type="button" name="elimina" onclick="abortFile();">Elimina </button></td>
+						<td><button type="button" name="visualizza" onclick="viewFile();">Visualizza </button></td>
+					</tr>	
+				</table>		
+			</div>
+			</fieldset>
+		</div>
+		<div class="testo">
+			<fieldset>
+			<input type="hidden" id="" name="" value="" />
+			<input type="hidden" id="" name="" value="" />
+			<input type="hidden" id="" name="" value="" />
+			<input type="hidden" id="" name="" value="" />
+			<input type="hidden" id="" value="" />
+			<legend>Carica nuovo allegato</legend>
+			<table>
+			  <tr>
+			  	<th>Selezionare il file da allegare</th>		
+				<td><input type="file" name="putFile" ></td>
+			  </tr>
+			  <tr>
+			    <th>Note all'allegato</th>
+			    <td>
+			    	<input   size="100%" type="text" maxlength="250" name="" value="" />
+			    </td>
+			  </tr>
+		       	<input type="hidden" name="" value="" />	  
+			  <tr>
+			    <td>
+			    	<button  type="submit" id="cmdConf" name="conferma" onclick="return invioFile();">Aggiungi Allegato </button>
+			    </td>
+			  </tr>
+			</table>
+			</fieldset>
+		</div>
+		<div id="warnChrome" style="display:none">
+			<table width="100%"  cellpadding="5">
+				<tr>
+				<td rowspan="3">
+					<img src="img/simogWarning_little.jpg" width="60px" height="55px" align="left" alt="img simog warning">
+				</td>
+				</tr>
+				<tr>
+					<td align="left" valign="top"><p style="color:rgb(180,0,28);">
+						<strong>ATTENZIONE:</strong>Il browser Chrome non gestisce correttamente la finestra pop-up, dopo l'inserimento dell'allegato chiudere la finestra pop-up e premere il tasto F5 per effettuare l'aggiornamento della pagina di pubblicazione.
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>
+	</div>
+	</form>
+	<script type="text/javascript">
+		window.resizeTo(800, 600);
+        if(window.showModalDialog){
+		    window.onunload=function(){setRetVal('', true,'');}; 
+		}
+        window.returnValue = "";
+		var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome == true){
+			var style = document.getElementById("warnChrome").style;
+			style["display"] = "block";
+		}
+/***		
+		var xWin; 
+		xWin = getSender(window);
+		if (xWin){
+			var dest = xWin.document.getElementById('');
+			dest.value='';
+			var dest2 = xWin.document.getElementById('');
+			dest2.value='';
+		}
+		else
+			alert("XWIN not found!");
+***/			
+	</script>
+</body>
+</html>

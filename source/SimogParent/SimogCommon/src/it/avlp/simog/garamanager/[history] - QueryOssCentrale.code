@@ -1,0 +1,87 @@
+
+/* query che poteva sostituire la query per l'osservatorio centrale scartata 
+perche tira fuori i duplicati degli info comuni */
+
+package it.avlp.simog.garamanager;
+
+public class QueriesOssCentrale {
+
+	public static String query_senza_filtri = "" +	
+"SELECT " +
+"Id_Gara, " +
+"Oggetto, " +
+"CF_AMMINISTRAZIONE, " + 
+"DENOM_AMMINISTRAZIONE, " + 
+"ID_STAZIONE_APPALTANTE, " + 
+"DENOM_STAZIONE_APPALTANTE, " + 
+"Data_creazione, " + 
+"IMPORTO_GARA, " + 
+"IMPORTO_SA_GARA, " + 
+"ID_LOTTO, " + 
+"DATA_SCADENZA_PAGAMENTI, " + 
+"Data_Pubblicazione, " + 
+"DATA_CANCELLAZIONE_LOTTO, " + 
+"DATA_INIB_PAGAMENTO, " + 
+"IMPORTO_LOTTO, " +
+"CIG, " + 
+"CIG_KKK, " + 
+"CIG_cicle, " + 
+"Somma_Urgenza, " + 
+"LOTTOOGGETTO, " + 
+"Importo_Impresa, " + 
+"Importo_SA, " + 
+"ID_INFO, " + 
+"DATA_INIZIO_INFO, " + 
+"CF_RUP, " + 
+"DESCRIZIONE, " +
+"APPLICAZIONE " + 
+"FROM " +
+
+"(select info_aggiudicazioni.id_info, " + 
+"	info_aggiudicazioni.data_inizio_info, " +
+"	upper(info_aggiudicazioni.cf_rup) as cf_rup, " +
+//	--for join
+"	info_aggiudicazioni.id_lotto as join_lotto " +
+//	--end
+"	from info_aggiudicazioni " +
+"		where INFO_AGGIUDICAZIONI.ID_STATO = 1 OR INFO_AGGIUDICAZIONI.ID_STATO = 2 OR INFO_AGGIUDICAZIONI.ID_STATO IS NULL) as dati_comuni " +
+
+
+"right outer join (select Lotto.Id_Lotto AS ID_LOTTO, " +
+"			Lotto.DATA_SCADENZA_PAGAMENTI, " +
+"			Lotto.Data_Pubblicazione, " +
+"			Lotto.DATA_CANCELLAZIONE_LOTTO, " + 
+"			Lotto.DATA_INIB_PAGAMENTO, " + 
+"			Lotto.Importo_Lotto, " + 
+"			Lotto.CIG AS CIG, " + 
+"			Lotto.CIG_kkk AS CIG_KKK, " + 
+"			Lotto.CIG_cicle, " + 
+"			Lotto.Somma_Urgenza, " + 
+"			Lotto.Oggetto AS LOTTOOGGETTO, " + 
+"			Lotto.Importo_Impresa, " + 
+"			Lotto.Importo_SA, " + 
+//			--for join
+"			lotto.id_gara as join_gara, " +
+//			--end
+"			cig_storia.applicazione " +
+"			from lotto inner join cig_storia on CIG_STORIA.CIG = Lotto.CIG AND CIG_STORIA.CIG_CICLE = Lotto.CIG_cicle) as lotto_storia " +
+"on dati_comuni.join_lotto = lotto_storia.id_lotto " + 
+
+
+
+"inner join	 (select Gara.Id_Gara, " + 
+"			Gara.Oggetto, " + 
+"			Gara.CF_AMMINISTRAZIONE, " + 
+"			Gara.DENOM_AMMINISTRAZIONE, " + 
+"			Gara.ID_STAZIONE_APPALTANTE, " + 
+"			Gara.DENOM_STAZIONE_APPALTANTE, " + 
+"			Gara.Data_creazione , " +
+"			Gara.IMPORTO_GARA, " + 
+"			Gara.IMPORTO_SA_GARA, " +
+"			stati_scheda.descrizione " + 
+"			from gara,stati_scheda " + //gara.id_gara = 200430 and
+"				where gara.id_stato_gara = stati_scheda.id_stato) as gara_stati " +
+"on lotto_storia.join_gara = gara_stati.id_gara ";
+
+//"ORDER BY gara_stati.Id_Gara ";
+}

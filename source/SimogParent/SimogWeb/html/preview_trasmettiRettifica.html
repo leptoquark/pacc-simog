@@ -1,0 +1,536 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+<!-- main calendar program -->
+<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- language for the calendar -->
+<script type="text/javascript" src="calendar/calendar-it.js"></script>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="script/pageutils.js"></script>
+<title>SIMOG - نشر التصحيحات</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+</head>
+<script type="text/javascript">
+	function doActionModifica(action){
+		if(!hasErrors(document.forms[0]))
+			doAction(action);
+	}
+</script>
+<body>
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<div id="dialogALLEGATO_RETTIFICA"></div>
+<!-- fine import popup modali -->
+<div id="gabbia">
+<div id="header">
+</div>
+	<div id="bodypage">
+		<div class="bodypage-e">
+			<h1>نشر التصحيح</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			<div class="hmenu">
+				<ul><li><a title="الصفحة السابقة" href="
+				?=
+				&=">عودة</a></li></ul>
+				<ul><li><a title="الصفحة السابقة" href="
+				?=
+				&=">عودة</a></li></ul>
+			</div>
+			 		<fieldset>
+						<legend>Storico Pubblicazioni</legend>
+			 				<fieldset class="gara">
+								<div align="center">
+									<table width="100%">	
+					              <tr>
+						             <th class="garaTh">Tipo pubblicazione</th>
+						             <th class="garaTh">Data pubblicazione</th>
+						             <th class="garaTh">Allegati</th>
+					              </tr>
+					              <tr>
+					                <td></td>
+					                <td></td>
+					                <td><input type="button" onclick="apripopup('?=&='); return false;"; value="visualizza" /></td>    
+					                ?=&=" >visualizza</a></td>
+					                --%>
+					              </tr>
+					            </table>		
+								</div>
+							</fieldset>									
+					</fieldset>			
+			</h5>
+			<h5>Oggetto Gara: </h5>
+			<h5>Importo Gara: </h5>			
+			</div>	
+			<h4>Informazioni Gara</h4>
+				<div class="gara">
+					<table>
+						<tr>
+							<th class="garaTh" width="40%">Numero Gara</th>
+							<td class="garaTd"></td>
+						</tr>				
+						<tr>
+							<th class="garaTh" width="40%">Oggetto della Gara</th>
+							<td class="garaTd"></td>
+						</tr>
+						<tr>
+							<th class="garaTh" width="40%">Importo della Gara &euro;</th>
+							<td class="garaTd"></td>
+						</tr>
+					</table>	
+		      </div>		
+		<form method="post" action="">
+	   <input type="hidden" value="load" name="toDo" id="toDo" />	
+		<input type="hidden" name="" value="" />	
+		<input type="hidden" name="" value="" />	
+	   <input type="hidden" name="" value="" />	
+		<input type="hidden" name="" value="" />	
+	  	<input type="hidden" name="" value="" />	
+		<h4>Pubblicit� dell'appalto</h4>
+	   <table>
+	     <tbody>
+	       [condition]
+	       [condition] [condition]">
+				    [condition]
+					  <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaCE",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaCE",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			   </td>
+			   <th><label for="numeroGuce">Numero</label></th>
+				<td>
+					<input maxlength="20"  
+					type="text" id="numeroGuce"  
+					name="" 
+					" />" --%>
+					value="[condition]">	
+				</td>
+		    </tr>
+		    <tr>
+	         <td><label >Gazzetta Ufficiale Regionale o Bollettino Regionale</label></td>
+ 			   <td>
+				  <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				    [condition] [condition]">
+				    [condition]
+					   <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaBR",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaBR",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			   </td>
+				<th><label for="numeroBore">Numero</label></th>
+				  <td>
+					 <input maxlength="20"  
+					   type="text" id="numeroBore"  
+					   name="" 
+					   " />"--%>
+					   value="[condition]">
+				  </td>
+		    </tr>
+		    <tr>
+	         <td><label >Gazzetta Ufficiale Repubblica Italiana - GURI</label></td>
+ 			   <td>
+				  <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				    [condition] [condition]">
+				    [condition]
+					   <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaRI",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaRI",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			    </td>
+				<th><label for="numeroGuri">Numero</label></th>
+				<td>
+					<input maxlength="20"
+					type="text" id="numeroGuri"  
+					name="" 
+					" />"--%>
+					value="[condition]">		
+				</td>
+	   	 </tr>   	
+		    <tr>
+	        <td><label >Albo pretorio del Comune ove si eseguono i lavori</label></td>
+ 			  <td>
+				 <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				   [condition] [condition]">
+				   [condition]
+					  <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputAP",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarAP",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				  </c:if>
+			  </td>
+	   	</tr>
+   		<tr>
+ 			  <th><label >Quotidiani nazionali</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;"  
+				   [condition] [condition]" onblur="validateNumber(this)" maxlength="9"/>
+			  </td>
+	   	</tr>
+	   	<tr>
+ 			  <th><label >Quotidiani locali</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;" 
+				 [condition] [condition]"  onblur="validateNumber(this)" maxlength="9"/>
+			  </td>
+	   	</tr> 
+	   	<tr>
+ 			  <th><label >Periodici</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;" 
+				 [condition] [condition]"  onblur="validateNumber(this)" maxlength="4"/>
+			  </td>
+	   	</tr>   
+	   	<tr>
+			   <th><label >Sito Informatico Ministero Infrastrutture<br>e piattaforma digitale ANAC tramite i sistemi<br>informatizzati regionali</label></th>
+		  	     <td>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check2N" type="radio" name="" value="N" [condition] [condition] />NO			   
+		  	       </c:if>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check2N" type="radio" name="" value="N" [condition] [condition] />NO
+  			       </c:if>
+  			     </td>
+		    </tr>
+		    " id="check3Y" type="radio" name="" value="S" [condition] [condition] />SI 
+  			         <input  tabindex="" id="check3N" type="radio" name="" value="N" [condition] [condition] />NO
+		          </c:if>
+	 	          [condition] [condition] />SI 
+  			         <input  tabindex="" id="check3N" type="radio" name="" value="N" [condition] [condition] />NO
+  			       </c:if>
+  			     </td>
+		    </tr>
+		    <tr>
+			   <th><label >Profilo del Committente</label></th>
+		  	     <td>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check1N" type="radio" name="" value="N" [condition] [condition] />NO
+                </c:if>		  	   
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check1N" type="radio" name="" value="N" [condition] [condition] />NO
+                </c:if>  			
+  			     </td>
+		    </tr>
+		    --%>
+		    <tr>
+			   <th><label for="Link Sito Committente">Link Sito Committente</label></th>
+				  <td colspan="3">
+					 <input maxlength="250"  size="100%"
+					 type="text" id="linkSitoCommittente"
+					 name="" 
+					 " />"> --%>
+				    value="[condition]">
+				  </td>
+		    </tr>
+			   <tr>
+				   <th><label >La pubblicazione della rettifica comporta modifica dei dati di gara e lotto</label></th>
+			  	     <td>
+			  	       [condition] [condition] />SI 
+	  			         <input  tabindex="" id="" type="radio" name="" value="N" [condition] [condition] />NO
+	                </c:if>		  	   
+			  	       [condition] [condition] />SI 
+	  			         <input  tabindex="" id="" type="radio" name="" value="N" [condition] [condition] />NO
+	                </c:if>  			
+	  			     </td>
+			    </tr>
+	    </tbody>
+	  </table>
+			<br>
+	   <div id="datePerf" >			       
+	    <h4>Rettifica date pubblicazione </h4>
+	   <table width="100%">
+	     <tbody>
+				<tr>
+					<th><label for="Data_pubblicazione"><small>1</small> </label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="1" 
+						onblur="Calendar.validaData(this)" 
+						type="text" 
+						id="dtpubblicazione" 
+						name="" 
+						value="" >
+							<img  src="calendar/img.gif" id="CALdtpubblicazionestart" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtpubblicazione",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtpubblicazionestart",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+					<td style="display: none;"><input type="hidden" id="" value="1" /></td>
+					<th><label for="Data_scadenza_invito"><small>3</small> Data di scadenza per la presentazione della richiesta di invito</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtscadenzainvito" 
+						name="" 
+						value="">
+							<img  src="calendar/img.gif" id="CALdtscadenzainvito" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtscadenzainvito",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtscadenzainvito",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+				</tr>
+<!-- 3.04.8 34190 fix -->
+				<tr>
+					<th><label for="Data_scadenza_pagamenti"><small>2</small> Data scadenza per la presentazione delle offerte</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtscadenza" 
+						name="" 
+						value="">
+							<img  src="calendar/img.gif" id="CALdtscadenza" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtscadenza",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtscadenza",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+					<th><label for="Data_lettera_invito"><small>4</small>Data della lettera di invito</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtletterainvito" 
+						name="" 
+						value="">
+							<img  src="calendar/img.gif" id="CALdtletterainvito" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtletterainvito",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtletterainvito",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+				</tr>	
+<!-- 3.04.8 34190 fix -->
+					<tr>
+					<th><label for=ora_scadenza_pagamenti>Ora scadenza<br>per la presentazione delle offerte (hh:mm)</th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						type="text" maxlength="5" id="" 
+						name="" 
+						value="">
+					</td>
+					</tr>
+			</tbody>
+	    </table>
+		</div>
+			<br>
+			<div id="divAllegati">
+				<h4>Allegati alla Rettifica</h4>
+				<table>
+				<tr>
+				<th><label for="">Rettifica</label></th>
+				<td>
+				<input type="button" 
+								onclick="" 
+								value="Gestisci Rettifica" />
+				<input type="hidden" id="" name=""
+						value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				<td>
+				<input type="text" id="" name="" 
+					value='<h:requestParameter property="" defaultValue=""/>' readonly="readonly"/>
+				</td>
+				</tr>
+				<tr>
+				<th><label for="note">Note</label></th>
+				<td>
+					<input maxlength="250" size="100%"
+					type="text" id=
+					name="" 
+					value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				</tr>
+			</table>
+			</div>
+			<br>
+	  <div class="infoBlock">	
+			 <div class="leftLineInfo">
+			   <input type="button" value="Procedi" onclick="doAction('')"/>
+			   <input type="button" value="Procedi" onclick="doAction('')"/>
+			   <input type="button" value="Reimposta" onclick="reimpostaForm('')"/>
+			   <input type="button" value="Reimposta" onclick="reimpostaForm('')"/>
+		  </div>
+     </div>
+	</form>
+		</div>
+	</div>
+</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+</body>
+</html>

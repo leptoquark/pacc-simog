@@ -1,0 +1,91 @@
+
+<!--fieldset class="detailHelp" style="border: 2px solid #cfcfcf;"-->	
+	[condition]
+	[condition] 
+      [condition]	
+		<div id="DIVTabella" class="scrollTabs" style="height: 200px; width: 99%;">
+			<table id="idTabella">
+			<input type="hidden" id="sottosogliaEsclusi" value="si" />
+				<tbody>
+					<tr>
+					   <th width="125">إجراء</th>  					
+						<th class="garaTh">الاسم</th>					
+						<th class="garaTh">الرقم الضريبي</th>		
+						<th class="garaTh">رمز البلد</th>
+					</tr>
+					[condition] 
+					[condition]
+						<tr id="[condition]">
+							[condition]
+							[condition]',[],[],'')">تعديل</a>
+									&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')">حذف</a></td>																		   
+							</c:if>
+							[condition]">[condition]</td>																
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							" style="display: none;">[condition]</td> 
+							<td id="[condition]" style="display: none;">[condition]</td>	 --%>					
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+						</tr>
+						[condition]
+					</c:forEach>																
+				</tbody>
+			</table>
+		</div>	  				
+		[condition] 	
+					    <input type="text" id="" maxlength="2" size="2" value="" disabled onchange="setFormModified('Modificato')" />
+					</td>
+					<td>
+						<div class="hmenu"><a title="البحث في الدليل" href="javascript:apriPopUpRubrica('rubrica','','دليل المشغلين الاقتصاديين')">البحث في الدليل</a></div>						
+					</td>					
+				</tr>
+				<tr>
+					<th><label>الاسم</label></th>
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>مدعو</label></th>
+					<td>
+						<input type="text" disabled id="" maxlength="16" value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>		
+			 	<tr>
+					<td>
+					<input type="hidden" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>	
+				<tr style="display: none;">
+					<th><label>الرمز الضريبي للشركة المساعدة</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>
+			</table>	
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">			
+		</div>		
+<input type="hidden" id="Modificato2" name ="Modificato2" value="[condition]">
+<input type="hidden" id="selected" value="0" />

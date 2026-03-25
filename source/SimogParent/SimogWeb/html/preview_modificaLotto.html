@@ -1,0 +1,1587 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<title>SIMOG - Gestione gare - Modifica Lotto</title>
+<script type="text/javascript" src="script/funzioni.js"></script>
+<script type="text/javascript" src="script/pageutils.js"></script>
+<script type="text/javascript" src="script/scriptMotivoCollegamento.js"></script>
+<script type="text/javascript" src="script/scriptSoggAggr.js"></script>
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<!-- fine import popup modali -->
+<!-- MEV 3.04.10 43227 -->
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+<!-- main calendar program -->
+<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- language for the calendar -->
+<script type="text/javascript" src="calendar/calendar-it.js"></script>
+<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="script/pageutils.js"></script>
+<!-- FINE MEV 3.04.10 43227 -->
+</head>
+<script type="text/javascript">
+	function doActionModifica(action){
+		if(!hasErrors(document.forms[0]))
+			doAction(action);
+	}
+</script>
+<<body onload="checkDisable()">
+<div id="gabbia">
+<div id="header">
+</div>
+	<div id="bodypage">
+		<div class="bodypage-e">
+		<h1>تعديل الدفعة</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+		<div class="hmenu">
+			<ul><li><a title="Pagina precedente" href="">Ritorna</a></li></ul>
+		</div>
+		<form name="eseguiModifica" action="aggiornaLotto" method="post">
+		<!-- MAC 35585 3.04.9-->
+		<!-- FINE MAC -->
+	<input type="hidden" name="" value="">
+	<input type="hidden" name="" value=""/>
+	<input type="hidden" name="" value=""/>	
+	<input type="hidden" name="" value=""/>	
+	<input type="hidden" name="" value="">
+	<input type="hidden" name="" value="">
+				<h4>Gara di cui fa parte il lotto</h4>
+<script type="text/javascript">
+//<!--
+function popupAnnullaRettifica(param){ 
+	 if(confirm("Vuoi annullare la rettifica?")){
+		 window.location.href="annullaRettifica?"+param
+	 }else{
+		return false;
+	}
+	 return true;
+}
+function getDateAndAction(azione){ 
+	var dataInput = prompt("Modifica data di conferma", "Inserire la nuova data in formato GG/MM/AAAA");
+	var mesg = isDate(dataInput);
+	if(mesg != ""){
+		alert(mesg);
+		return;
+	}
+	if (confirm("La data di conferma sarà modificata. Procedere?")) {
+		window.location.href=azione + dataInput;
+	}
+}
+function getConfermaSbloccaGara(){
+	msg="Attenzione si sta per sbloccare la gara. Continuare?";
+	if(confirm(msg)){
+		alert("ok");
+	}	
+}
+function doActionPerfezionamentoGaraLotti(url, action){
+	if(action==null){
+//		if(confirm("Confermare l'operazione. Procedere ?")){
+			location.href = url;
+//		}
+	}
+	else if(action==true){
+		if(confirm("Il perfezionamento non richiede l'inserimento di ulteriori informazioni. Procedere ?")){
+			location.href = url;
+		}
+	}
+	else if(action==false){
+		if(confirm("Alcuni dati non risultano coerenti. Controllare la scelta contraente dei lotti inseriti, oppure il numero dei lotti afferenti alla Gara. Si desidera proseguire comunque?")){
+			location.href = url;
+		}
+	}		
+}
+//-->
+</script>
+<h5>Stazione Appaltante</h5>
+<div class="elenco">
+<div class="gara">
+<table>
+	<tr>
+		<th class="garaTh" width="40%">Denom.ne della Stazione Appaltante competente</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Codice Fiscale Amministrazione Competente</th>
+		<td class="garaTd"></TD>
+	</tr>
+	   <tr>
+		<th class="garaTh" width="40%">Codice AUSA</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Codice univoco centro di costo</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Denominazione del centro di costo nell'ambito della Stazione Appaltante</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">RUP che ha creato la gara</th> 
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">RUP che ha in carico la gara</th> 
+		<td class="garaTd"></TD>
+		</tr>
+	</table>
+</div>
+</div>
+<div class="elenco">
+<div class="gara">	
+<table>
+	<tr>
+		<th class="garaTh" width="40%">Numero Gara</th>
+		<td>
+		<table><tr>
+		<td nowrap class="garaTd">&nbsp;</td>
+		<td>(da utilizzare in sede di versamento del contributo da parte della SA)</td>
+		</tr></table>
+		</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Oggetto della Gara</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Creazione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Importo complessivo Gara</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Importo contributo SA</th>
+		<td class="garaTd">&nbsp;</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Numero totale dei Lotti</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Settore attivita' della SA</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di indizione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di indizione servizi di cui all'allegato IX</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di realizzazione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Durata della convenzione o accordo quadro in giorni</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Strumenti per lo svolgimento delle procedure</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Motivo urgenza</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">CIG relativo all'accordo quadro/convenzione cui si aderisce</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Stato gara</th>
+		<td class="garaTd"> ()</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Cancellazione</th>
+		<td class="warning"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Termine Pagamenti</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Comunicazione Pagamento</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Data Inibizione Pagamento</th>
+		<td class="warning"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Data perfezionamento bando</th>
+		<td class="garaTd"></TD>
+	</tr>
+		<TR>
+			<TH>Motivazione </TH>
+			<TD class="warning"></TD>
+		</TR>
+		<TR>
+			<TH>Note</TH>
+			<TD class="warning"></TD>
+		</TR>
+	<tr>
+		<!-- 3.04.7.1 cambiata la label AVCPass in FVOE -->
+		<th class="garaTh" width="40%">Gara esclusa dall'acquisizione obbligatoria dei requisiti ai fini FVOE</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%"></th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Estrema urgenza/Esecuzione di lavori di somma urgenza</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<!-- fix 34470 3.04.8 -->
+	<tr>
+		<th class="garaTh" width="40%">Link ai documenti relativi all'affidamento diretto in somma urgenza e protezione civile</th>
+		<td class="garaTd"></td>
+	</tr>
+	<!-- FINE fix 34470 3.04.8 -->
+		 <tr>
+			 <th class="garaTh" width="40%"></th>
+			 <td class="garaTd">
+<!-- 				<table width="100%"> -->
+<!-- 					<tr> -->
+					<p></p>
+<!-- 					</tr> -->
+<!-- 				</table> -->
+			</td>
+		 </tr>
+	<tr>
+		<th class="garaTh" width="40%"></th>
+		<td class="garaTd"></TD>
+	</tr>	
+			<tr>
+				<th class="garaTh" width="40%">La stazione appaltante agisce per conto di altro soggetto?</th>
+				<td class="garaTd"></TD>
+			</tr>	
+			<tr>
+				<th class="garaTh" width="40%">Funzioni delegate</th>
+				<td class="garaTd"></TD>
+			</tr>
+			<tr>
+				<th class="garaTh" width="40%">Codice fiscale soggetto per conto del quale agisce la S.A. (in caso di soggetto singolo)</th>
+				<td class="garaTd"></TD>
+			</tr>
+			<tr>
+				<th class="garaTh" width="40%">Denominazione dell'Amministrazione per la quale agisce la S.A.</th>
+				<td class="garaTd"></TD>
+			</tr>
+	</table>
+	<div class="hmenu">
+	<ul>
+<!-- 	<li> -->
+ nowrap="nowrap"> --%>
+<!-- 						<ul> -->
+						<li >
+						<a title="Modifica Gara" href="inizializzaGara?=">Modifica Gara</a>
+						</li>
+<!-- 					</ul> -->
+<!-- 						</td> -->
+ nowrap="nowrap"> --%>
+<!-- 					<ul> -->
+					<li >
+					<a title="Cancella Gara" href="inizializzaGara?action=cancella&=">Cancella Gara</a>
+					</li>
+<!-- 					</ul> -->
+<!-- 					</td> -->
+ nowrap="nowrap"> --%>
+<!-- 				<ul> -->
+				<li >
+				<a href="javascript:confirmAction('inizializzaGara?action=ripristina&=');">Ripristina</a>
+				</li>
+<!-- 				</td> -->
+<!-- 				</ul> -->
+ nowrap="nowrap"> --%>
+<!-- 					<ul> -->
+					<li >
+					<a title="Aggiungere un lotto" href="inizializzaLotto">Aggiungi lotto</a>
+					</li>
+<!-- 					</ul> -->
+ nowrap="nowrap"> --%>
+<!-- 				             <ul> -->
+								<li >
+				             <a title="Pubblica/Perfeziona bando di gara" href="javascript:doActionPerfezionamentoGaraLotti('',)"></a>
+				             </li>
+<!-- 				             </ul>							    	     -->
+ nowrap="nowrap"> --%>
+<!-- 							    <ul> -->
+								<li >
+							    <a title="Pubblica rettifica" href="?toDo=&=&=&=RETTIFICA&=RETTIFICA">Pubblica rettifica</a>
+							    </li>
+<!-- 							    </ul> -->
+			              <li>
+			              		<a title="Perfezionamento procedure con piu' fasi" href="?toDo=&=&=">Perfezionamento procedure con piu' fasi</a> 
+			              </li>
+ nowrap="nowrap"> --%>
+<!-- 			   		    <ul> -->
+							<li >
+			   		    <a title="Gestisci elenco invitati" href="?toDo=&=">Gestisci elenco invitati</a>
+			   		    </li>
+<!-- 			   		    </ul>	 -->
+					&=&checkIfOK=&dataConferma=');">Modifica data conferma</a></td>--%>
+ nowrap="nowrap"> --%>
+<!-- 			 <ul> -->
+			<li >
+			 <a title="Sblocca gara" href="javascript:confirmAction('InserisciGara?toDo=&=&checkIfOK=');">Sblocca gara</a>
+			 </li>
+<!-- 			 </ul> -->
+ nowrap="nowrap"> --%>
+<!-- 			 <ul> -->
+				<li >
+			 <a title="Modifica mod realizzazione" href="javascript:confirmAction('InserisciGara?toDo=&=&checkIfOK=');">Cambia in accordo quadro</a>
+			 </li>
+<!-- 			 </ul> -->
+	 nowrap="nowrap"> --%>
+	<!-- 			 <ul> -->
+					<li >
+				 <a title="Modifica limitata al solo valore del campo Estrema urgenza ex art. 9 commi 1 e 2 D.L. 133/2014" href="inizializzaGara?=&toDo=">Modifica Gara</a>
+				 </li>
+	<!-- 			 </ul> -->
+			<!-- Ticket 20055 -->
+	            	  <li >
+						<!--   <a title="Annulla Rettifica" href="annullaRettifica?=&toDo=">Annulla Rettifica</a> -->
+						<a title="Termina Rettifica" onclick="popupAnnullaRettifica('=&toDo=')">Termina Rettifica</a> 
+					  </li>
+ nowrap="nowrap"> --%>
+<!-- 				  <ul> -->
+					<li >
+				  <a title="Variazione Stazione Appaltante" href="variazioneSA?=">Variazione Stazione Appaltante</a>
+					</li>				  
+<!-- 				  </ul> -->
+						<!-- MAC 48964 3.04.12.1 -->
+						<li > <!--MAC 34163 3.04.8--> 
+						> --%> 						
+					       <a href="javascript:confirmAction('presaInCaricoGara?=');">Presa in carico</a>
+					    </li>
+							<li > 					
+					       <a href="javascript:confirmAction('presaInCaricoGara?=');">Presa in carico</a>
+					    </li>
+	 nowrap="nowrap"> --%>
+	<!-- 			 <ul> -->
+					<li > <!--MAC 34163 3.04.8-->
+	                <!--<li >-->					
+				 		<a title="Presa in carico gara delegata"  href="?=&action=load">Presa in carico gara delegata</a>
+				 	</li>
+	<!-- 			 </ul> -->
+<!--     </li> -->
+		</ul>
+    </div>
+			 		<fieldset>
+						<legend>Storico Pubblicazioni</legend>
+			 				<fieldset class="gara">
+								<div align="center">
+									<table width="100%">	
+					              <tr>
+						             <th class="garaTh">Tipo pubblicazione</th>
+						             <th class="garaTh">Data pubblicazione</th>
+						             <th class="garaTh">Allegati</th>
+					              </tr>
+					              <tr>
+					                <td></td>
+					                <td></td>
+					                <td><input type="button" onclick="apripopup('?=&='); return false;"; value="visualizza" /></td>    
+					                ?=&=" >visualizza</a></td>
+					                --%>
+					              </tr>
+					            </table>		
+								</div>
+							</fieldset>									
+					</fieldset>			
+			    <fieldset>
+					<legend>Storico Delega Gara</legend>
+					<table>
+								<tr>
+									<th class="garaTh" width="40%">RUP Amministrazione delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Codice Fiscale Amministrazione Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Denominazione Amministrazione Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">ID SA Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Denominazione SA Delegata</th> 
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Data della presa in carico da parte dell'amministrazione delegante</th> 
+									<td class="garaTd"></TD>
+								</tr>
+						</table>
+				</fieldset>
+</div>
+</div>
+				<!-- MEV 3.04.10 43227 -->
+				<h4>Modifica dati perfezionamento</h4>
+				<table cellpadding="3">
+					<tbody>
+					<tr><th><label>Data di scadenza per la presentazione della richiesta di invito*</label></th>
+						<td><input style="text-align:center" onchange="setFormModified('Modificato1')" onblur="Calendar.validaData(this)" type="text" id="dtscadinv" name="" value="" />
+								<img src="calendar/img.gif" id="CALdtscadinv" style="" title="Date selector" />
+								<script type="text/javascript">
+								    Calendar.setup({inputField:"dtscadinv",ifFormat:"%d/%m/%Y",button:"CALdtscadinv",align:"Tl",singleClick:true});
+								</script>
+						</td>
+					</tr>
+				<tr><th><label>Data di scadenza per la presentazione delle offerte*</label></th>
+						<td><input style="text-align:center" onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtscadoff" name="" value="" />
+								<img src="calendar/img.gif" id="CALdtscadoff" style="" title="Date selector" />
+								<script type="text/javascript">
+								    Calendar.setup({inputField:"dtscadoff",ifFormat:"%d/%m/%Y",button:"CALdtscadoff",align:"Tl",singleClick:true});
+								</script>
+						</td>
+					</tr>
+					<tr><th><label>Ora scadenza per la presentazione delle offerte (hh:mm)*</label></th>
+						<td><input style="text-align:center" type="text" name="" value="" />
+						</td>
+					</tr>
+				</tbody>
+				</table>
+				<!--FINE MEV 3.04.10 43227 -->
+				<h4>Lotto da modificare</h4>			
+				<h5>Lotto - CIG []</h5>
+	<input type="hidden" id="cigLottoEdit" value="">
+	<input type="hidden" name="" value="">
+	<input type="hidden" id="urgenzaDL133_session"  value="">		
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<!-- MAC 36768 3.04.8.1 -->
+	<!-- import jQuery -->
+	<script type="text/javascript" src="script/other/jquery.js"></script>
+	<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+	<!-- FINE MAC 36768 -->
+<!-- 3.04.9 MEV 40610 -->
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<div id="dialog"></div>
+<div id="dialogSoggAggr"></div>
+<!-- fine import popup modali -->
+<script>
+//3.04.9 MEV 40610
+$(document).ready(function () {
+	var isEreditati = "";
+	console.log("ereditati " + isEreditati);
+	$(".derogaRow11").hide();
+	if (document.querySelectorAll('#TAB_MESSAGGI_ERRORE li').length >1){
+		if ($('.elencoQualificazioneSA input').is(':checked')) {
+			$('.elencoQualificazioneSA input').attr("disabled", false);
+			if ($('.derogaRow11 input').is(':checked')) {
+				$('.elencoQualificazioneSA input').attr("disabled", false);
+				$(".derogaRow11").show();
+				$("#flagIS_KO").val("S");
+			}
+		}else {
+			for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+					if (li.textContent.indexOf('SIMOG_LOTTO_040') != -1){
+						$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+					if (li.textContent.indexOf('SIMOG_LOTTO_041') != -1){
+						$(".derogaRow11").show();
+						$("#flagIS_KO").val("S");
+						$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+			}
+		}
+	 }
+	 else {
+		 if ($('.elencoQualificazioneSA input').is(':checked')) {
+				$('.elencoQualificazioneSA input').attr("disabled", false);
+				if ($('.derogaRow11 input').is(':checked')) {
+					$('.elencoQualificazioneSA input').attr("disabled", false);
+					$(".derogaRow11").show();
+					$("#flagIS_KO").val("S");
+				}
+		}else {
+			 	for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+			 		if (li.textContent.indexOf('SIMOG_LOTTO_040') != -1){
+			 			console.log("pop-up 2");
+			 			$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+			 		if (li.textContent.indexOf('SIMOG_LOTTO_041') != -1){
+			 			$(".derogaRow11").show();
+			 			$("#flagIS_KO").val("S");
+			 			$('.elencoQualificazioneSA input').attr("disabled", false); 
+			 		}
+				}
+		}
+	 }
+});  
+//fine 3.04.9 MEV 40610
+	/* mev 37010 3.04.8.1 */
+	function disableParita(flagVALUE,flagType){
+		console.log(flagVALUE.value);
+		console.log("esiste " + $('#tr_flagDerogaAdesione').length);
+		if($('#tr_flagDerogaAdesione').length){
+			if (flagType === 'derogaAdesione') {
+				if(flagVALUE.value == 'S' || flagVALUE.value == ''){
+					document.getElementById('flagPrevisioneQuotaHere').disabled=true;
+					document.getElementById('flagMisurePremialiHere').disabled=true;
+					//svuotare i campi parit di genere
+		 			document.getElementById('flagPrevisioneQuotaHere').value='';
+					document.getElementById('flagMisurePremialiHere').value='';
+					document.getElementById('quota_giovanile').disabled=true;
+					document.getElementById('quota_femminile').disabled=true;
+					document.getElementById('quota_giovanile').value='';
+					document.getElementById('quota_femminile').value=''; 
+					//document.getElementById('idMotivoDeroga').value='';
+					document.getElementById('flagMisurePremialiHere').value=''; 
+					//document.getElementById('idMisuraPremiale').value='';
+		 			var inputsMD = document.querySelectorAll('.checkboxfieldsMD');
+					var inputsMP = document.querySelectorAll('.checkboxfieldsMP');
+			        for (var i = 0; i < inputsMD.length; i++) {
+			        	inputsMD[i].checked = false;
+			        	inputsMD[i].disabled = true;
+			        }
+			        for (var i = 0; i < inputsMP.length; i++) {
+			        	inputsMP[i].checked = false;
+			        	inputsMP[i].disabled = true;
+			        } 
+				}
+				if(flagVALUE.value == 'N'){
+					document.getElementById('flagPrevisioneQuotaHere').disabled=false;
+					document.getElementById('flagMisurePremialiHere').disabled=false;
+				}
+			}
+		}else{
+			console.log("entrato pnrr");
+			var isEreditati = "";
+			var pnrrDisabledParita = "";
+			/* console.log("ereditati " + isEreditati);
+			console.log("pnrrDisabledParita " + pnrrDisabledParita); */
+			/* 3.04.9 mev 41375 */
+			if (pnrrDisabledParita === "S" && isEreditati === "disabled" && $("#flagPrevisioneQuotaHere").val() != "") {
+				console.log("ereditati con pnrr si");
+			}else{
+				if(flagVALUE.value == 'N' || flagVALUE.value == ''){
+					document.getElementById('flagPrevisioneQuotaHere').disabled=true;
+					document.getElementById('flagMisurePremialiHere').disabled=true;
+					//svuotare i campi parit di genere
+		 			document.getElementById('flagPrevisioneQuotaHere').value='';
+					document.getElementById('flagMisurePremialiHere').value='';
+					document.getElementById('quota_giovanile').disabled=true;
+					document.getElementById('quota_femminile').disabled=true;
+					document.getElementById('quota_giovanile').value='';
+					document.getElementById('quota_femminile').value=''; 
+					//document.getElementById('idMotivoDeroga').value='';
+					document.getElementById('flagMisurePremialiHere').value=''; 
+					//document.getElementById('idMisuraPremiale').value='';
+		 			var inputsMD = document.querySelectorAll('.checkboxfieldsMD');
+					var inputsMP = document.querySelectorAll('.checkboxfieldsMP');
+			        for (var i = 0; i < inputsMD.length; i++) {
+			        	inputsMD[i].checked = false;
+			        	inputsMD[i].disabled = true;
+			        }
+			        for (var i = 0; i < inputsMP.length; i++) {
+			        	inputsMP[i].checked = false;
+			        	inputsMP[i].disabled = true;
+			        } 
+				}
+				if(flagVALUE.value == 'S'){
+					document.getElementById('flagPrevisioneQuotaHere').disabled=false;
+					document.getElementById('flagMisurePremialiHere').disabled=false;
+				}
+			}
+		}
+	}
+	/* mev 37010 3.04.8.1 */
+</script>
+<table cellpadding="3">
+	<input type="hidden" id="canSearch" value="false" />
+	<tbody>
+		<tr>
+			<th><label
+				for="">Oggetto
+					Lotto*</label></th>
+			<td><input type="text" size=100% maxlength="1024"
+				value="<h:requestParameter 
+					property="" defaultValue=""/>"
+				name=""
+				onchange="javascipt:replaceWordChars(this)"
+				   %>/></td> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+		</tr>
+		<tr>
+			<th><label for="somma_urgenza">Esecuzione di lavori di
+					somma urgenza (ex art. 176 DPR 207/2010)</label></th>
+			<td><input type="checkbox"
+				name="" value=""
+				   /></td>  <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+		</tr>
+		<tr>
+			<th><label
+				>Importo (al netto dell'IVA)*</label></th>
+			<td>
+				<!-- PP 04.10.2012 patch per impedire importo indeterminato  --> <input
+				id="importo_si" type="hidden"
+				onclick="checkChange(this, getElementById('importo_no'), '', );"
+				name=""
+				value=""
+				 />  <!-- MAD 68089 3.04.16 disabledTranneCatSoa --> <input
+				onblur="validateAmount2Dots(this)"
+				title="Nel caso in cui l'appalto preveda delle ripetizioni o altre opzioni e' necessario che siano ricomprese nell'importo"
+				onchange="checkChange(this, this, '', );"
+				id="euro" type="text" style="text-align: right;"
+				name=""
+				value="<h:requestParameter property='' defaultValue='' />"
+				  /> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">&nbsp;&nbsp;&nbsp;&nbsp;di
+					cui per opzioni/ripetizioni</label></th>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+				title="E' necessario indicare esclusivamente l'importo delle eventuali opzioni/ripetizioni"
+				[condition] type="text" style="text-align: right;"
+				id=""
+				name=""
+				value="<h:requestParameter property='' 
+				   defaultValue='' />"
+				onblur="validateAmount(this)" 
+				   /> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">&nbsp;&nbsp;&nbsp;&nbsp;di
+					cui per attuazione della sicurezza</label></th>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+				[condition] type="text" style="text-align: right;"
+				id=""
+				name=""
+				value="<h:requestParameter property='' 
+				   defaultValue='' />"
+				onblur="validateAmount(this)"   
+				  /> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+			</td>
+		</tr>
+		<tr>
+			<!-- 			PP 04.10.2012 patch per impedire importo indeterminato -->
+			<!-- MAC 36767 3.04.8.1-->
+			<!-- COMMENTATO TUTTO IL TR-->
+			<!-- <th><label>Importo a base d'asta o presunto non
+					disponibile</label></th> -->
+			"
+				value=""
+				onclick="checkChange(this, getElementById('importo_si'), '', );"
+				 /> --%>
+			<!-- MAC 36767 3.04.8.1 -->
+		</tr>
+		<tr id="tr_cpv_elencoCpv">
+			<td colspan="2">
+				<div class="inthead" style="padding-bottom: 15px">
+					<label onclick="showMenu('TAB_CPV')"
+						style="color: black; letter-spacing: 0.2em;"> <img
+						src="img/minus.gif" id="imgTAB_CPV" /> CPV
+					</label>
+					<div id="TAB_CPV" style="display: block;">
+						<br />
+						<table>
+							<tbody>
+								<tr>
+									<th><label
+										for="">CPV
+											Prevalente*</label></th>
+									<TD id="">
+									<!-- 3.04.8 34190 fix -->
+										 <select
+										name="">
+											<option></option>
+											<u:options name="LISTA_CPV_ADESIONE"
+												value="" valLocation="tag" />
+									</select>  <input type="text"
+										onblur="searchLE(this.id, 'ricercaCPV.jsp?nameField=sel_CPV', 'isNotCPV')"
+										name=""
+										value="<h:requestParameter property='' 
+													   defaultValue='' />"
+										id="sel_CPV"
+										onkeyup="checkKeyLE(event, this, 'ricercaCPV.jsp?nameField=sel_CPV', 'isNotCPV')"
+										maxlength="12"   
+										  ><!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+										<img title="Lista CPV Correnti" style="cursor: pointer"
+										onclick="apripopup('ricercaCPV.jsp?nameField=sel_CPV', 'sel_CPV')" 
+										src="img/icon_info_sml.gif"> 
+									</td>
+								</tr>
+								<tr>
+									<th><label for="labelDescCpvPrev">Descrizione</label></th>
+									<td><input type="text" name="cpvPrevDesc"
+										readonly="readonly" id="sel_CPVDesc"
+										value=""   
+										 > <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+										<img style="cursor: pointer"
+										onclick="javascript:callCpvDescPrev('sel_CPV', 'sel_CPVDesc')"
+										title="Aggiorna descrizione CPV Prevalente"
+										src="img/refresh.png"> </td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						[condition]
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Scelta
+					del Contraente*</label></th>
+			<td><select
+				name=""
+				id="sel_CONTRAENTE" CLASS="BOTTONE"   
+				onchange="setCombo('sel_CONTRAENTE')"> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						value="" valLocation="tag" /></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Categoria
+					merceologica di cui al DPCM soggetti aggregatori*</label></th>
+			<td><select
+				name=""
+				id="sel_CAT_MERC_LOTTO" CLASS="BOTTONE"
+				onchange="resetSoggAggrFields()"   
+				 > <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						value="" valLocation="tag" /></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Tipo
+					appalto riservato</label></th>
+			<td><select   
+				name=""
+				id="sel_AFF_RISERVATI"> <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						scope="request" value="" valLocation="tag"
+						revert="yes" />
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="inthead">
+					<label onclick="showMenuNoCheck('checkBoxList')"
+						>
+						<img src="img/minus.gif" id="imgcheckBoxList" /> Condizioni che
+						giustificano il ricorso alla procedura negoziata senza previa
+						pubblicazione di un bando oppure senza previa indizione di una
+						gara
+					</label>
+					<div id="checkBoxList" class="mbody" style="display: block;">
+						<table width="80%" class="detailHelp">
+							<colgroup>
+								<col width="60%" />
+								<col width="40%" />
+							</colgroup>
+							[condition]
+							<u:multibox campo=""
+								lista=""
+								listaCampiSelezionati="condizioni"
+								readonly="" idField="idCondizione"
+								onchange="setFormModified('Modificato4')" />
+						</table>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Oggetto
+					principale del contratto*</label></th>
+			<td>[condition]>Lavori</option>
+					<option value="S"
+						[condition]>Servizi</option>
+					<option value="F"
+						[condition]>Forniture</option>
+			</select></td>
+		</tr>
+		<!-- MEV 38205 3..04.8.1 -->
+		<tr>
+			<th><label
+				>
+				Uso di metodi e strumenti elettronici di modellazione per l'edilizia e le infrastrutture?</label></th>
+			<td>[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<!-- FINE MEV 38205 3..04.8.1 -->
+		<tr>
+			<th><label
+				>Contratto
+					escluso*</label></th>
+			<td>[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Esclusione</label></th>
+			<td><select 
+				name=""
+				id="sel_ID_ESCLUSIONE"><!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						scope="request" value="" valLocation="tag"
+						revert="yes" />
+			</select></td>
+		</tr>
+		<tr>
+			<th><label for="">Contratto
+					regime particolare di appalto (speciale o alleggerito)</label></th>
+			<td>[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Regime
+					particolare di appalto</label></th>
+			<td><select   
+				name=""
+				id="sel_ART_REGIME"><!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						scope="request" value="" valLocation="tag"
+						revert="yes" />
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Codice
+					del luogo di esecuzione del contratto (ISTAT)</label></th>
+			<td><input maxlength="9" [condition]
+				type="text"
+				onblur="searchLE(this.id, 'ricercaIstat.jsp', 'isNotIstat')"
+				onkeyup="checkKeyLE(event, this, 'ricercaIstat.jsp', 'isNotIstat')"
+				name=""
+				value="<h:requestParameter property='' 
+				   defaultValue='' />"
+				id="sel_ISTAT" 
+				    /><!-- MAD 68089 3.04.16 disabledTranneCatSoa --> [condition]
+				type="text"
+				onblur="searchLE(this.id, 'ricercaNuts.jsp', 'isNotNuts')"
+				onkeyup="checkKeyLE(event, this, 'ricercaNuts.jsp', 'isNotNuts')"
+				name=""
+				value="<h:requestParameter property='' 
+				   defaultValue='' />"
+				id="sel_NUTS"    
+				 /> <!-- MAD 68089 3.04.16 disabledTranneCatSoa --> [condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Prima annualita' dell'ultimo programma nel quale e'
+					stato inserito l'intervento o l'acquisto (formato aaaa)</label></th>
+			<td><input maxlength="4"
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				   ><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<th><label
+				>Durata
+					dell'affidamento in giorni*</label></th>
+			<td><input [condition]
+				id=""
+				name=""
+				value=""
+				onblur="validateNumber(this)"   
+				  /><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h5>Estremi programma triennale</h5>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">Triennio anno inizio</label></th>
+			<td><input maxlength="4"
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<th><label for="">Triennio anno fine</label></th>
+			<td><input maxlength="4"
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Progressivo nell'ambito del triennio</label></th>
+			<td><input maxlength="9"
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h5>Estremi programma annuale</h5>
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">CUI programma triennale lavori pubblici o programma
+					biennale forniture e servizi</label></th>
+			<td><input maxlength="22" size=30%
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h5>Ripetizioni e rinnovi</h5>
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				for="">L'appalto
+					prevede ripetizioni o altre opzioni?</label></th>
+			<td>[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				>Durata
+					dei rinnovi e delle ripetizioni in giorni</label></th>
+			<td><input
+				id=""
+				name=""
+				value=""
+				onblur="validateNumber(this)"   
+				 /><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">Ripetizione
+					di precedente contratto</label></th>
+			<td>[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th><label
+				title="Selezionare il motivo del concatenamento pi immediato temporalmente"
+				for="">L'appalto
+					deriva da una delle seguenti ipotesi di collegamento?*</label></th>
+			<td><input id="ID_"
+				type="hidden" name=""
+				value="" /> <select id="sel_MOTIVO"
+				CLASS="BOTTONE" onchange="setMotivo()"   
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option></option>
+					<u:options name=""
+						value="" valLocation="tag" /></td>
+		</tr>
+		<tr>
+			<th><label
+				for="">CIG collegato</label></th>
+			<td><input maxlength="10"
+				value="<h:requestParameter property='' defaultValue=''/>"
+				name=""
+				   ><!-- MAD 68089 3.04.16 disabledTranneCatSoa --></td>
+		</tr>
+		</h2>
+					<h2>okDataAttivazioneCup: </h2>
+					<h2>noAppalti: </h2>
+				</td>
+				</tr>			
+--%>
+		<!-- MAC 34696 3.04.8 commentato if sul controllo della data di creazione della gara-->
+		<!-- MAC 34696 3.04.8 commentato select togliendo i disabled -->
+		 --%>
+			<tr id="tr_cup_flagPnrrPncLotto">
+				<th align="left" width="50%"><label
+					for=""> L'appalto o 	concessione e' afferente gli investimenti pubblici finanziati, in
+						tutto o in parte, con le risorse previste dal PNRR (Piano Nazionale
+						di Ripresa e Resilienza) e/o dal PNC (Piano nazionale per gli
+						investimenti complementari)?*</label></th>
+				<td>[condition] 
+					" CLASS="BOTTONE"   > > --%>
+						<select onchange="disableParita(this)" id= "flagPNRR_PNC"  
+						name="" CLASS="BOTTONE" > <!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+							<option value=""></option>
+							<option value="N" [condition]>NO</option>
+							<option value="S" [condition]>SI</option>
+					</select>
+				</td>
+			</tr>
+		 --%>
+		<tr id="tr_cup_flagCup">
+			<th align="left" width="50%"><label
+				for=""> L'appalto e' finalizzato alla realizzazione di progetti d'investimento pubblico
+					per i quali e' prevista l'acquisizione del codice CUP ai sensi
+					dell'art. 11 L 3/2003 e ss.mm.? (E' necessario acquisire e
+					comunicare il CUP per interventi finanziati, anche in parte, con
+					risorse Comunitarie)*</label></th>
+			<td>[condition] 
+				[condition]  <select
+				name="" CLASS="BOTTONE"
+				><!-- MAD 68089 3.04.16 disabledTranneCatSoa -->
+					<option value=""></option>
+					<option value="N"
+						[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr id="tr_cup_elencoCup">
+			<td colspan="2">
+				<div class="inthead" style="padding-bottom: 15px">
+					<label onclick="showMenu('')"
+						style="color: black; letter-spacing: 0.2em;"> <img
+						src="img/minus.gif" id="img" /> Codici
+						CUP
+					</label>
+					<div id="" style="display: block;">
+						<br />
+						" /> --%>
+						[condition]
+						[condition]
+					</div>
+				</div>
+			</td>
+		</tr>
+				<tr id="tr_cup_TipoAppalto_1">
+				<td colspan="2">
+					<h5>Tipologie Appalto</h5>
+				</td>
+				</tr>	
+				<tr id="tr_cup_TipoAppalto_2">
+					<td colspan="2">
+						<!-- Tipologia Appalto per LAVORI -->
+						<div class="inthead">
+						<label onclick="showMenu('checkBoxListL')" 
+								style="color:black; letter-spacing:0.2em;">
+								<img src="img/minus.gif" id="imgcheckBoxListL"/> Tipologia lavoro (se presente la componente lavori) </label>
+								<br />	
+							<div id="checkBoxListL" style="display: block; margin-top: 3px;" >	
+							<div class="mbody" style="display: block;">
+								<table class="detailHelp" width="100%">
+									<colgroup>
+										<col width="60%" />
+										<col width="40%" />
+									</colgroup>
+									[condition]
+									<u:multibox campo=""
+										lista=""
+										listaCampiSelezionati="compL" readonly=""
+										idField="idAppalto"/>
+								</table>.<a></a>
+							</div>
+							</div>
+						</div>
+						<!-- Tipologia Appalto per SERVIZI E FORNITURE -->
+						<div class="inthead">
+						<label onclick="showMenu('checkBoxListSF')" 
+								style="color:black; letter-spacing:0.2em;">
+								<img src="img/minus.gif" id="imgcheckBoxListSF"/> Modalita di acquisizione forniture / servizi </label>
+								<br />	
+							<div id="checkBoxListSF" style="display: block; margin-top: 3px;" >		
+							<div class="mbody" style="display: block;">
+								<table class="detailHelp" width="100%">
+									<colgroup>
+										<col width="60%" />
+										<col width="40%" />
+									</colgroup>
+									[condition]
+									<u:multibox campo=""
+										lista=""
+								 	listaCampiSelezionati="compSF" readonly=""
+										idField="idAppalto"/>
+								</table>
+							</div>
+							</div>
+						</div>						
+					</td>
+				</tr>
+					<tr id="tr_pariopportunita_1_mod2">
+						<td colspan="2">
+							<h5>Tutela delle pari opportunit generazionali e di genere nonch per l'inclusione delle persone con disabilit</h5>
+						</td>
+					</tr>	
+								<!--  previsione quota  -->
+								<tr id="tr_cup_flagPrevisioneQuota">
+										<th align="left" width="50%"><label  for=""> 
+											Previsione nel bando di gara, nell'avviso o nell'invito, dell'obbligo di assicurare, in caso di aggiudicazione del contratto, una quota pari almeno al 30 per cento, delle assunzioni necessarie per l'esecuzione del contratto o per la realizzazione di attivit ad esso connesse o strumentali, sia all'occupazione giovanile sia all'occupazione femminile (articolo 47, comma 4, D.L. 77/2021)?	<td>
+										[condition]
+										<select  id="flagPrevisioneQuotaHere" name="" CLASS="BOTTONE"     >
+											<option value=""></option>
+								  			<option value="N" [condition]>NO</option>
+								  			<option value="S" [condition]>SI</option>
+								  			<option value="Q" [condition]>SI con previsione di una quota inferiore</option>
+								  		</select> 
+								  		</td>
+									</tr>
+								<tr>
+									<th><label >Previsione di una quota inferiore con riferimento all'occupazione giovanile</label></th>
+										<td>
+										<input onblur="validateNumber(this)"  id="quota_giovanile" [condition]</c:if>
+											 type="string" style="text-align:right;" name="" 
+											 value="<h:requestParameter property='' defaultValue=''/>" 	/>
+										</td>
+								</tr>
+								<tr>
+								<th><label >Previsione di una quota inferiore con riferimento all'occupazione femminile</label></th>
+										<td>
+											<input onblur="validateNumber(this)"  id="quota_femminile" [condition]</c:if>
+											 type="string" style="text-align:right;" name="" 
+											 	 value="<h:requestParameter property='' defaultValue=''/>" 	/>
+										</td>
+								</tr>
+								<!--  motivo deroga -->
+								<tr id="tr_pariopportunita_2_mod2">
+									<td colspan="2">
+										<!-- Tipologia Appalto per LAVORI -->
+										<div class="inthead" >
+										<label onclick="showMenu('checkBoxListL1')" 
+												style="color:black; letter-spacing:0.2em;">
+												<img src="img/minus.gif" id="imgcheckBoxListL"/> Motivo deroga</label>
+											<br />	
+											<div id="checkBoxListL1" style="display: block; margin-top: 3px;"  >	
+											<div class="mbody" style="display: block;">
+												<table class="detailHelp" width="100%">
+												<tbody>
+												 	<tr>				
+														[condition]
+														<u:multibox campo=""
+															lista=""
+															disabled="true" listaCampiSelezionati="selDeroga"
+															readonly="" idField="idMotivoDeroga" />
+												 	</tr>
+												</tbody>
+												</table>
+											</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr id="test">
+									<th align="left" width="50%"><label
+										for=""> Previsione nel bando di gara, nell'avviso o nell'invito di ulteriori misure
+											premiali che attribuiscono un punteggio aggiuntivo all'offerente o al candidato</label></th>
+										<td>[condition] 
+											<select  id="flagMisurePremialiHere"
+												name="" CLASS="BOTTONE"   > 
+													<option value=""></option>
+													<option value="N" [condition]>NO</option>
+													<option value="S" [condition]>SI</option>
+											</select>
+										</td>
+								</tr>
+								<tr id="tr_pariopportunita_3">
+								<td colspan="2">
+									<!-- Tipologia Misura Premiale -->
+									<div class="inthead">
+										<label onclick="showMenu('checkBoxListL2')" style="color: black; letter-spacing: 0.2em;"> <img
+											src="img/minus.gif" id="imgcheckBoxListL" /> Misure Premiali
+										</label> 
+										<br />
+										<div id="checkBoxListL2" style="display: block; margin-top: 3px;">
+											<div class="mbody" style="display: block;">
+												<table class="detailHelp" width="100%">
+													<tbody>
+														<tr>
+															[condition]
+															<u:multibox campo=""
+																lista=""
+																disabled="true" listaCampiSelezionati="compL1" 
+																readonly="" idField="idMisuraPremiale" />
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+		--%>
+	</tbody>
+</table>
+<input type="hidden" name=""
+	id="tipologia"
+	value="">
+<input type="hidden"
+	name=""
+	id="flagSaNoDPCM" value="">
+<input type="hidden"
+	name=""
+	id="flagSaNoClassificata" value="">
+<input type="hidden"
+	name=""
+	id="cigIniziativa" value="">			
+<input type="hidden" id="cig"  value="">	
+<script type="text/javascript" src="script/customAlertBox.js">
+</script>
+		 --%>
+	<input type="hidden" name="" id="idGara" value="">
+		<h5>Categoria prevalente o scorporabile</h5>
+	<div class="elencoCategorie">
+		<table width="100%">
+			<tr>
+				<th>Descrizione Categoria</th>
+				<th>Scorporabile</th>
+				<th>Prevalente</th>
+			</tr>
+				<tr class="">
+				<td><label for="categoria[]"></label></td>
+				<td><input type="checkbox" name="" value="" id="ChCategoria[]" <h:checkElement list="" element=""/>         ></td>
+				<td><input type="radio" name="" value="" id="SelCategoria[]"      ></td>
+				</tr>
+		</table>
+	</div>
+	<!-- MEV 37010 3.04.8.1 -->
+				<table cellpadding="3">
+				<tbody>
+				<tr id="tr_flagDerogaAdesione">
+					<th align="left" width="50%"><label
+						for="">Deroga per adesione ad AQ/Convenzione precedente alle linee guida DPO sull'articolo 47 del DL 77/2021 e ss.m.i.?</label></th>
+					<td>[condition] 
+							<select onchange="disableParita(this,'derogaAdesione')" id= "flagDEROGA_ADESIONE"
+							name="" CLASS="BOTTONE" > 
+								<option value=""></option>
+								<option value="N" [condition] >NO</option> 
+								<option value="S" [condition] >SI</option> 
+						</select>
+					</td>
+				</tr>
+				</tbody>
+				</table>
+				<!-- MEV 37010 3.04.8.1 -->
+<!-- fine import popup modali -->
+<table cellpadding="3">
+	<input type="hidden" id="canSearch" value="false" />
+	<tbody>
+		<tr id="tr_pariopportunita_1_mod2">
+			<td colspan="2">
+				<h5>Tutela delle pari opportunit generazionali e di genere
+					nonch per l'inclusione delle persone con disabilit</h5>
+			</td>
+		</tr>
+		<!--  previsione quota  -->
+		<tr id="tr_cup_flagPrevisioneQuota">
+			<th align="left" width="50%"><label
+				for="">
+					Previsione nel bando di gara, nell'avviso o nell'invito,
+					dell'obbligo di assicurare, in caso di aggiudicazione del
+					contratto, una quota pari almeno al 30 per cento, delle assunzioni
+					necessarie per l'esecuzione del contratto o per la realizzazione di
+					attivit ad esso connesse o strumentali, sia all'occupazione
+					giovanile sia all'occupazione femminile (articolo 47, comma 4, D.L.
+					77/2021)?
+					<td>[condition] <select
+						id="flagPrevisioneQuotaHere"
+						[condition]</c:if>
+						name="" CLASS="BOTTONE"
+						>
+							<option value=""></option>
+							<option value="N"
+								[condition]>NO</option>
+							<option value="S"
+								[condition]>SI</option>
+							<option value="Q"
+								[condition]>SI
+								con previsione di una quota inferiore</option>
+					</select></td>
+		</tr>
+		<tr>
+			<th><label
+				>Previsione
+					di una quota inferiore con riferimento all'occupazione giovanile</label></th>
+			<td><input onblur="validatePercentage(this)" id="quota_giovanile"  
+				[condition]</c:if>
+				[condition]</c:if>
+				type="string" style="text-align: right;"
+				name=""
+				value="<h:requestParameter property='' defaultValue=''/>" />
+			</td>
+		</tr>
+		<tr>
+			<th><label
+				>Previsione
+					di una quota inferiore con riferimento all'occupazione femminile</label></th>
+			<td><input onblur="validatePercentage(this)" id="quota_femminile"   
+				[condition]</c:if>
+				type="string" style="text-align: right;"
+				name=""
+				value="<h:requestParameter property='' defaultValue=''/>" />
+			</td>
+		</tr>
+		<!--  motivo deroga -->
+		<tr id="tr_pariopportunita_2_mod2">
+			<td colspan="2">
+				<!-- Tipologia Appalto per LAVORI -->
+				<div class="inthead">
+					<label onclick="showMenu('checkBoxListL1')"
+						style="color: black; letter-spacing: 0.2em;"> <img
+						src="img/minus.gif" id="imgcheckBoxListL" /> Motivo deroga
+					</label> <br />
+					<div id="checkBoxListL1" style="display: block; margin-top: 3px;">
+						<div class="mbody" style="display: block;">
+							<table class="detailHelp" width="100%">
+								<tbody>
+									<tr>
+										[condition]
+										<u:multibox campo=""
+											lista=""
+											disabled="true" listaCampiSelezionati="selDeroga"
+											readonly="" idField="idMotivoDeroga" />
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr id="test">
+			<th align="left" width="50%"><label
+				for=""> Previsione
+					nel bando di gara, nell'avviso o nell'invito di ulteriori misure
+					premiali che attribuiscono un punteggio aggiuntivo all'offerente o
+					al candidato</label></th>
+			<td>[condition]
+				<select id="flagMisurePremialiHere" 
+				[condition]</c:if>
+				name="" CLASS="BOTTONE"
+				>
+					<option value=""></option>
+					<option value="N"
+						[condition]>NO</option>
+					<option value="S"
+						[condition]>SI</option>
+			</select></td>
+		</tr>
+		<tr id="tr_pariopportunita_3">
+			<td colspan="2">
+				<!-- Tipologia Misura Premiale -->
+				<div class="inthead">
+					<label onclick="showMenu('checkBoxListL2')"
+						style="color: black; letter-spacing: 0.2em;"> <img
+						src="img/minus.gif" id="imgcheckBoxListL" /> Misure Premiali
+					</label> <br />
+					<div id="checkBoxListL2" style="display: block; margin-top: 3px;">
+						<div class="mbody" style="display: block;">
+							<table class="detailHelp" width="100%">
+								<tbody>
+									<tr>
+										[condition]
+										<u:multibox campo=""
+											lista=""
+											disabled="true" listaCampiSelezionati="compL1"
+											readonly="" idField="idMisuraPremiale" />
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<script type="text/javascript" src="script/customAlertBox.js">
+</script>
+	<!-- 3.04.9 MEV 40610 -->
+		<tr id="tr_derogaQualificazioneStazioneAppaltante_1_mod2">
+			<td colspan="2">
+				<h5>Autodichiarazione Deroga qualificazione Stazione Appaltante</h5>
+				<div>La dichiarazione ha valore di autocertificazione ai fini delle successive verifiche, con correlativa applicazione delle sanzioni previste in caso di dichiarazioni mendaci</div>
+			</td>
+		</tr>
+			<div colspan="2">
+		<div class="inthead elencoQualificazioneSA">
+		<table>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+				<tr class="derogaRow">
+				<td><label for="derogaQualificazioneSA[]"></label></td>
+				<td><input disabled="disabled" type="radio" name="" value=""  id="SelDerogaQualificazioneSA"></td>
+				</tr>
+		</table>
+	</div>
+	</div>
+			<!-- fine 3.04.9 MEV 40610 -->
+    <!-- TICKET ALM #724 #2452 -->
+	<!-- Fine Ticket ALM #724 #2452 -->
+<!-- STAVANO QUA GLI HIDDEN -->
+<!-- MEV 3.04.10 43227 -->
+			<!-- MEV 3.04.10 43227 -->
+			<div class="infoBlock">
+				<div class="inlineInfo">
+					<ul>
+					<li>Confermare</li>
+					</ul>
+				</div>
+				<div class="rightLineInfo">
+					<ul>
+					<li><input type="button" value="Conferma la Modifica" onclick="doCallSoggAggrLotto('Salva',,,)"></li>
+					</ul>
+					<input type="hidden" id="toDo"><!-- Necessario a causa di doActionModifica(toDo) -->
+				</div>
+		   </div>
+			</form>
+		</div>	
+	</div>
+		</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+</body>
+</html>

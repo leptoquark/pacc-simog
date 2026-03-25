@@ -1,0 +1,20 @@
+	/*
+	public void addRow (
+			String idName,
+			String idValue,
+			String descrizioneName,
+			String descrizionevalue,
+			String operazioneName,
+			String operazioneValue) {
+
+		TableBean currentTable = getTableByOperazione(operazioneValue);
+
+		logger.debug("Impostazione KEY NAME[" + idName + "] per tabella[" + currentTable + "]");
+		currentTable.setKeyName(idName);
+
+		currentTable.setFullSize(currentTable.getFullSize() + 1);
+		currentTable.getColumn( idName ).add( idValue );
+//		currentTable.getColumn ( descrizioneName ).add( descrizionevalue );
+		currentTable.getColumn( operazioneName ).add(  operazioneValue );
+	}
+	*/

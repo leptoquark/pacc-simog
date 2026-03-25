@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+   <soggetto>
+      <cognome>GDDMRA62A15L378R</cognome>
+      <nome>login</nome>
+      <tel>065544332</tel>
+      <fax>06778866</fax>
+      <email>utente@sito.it</email>
+      <admin_or>04</admin_or>
+   </soggetto>
+   <collaborazioni>
+      <collaborazione index="0">
+         <azienda>
+            <denominazione>Amministrazione 1</denominazione>
+            <codice_fiscale>06771101000</codice_fiscale>
+         <id_osservatorio>004</id_osservatorio></azienda>
+         <ufficio>
+            <denominazione>Stazione Appaltante 1</denominazione>
+            <id_ufficio>06771101000</id_ufficio>
+            <profilo>1</profilo>
+         </ufficio>
+      </collaborazione>
+      <collaborazione index="1">
+         <azienda>
+            <denominazione>COMUNE DI LAVIS</denominazione>
+            <codice_fiscale>00179650221</codice_fiscale>
+         <id_osservatorio>004</id_osservatorio></azienda>
+         <ufficio>
+            <denominazione>UFFICIO TECNICO</denominazione>
+            <id_ufficio>11C1195A-B807-4C3F-AEE1-B89A782AE779</id_ufficio>
+            <profilo>5</profilo>
+         </ufficio>
+      </collaborazione>
+   </collaborazioni>
+   <stato>2</stato>
+</check_login>

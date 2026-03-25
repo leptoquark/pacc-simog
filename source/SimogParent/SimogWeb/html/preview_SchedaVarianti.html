@@ -1,0 +1,578 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+ [condition]
+ [condition]
+ [condition]
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+<!-- main calendar program -->
+<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- language for the calendar -->
+<script type="text/javascript" src="calendar/calendar-it.js"></script>
+<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+<script type="text/javascript"  src="script/pageutils.js"></script>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<div id="dialog"></div> 
+	<script type="text/javascript">
+	<!-- MEV MARRA 34469 3.04.8 -->              
+    function changeRevPrezzi(idMotVariante) {	       
+       if(idMotVariante.value == '' && idMotVariante.checked === true)
+       {
+          <!-- alert("change - idMotVariante UGUALE DA 22 A TRUE");-->	          
+          document.getElementById("").disabled = false;
+          document.getElementById("trMotRevPrezzi").style.display = 'table-row';
+       }
+       else if(idMotVariante.value == '' && idMotVariante.checked === false)
+       {
+          <!-- alert("change - idMotVariante UGUALE A 22 A FALSE");-->	          
+          document.getElementById("").disabled = true;	    
+          document.getElementById("trMotRevPrezzi").style.display = 'none';      
+       }	    
+	}
+    /* fine mev 34469 */
+		<!--
+			function valutaSubTotale() {
+				var somma = 0;
+				var lavori;
+				var servizi;
+				var forniture;
+				var sicurezza;
+				var progettazione;
+				var disposizione;
+				var ulteriori;
+					if (document.getElementById('importoLavori').value == "" ) 
+						lavori = parseFloat('0');
+					else  lavori = parseFloat(document.getElementById('importoLavori').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('importoServizi').value == "" ) 
+						servizi = parseFloat('0');
+					else  servizi = parseFloat(document.getElementById('importoServizi').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('importoForniture').value == "" ) 
+						forniture = parseFloat('0');
+					else  forniture = parseFloat(document.getElementById('importoForniture').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('importoSicurezza').value == "" ) 
+						sicurezza = parseFloat('0');
+					else  sicurezza = parseFloat(document.getElementById('importoSicurezza').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('importoProgettazione').value == "" ) 
+						progettazione = parseFloat('0');
+					else  progettazione = parseFloat(document.getElementById('importoProgettazione').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('ulterioriSomme').value == "" ) 
+						ulteriori = parseFloat('0');
+					else  ulteriori = parseFloat(document.getElementById('ulterioriSomme').value.replace(/\./g,"").replace(',','.'));
+					if (document.getElementById('importoDisposizione').value == "" ) 
+						disposizione = parseFloat('0');
+					else  disposizione = parseFloat(document.getElementById('importoDisposizione').value.replace(/\./g,"").replace(',','.'));
+				somma = parseFloat(lavori+servizi+forniture) ;
+				//devo aggiungere i punti delle migliaia
+				document.getElementById("subtotale1").value = addMyDotsFromCommaString(somma.toFixed(3).replace('.',','));
+				somma = parseFloat(somma + sicurezza + progettazione + ulteriori);
+				document.getElementById("subtotale2").value = addMyDotsFromCommaString(somma.toFixed(3).replace('.',','));
+				somma = parseFloat(somma + disposizione);
+				document.getElementById("subtotale3").value = addMyDotsFromCommaString(somma.toFixed(3).replace('.',','));
+				return true;	
+			}
+		//-->
+	</script>
+		<!-- MEV 34191 PICCA POP-UP -->
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script>
+/* MEV 34191 PICCA POP-UP */
+//PARTE CHE APRE LA POPUP INFORMATIVA
+function apripopupSchedaVarianti(path, prefix, radioNo, toDo){
+	console.log("apripopupSchedaVariantiapripopupSchedaVarianti");
+	var dialogArgs = new MyDialogArguments();
+	dialogArgs.Sender = window;
+	//TB: Ticket risoluzione popup
+	if (!window.showModalDialog) {
+		console.log(" IF apripopupSchedaVariantiapripopupSchedaVarianti");
+		return opendialogSchedaVarianti(path, prefix, radioNo, toDo);
+	} 			
+}
+/* MEV 34191 PICCA POP-UP */
+function opendialogSchedaVarianti(page, prefix, radioNo, toDo, idDialog) {
+  var divDialog = '#dialog';
+  if(idDialog)
+      divDialog = '#dialog'+idDialog;
+  var $dialog = $(divDialog)
+  .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+  .dialog({
+    title: "ANAC: Autorit&agrave; Nazionale Anticorruzione",
+    autoOpen: false,
+    dialogClass: 'no-close',
+    modal: true,
+    height: 300,
+    width: 800,
+    draggable:true,
+    buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+          checkAndAction(prefix,radioNo, toDo);
+        }
+     },
+    close:function(){  
+       dialog_confirm_callback('true', '', '', '','','');
+    }
+  });
+  $dialog.dialog('open');
+  $('.ui-button').removeClass( "ui-widget" );
+}
+function dialog_confirm_callback(value) {
+	  if (value === 'true') 
+	  {	    
+	    popupIsClose = value;
+	  } 
+	  else if(value === 'false') 
+	  {
+	    popupIsClose = value;
+	  }
+	}
+function checkAndActionWithPopUp(prefix,radioNo, toDo){
+	��� console.log("checkAndActionWithPopUp");
+	��� console.log(document.getElementById('ID_MOTIVO_VAR8'));
+	��� console.log(document.getElementById('ID_MOTIVO_VAR7'));
+	���� if ((document.getElementById('ID_MOTIVO_VAR8') && document.getElementById('ID_MOTIVO_VAR8').checked === true )�
+	������������ || (document.getElementById('ID_MOTIVO_VAR7') && document.getElementById('ID_MOTIVO_VAR7').checked === true))�
+	����� {�����
+	�������� console.log("if checkAndActionWithPopUp");���
+	������� apripopupSchedaVarianti('popupSchedaVarianti.jsp', prefix, radioNo, toDo);
+	����� }�
+	����� else
+	����� {
+	������� checkAndAction(prefix,radioNo, toDo);
+	����� }����
+}
+</script>
+<div id="dialog"></div> 
+<title>Gestione Schede -  - </title>
+</head><body>
+<div id="dialog"></div> 
+	<div id="gabbia" align="left">
+		<div id="header">
+</div>
+		<div class="bodypage-e" align="left">
+			<h1>Gestione Schede - </h1>
+			<div  class="hmenu" align="left">	
+			  <ul>
+					<li><a title="Torna alla lista Aggiudicazioni" href="javascript:changePage('[variable]','Modificato')">Lista Aggiudicazioni</a></li>  
+			    [condition]" >Aggiungi nuova scheda</a>
+				 </li>
+				</c:if>
+				</ul>
+			</div> 
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			 <h2>Lista Schede Modifiche Contrattuali</h2>
+			 <h2>Lista Schede Varianti</h2>
+		<div style="overflow: auto;height: 13em; width: 100%;"  >
+			<div class="gara">	 	
+		     <table align="center" width="300px">   
+			<tr> 
+		     	<th class="garaTh">Data approvazione </th> 
+		     	<th class="garaTh">Data sottoscrizione atto aggiuntivo</th> 
+		     	<th class="garaTh">N. giorni di proroga/ Tempo aggiuntivo</th>
+		     	<th class="garaTh">Stato scheda</th>
+		     	<th class="garaTh">Azioni</th>
+		     </tr>
+		        [condition]
+			[condition]">Modifica</a>
+					    	</c:when>
+					    	[condition]">Visualizza</a>
+					    	</c:otherwise>
+					    </c:choose>
+					</td>
+				</tr>
+				[condition]
+			</c:forEach>
+			 </table>
+		</div></div>
+		<!-- Include not found: ../include/RichAnnPanel.jsp -->
+				<table >	
+					<tr>
+						<td><input [condition] type="button" value="Salva" onclick="checkAndActionWithPopUp('check',0,'')"/></td>
+						<td><input [condition]  type="button" value="Conferma" onclick="checkAndAction('check',0,'')"/></td>
+						<td><input [condition] type="button" value="Reimposta" onclick="reimpostaForm('')"/></td>
+						[condition]</td>	
+						</c:if>			
+						[condition]</td>	
+						</c:if>
+				[condition]
+				[condition]
+				[condition]
+				<!-- Include not found: ../include/statoscheda.inc -->
+					</tr>
+				</table>
+			 <fieldset>
+			 <h2>Scheda  - [condition]</h2>
+			<form action="" method="post" onkeypress="setFormModified('Modificato')" >
+					    <input type="hidden" name="checkIfOK" id="checkIfOK" value="" />
+				<input type="hidden" name="" id="" value="" />	
+				<input type="hidden" name="" id="" value="" />
+				<input type="hidden" name="" value='[condition]'/>
+				<input type="hidden" name="" value='[condition]'/>
+				<!-- MEV 34469 3.04.8 -->
+				<input type="hidden" name="idSelectedMotivRevPrezzi" value='[variable]'/>
+				<input type="hidden" id="Modificato"  value="0" />
+				<fieldset class="gara">
+				  <table width="100%">
+				  	<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>RIFERIMENTO AI DATI DELLA FASE DI AGGIUDICAZIONE O DI DEFINIZIONE DI PROCEDURA NEGOZIATA</strong></p></td>
+					</tr>
+					<tr>
+	   					<td><label for="" >Codice di individuazione dell'appalto (CIG)</label></td>
+	   					<td  width="40%" >[condition]</td>
+	   				</tr>
+	<tr><td colspan="2"><hr></td></tr>
+	<tr>	
+	<th><label>نوع الورقة</label></th>
+	<td>
+	[condition][condition]</td>
+	</tr>
+	</c:if>
+	[condition]</td>
+	</tr>
+	</c:if>
+	<tr><td colspan="2"><hr></td></tr>
+					<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong></strong></p></td>
+					</tr>
+					<tr>
+	   					<td><label  for="" >Data di approvazione della </label></td>
+	   					<td>
+							<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  [condition]
+							type="text" id="" name="" 
+							onblur="Calendar.validaData(this)" value="[condition]" />
+							[condition]
+								<script type="text/javascript">
+									    Calendar.setup({
+								        inputField     :    "",     // id of the input field
+								        ifFormat       :    "%d/%m/%Y",      // format of the input field
+								        button         :    "calendarVariante",  // trigger for the calendar (button ID)
+								        align          :    "Tl",           // alignment (defaults to "Bl")
+								        singleClick    :    true							       
+							    		});					    	
+								</script>
+							</c:if>
+						</td>
+	   				</tr>
+					<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>MOTIVAZIONE </strong></p></td>
+					</tr>
+	   				<tr>
+	   					" >Motivazioni Variante</label></td> --%>
+	   					<td>
+	   						[condition]
+	   						[condition] 
+    						<u:multibox campo="" 
+    							lista="" 
+    							listaCampiSelezionati="listaMotivazioni" 
+    							readonly="[variable]"
+    							idField="idMotivoVariante" 
+    							onchange="setFormModified('Modificato');changeRevPrezzi(this);" />	
+						</td>
+	   				</tr>
+	   				<!-- MEV 34469 3.04.8 NUOVA LISTA MOTIVO REVISIONE PREZZI -->	   				
+	   				 <tr id="trMotRevPrezzi"  style="display:none;" >
+						<th><label>Motivo Revisioni Prezzi</label></th>
+						<td>							
+							<select name="" id="">
+							    <option value="">[condition]</option>
+							    [condition]</option>
+							    </c:forEach>
+							</select>
+						</td>
+					</tr>
+	   				<tr><td colspan="2"><hr></td></tr>
+	   				<!-- MEV 34191 3.04.8 -->
+				   	<tr>
+	   					<td><label  for="" >URL documentazione varianti in corso d'opera</label></td>
+	   					<td>
+							<input name=""  tabindex="" style="width:100%" maxlength="1000" [condition]
+							type="text" value="[condition]"  />
+						</td>
+	   				</tr>
+	   				<!--FINE MEV 34191 3.04.8 -->
+						<tr>
+							<th><label  for="">CIG della nuova procedura avviata</label></th>		
+						<td>
+							<input type="text" maxlength="10" value="[condition]"  name="" [condition]  >
+						</td>
+						</tr>	
+					<tr>
+	   					<td><label for="" >Cause della </label></td>
+	   					<td>
+							<input name=""  tabindex="" style="width:100%" maxlength="1000" [condition]
+							type="text" value="[condition]"  />
+						</td>
+	   				</tr>
+	   				<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>QUADRO ECONOMICO </strong></p></td>
+					</tr>	  
+					<tr>
+	   					<td><label   for="" >Importo contrattuale rideterminato componente lavori in &euro; <br/>(al netto dell'IVA e degli oneri di sicurezza) <img title="Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale" style="cursor: pointer" onclick="alert('Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale')" src="img/icon_info_sml.gif"> </label></td>
+	   					<td>
+							<input name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoLavori" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label   for="" >Importo contrattuale rideterminato componente servizi in &euro; <br/>(al netto dell'IVA e degli oneri di sicurezza) <img title="Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale" style="cursor: pointer" onclick="alert('Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale')" src="img/icon_info_sml.gif"> </label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoServizi" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label   for="" >Importo contrattuale rideterminato componente forniture in &euro; <br/>(al netto dell'IVA e degli oneri di sicurezza) <img title="Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale" style="cursor: pointer" onclick="alert('Importo complessivo dato dalla somma dell\'importo di aggiudicazione e della modifica contrattuale')" src="img/icon_info_sml.gif"> </label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoForniture" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td>Subtotale</td>
+	   					<td>
+	   						<input type="text" id="subtotale1" readonly="readonly" value="" style="text-align:right;font-weight: bold; width:120px;"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label for="" >Nuovo importo totale per l'attuazione della sicurezza <br/>(non soggetto a ribasso)</label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoSicurezza" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label for="" >Importo progettazione</label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoProgettazione" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label for="" >Ulteriori somme non soggette a ribasso</label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="ulterioriSomme" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td>Subtotale</td>
+	   					<td>
+	   						<input type="text" name="subtotale2" id="subtotale2" readonly="readonly" value="[variable]" style="text-align:right;font-weight: bold;width:120px;" />
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label for="" >Nuovo importo totale spese a disposizione</label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" id="importoDisposizione" value="[condition]"  onblur="validateAmount(this);valutaSubTotale()"/>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td>Subtotale</td>
+	   					<td>
+	   						<input type="text" name="subtotale3" id="subtotale3" readonly="readonly" value="[variable]" style="text-align:right;font-weight: bold;width:120px;"/> 
+						</td>
+	   				</tr>
+	   				<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>ATTI AGGIUNTIVI</strong></p></td>
+					</tr>	  
+					<tr>
+	   					<td><label for="" >Data sottoscrizione eventuale atto aggiuntivo/sottomissione</label></td>
+	   					<td>
+							<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  [condition]
+							type="text" id="" name="" 
+							onblur="Calendar.validaData(this)" value="[condition]" />
+							[condition]
+								<script type="text/javascript">
+									    Calendar.setup({
+								        inputField     :    "",     // id of the input field
+								        ifFormat       :    "%d/%m/%Y",      // format of the input field
+								        button         :    "calendarAttoAgg",  // trigger for the calendar (button ID)
+								        align          :    "Tl",           // alignment (defaults to "Bl")
+								        singleClick    :    true							       
+							    		});					    	
+								</script>
+							</c:if>
+						</td>
+	   				</tr>
+					<tr>
+	   					<td><label  for="" >Numero di giorni di proroga concessi/ Tempo aggiuntivo rispetto ai termini contrattuali</label></td>
+	   					<td>
+							<input  name=""  tabindex="" style="text-align:right;width:120px;" [condition]
+							type="text" value="[condition]"  onblur="validateNumber(this);"/>
+						</td>
+	   				</tr>
+				  </table>
+				  <input type="hidden"  value="save" name="toDo" id="toDo"/>
+			</fieldset>
+				<table >	
+					<tr>
+						<td><input [condition] type="button" value="Salva" onclick="checkAndActionWithPopUp('check',0,'')"/></td>
+						<td><input [condition]  type="button" value="Conferma" onclick="checkAndAction('check',0,'')"/></td>
+						<td><input [condition] type="button" value="Reimposta" onclick="reimpostaForm('')"/></td>
+						[condition]</td>	
+						</c:if>			
+						[condition]</td>	
+						</c:if>
+				[condition]
+				[condition]
+				[condition]
+				<!-- Include not found: ../include/statoscheda.inc -->
+					</tr>
+				</table>
+			</form>
+			<script type="text/javascript">
+				valutaSubTotale();
+				/* MEV 34469 3.04.8 */
+				if( '[variable]' == 'true')
+                {
+                     <!--alert("FINE PAGINA - idMotivoVarianteAttr UGUALE A 22");-->                    
+                     document.getElementById("").disabled = false;
+                     document.getElementById("trMotRevPrezzi").style.display = 'table-row';                    
+                }
+                else
+                {
+                     <!--alert("FINE PAGINA - idMotivoVarianteAttr DIVERSO DA 22");-->                
+                     document.getElementById("").disabled = true;
+                     document.getElementById("trMotRevPrezzi").style.display = 'none';               
+                }
+				/*FINE MEV 34469 3.04.8 */
+			</script>
+			</fieldset>
+		</div>  
+		</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+	</div>
+</body>
+</html>

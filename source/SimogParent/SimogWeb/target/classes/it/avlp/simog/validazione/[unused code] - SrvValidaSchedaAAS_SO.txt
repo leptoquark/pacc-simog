@@ -1,0 +1,224 @@
+//package it.avlp.simog.validazione;
+//
+//import it.avlp.simog.db.advanced.TableBean;
+//import it.avlp.simog.servlet.ServletBase;
+//
+//import java.io.IOException;
+//
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//
+//public class SrvValidaSchedaAAS_SO extends ServletBase {
+//	
+//
+//	public void doGet(HttpServletRequest request,
+//			HttpServletResponse response)throws ServletException, IOException{
+//		perform( request, response);
+////		inizio controlli generici
+////		1 Codice fiscale ammin.ne procedente
+//	//
+////		2 Denom.ne amn.ne procedente
+//	//
+////		3 Codice fiscale SA
+//	//
+////		5 Codice categoria         			Valorizzazione
+////								Coerenza
+////			    
+////		6 Codice fiscale            			Se valorizzato deve trattarsi di un codice fiscale 
+////		  Amm.ne per conto 				di persona giuridica formalmente valido
+////		  della quale agisce 
+////		  la SA										
+//	//
+//	//
+////		7 Denominazione Amm.ne      			Se 6 stato valorizzato allora deve essere valorizzato anche 7
+////		  per la quale agisce 
+////		  a SA
+//	//
+////		8 CIG	                  			Il valore deve essere formalmente corretto 	
+////		  Il CIG deve essere       			CIG inesistente o non di competenza
+////		  esistente ed in carico 
+////		  all�amministrazione 
+////		  di appartenenza del RUP	
+//	//
+////		9  Oggetto dell�appalto				Valorizzazione
+////		10 cpv 					        Valorizzazione
+//	//
+////		11 CUP						Se inserito deve essere coerente
+//	//
+////		12 N. lotto
+//	//
+////		13 Numero complessivo dei lotti			Se � stato valorizzato il campo12 dovrebbe essere valorizzato
+//	//
+////		14 L�appalto rientra in un 
+////		   accordo quadro?
+//	//
+////		15 Prestazioni comprese 			Valorizzazione
+////		   nell�appalto		
+//	//
+////		16 Codice del luogo di esecuzione		Se inserito deve essere formalmente valido
+////		   del contratto (ISTAT / NUTS)		
+//	//
+////		   Codice del luogo di esecuzione		Valorizzazione
+////		   del contratto (ISTAT)		
+//	//
+////		17 Importo complessivo in � 			Valorizzazione
+////		   (al netto IVA)		
+//	//
+////		        ��					Coerenza: l�importo deve essere > 150.0000,00
+//	//
+////		18 Procedura di scelta del			Valorizzazione
+////		   contraente	         
+//	//
+////		19  Condizioni che giustificano			Se 18=�procedura negoziata senza previa�� deve essere valorizzato
+////		    il ricorso alla procedura 
+////		    negoziata senza previa�                                         
+//	//
+//	//
+////		20 Criteri di aggiudicazione			Valorizzazione
+//	//
+////		21 E� stata utilizzata la procedura 
+////		   accelerata per ragioni di urgenza?
+//	//
+////		22 E� stata effettuata la preinformazione?
+//	//
+////		23 E� stato utilizzato un termine ridotto 
+////		   con avviso di pre-informazione?
+//	//
+////		24 Requisiti di partecipazione/qualificazione
+//	//
+//	//
+////		25 GUCE						Almeno una tra le date 25, 26 e 37  
+////								deve essere valorizzata. 
+////								Se valorizzato <= 33 <= 34 <= 35 <=   
+//	//
+////		26 GURI						Almeno una tra le date 25, 26 e 37 
+////								deve essere valorizzata. 
+////								Se valorizzato <= 33 <= 34 <= 35 <= 36
+//	//
+////		27 BUR						Almeno una tra le date 25, 26 e 37 
+////								deve essere valorizzata. 
+////								Se valorizzato <= 33 <= 34 <= 35 <= 36
+//	//
+////		28 Quot. Nazionali				Se valorizzato deve essere >=2
+//	//
+////		29 Quot. Locali					Se valorizzato deve essere >=2
+//	//
+////		30 Profilo del Committente
+//	//
+////		31 Sito Ministero Infrastrutture
+//	//
+////		32 Sito informatico Osservatorio
+//	//
+////		33 Data scadenza presentazione			Se valorizzati 33 <= 34 <= 35 <= 36
+////		   manifestazioni di interesse		
+//	//
+////		34 Data di scadenza per la			Se valorizzati 33 <= 34 <= 35 <= 36
+////		   presentazione della richiesta 
+////		   di invito		
+//	//
+////		35 Data di invito				Se valorizzati 33 <= 34 <= 35 <= 36
+//	//
+////		36 Data scadenza presentazione			Se valorizzati 33 <= 34 <= 35 <= 36
+////		   offerte		
+//	//
+////		37 n. soggetti che hanno presentato		Se valorizzati 37>= 38 >= 39 >= 40 >= 41 > 0
+////		   manifestazione di interesse		
+//	//
+////		38 n. soggetti che hanno presentato           	Se valorizzati 37>= 38 >= 39 >= 40 >= 41 > 0
+////		   richiesta di invito		
+//	//
+////		39 n. soggetti invitati a presentare offerta  	Se valorizzati 37>= 38 >= 39 >= 40 >= 41 > 0
+//	//
+////		40 n. soggetti che hanno presentato offerta   	Se valorizzati 37>= 38 >= 39 >= 40 >= 41 > 0
+//	//
+////		41 n. offerte ammesse		               	Se valorizzati 37>= 38 >= 39 >= 40 >= 41 > 0
+//	//
+////		42 Offerta di max ribasso		        Il valore deve essere  in percentuale fino alla terza cifra decimale
+//	//
+////		43 Offerta di min ribasso		        Il valore deve essere  in percentuale fino alla terza cifra decimale
+//	//
+////		45 n. offerte >= soglia anomalia		44 <= 41 	
+//	//
+////		46 n. imprese escluse automaticamente		Se 17 < soglia parametrica da definire, allora 49 > 0
+//	//
+////		46             �		                46 <= 41
+//	//
+////		47 N.imprese escluse per ins.                 	47 <= 41
+////		   Giustificazioni		
+//	//
+////		48 Contenzioso in fase di gara		
+//	//
+////		49 Motivazioni del contenzioso in fase        	Se 48 � stato valorizzato allora dovrebbe essere valorizzato anche 49
+////		   di gara	
+//	//
+////		50 Codice fiscale del ricorrente		Se 48 � stato valorizzato allora dovrebbe essere valorizzato 
+////								con un codice fiscale di persona fisica/giuridica formalmente valido
+//	//
+////		51 Codice fiscale dell�aggiudicatario 		Valorizzazione
+////		   o affidatario		
+//	//
+////		52 Denominazione				Valorizzazione
+//	//
+////		53 L�aggiudicatario/affidatario 
+////		   ha fatto ricorso all�istituto 
+////		   dell�Avvalimento
+//	//
+////		54 Codice fiscale ditta ausiliaria		Se 53 � stato valorizzato positivamente questo campo deve essere valorizzato
+//	//
+////		55 Tipologia del soggetto                     	Valorizzazione
+////		   aggiudicatario/affidatario
+//	//
+////		56 Ruolo (eventuale) nell�Associazione		Se 55 = ATI questo valore deve essere indicato
+//	//
+////		57 Iscrizione CCIAA n.		
+//	//
+////		58 Codice fiscale del legale rappresentante	Valorizzazione
+//	//
+////		59 Nominativo del legale rappresentante		Valorizzazione
+//	//
+////		60 Ribasso aggiudicazione			>=0
+//	//
+////		61 Offerta in aumento		
+//	//
+////		62 Importo di aggiudicazione/affidamento
+//	//
+////		63 Data del verbale di aggiudicazione 
+////		   o definizione della procedura negoziata	Valorizzazione
+//	//
+////		63	�					Coerenza: la data deve essere >= di ogni altra data inserita nella scheda
+//	//
+////		64 Codice fiscale				Valorizzazione
+//	//
+////		65 Nominativo					Valorizzazione
+//	//
+////		66 Telefono					Se valorizzato deve essere interamente numerico
+//	//
+////		67 Fax						Se valorizzato deve essere interamente numerico
+//	//
+////		68 E-mail					Se valorizzato deve essere un indirizzo e-mail valido
+//	//
+////		69 Ruolo del soggetto				Valorizzazione
+////		
+//		
+//	}
+//
+//	protected void perform(HttpServletRequest request,
+//			HttpServletResponse response) throws ServletException, IOException {
+//	
+//		visualizzaListaParametriValori(request, response);
+//		
+//		
+//	}
+//		
+//	public void performCSV( HttpServletRequest request, HttpServletResponse response, TableBean results ) throws ServletException, IOException{
+//
+//			response.setContentType("application/x-download");
+//			response.setHeader("Content-Disposition", "attachment; filename= LottiPubblicati.csv");
+//			results.writeCSV(response.getWriter(),';');
+//			response.getWriter().flush();
+//			response.getWriter().close();
+//	}
+//
+//}

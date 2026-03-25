@@ -1,0 +1,250 @@
+package it.avlp.simog.garamanager.lotto.app;
+
+import it.avlp.simog.actions.ActionException;
+import it.avlp.simog.actions.GaraLottoAction;
+import it.avlp.simog.beans.AllValidationBeans;
+import it.avlp.simog.beans.Lotto;
+import it.avlp.simog.beans.Utente;
+import it.avlp.simog.common.servlet.ParametriServlet;
+import it.avlp.simog.common.servlet.ParametriServletBloccoDati;
+import it.avlp.simog.errormessage.Messaggi;
+import it.avlp.simog.exception.SimogException;
+import it.avlp.simog.garamanager.lotto.LottoManager;
+import it.avlp.simog.log.LogManager;
+import it.avlp.simog.servlet.ServletBase;
+import it.avlp.simog.util.ObjectIntrospector;
+import it.avlp.simog.util.PageHelper;
+import it.avlp.simog.util.SimogProperties;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Connection;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//FIXME PP manca il validatore!!!
+public class SrvModificaLotto extends ServletBase {
+
+	private static final long serialVersionUID = -4427708044851647738L;
+
+	public void doGet(HttpServletRequest request,HttpServletResponse response)
+	throws ServletException, IOException {
+		
+		perform(request, response);
+	}
+		
+	public void perform(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException {
+	
+		Connection currentActiveConnection = null;
+		Utente currentUser = (Utente) request.getSession().getAttribute(UTENTE);
+			if ( checkSession(request) ) {
+				if ( currentUser.isRSSA() || currentUser.isAmministratore() ) {
+				
+				visualizzaListaParametriValori(request, response);
+				
+				logger.debug("Utente abilitato alla modifica di lotti");
+				try {				
+					currentActiveConnection = getSimogConnection(request.getSession().getId(),getClass().getName());	
+					currentActiveConnection.setAutoCommit(false);
+					/** NEW IMPLEMENTS */
+					long idLotto = Long.parseLong(request.getParameter(FIELD_NAME_ID_LOTTO));
+					String requestingURL ="/gestisciLotto?action=modifica&" + FIELD_NAME_ID_LOTTO + "=" + idLotto;
+					
+					GaraLottoAction gla = new GaraLottoAction(currentActiveConnection,logger);
+					Object obj = null;
+					
+					Lotto lotto = new Lotto();
+					/** il load fà anche la validazione */
+					Object obj1 = gla.load(request, GaraLottoAction.LOTTO);
+					Object obj2 = gla.loadCategorieFromRequest(request);
+					if(obj1 instanceof AllValidationBeans){					
+						/** se non valide */
+						if(obj2 instanceof AllValidationBeans){
+							AllValidationBeans avb = (AllValidationBeans)obj1;
+							/** merge dei 2 risultati */
+							avb.add((AllValidationBeans)obj2);
+							/** invia */
+							sendValidations(request, response, avb, requestingURL);	
+							return;
+						}
+						/** altrimenti manda */
+						sendValidations(request, response, (AllValidationBeans)obj1, requestingURL);
+						return;
+					}
+					if(obj2 instanceof AllValidationBeans){
+						/** invia */
+						sendValidations(request, response, (AllValidationBeans)obj2, requestingURL);	
+						return;
+					}
+					lotto = (Lotto)obj1;
+					String[] categorie = (String[])obj2;
+					lotto.setId_Lotto(idLotto);
+					//lotto.setId_Gara(id_Gara);
+//					logger.debug("----------------------------");
+//					logger.debug(ObjectIntrospector.propertiesInfo(Lotto.class, obj1));
+//					logger.debug("----------------------------");
+					boolean esito = gla.modificaLotto(lotto, categorie);
+					if(!esito){
+						 rollback(currentActiveConnection);
+						logger.error ( "modifica o validazione Lotto fallita" );
+						sendError(request, response, "Modifica del lotto fallita", requestingURL);
+						return;
+					}
+//						String idGara= request.getParameter(SESSION_ID_GARA);
+//						String forwardPath =SRV_VISUALIZZA_DETTAGLIO + "?" + SESSION_ID_GARA + "=" + idGara;
+					
+					/** END */
+//					//Lotto
+//					idLotto = Long.parseLong(request.getParameter(FIELD_NAME_ID_LOTTO));	
+//					
+//					String gestioneSpecificaLotto ="/gestisciLotto?action=modifica&" + FIELD_NAME_ID_LOTTO + "=" + idLotto;
+//					
+//					
+//					String oggettoLotto = request.getParameter(ParametriServlet.FIELD_NAME_OGGETTO_LOTTO);
+//	
+//					
+//					if ( oggettoLotto == null || oggettoLotto.trim().length() == 0 ) {
+//						sendError( request, response, SIMOG_LOTTO_013, gestioneSpecificaLotto );
+//						return;
+//					}
+//
+//					String Id_Contraente = request.getParameter(FIELD_NAME_SCELTA_CONTRAENTE);
+//					if ( Id_Contraente == null || Id_Contraente.trim().length() == 0 ) {
+//						sendError( request, response, SIMOG_LOTTO_013a, gestioneSpecificaLotto );
+//						return;
+//					}
+//					
+//					
+//					
+//					String Id_CPV = request.getParameter(FIELD_NAME_CPV);
+//					
+//					if ( Id_CPV == null || Id_CPV.trim().length() == 0 ) {
+//						sendError( request, response, SIMOG_GARA_009, gestioneSpecificaLotto );
+//						return;
+//					}
+//
+//					/* ************************************* */
+//					
+//					BigDecimal importoLottoNum = new BigDecimal(SimogProperties.importo_lotto_aux);
+//					
+//					if( ParametriServlet.INSERISCI_IMPORTO_SI.equalsIgnoreCase( request.getParameter(ParametriServlet.FIELD_INSERISCI_IMPORTO) ) ) {
+//						
+//						String importoLotto = PageHelper.formattaImporto(request.getParameter(FIELD_NAME_IMPORTO_LOTTO_EURO));
+////						String importoLottoCentesimi = request.getParameter(FIELD_NAME_IMPORTO_LOTTO_CENTESIMI);
+////						String importoLotto = importoLottoEuro + "." + importoLottoCentesimi;
+//
+//						if (importoLotto == null || importoLotto.trim().length() == 0 ) {
+//							sendError(request, response, SIMOG_LOTTO_014, gestioneSpecificaLotto, false );
+//							return;
+//						} else {
+//							try {
+//								importoLottoNum = new BigDecimal( importoLotto );
+//							} catch ( NumberFormatException nfe ) {
+//								sendError(request, response, SIMOG_LOTTO_015, gestioneSpecificaLotto, false );
+//								return;
+//							}
+//						}
+//						if (importoLottoNum.doubleValue() <= 0 ){
+//							sendError( request, response, SIMOG_VALIDAZIONE_143, gestioneSpecificaLotto, false  );
+//							return;
+//						}
+//
+//					} 					
+//				/* ************************************* */
+//					
+//					String Id_Tipologia = request.getParameter(FIELD_NAME_TIPOLOGIA);
+//					
+//					String idCategoriaPrevalente = request.getParameter(FIELD_NAME_CATEGORIA_PREVALENTE);
+//					
+//					String Id_Scelta_Contraente = request.getParameter(FIELD_NAME_SCELTA_CONTRAENTE);
+//	
+//					String completeCIG = request.getParameter(FIELD_NAME_CIG);
+//	
+//	
+//					String [] categorieScorporabili = request.getParameterValues(FIELD_NAME_CATEGORIA);
+//					
+//					if ( categorieScorporabili == null ) {
+//						categorieScorporabili = new String[0];
+//					} 
+//					
+//					Lotto lottoCorrente = new Lotto();
+//	
+//					lottoCorrente.setOggetto(oggettoLotto);
+//					lottoCorrente.setImporto_Lotto(importoLottoNum);
+//					lottoCorrente.setId_Tipologia(Id_Tipologia);
+//					lottoCorrente.setId_CPV(Id_CPV);
+//					lottoCorrente.setId_Scelta_Contraente(Id_Scelta_Contraente);
+//					lottoCorrente.setId_Categoria_prevalente(idCategoriaPrevalente);
+//					lottoCorrente.setId_Lotto(idLotto);
+//					
+//					/*
+//					 * Aggiornamento informazioni Lotto, e categorie scorporabili relative
+//					 */
+//					LottoManager lottoManager = new LottoManager(currentActiveConnection, logger);
+//					
+//					if ( lottoManager.checkCPV(Id_CPV) ) {
+//						lottoManager.modificaLotto(lottoCorrente);
+//						lottoManager.updateLottoCategorieScorporabili(String.valueOf(idLotto), categorieScorporabili );
+						
+						/*
+						 * Inserimento informazioni di log amministrativo
+						 */
+						LogManager logManager = new LogManager(currentActiveConnection, logger);
+						
+						logger.debug("Esecuzione GaraManager DAO");
+						
+						String completeCIG = request.getParameter(FIELD_NAME_CIG);
+						String descrizioneAzione = "Modifica Lotto";
+						String cfSARiferimento = request.getParameter(ParametriServlet.FIELD_NAME_ID_STAZIONE_APPALTANTE);
+						String cfAmministrazione = request.getParameter(ParametriServlet.FIELD_NAME_CF_AMMINISTRAZIONE);
+						String cfUtente = currentUser.getLogin();
+	
+						logManager.log(getTodayDate(), cfSARiferimento, cfUtente, completeCIG, descrizioneAzione, cfAmministrazione, Long.toString(idLotto) );
+						
+						logger.debug("Il CIG del lotto corrente vale [" + completeCIG + "]");
+						
+						setMessage ( request, Messaggi.SIMOG_LOTTO_012 + " CIG [" + completeCIG + "]");
+	
+						String idGara= request.getParameter(SESSION_ID_GARA);
+						String forwardPath =SRV_VISUALIZZA_DETTAGLIO + "?" + SESSION_ID_GARA + "=" + idGara;
+						//throw new ServletException(forwardPath);
+						commit(currentActiveConnection);
+						
+						forward(forwardPath , request, response);
+						return;
+//					} else {
+//						sendError(request, response, SIMOG_LOTTO_019, gestioneSpecificaLotto, false );
+//						return;
+//					}
+				} catch ( ActionException ae ) {
+					ae.printStackTrace();
+					rollback(currentActiveConnection);					
+					sendError( request, response, ae.getMessage(), JSP_GESTIONE_GARE_RSSA);
+					return;
+				} catch ( SimogException se ) {
+					se.printStackTrace();
+					rollback(currentActiveConnection);					
+					sendError( request, response, se.getMessage(), JSP_GESTIONE_GARE_RSSA);
+					return;
+				} catch ( Exception sqle ) {
+					rollback(currentActiveConnection);
+					sendError(request, response, sqle.getMessage(), JSP_GESTIONE_GARE_RSSA, sqle);
+					return;
+				} finally {
+					
+					//rollbackOrcommit(currentActiveConnection);
+					closeConnection(request.getSession().getId(),getClass().getName());
+				}	
+			} else {
+				sendError(request, response, Messaggi.SIMOG_LOGIN_004, JSP_LOGIN );
+				return;
+			}
+		} else {
+			sendError(request, response, Messaggi.SIMOG_LOGIN_003, JSP_LOGIN );
+			return;
+		}		
+	}
+}

@@ -1,0 +1,100 @@
+package it.avcp.simog.cpv.manager.app;
+//FIXME: la leviamo ?
+//import java.io.BufferedOutputStream;
+//import java.io.FileOutputStream;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+//
+//import com.lowagie.text.Chunk;
+//import com.lowagie.text.Document;
+//import com.lowagie.text.Font;
+//import com.lowagie.text.HeaderFooter;
+//import com.lowagie.text.Paragraph;
+//import com.lowagie.text.Rectangle;
+//import com.lowagie.text.pdf.PdfPTable;
+//
+//public class PdfManager {	
+//	
+//	public static void main ( String [] args ) throws Exception {
+//		
+//		Document pdfDocument = new Document();
+//
+//		BufferedOutputStream bout = new BufferedOutputStream ( new FileOutputStream ( "c:/opt/SIMOG/testPDf/test.pdf" ) );
+//		
+////		PdfWriter pdfWriter = PdfWriter.getInstance(pdfDocument, bout);
+//		
+//		Document.compress = true;
+//		
+//		pdfDocument.addTitle("Hello World example");
+//		pdfDocument.addAuthor("Bruno Lowagie");
+//		pdfDocument.addSubject("This example explains how to add metadata.");
+//		pdfDocument.addKeywords("iText, Hello World, step 3, metadata");
+//		pdfDocument.addCreator("SIMOG");
+//	
+//		String currentDate = new SimpleDateFormat("dd/MM/yyyy").format( new Date() );
+//
+//		/*
+//		 * Crea il titolo
+//		 */
+//		
+//		
+//		
+//		
+//		
+//		pdfDocument.open();
+//		
+//		for ( int i = 0; i < 20; i++ ) {
+//			pdfDocument.add( Chunk.NEWLINE );
+//		}
+//		
+//		Paragraph title1 = new Paragraph( "SIMOG - AVCP Lista CPV Correnti ", new Font(Font.HELVETICA, 30, Font.BOLD) );
+//		Paragraph title2 =  new Paragraph ( "Data " + currentDate, new Font(Font.HELVETICA, 30, Font.BOLD) );
+//		
+//		
+//		title1.setAlignment(Rectangle.ALIGN_MIDDLE );
+//		title2.setAlignment(Rectangle.ALIGN_MIDDLE );
+//		
+//		pdfDocument.add( title1 );
+//		pdfDocument.add( title2 );
+//		
+//		
+////		Chunk imageContainer = new Chunk ( Image.getInstance("/opt/SIMOG/img/headerListaCPV.jpg"), 0, 0 );
+//		HeaderFooter header = new HeaderFooter(new Paragraph( "SIMOG - AVCP Lista CPV Correnti - Data " + currentDate, new Font(Font.HELVETICA, 20, Font.BOLD)), false);
+//		HeaderFooter footer = new HeaderFooter(new Paragraph ( "Ad uso interno", new Font(Font.HELVETICA, 10, Font.TIMES_ROMAN)  ), true);
+//		header.setBorder(Rectangle.NO_BORDER);
+//		footer.setAlignment(Rectangle.RIGHT);
+//		footer.setBorder(Rectangle.NO_BORDER);
+//		pdfDocument.setHeader(header);
+//		pdfDocument.setFooter(footer);	
+//		
+//		pdfDocument.newPage();
+//		
+//		
+//
+//		
+//		
+//		/*
+//		 * Crea la lista in una tabella
+//		 */
+//		
+//		PdfPTable table = new PdfPTable( 2 );
+//		table.setHeaderRows(1);
+//		table.addCell("Testo" + table.spacingBefore() );
+//		table.addCell("Testo" + table.spacingAfter() );
+//		table.setSpacingBefore( table.getHeaderHeight() );
+//
+//		
+//		for ( int i = 0; i < 200; i++ ) {
+//			table.addCell("Testo" + table.spacingBefore() );
+//			table.addCell("Testo" + table.spacingAfter() );
+//		}		
+//		pdfDocument.add(table);
+//		
+//		pdfDocument.close();
+//		
+//		bout.flush();
+//		bout.close();
+//
+//	}
+//
+//}

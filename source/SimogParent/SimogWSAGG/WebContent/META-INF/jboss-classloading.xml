@@ -1,0 +1,9 @@
+<!-- <classloading xmlns="urn:jboss:classloading:1.0" -->
+<!--               name="SimogWSPDD.war" -->
+<!--               parent-first="true" -->
+<!--               domain="SimogWSPDD.war" -->
+<!--               top-level-classloader="true" -->
+<!--               parent-domain="DefaultDomain" -->
+<!--               export-all="NON_EMPTY" -->
+<!--               import-all="true"> -->
+<!-- </classloading> -->

@@ -1,0 +1,16 @@
+package it.avlp.simog.servlet.sessionmanager;
+
+
+/**
+ * Servlet implementation class for Servlet: SessionHolder
+ *
+ */
+// public class SessionHolder extends ServletBase {
+//
+//	@Override
+//	protected void perform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//		checkSession(request);
+//		logger.debug ("Refreshing Session [" + currentActiveSession.getId() + "]" );
+//	}
+//}

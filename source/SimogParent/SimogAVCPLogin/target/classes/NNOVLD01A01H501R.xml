@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+   <soggetto>
+      <cognome>SPINI</cognome>
+      <nome>LUIGIA LAURA</nome>
+      <admin_or>000</admin_or>
+   </soggetto>
+   <collaborazioni />
+   <stato>0</stato>
+   <messaggio>L'utente non ha il profilo RSSA per nessuna Stazione Appaltante</messaggio>
+</check_login>

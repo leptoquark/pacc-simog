@@ -1,0 +1,19 @@
+	/*private void setModifiedFlags(HttpServletRequest request){
+		request.setAttribute("Modificato", request.getParameter("Modificato"));
+		int num = 6;
+		for(int i = 0; i<num;i++)
+			request.setAttribute(("Modificato"+i), request.getParameter("Modificato"+i));
+	}
+	*/
+	
+	
+//	public void validate(HttpServletRequest request) throws ValidationException{
+//		
+//		MassimoRibassoBean mrb = new MassimoRibassoBean();
+//		Scheda_A scheda = new Scheda_A();
+//		scheda.setMassimoRibasso(mrb);
+//		Scheda_A_Validator valid = new Scheda_A_Validator(scheda, ParametriServletBloccoDati.TAB_MASSIMO_RIBASSO); 
+//		
+//		if (!valid.valida())
+//			throw new ValidationException(valid.getEccezioni());
+//	}

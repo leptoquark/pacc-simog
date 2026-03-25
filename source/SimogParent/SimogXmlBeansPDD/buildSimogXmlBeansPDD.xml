@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="SimogXmlBeansPDD">
+    <property environment="env"/>
+    <property name="Librerie.location" value="../Librerie"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="SimogXmlBeansPDD.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="${Librerie.location}/xmlbeans/xbean_xpath.jar"/>
+        <pathelement location="${Librerie.location}/xmlbeans/xbean.jar"/>
+        <pathelement location="${Librerie.location}/xmlbeans/xmlbeans-qname.jar"/>
+        <pathelement location="${Librerie.location}/xmlbeans/xmlpublic.jar"/>
+        <pathelement location="${Librerie.location}/jsr173_1.0_api.jar"/>
+    	
+    </path>
+    <target name="init" depends="clean">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+
+    <target depends="build-project" name="build"/>
+
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}" encoding="iso-8859-2">
+            <src path="src"/>
+            <classpath refid="SimogXmlBeansPDD.classpath"/>
+        </javac>
+    </target>
+  	<target name="jar" depends="build-project">
+  	    <jar destfile="SimogXmlBeansPDD.jar" basedir="bin">
+  	    </jar>
+  	</target>
+
+</project>

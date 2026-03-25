@@ -1,0 +1,693 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<title>SIMOG - إدارة المناقصات</title>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="script/funzioni.js"></script>
+<script type="text/javascript" src="script/pageutils.js"></script>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" /> 
+<style>
+#modalContainer {
+	background-color:transparent;
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	z-index:10000;
+}
+#alertBox {
+	position:relative;
+	min-height:100px;
+	margin-top:200px;
+	border:2px solid #000;
+	background-color:#F2F5F6;
+	background-image:url(img/alert.png);
+	background-repeat:no-repeat;
+	background-position:20px 30px;
+}
+#modalContainer > #alertBox {
+	position:fixed;
+}
+#alertBox h1 {
+	margin:0;
+	font:bold 0.9em verdana,arial;
+	background-color:#BECBE6;
+	border-bottom:1px solid #000;
+	padding:2px 0 2px 5px;
+	text-align:left;
+}
+#alertBox p {
+	padding-left:5px;
+	margin-left:55px;
+}
+#alertBox a {
+	font-size:small;
+	font-weight: bold;
+}
+#alertBox #closeBtn {
+	display:block;
+	position:relative;
+	margin:5px auto;
+	padding:3px;
+	border:1px solid #000;
+	width:70px;
+	text-transform:uppercase;
+	text-align:center;
+	color:navy;
+	background-color:#BECBE6;
+	text-decoration:none;
+	font-weight: bold;
+}
+</style>
+</head>
+<script type="text/javascript" src="script/customAlertBox.js"></script>
+<!-- TICKET ALM #4222 - 3.04.4 - Lib jquery per chiamata asincrona soggetti aggregatori -->
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type="text/javascript">
+//<!--
+function setVal(elem){
+	if(!elem.disabled && !elem.readonly){
+		if(elem.checked)
+			document.getElementById("hidden").value = "S";
+		else
+			document.getElementById("hidden").value = "N";
+	}
+}
+	function convertiTesto(elem){
+		document.getElementById("OggettoGara").value = document.getElementById("OggettoGara").value.split(String.fromCharCode(8364)).join("&#8364;");
+	}
+	function upReqVal(){
+		var tmp = document.getElementById("checkIfOK");
+		tmp.value=parseInt(tmp.value) + 1;
+		return true;
+	}
+	function inputRadio(numberOfAmm){
+		var counter = 0;
+		while(counter < numberOfAmm){
+			counter++;
+			var radio = document.getElementById(counter);
+			if(radio.checked == true){ return true; }			
+		}
+		alert("Scegliere una Stazione Appaltante");
+		return false;
+	}
+	function doActionInserisci (numberOfAmm, isAdmin,isAfter3044){
+		/* MEV 46487  3.04.11 */
+		alert("AVVISO: Si ricorda che gli eventuali CIG generati sono validi solo per i casi disciplinati dalla delibera 582 del 13 dicembre 2023 e che pertanto la pubblicazione deve essere completata entro 48 ore dalla relativa data di creazione");
+		if(numberOfAmm == null)
+			numberOfAmm = 1;
+		if(inputRadio != null && !inputRadio(numberOfAmm)) return false;
+		setVal(document.getElementById(""));
+		var categorie = "";
+		 $("input:checkbox[name=categoria]:checked").each(function(){
+	    	    categorie = categorie+($(this).val())+"|";
+	    	});
+		 if(categorie.length > 0) {
+			 var checkNoIniziativeByUser = $("input[name=FIELD_NAME_CHECK_INIZIATIVE]").val();
+		    if(isAdmin || categorie=="999|" || !isAfter3044 || checkNoIniziativeByUser=="OK")
+		validateAndAction();
+		    else
+		    	doCallSoggAggrGara(categorie,null); 
+		 } else {
+	    		alert("Scegliere almeno una Categorie merceologiche oggetto della fornitura di cui al DPCM soggetti aggregatori");
+	     }
+	}
+	function MyDialogArguments() {
+		this.Sender = null;
+	}
+	function doActionModifica(action, isAdmin,isAfter3044){
+		var ammin = document.forms[0].;
+		var numberOfAmm = null;
+		if(ammin != null) 
+			numberOfAmm = ammin.length;
+		if(numberOfAmm == null)
+			numberOfAmm = 1;
+		if(ammin != null && !inputRadio(numberOfAmm))return false;
+		setVal(document.getElementById(""));
+		var categorie = "";
+		 $("input:checkbox[name=categoria]:checked").each(function(){
+	    	    categorie = categorie+($(this).val())+"|";
+	    	});
+		 if(categorie.length > 0) {
+			 var checkNoIniziativeByUser = $("input[name=FIELD_NAME_CHECK_INIZIATIVE]").val();
+		     console.log("checkNoIniziativeByUser "+checkNoIniziativeByUser);	 
+		    if(isAdmin || categorie=="999|" || !isAfter3044 || checkNoIniziativeByUser=="OK")
+			doAction(action);
+		    else
+		    	doCallSoggAggrGara(categorie,action); 
+		 } else {
+			 if(isAfter3044)
+	    		alert("Scegliere almeno una Categorie merceologiche oggetto della fornitura di cui al DPCM soggetti aggregatori");
+			 else
+				 doAction(action);
+	     }
+/*		if(!hasErrors(document.forms[0]))
+			doAction(action); */
+	}	
+    function checkAccordoQuadro() {
+        var selectedValue = $("select[name=modoRealizzazione]").val();
+        if(selectedValue==17 || selectedValue==18){
+        	$("select[name=strumentoSvolgimento]").val("6");
+        	$('select[name=strumentoSvolgimento]').find('option[value="6"]').attr("selected",true);
+        	//$("select[name=strumentoSvolgimento]").prop('disabled', 'disabled');
+        	$('select[name=strumentoSvolgimento]').find('option:not(:selected)').attr('disabled', true);
+         } else
+        	 $('select[name=strumentoSvolgimento]').find('option:not(:selected)').attr('disabled', false);
+        	 //$("select[name=strumentoSvolgimento]").prop('disabled', false);
+    } 
+	function buttonSave(action){
+		var ammin = document.forms[0].;
+		var numberOfAmm = null;
+		if(ammin != null) 
+			numberOfAmm = ammin.length;
+		if(numberOfAmm == null)
+			numberOfAmm = 1;
+		if(ammin != null && !inputRadio(numberOfAmm))return false;
+		setVal(document.getElementById(""));
+if(!hasErrors(document.forms[0])){
+			var categorie = "";
+			 $("input:checkbox[name=categoria]:checked").each(function(){
+		    	    categorie = categorie+($(this).val())+"|";
+		    	});
+			 if(categorie.length > 0) {
+			    if(isAdmin || categorie.length=="999|" || !isAfter3044)
+			    	doAction(action);
+			    else
+			    	doCallSoggAggrGara(categorie,action); 
+			 } else {
+		    		alert("Scegliere almeno una Categorie merceologiche oggetto della fornitura di cui al DPCM soggetti aggregatori");
+		     }
+		}
+	}	
+	function checkDelega(ctrl){
+		if (ctrl.title != "null"){
+			customAlert(ctrl.title)
+			// PP solo avviso ctrl.checked=false;
+		}
+	}
+function checkChangeGara(obj, obj2, dataComun, admin) {
+	if( dataComun != null && dataComun != "null" && dataComun != "" && !admin){
+	if( obj.type == "radio"){
+		obj.checked = obj.defaultChecked;
+		obj2.checked = !obj.checked;
+	}
+	else{
+		obj.value = obj.defaultValue;
+	}
+	alert("Impossibile modificare l'importo in quanto il dato e' stato trasmesso al sistema Riscossione!");
+	return false;
+}
+if( obj.type == "radio"){
+	abilitaImporto(obj);
+	showAlertInd();
+	return true;
+	}
+}
+function showAlertInd(){
+	var elem = document.getElementById("alertInd");
+	if(elem == null) return;
+	var style = document.getElementById("alertInd").style;
+	var campo = document.getElementById("euro");
+	if(campo.disabled == true)
+		style["display"] = "block";
+	else	
+		style["display"] = "none";
+}
+function clearSelected(comboSorgente){
+    var elements = document.getElementById(comboSorgente).options;
+    for(var i = 0; i < elements.length; i++){
+      elements[i].selected = false;
+      elements[i].removeAttribute("selected");
+    }
+  }
+function checkSettoreGara() {
+    var selectedValue = $("select[name=FLAG_ENTE_SPECIALE]").val();
+    var disabledField = false;
+    if(selectedValue=="O"){
+    	disabledField = "disabled";
+    	clearSelected('sel_MODO_INDIZIONE_GARA');
+    }
+    $("select[name=ID_MODO_GARA]").prop('disabled', disabledField);
+} 
+function initGara(){
+	checkSettoreGara();
+}
+//-->
+</script>
+<script type="text/javascript" src="script/scriptSoggAggr.js"></script>
+<body onload="javascript:initGara();"">
+<div id="dialogcig"></div>
+<input type="hidden" id="hidden_lista_cig" name="lista_cig" value="" />
+<div id="gabbia">
+<div id="header">
+</div>
+	<div id="bodypage">
+		<div class="bodypage-e">
+		<form name="confermaGara" action="InserisciGara"   method="post">
+		<input type="hidden" name="" id="idNoCheckSoggAggrByUser" value="" />
+			<input type="hidden" name="checkIfOK" id="checkIfOK" value="" />		
+		<h1>إدارة المناقصة</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+		<div class="hmenu">
+			<ul><li><a title="الصفحة السابقة" href="
+				?=
+				&=">عودة</a></li></ul>
+	    	<ul><li><a title="الصفحة السابقة" href="">عودة</a></li></ul>
+		</div>
+		<fieldset>
+		<legend>بيانات المناقصة</legend>
+				<table width="100%" rpad="10" >
+				<tr>
+					<th>التاريخ</th>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>CF UTENTE</th>
+					<td colspan="2"></td>
+				</tr>
+					<tr>
+						<th>NUMERO GARA</th>
+						<td><strong><big></big></strong></td>
+						<td>(da utilizzare in sede di versamento del contributo da parte della SA)</td>
+					</tr>
+				<tr>
+				     <td colspan="3"><p class="detailHelp">Selezionare la Stazione appaltante di riferimento</p></td>
+				</tr>
+  				<tr>
+				<td colspan="3">
+						<div class="scrollLittle">
+						<table width="100%">
+							<tr>
+							<td><input   onclick="checkDelega(this);" title="" id="" type="radio"  name="" value="" tabindex=""></td><td title=""><label for=""> - </label></td>
+							</tr>
+						</table>
+						</div>
+   				</td></tr>
+			 <tr>
+			 <td colspan="3">
+				<div style="">
+				<fieldset>
+				<legend></legend>						
+				<table width="100%">
+				<col width="40%">
+<tr><td colspan="3">
+		<table  width="100%">
+				<th colspan="2"></th>
+				<th align="right">Selezionata</th>
+		</table>
+<div class="elencoCategorie">
+		<table  width="100%">
+				<tr class="">
+				<td colspan="2"><label for="categoria[]"></label></td>
+				<td  >
+ 				<input    class="cig" type="radio" name="" value="" id="ChCategoria[]" <h:checkElement list="" element=""/> ></td>
+  				<input    type="checkbox" class="cig"  name="" value="" id="ChCategoria[]" <h:checkElement list="" element=""/> ></td> 
+				</tr>
+		</table>
+</div>
+</td></tr>					
+				<tr><td>&nbsp;</td></tr>
+				<tr><td colspan="3"><p style="font-weight: bold;"><a href="" target="_blank">&nbsp;<img title="Cliccare per informazioni estese" src="img/info-32x32.png" /></a></p></td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<!-- MEV 34188 - 3.04.8.1 FASE 2 aggiunto l'attributo </*%=SimogFlags.checkHighlightField(fieldToHighlight, "label_EAGG_MOTIVI")%*/> x per marcare il tag dell'eccezione -->
+					<th nowrap="nowrap"><label  for=""></label></th>
+					<td>
+							<select   tabindex="" name="" id="sel_FIELD_NAME_EAGG_COD_MOTIVO">
+							<option></option>
+							<h:options name="" scope="request" limit="200" value="" valLocation="tag"/>
+						</select>
+					</td>
+				 </tr>
+				</table>
+				</fieldset>
+				</div>
+				</td></tr>
+				<tr><td>&nbsp;</td></tr>
+			 <tr>
+			 <td colspan="3">
+				<div style="">
+				<fieldset>
+> --%>
+				<legend style="color: red;"></legend>						
+				<table width="100%">
+				<col width="2%">
+				<tr>
+					<td colspan="2"><p style="font-weight: bold;">La stazione appaltante &egrave; un comune non capoluogo di provincia.</p>
+					<br><p>Per proseguire con la creazione della gara &egrave; necessario dichiarare (con valore di autocertificazione ai fini di eventuali successive verifiche) la motivazione per cui si &egrave; abilitati ad acquisire il CIG.</p>
+					</td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+					<td>
+					<input   id="legge89_1" type="radio"  
+					name="" 
+					value="" 
+					tabindex="" 
+					  />
+					</td>
+					<td></td>
+					</tr>
+					<tr>
+					<td>
+					<input   id="legge89_2" type="radio"  
+					name="" 
+					value="" 
+					tabindex="" 
+					 />
+					</td>
+					<td></td>
+					</tr>
+				</table>
+				<input type="hidden"  value="" name=""/>
+				</fieldset>
+				</div>
+				</td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<th><label  >Oggetto della gara*</label></th>
+					<td colspan="2">
+						<input   tabindex="" 
+						type="text" value='<h:requestParameter property="" 
+						defaultValue=""/>' name="" 
+						id="OggettoGara" maxlength="1024" size=100% onchange="javascipt:replaceWordChars(this)" />
+					</td>
+				</tr>
+				<tr>
+				<th><label>Importo complessivo della gara a base d'asta o presunto</label></th>
+				<td><table cellspacing="0" cellpadding="0">
+				<tr>
+				<td>
+					<input   id="importo_si" type="radio"  
+							onclick="checkChangeGara(this, getElementById('importo_no'), '', );" 
+							name="" tabindex=""
+								value="" />&nbsp;
+				</td>
+				<td>
+					<input   onblur="validateAmount(this)" id="euro" type="text" style="text-align:right;" 
+							onchange="checkChangeGara(this, this, '', );" 
+							name="" tabindex=""
+					  		value="<h:requestParameter property="" defaultValue="" />" 
+					  		 />
+					</td>
+					</tr></table>
+				</td>
+				<td>
+					 <font color="grey">Indicare l'importo con riferimento alla totalita' dei lotti componenti la gara</font>
+				</td>		
+				</tr>
+				<tr>
+					<th><label>Importo complessivo della gara a base d'asta o presunto non disponibile</label></th>
+					<td>
+					   <input   id="importo_no" type="radio" 
+						name="" tabindex=""
+						value="" 
+						 onclick="checkChangeGara(this, getElementById('importo_si'), '', );" />
+					</td>		
+					<td>
+					<div  id="alertInd" style="color: red; display: none;">Si ricorda che la mancata indicazione dell'importo complessivo di gara comportera' l'addebito nel MAV del contributo calcolato nella misura massima prevista dalla deliberazione in vigore<br><a href="http://www.anticorruzione.it/portal/public/classic/AttivitaAutorita/AttiDellAutorita/_Atto?ca=4458" target="blank">Consulta la delibera</a></div>
+					</td>	
+				</tr>	
+				<tr>
+					<th><label >Numero totale Lotti*</label></th>
+					<td colspan="2">
+						<input   tabindex="" type="text" value="<h:requestParameter property="" defaultValue=""/>" name="" maxlength="10" onblur="validateNumber(this)">
+					</td>
+				</tr>
+				<tr>
+					<th><label  for="">Settore attivita' della SA*</label></th>
+					<td><select onchange="javascript: checkSettoreGara();"   tabindex="" name="" id="sel_FLAG_ENTE_SPECIALE">
+				  			<option></option>
+				  			<h:options name="listaTipiEnte" scope="request" value="" valLocation="tag"/>
+				  		</select>
+					</td>
+				</tr>
+			 	<tr>
+				<th><label  for="">Modalit� di indizione (settori speciali)</label></th>
+				<td>
+					<select   tabindex="" name="" id="sel_MODO_INDIZIONE_GARA">
+						<option></option>
+						<h:options name="" scope="request" value="" valLocation="tag"/>
+					</select>
+				</td>
+			 </tr>
+			 <!-- TICKET ALM - 3.04.2 NG -->
+			<tr>
+				<th><label  for="">Modalita' di indizione servizi di cui all'allegato IX</label></th>
+				<td>
+						<select   tabindex="" name="" id="sel_ALLEGATO_IX">
+						<option></option>
+						<h:options name="" scope="request" value="" valLocation="tag"/>
+					</select>
+				</td>
+			 </tr>	
+			<!-- FINE TICKET ALM - 3.04.2 NG -->
+			 	<tr>
+				<th><label  for="">Modalita' di realizzazione*</label></th>
+				<td>
+						<select   tabindex="" name="" id="sel_MODO_REALIZZAZIONE" >
+						<option></option>
+						<h:options name="" scope="request" value="" valLocation="tag"/>
+					</select>
+				</td>
+			 </tr>
+			 <!-- TICKET ALM - 3.04.3 #659 -->
+			 <!-- Ticket 20057 -->
+				<tr>
+					<th><label  >Durata della convenzione o accordo quadro in giorni</label></th>
+					<td colspan="2">
+						<input   tabindex="" type="text" value="<h:requestParameter property="" defaultValue=""/>" name="" maxlength="10" onblur="validateNumber(this)">
+					</td>
+				</tr>		
+			<!-- FINE TICKET ALM - 3.04.3 #659 -->
+			 <!-- TICKET ALM - 3.04.2 NG -->
+				<tr>
+					<th><label  for="">Strumenti per lo svolgimento delle procedure*</label></th>
+				    <td>
+							<select   tabindex="" name="" id="sel_STRUMENTO_SVOLGIMENTO">
+							<option></option>
+							<h:options name="" scope="request" value="" valLocation="tag"/>
+						</select>
+					</td>
+				 </tr>	
+			<!-- FINE TICKET ALM - 3.04.2 NG  -->
+				<tr>
+					<th><label  >CIG relativo all'accordo quadro/convenzione cui si aderisce</label></th>
+					<td colspan="2">
+						<input   tabindex="" type="text" value="<h:requestParameter property="" defaultValue=""/>" name="" maxlength="10">
+					</td>
+				</tr>
+				<tr>
+				<!-- 3.04.7.1 cambiata label -->
+					<th><label  for="">Gara esclusa dall'obbligo dell'uso del FVOE ai fini della verifica dei requisiti*</label></th>
+					<td><select   tabindex="" name="" id="sel_ESCLUSO_AVCPASS">
+		  				<option></option>
+		  				<option value="N" >NO</option>
+		  				<option value="S" >SI</option>
+					</select></td>
+				</tr>
+			 <tr>
+					<th><label >Esecuzione di affidamenti in estrema urgenza/somma urgenza</label></th>
+					<td colspan="2">
+					<input  type="checkbox" id ="" name =""  />
+					<input type="hidden" id="hidden" name="hidden"/>
+					</td>
+			</tr>
+			<!-- TICKET ALM - 3.04.2 NG -->
+			<tr>
+				<th><label  for="">Motivo urgenza</label></th>
+				<td colspan="2">
+						<select  tabindex="" name="" id="sel_ESTREMA_URGENZA">
+						<option></option>
+						<h:options name="" scope="request" value="" valLocation="tag"/>
+					</select>
+				</td>
+			 </tr>	
+			<!-- FINE TICKET ALM - 3.04.2 NG -->
+		                <tr>
+						<th><label for="" >La stazione appaltante agisce per conto di altro soggetto singolo?</label></th>
+					  		<td  colspan="2" > 
+			   					 <select   tabindex="" name="" id="sel_FLAG_SA_AGENTE">
+					  				<option value="N" >NO</option>
+					  				<option value="S" >SI</option>
+								</select>
+		   					</td>		   		
+				  	   </tr>
+				  	   	<tr>
+							<th><label  for="">Funzioni delegate</label></th>
+							<td colspan="2">
+									<select   tabindex="" name="" id="sel_ID_F_DELEGATE">
+									<option></option>
+									<h:options name="" scope="request" value="" valLocation="tag"/>
+								</select>
+							</td>
+						 </tr>
+		                <tr>
+		   					<th><label>Codice fiscale soggetto per conto del quale agisce la S.A. (in caso di soggetto singolo)</label></th>
+		   					<td><input   id="cfSoggettoA"   name=""  tabindex="" 
+								type="text" value="[condition]" maxlength="11"/></td>
+		   				</tr>
+					   	<tr>
+		   					<th><label>Denominazione dell'Amministrazione per la quale agisce la S.A.</label></th>
+		   					<td><input  id="denSoggettoA"  name=""  tabindex="" 
+								type="text" value="[condition]" disabled /></td>
+		   				</tr>
+				</table>
+		</fieldset>
+		<div align="left">
+			<br/>
+				<input  type="button"  value="Salva" onclick="doActionModifica('',,);"/>
+				 type="button"  value="Conferma" onclick="doAction('')"/> --%>
+				<input type="hidden"  value="" name=""/>
+				<input type="hidden"  value="" name="toDo" id="toDo"/>
+				<input type="button"  value="Inserisci Gara" onclick="doActionInserisci(document.forms[0]..length,,); "/>
+				<input type="hidden"  value="" name="toDo" id="toDo"/>
+		</div>
+			<input type="hidden"  value="" name=""/>
+			<input type="hidden"  value="" name=""/>
+				<input type="hidden"  value="" name=""/>
+			<!-- TB: ticket popup modali. Import css e js -->
+            <link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+			<div id="dialogSoggAggr"></div>
+		</form>	
+		</div>
+	</div>
+	</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+<script type="text/javascript">
+//<!--
+showAlertInd();
+//-->
+</script>
+</body>
+</html>

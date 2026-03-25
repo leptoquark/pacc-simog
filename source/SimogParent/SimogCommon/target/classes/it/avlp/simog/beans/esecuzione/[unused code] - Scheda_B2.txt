@@ -1,0 +1,46 @@
+//package it.avlp.simog.beans.esecuzione;
+//
+//public class Scheda_B2 {
+//	
+//	private StatiAvanzamentoBean statiAvanzamento;
+//	private CertificatiPagamentoBean[] certificatiPagamento;
+//	private AttiAggiuntiviBean[] attiAggiuntivi;
+//	private MotiviSospensioneBean[] motiviSospensione;
+//	private MotiviVariantiBean[] motiviVariante;
+//	
+//	public MotiviSospensioneBean[] getMotiviSospensione() {
+//		return motiviSospensione;
+//	}
+//	public void setMotiviSospensione(MotiviSospensioneBean[] motiviSospensione) {
+//		this.motiviSospensione = motiviSospensione;
+//	}
+//	public MotiviVariantiBean[] getMotiviVariante() {
+//		return motiviVariante;
+//	}
+//	public void setMotiviVariante(MotiviVariantiBean[] motiviVariante) {
+//		this.motiviVariante = motiviVariante;
+//	}
+//	public AttiAggiuntiviBean[] getAttiAggiuntivi() {
+//		return attiAggiuntivi;
+//	}
+//	public void setAttiAggiuntivi(AttiAggiuntiviBean[] attiAggiuntivi) {
+//		this.attiAggiuntivi = attiAggiuntivi;
+//	}
+//	public CertificatiPagamentoBean[] getCertificatiPagamento() {
+//		return certificatiPagamento;
+//	}
+//	public void setCertificatiPagamento(
+//			CertificatiPagamentoBean[] certificatiPagamento) {
+//		this.certificatiPagamento = certificatiPagamento;
+//	}
+//	public StatiAvanzamentoBean getStatiAvanzamento() {
+//		return statiAvanzamento;
+//	}
+//	public void setStatiAvanzamento(StatiAvanzamentoBean statiAvanzamento) {
+//		this.statiAvanzamento = statiAvanzamento;
+//	}
+//	
+//	
+//	
+//
+//}

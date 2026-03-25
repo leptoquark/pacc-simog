@@ -1,0 +1,68 @@
+
+[condition]	
+[condition]
+<script type="text/javascript">
+//<!--
+function modifyRowFin(i,a,o,c){modifyRow(i,a,o,c),calcolaFin(),gt("AddMod"+c).href="javascript:calcolaTotFin(["+ricreaStringa(a)+"],["+ricreaStringa(o)+"],'"+c+"')"}
+function setForModifyRowFin(i,o,r,t){setForModifyRow(i,o,r,t),gt("AddMod"+t).href="javascript:modifyRowFin('"+i+"',["+ricreaStringa(o)+"],["+ricreaStringa(r)+"],'"+t+"')"}
+function deleteRowFin(a,e,i,c){deleteRow(a,e,i,c),calcolaFin(),gt("AddMod"+c).href="javascript:calcolaTotFin(["+ricreaStringa(e)+"],["+ricreaStringa(i)+"],'"+c+"')"}
+function calcolaTotFin(r,a,t){addRow(r,a,t),calcolaFin(),gt("AddMod"+t).href="javascript:calcolaTotFin(["+ricreaStringa(r)+"],["+ricreaStringa(a)+"],'"+t+"')";var n=gt("idTabellaFinanziamento").rows;for(i=1;i<n.length;i++){var c=n[i].id;n[i].firstChild.children[0].href="javascript:setForModifyRowFin('"+c+"',["+ricreaStringa(r)+"],["+ricreaStringa(a)+"],'"+t+"')",n[i].firstChild.children[1].href="javascript:deleteRowFin('"+c+"',["+ricreaStringa(r)+"],["+ricreaStringa(a)+"],'"+t+"')"}}
+function calcolaFin(){var e=0;for(righe=gt("idTabellaFinanziamento").rows,td=gt("idTabellaFinanziamento"),i=1;i<righe.length;i++){var a=righe[i].cells[2].innerText||righe[i].cells[2].textContent;""!=a&&(isNaN(parseFloat(a))||(a=(a=a.replace(/\./g,"").replace(".","")).replace(",","."),e+=parseFloat(a)))}gt("finTotale").value=e,gt("finTotale").value=gt("finTotale").value.replace(".",","),intValidateAmount(gt("finTotale"),3)}
+//-->
+</script>
+[condition]
+	<div id="DIVTabella"  class="scrollTabs" style="height: 200px; width: 99%;"><!-- class="scrollTabs"  -->
+		<table id="idTabella">
+			<tbody>
+			<tr>
+			<th width="125">إجراء</th>
+			<th class="garaTh">نوع التمويل</th>
+			<th class="garaTh">مبلغ التمويل</th>
+			</tr>
+			[condition]
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]',[],[],'')">تعديل</a>
+							<a title="حذف" href="javascript:deleteRowFin('[condition]',[],[],'')">حذف</a></td>
+					</c:if>
+					[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap style="display: none" id="[condition]">[condition]</td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					</tr>
+				[condition]
+				[condition]
+			</c:forEach> 
+			</tbody>		
+			</table> 			
+		</div>	 	
+		<div >
+			<label style="color:black;">إجمالي مبلغ التمويل</label>
+			<input disabled type="text" id="finTotale" style="color:black;border:0;text-align:right;font-weight: bold;width:100px;"	
+			value="[condition]"/>		
+			<br><br>		
+		</div>
+		[condition]
+				</select>
+				</td>					
+				</tr>		
+				<tr style="display: none;">
+				<td>
+					<input disabled type="text" id="" value=""/>
+				</td>							
+				</tr>
+				<tr>
+				<th><label for="">مبلغ التمويل</label></th>
+				<td>
+					<input type="text" id="" value="" onchange="setFormModified('Modificato')" onblur="validateAmount(this)" />
+				</td>
+				</tr>	
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:calcolaTotFin([],[],'')">إضافة</a></td></tr>							
+			</table>
+		<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato7" name ="Modificato7" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 

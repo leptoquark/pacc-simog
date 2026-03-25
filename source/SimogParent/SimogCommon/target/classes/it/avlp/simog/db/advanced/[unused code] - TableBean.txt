@@ -1,0 +1,30 @@
+//	public void printOptionList( String campoValue, String campoVisualizzato, String selected, JspWriter out ) {
+//		
+//		printOptionList( campoValue, campoVisualizzato,  selected,  out, false );
+//	}
+//
+//	public void printOptionList( String campoValue, String campoVisualizzato, String selected, JspWriter out,boolean emptyFieldToo ) {
+//
+//		//System.out.println("printing option list");
+//
+//		PrintWriter pwout = new PrintWriter( out );
+//		if(emptyFieldToo)
+//			pwout.print("<option value=\"\"");
+//		for ( int rowCount = 0; rowCount < getTableSize(); rowCount++ ) {
+//			
+//			//System.out.println("Option row(" + rowCount + ")");			
+//			String currentOptionValue = getNulledField(campoValue, rowCount);
+//			String currentDisplayValue = getNulledField(campoVisualizzato, rowCount);
+//				
+//			//System.out.println("Option column(" + currentColumnName + ") value (" + currentValue + ")");
+//
+//			pwout.print("<option value=\"" + currentOptionValue + "\"");
+//
+//			if ( currentOptionValue.equalsIgnoreCase(selected) ) {
+//				pwout.print ( " selected" );
+//			}
+//			pwout.print(">");
+//			pwout.print(currentDisplayValue);
+//			pwout.print("</option>");
+//		}
+//	}

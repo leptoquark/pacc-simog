@@ -1,0 +1,249 @@
+package it.avlp.simog.beans.conclusione;
+
+
+public class FineLavoriBean {
+//	private long idUltimazione;
+//	private Timestamp dataInizioUltimazione;
+//	private long idAggiudicazione;
+//	private Timestamp dataInizioAggiudicazione;
+//	private String flagSubappalti;
+//	private String dataUltimazione;
+//	private BigDecimal importoFinale;
+//	private int numGiorniSosp;
+//	private int numGiorniPro;
+//	private int numVarianti;
+//	private BigDecimal importoVarianti;
+//	private int numAccordi;
+//	private BigDecimal importoAccordi;
+//	private int numRiserveBonarie;
+//	private BigDecimal importoRiserveBonarie;
+//	private int numRiserveArbitrarie;
+//	private BigDecimal importoRiserveArbitrarie;
+//	private int numRiserveGiudiziale;
+//	private BigDecimal importoRiserveGiudiziale;
+//	private String flagRisAnticipata;
+//	private String flagDanno;
+//	private long risolResc;
+//	private String dataRisoluzione;
+//	private long oneriRisoluzione;
+//	private String flagPolizza;
+//	private BigDecimal oneriCorrisposti;
+//	private BigDecimal dannoEconomico;
+//	private String dataRegolareEsec;
+//	private String dataCollaudoStat;
+//	private String modoCollaudo;
+//	private String dataNominaColl;
+//	private String dataInizioColl;
+//	private String DataCertCollaudo;
+//	private String esitoCollaudo;
+//	
+//	public long getIdUltimazione() {
+//		return idUltimazione;
+//	}
+//	public void setIdUltimazione(long idUltimazione) {
+//		this.idUltimazione = idUltimazione;
+//	}
+//	public Timestamp getDataInizioUltimazione() {
+//		return dataInizioUltimazione;
+//	}
+//	public void setDataInizioUltimazione(Timestamp dataInizioUltimazione) {
+//		this.dataInizioUltimazione = dataInizioUltimazione;
+//	}
+//	public long getIdAggiudicazione() {
+//		return idAggiudicazione;
+//	}
+//	public void setIdAggiudicazione(long idAggiudicazione) {
+//		this.idAggiudicazione = idAggiudicazione;
+//	}
+//	public Timestamp getDataInizioAggiudicazione() {
+//		return dataInizioAggiudicazione;
+//	}
+//	public void setDataInizioAggiudicazione(Timestamp dataInizioAggiudicazione) {
+//		this.dataInizioAggiudicazione = dataInizioAggiudicazione;
+//	}
+//	public String getFlagSubappalti() {
+//		return flagSubappalti;
+//	}
+//	public void setFlagSubappalti(String flagSubappalti) {
+//		this.flagSubappalti = flagSubappalti;
+//	}
+//	public String getDataUltimazione() {
+//		return dataUltimazione;
+//	}
+//	public void setDataUltimazione(String dataUltimazione) {
+//		this.dataUltimazione = dataUltimazione;
+//	}
+//	public BigDecimal getImportoFinale() {
+//		return importoFinale;
+//	}
+//	public void setImportoFinale(BigDecimal importoFinale) {
+//		this.importoFinale = importoFinale;
+//	}
+//	public int getNumGiorniSosp() {
+//		return numGiorniSosp;
+//	}
+//	public void setNumGiorniSosp(int numGiorniSosp) {
+//		this.numGiorniSosp = numGiorniSosp;
+//	}
+//	public int getNumGiorniPro() {
+//		return numGiorniPro;
+//	}
+//	public void setNumGiorniPro(int numGiorniPro) {
+//		this.numGiorniPro = numGiorniPro;
+//	}
+//	public int getNumVarianti() {
+//		return numVarianti;
+//	}
+//	public void setNumVarianti(int numVarianti) {
+//		this.numVarianti = numVarianti;
+//	}
+//	public BigDecimal getImportoVarianti() {
+//		return importoVarianti;
+//	}
+//	public void setImportoVarianti(BigDecimal importoVarianti) {
+//		this.importoVarianti = importoVarianti;
+//	}
+//	public int getNumAccordi() {
+//		return numAccordi;
+//	}
+//	public void setNumAccordi(int numAccordi) {
+//		this.numAccordi = numAccordi;
+//	}
+//	public BigDecimal getImportoAccordi() {
+//		return importoAccordi;
+//	}
+//	public void setImportoAccordi(BigDecimal importoAccordi) {
+//		this.importoAccordi = importoAccordi;
+//	}
+//	public int getNumRiserveBonarie() {
+//		return numRiserveBonarie;
+//	}
+//	public void setNumRiserveBonarie(int numRiserveBonarie) {
+//		this.numRiserveBonarie = numRiserveBonarie;
+//	}
+//	public BigDecimal getImportoRiserveBonarie() {
+//		return importoRiserveBonarie;
+//	}
+//	public void setImportoRiserveBonarie(BigDecimal importoRiserveBonarie) {
+//		this.importoRiserveBonarie = importoRiserveBonarie;
+//	}
+//	public int getNumRiserveArbitrarie() {
+//		return numRiserveArbitrarie;
+//	}
+//	public void setNumRiserveArbitrarie(int numRiserveArbitrarie) {
+//		this.numRiserveArbitrarie = numRiserveArbitrarie;
+//	}
+//	public BigDecimal getImportoRiserveArbitrarie() {
+//		return importoRiserveArbitrarie;
+//	}
+//	public void setImportoRiserveArbitrarie(BigDecimal importoRiserveArbitrarie) {
+//		this.importoRiserveArbitrarie = importoRiserveArbitrarie;
+//	}
+//	public int getNumRiserveGiudiziale() {
+//		return numRiserveGiudiziale;
+//	}
+//	public void setNumRiserveGiudiziale(int numRiserveGiudiziale) {
+//		this.numRiserveGiudiziale = numRiserveGiudiziale;
+//	}
+//	public BigDecimal getImportoRiserveGiudiziale() {
+//		return importoRiserveGiudiziale;
+//	}
+//	public void setImportoRiserveGiudiziale(BigDecimal importoRiserveGiudiziale) {
+//		this.importoRiserveGiudiziale = importoRiserveGiudiziale;
+//	}
+//	public String getFlagRisAnticipata() {
+//		return flagRisAnticipata;
+//	}
+//	public void setFlagRisAnticipata(String flagRisAnticipata) {
+//		this.flagRisAnticipata = flagRisAnticipata;
+//	}
+//	public String getFlagDanno() {
+//		return flagDanno;
+//	}
+//	public void setFlagDanno(String flagDanno) {
+//		this.flagDanno = flagDanno;
+//	}
+//	public long getRisolResc() {
+//		return risolResc;
+//	}
+//	public void setRisolResc(long risolResc) {
+//		this.risolResc = risolResc;
+//	}
+//	public String getDataRisoluzione() {
+//		return dataRisoluzione;
+//	}
+//	public void setDataRisoluzione(String dataRisoluzione) {
+//		this.dataRisoluzione = dataRisoluzione;
+//	}
+//	public long getOneriRisoluzione() {
+//		return oneriRisoluzione;
+//	}
+//	public void setOneriRisoluzione(long oneriRisoluzione) {
+//		this.oneriRisoluzione = oneriRisoluzione;
+//	}
+//	public String getFlagPolizza() {
+//		return flagPolizza;
+//	}
+//	public void setFlagPolizza(String flagPolizza) {
+//		this.flagPolizza = flagPolizza;
+//	}
+//	public BigDecimal getOneriCorrisposti() {
+//		return oneriCorrisposti;
+//	}
+//	public void setOneriCorrisposti(BigDecimal oneriCorrisposti) {
+//		this.oneriCorrisposti = oneriCorrisposti;
+//	}
+//	public BigDecimal getDannoEconomico() {
+//		return dannoEconomico;
+//	}
+//	public void setDannoEconomico(BigDecimal dannoEconomico) {
+//		this.dannoEconomico = dannoEconomico;
+//	}
+//	public String getDataRegolareEsec() {
+//		return dataRegolareEsec;
+//	}
+//	public void setDataRegolareEsec(String dataRegolareEsec) {
+//		this.dataRegolareEsec = dataRegolareEsec;
+//	}
+//	public String getDataCollaudoStat() {
+//		return dataCollaudoStat;
+//	}
+//	public void setDataCollaudoStat(String dataCollaudoStat) {
+//		this.dataCollaudoStat = dataCollaudoStat;
+//	}
+//	public String getModoCollaudo() {
+//		return modoCollaudo;
+//	}
+//	public void setModoCollaudo(String modoCollaudo) {
+//		this.modoCollaudo = modoCollaudo;
+//	}
+//	public String getDataNominaColl() {
+//		return dataNominaColl;
+//	}
+//	public void setDataNominaColl(String dataNominaColl) {
+//		this.dataNominaColl = dataNominaColl;
+//	}
+//	public String getDataInizioColl() {
+//		return dataInizioColl;
+//	}
+//	public void setDataInizioColl(String dataInizioColl) {
+//		this.dataInizioColl = dataInizioColl;
+//	}
+//	public String getDataCertCollaudo() {
+//		return DataCertCollaudo;
+//	}
+//	public void setDataCertCollaudo(String dataCertCollaudo) {
+//		DataCertCollaudo = dataCertCollaudo;
+//	}
+//	public String getEsitoCollaudo() {
+//		return esitoCollaudo;
+//	}
+//	public void setEsitoCollaudo(String esitoCollaudo) {
+//		this.esitoCollaudo = esitoCollaudo;
+//	}
+//	
+//	
+//	
+//	
+
+}

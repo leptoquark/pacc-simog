@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/stile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" >
+<link rel="icon" href="img/animated_favicon1.gif" type="image/gif" >
+<link rel="stylesheet" href="theme/stile.css"/>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript" src="xtree/xtree2.js"></script>
+<script type="text/javascript" src="xtree/xmlextras.js"></script>
+<script type="text/javascript" src="xtree/xloadtree2.js"></script>
+<link type="text/css" rel="stylesheet" href="xtree/xtree2.css" />
+<script type="text/javascript"> 
+function selectRow(row){
+   var dest =  document.getElementById('CPV_ID');
+	var oldId = dest.value;
+	if(oldId.length == 10){
+		old = document.getElementById(oldId);
+		if(old){
+			old.style.color="";
+			old.style.backgroundColor="";
+		}
+	}
+	row.style.color="white";
+	row.style.backgroundColor="blue";
+   dest.value = row.id;
+}
+</script>
+<title>البحث عن CPV</title>
+<base target="_self">
+</head>
+<body onload="search('sel_CPV','CPV_ID')">
+	<form id="IdFormPopup" action=""  method="post">
+	<div class="bodypage-e">
+	<fieldset style="margin: 2px;padding: 2px;" > 
+	<fieldset style="margin: 2px;padding: 2px">
+	<legend>قائمة CPV</legend>
+	<div style="overflow: scroll; height: 250px;width: 100%;margin: 0px;padding: 0px;" >
+	<script type="text/javascript"> 
+			// modifica configurazione base
+			webFXTreeConfig.rootIcon			= "xtree/images/folder.png";
+			webFXTreeConfig.openRootIcon		= "xtree/images/openfolder.png";
+			webFXTreeConfig.folderIcon			= "xtree/images/folder.png";
+			webFXTreeConfig.openFolderIcon	= "xtree/images/openfolder.png";
+			webFXTreeConfig.fileIcon			= "xtree/images/file.png";
+			webFXTreeConfig.lMinusIcon			= "xtree/images/Lminus.png";
+			webFXTreeConfig.lPlusIcon			= "xtree/images/Lplus.png";
+			webFXTreeConfig.tMinusIcon			= "xtree/images/Tminus.png";
+			webFXTreeConfig.tPlusIcon			= "xtree/images/Tplus.png";
+			webFXTreeConfig.iIcon				= "xtree/images/I.png";
+			webFXTreeConfig.lIcon				= "xtree/images/L.png";
+			webFXTreeConfig.tIcon				= "xtree/images/T.png";
+			webFXTreeConfig.plusIcon			= "xtree/images/plus.png";
+			webFXTreeConfig.minusIcon			= "xtree/images/minus.png";
+			webFXTreeConfig.blankIcon			= "xtree/images/blank.png";
+			webFXTreeConfig.loadingIcon 		= "xtree/images/loading.gif"; 
+		var tree = new WebFXLoadTree("CPV", "/ricercaCPV?idCpv=00000000");  
+		//document.write(tree);
+		tree.write();
+	</script>
+	</div>
+	</fieldset>	 
+	<fieldset style="margin: 2px;padding: 2px">
+	<legend>البحث عن CPV</legend>
+	<div>
+		<table>
+			<tr>	
+				<input type="hidden" name="idCpv" value="00000000"  id=""/>
+				<td ><fieldset style="margin: 2px;padding: 2px;"><input type="text" name="pattern" value="<u:requestParameter property="pattern"/>"  id="pattern_ID"/>
+            <input type="submit" value="بحث" /></fieldset> </td>
+			</tr>
+			<jsp:useBean id="CPV_LIST" scope="session" class="java.util.ArrayList" />
+			 <tr>  
+				<td align="left">
+					<div style="overflow: auto;height: 155px;width: 700px;margin: 0px;padding: 0px">
+					<table width="100%">
+						[condition]">	 
+							   <td width="15%">[condition]
+			<input type="button" value="تأكيد" onclick="setRetVal('')" />
+			<input type="button" value="إلغاء" onclick="chiudiPopUp()" />
+			<input type="text" style="display:none;" name="CPV_NAMEDESC" value="" id="CPV_IDDesc" />
+	</div>
+	</fieldset> 
+ 	</form>	
+</body>
+</html>
+	

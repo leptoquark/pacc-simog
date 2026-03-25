@@ -1,0 +1,1414 @@
+
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<div id="dialog"></div>
+<!-- fine import popup modali -->
+[condition]
+<fieldset class="gara"><br>
+	<table width="100%">
+	<tr><td colspan="2"><hr></td></tr>
+	<tr>	
+	<th><label>نوع الورقة</label></th>
+	<td>
+	[condition][condition]</td>
+	</tr>
+	</c:if>
+	[condition]</td>
+	</tr>
+	</c:if>
+	<tr><td colspan="2"><hr></td></tr>
+<table width="100%" [variable]>
+<tr><td align="center" colspan="2"><p class="detailHelp"><strong>موضوع العقد</strong></p></td></tr>
+	<input type="hidden" id="canSearch" value="false" />	
+	<tr><th><label>رمز مكان تنفيذ العقد (ISTAT)</label></th><td >
+	<input onblur="searchLE(this.id, 'ricercaIstat.jsp', 'isNotIstat')" 
+		   onkeyup="checkKeyLE(event, this, 'ricercaIstat.jsp', 'isNotIstat')" onchange="setFormModified('Modificato0')" [variable] maxlength="9" tabindex="" type="text" name=""  value="[variable]" id="sel_ISTAT" />
+	[condition]" id="sel_NUTS" />
+[condition]>NO</option>
+ 		<option value="S" [condition]>SI</option>
+ 	</select> 
+</td></tr>	       
+[condition]
+</c:if>
+[condition]
+[condition]
+	[condition]	
+	[condition]
+	[condition]
+<tr><td colspan="2"><h5>CUP</h5></td></tr>			
+<tr><th align="left" ><label for="">
+L'appalto � finalizzato alla realizzazione di progetti d'investimento pubblico
+per i quali � prevista l'acquisizione del codice CUP ai sensi dell'art. 11 L 3/2003
+e ss.mm.? (E' necessario acquisire e comunicare il CUP per interventi finanziati, 
+anche in parte, con risorse Comunitarie)</label></th>
+<td>
+[condition]>NO</option>
+ 		<option value="S" [condition]>SI</option>
+ 	</select> 
+</td></tr>	       
+[condition]
+</c:if>
+<tr><td colspan="2">
+<div class="inthead" style="padding-bottom: 15px">
+	<label onclick="showMenu('')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+	<img src="img/minus.gif" id="img"/> Codici CUP </label>
+	<div id=""  style="display: block;" ><br />
+	[condition]
+	</c:if>
+<!-- 
+	Nella pagina che include elencoCUP.jsp deve esserci la definizione delle variabili: 
+	* elencoCup : elenco degli oggetti di tipo CupLottoAgg
+	* readonlyCup : condizioni per la disabilitazione del componente e visualizzazione in sola lettura
+	* idLotto : id del lotto a cui si fa riferimento
+ -->
+<jsp:useBean id="elencoCup" type="java.util.LinkedList" class="java.util.LinkedList" scope="request"></jsp:useBean>
+<!-- le variabili sono impostate dal chiamante -->
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type="text/javascript">
+//<!--		
+    function confirmCup(prfx_valido, prfx_okutente)
+    {
+        $("input[id^='hiddenrowCUP'][id$='" + prfx_valido + "']").each(function(idx, item){
+            if( item.value == "S" ){
+                $("input[id='hiddenrowCUP" + idx + prfx_okutente + "']").attr("value","S");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").html("Si");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").css("background-color","#BBFFBB");
+            }
+        });       
+        alert("I codici CUP validati sono stati confermati, la conferma sara' memorizzata a fronte del salvataggio della scheda");
+    } 	
+	function addRowCup(args,argshidden,prefix) {
+		//Ticket ALM #2159
+		if(document.getElementById(prefix).value==null || document.getElementById(prefix).value=='')
+			alert("Inserire il codice CUP");
+		else //Fine Ticket ALM #2159
+			if(checkBeforeAdd(prefix))  {
+				if( validateRadio(prefix) )  
+				{
+					var idnext=getRowIndex(prefix); 
+					var idtable="idTabella"+prefix;
+					var table=document.getElementById(idtable); 
+					var newid="row"+prefix+(parseInt(idnext)+1);
+					var tbody=table.getElementsByTagName("TBODY")[0];
+					var row=createRow(newid,args,argshidden,prefix); 
+					tbody.appendChild(row);
+					appendHiddenTyped(row,newid,prefix,argshidden,true);
+					var idDIVTabella="DIVTabella"+prefix;
+					var numOfRows=idnext+1;
+					hideSezioneAggiungi(args,argshidden,prefix);
+					setModificato(prefix); 
+					document.getElementById("selected"+prefix).value=0;
+					afterAddRow(newid,args,argshidden,prefix,row);
+				}  
+			} 
+	}
+	function appendHiddenTyped(row,idrow,prefix,parametri,creazione) {
+		for(var j = 0;j<parametri.length;j++)  {
+			var idElement = idrow+parametri[j];
+			var field = document.getElementById(parametri[j]);
+			if( field != null ){
+				var changevalue = field.value;
+				if(creazione)  { 
+					var td = document.createElement("TD"); 
+					td.style.display = "none";
+					var hidden = document.createElement("INPUT");
+					hidden.setAttribute("name",idElement,0);
+			    	hidden.setAttribute("id","hidden"+idElement,0);
+					hidden.setAttribute("type","hidden",0);
+					hidden.value = changevalue; 
+					td.appendChild(hidden);
+					row.appendChild(td); 
+				}  else  {  
+					var hidden = document.getElementById("hidden"+idElement); 
+					hidden.value = changevalue; 
+				}
+			}  
+		} 
+	}
+	function afterAddRow(newid,args,argshidden,prefix,row){
+		//imposta il parametro numeri di righe
+		var counter = $("input[name='']").val();
+		counter++;
+		$("input[name='']").val(counter);
+		//setta le colonne con i valori di default
+		var  orbj = $("a[href*='setForModifyRow'][href*='rowCUP']")[0];
+		var par = orbj.parentNode;
+		par = par.parentNode;
+		orbj.parentNode.removeChild(orbj);
+		var ftd1 = document.createElement("td");
+		ftd1.innerHTML = "No";
+		ftd1.className="garaTd";
+		par.appendChild(ftd1);		
+		var ftd2 = document.createElement("td");
+		ftd2.innerHTML = "&nbsp;";
+		ftd2.className="garaTd";
+		par.appendChild(ftd2);		
+		var ftd3 = document.createElement("td");
+		ftd3.innerHTML = "&nbsp;";
+		ftd3.className="garaTd";
+		par.appendChild(ftd3);		
+		var ftd4 = document.createElement("td");
+		ftd4.innerHTML = "&nbsp;";
+		ftd4.className="garaTd";
+		par.appendChild(ftd4);			
+		//impostiamo l'addRow personalizzato (addRowCup)
+		var addRowElem = $("#AddMod"+prefix);
+		//var href = addRowElem.attr("href").replace("addRow", "addRowCup"); //ALM #2322
+		addRowElem.attr("href",addRowElem.attr("href"));
+	}
+//-->
+</script>
+[condition]
+	<div id="DIVTabella" class="scrollTabs" style="height: 150px; width: 99%; display: block;"><!-- class="scrollTabs"  -->
+		<table id="idTabella" width="100%" >
+			<tbody>
+			<tr> 
+			[condition]
+			[condition]
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]',[],[],'')">Modifica</> --%>
+							<a title="Cancella " href="javascript:deleteRow('[condition]',[],[],'')">Cancella</>
+						</td>
+					</c:if>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+				</tr>
+				[condition]
+				[condition]
+			</c:forEach> 
+			</tbody>		
+			</table> 			
+		</div>	 	
+		[condition]
+				</td>						
+				</tr>
+				<tr><td class="hmenu">
+						<a id="AddMod" href="javascript:addRowCup([],[],'')">Aggiungi</a>
+					</td>
+				</tr>							
+			</table>
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato7" name ="Modificato7" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+<input type="hidden" name="" value="[variable]" /> 
+	</div>
+</div>
+</td></tr>	
+<tr><th><label for="">Codice CUP</label></th>		
+<td  width="40%" ><input maxlength="15" [variable] onchange="setFormModified('Modificato0')" tabindex=""  type="text" name=""  value="[variable]"></td></tr>		
+<tr><td colspan="2">
+<div class="inthead">
+<label onclick="showMenuNoCheck('checkBoxListL')" style="color:black; letter-spacing:0.2em;">
+	<img src="img/minus.gif" id="imgcheckBoxListL"/> Tipologia lavoro [condition]<col width="40%"/></colgroup>
+	[condition] 
+	<u:multibox  campo="" lista="" listaCampiSelezionati="compL" readonly="[variable]" idField="idAppalto" onchange="setFormModified('Modificato5')" />								
+</table>
+</div></div></td></tr>  
+[condition]
+	</td></tr>
+</c:if>
+<tr><td colspan="2"><div class="inthead">
+<label onclick="showMenuNoCheck('checkBoxListSF')" style="color:black; letter-spacing:0.2em;">
+	<img src="img/minus.gif" id="imgcheckBoxListSF"/> Modalita di acquisizione
+	[condition]<col width="40%"/></colgroup>
+[condition] 
+<u:multibox campo="" lista="" listaCampiSelezionati="compFS" readonly="[variable]" idField="idAppalto" onchange="setFormModified('Modificato5')" />								
+</table></div></div></td></tr>  
+<tr><th><label for="ID_TIPO_PRESTAZIONE">Prestazioni comprese nell'appalto*</label></th><td>
+<select onchange="setFormModified('Modificato0')" tabindex="" style="width:100%" [variable] name="ID_TIPO_PRESTAZIONE" id="ID_TIPO_PRESTAZIONE" CLASS="BOTTONE">
+	<option></option>
+	[condition]
+	<u:options name="" scope="request" value="idTipoPrest"/>
+</select>
+[condition]
+</c:if>
+</td></tr>	
+</table>
+<table [variable]>
+<tr><th><label for="">Motivazione della variazione anagrafica</label></th>
+<td><select onchange="setFormModified('Modificato0')" tabindex="" style="width:100%" name="" id= CLASS="BOTTONE">
+	<option></option>
+	[condition]
+	<u:options name="" scope="request" value="idMotivoVarCO"/>
+</select></td></tr>
+</table>
+<tr><td colspan="2"><div class="inthead">
+<label onclick="showMenu('')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+	<img src="img/minus.gif" id="img"/> PRESTAZIONI PROGETTUALI</label>
+	<div id="" style="display: block;">
+	[condition]
+</td>
+</tr>	
+<tr>
+<th><label for="" style="text-align: left;">CIG affidamento incarico esterno di progettazione (in caso di progettista esterno)</label></th>
+<td>
+<input  [variable] type="text" id="" maxlength="10" value="" onchange="setFormModified('Modificato')" />
+</td>
+</tr>	
+<tr>
+<th><label for="">Data di affidamento incarico (per progettazione esterna)</label></th>
+<td>
+<input  [variable] type="text" id="" style="text-align:center" [condition] onchange="setFormModified('Modificato')" onblur="Calendar.validaData(this)"  value="" />
+[condition]
+<script type="text/javascript">
+Calendar.setup({inputField: "", 
+ifFormat: "%d/%m/%Y", button: "CALdaff",align : "Tl", singleClick: true });
+</script>
+</c:if>		
+</td>
+</tr>	
+<tr>
+<th><label for="">Data di consegna progetto (per progettazione esterna)</label></th>
+<td>
+<input type="text" id="" style="text-align:center" [condition] [variable] onchange="setFormModified('Modificato')" onblur="Calendar.validaData(this)"  value="" />
+[condition]
+<script type="text/javascript">
+Calendar.setup({inputField:"", 
+ifFormat: "%d/%m/%Y", button: "CALdest", align: "Tl", singleClick :    true});
+</script>
+</c:if>	
+</td>
+</tr>	
+<tr><td>&nbsp;</td></tr>
+<tr>
+<th><label>Tipologia del soggetto incaricato della prestazione</label></th>
+<td>
+<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')" >
+<option></option>
+[condition]
+<u:options name="" scope="request" value="idRuoloPrest"/>
+</select>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>					
+<tr style="display: none;">
+<td>
+<input disabled type="text" id=""  onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>
+<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a></td></tr>			
+</table>
+<input type="hidden" id="Modificato" name ="Modificato" value="0">
+</div>
+<input type="hidden" id="Modificato6" name ="Modificato6" value="[condition]">
+<input type="hidden" id="selected" value="0" />      
+</div></div></td></tr>
+<table width="100%" [variable]><tr>
+	<td colspan="2"><div class="inthead"><label onclick="showMenu('')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+		<img src="img/minus.gif" id="img"/> FINANZIAMENTI</label>
+	<div id=""  style="display: block;" >
+	[condition]		
+			<br><br>		
+		</div>
+		[condition]
+				</select>
+				</td>					
+				</tr>		
+				<tr style="display: none;">
+				<td>
+					<input disabled type="text" id="" value=""/>
+				</td>							
+				</tr>
+				<tr>
+				<th><label for="">مبلغ التمويل</label></th>
+				<td>
+					<input type="text" id="" value="" onchange="setFormModified('Modificato')" onblur="validateAmount(this)" />
+				</td>
+				</tr>	
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:calcolaTotFin([],[],'')">إضافة</a></td></tr>							
+			</table>
+		<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato7" name ="Modificato7" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+</div></div></td></tr>
+<tr><td align="center" colspan="2"><p class="detailHelp"><strong>DATI ECONOMICI DELL'APPALTO</strong></p></td></tr> 
+<tr><th><label for="COD_STRUMENTO">Strumento di programmazione</label></th><td>
+<select onchange="setFormModified('Modificato0')" tabindex="" style="width:100%" [variable] name="COD_STRUMENTO" id="COD_STRUMENTO" CLASS="BOTTONE">
+<option></option>
+[condition]
+	  <u:options name="" scope="request" value="codStrumento"/>
+</select>
+[condition]
+</c:if>
+</td></tr>
+<tr><th><label  for="IMPORTO_LAVORI">Importo componente lavori in &#8364; (al netto dell'IVA e degli oneri di sicurezza)</label></th>
+<td><input onchange="setFormModified('Modificato0')" [variable] tabindex="" type="text" style="text-align:right;width:100px;" id="IMPORTO_LAVORI"  name="IMPORTO_LAVORI"  value="[condition]" onblur="validateAmount(this);valutaSubTotale()" /></td></tr>	
+<tr><th><label  for="IMPORTO_SERVIZI">Importo componente servizi in &#8364; (come sopra)</label></th><td>
+	<input onchange="setFormModified('Modificato0')"  [variable]  tabindex=""  type="text" style="text-align:right;width:100px;" id="IMPORTO_SERVIZI"  name="IMPORTO_SERVIZI"  value="[condition]" onblur="validateAmount(this);valutaSubTotale()" />
+</td></tr>
+<tr><th><label  for="IMPORTO_FORNITURE">Importo componente forniture in &#8364; (come sopra)</label></th>
+<td><input onchange="setFormModified('Modificato0')"   [variable] tabindex=""  type="text" style="text-align:right;width:100px;" id="IMPORTO_FORNITURE"  name="IMPORTO_FORNITURE"  value="[condition]" onblur="validateAmount(this);valutaSubTotale()" /></td></tr>	
+<tr><th><label for="SubTotale">SubTotale</label></th><td>
+    [condition]
+</td></tr>
+<tr><th><label  for="IMPORTO_ATTUAZIONE_SICUREZZA">Importo totale per l'attuazione della sicurezza</label></th>
+<td><input onchange="setFormModified('Modificato0')"   [variable] tabindex="" type="text" style="text-align:right;width:100px;" id="IMPORTO_ATTUAZIONE_SICUREZZA"  name="IMPORTO_ATTUAZIONE_SICUREZZA"  value="[condition]"  onblur="validateAmount(this);valutaSubTotale()" /></td></tr>
+<tr><th><label for="IMP_NON_ASSOG">Eventuali ulteriori somme non assoggettate al ribasso d'asta</label></th>
+<td><input onchange="setFormModified('Modificato0')"  [variable] tabindex="" type="text" style="text-align:right;width:100px;" id="IMP_NON_ASSOG"  name="IMP_NON_ASSOG"  value="[condition]"  onblur="validateAmount(this);valutaSubTotale()" /></td></tr>		
+<tr><th><label for="IMPORTO_PROGETTAZIONE">Importo progettazione</label></th>
+<td><input onchange="setFormModified('Modificato0')"  [variable] tabindex="" type="text" style="text-align:right;width:100px;"  id="IMPORTO_PROGETTAZIONE"  name="IMPORTO_PROGETTAZIONE" value="[condition]" onblur="validateAmount(this);valutaSubTotale()" /></td></tr>
+<tr><th><label for="">Importo a base d'asta indicato in acquisizione CIG </label> </th><td>
+	[condition]	
+	</td></tr>	
+<tr><th><label for="ImpCompAppalto">Importo complessivo appalto</label></th><td>
+	[condition]
+</td></tr>
+<tr><th><label  for="IMPORTO_DISPOSIZIONE">Importo totale somme a disposizione*</label></th>
+	<td>
+		<input onchange="setFormModified('Modificato0')"  [variable]
+				tabindex=""  
+				type="text" style="text-align:right;width:100px;" 
+				id="IMPORTO_DISPOSIZIONE" 
+				name="IMPORTO_DISPOSIZIONE" 
+				value="[condition]" 
+				onblur="validateAmount(this);valutaSubTotale()" />
+	</td></tr>
+	<tr><th><label for="ImpCompIntervento">Importo complessivo dell'intervento</label></th><td>
+	[condition]
+	</td></tr>
+	<tr><td align="center" colspan="2"><p class="detailHelp"><strong>DATI PROCEDURALI DELL'APPALTO</strong></p></td></tr>								
+	[condition]
+	[condition]
+	</c:if>
+		<tr><th><label for="">Procedura di scelta contraente</label></th>
+			<td>
+				<select onchange="setFormModified('Modificato0')" tabindex="" style="width: 100%" [variable]  name="" id="sel_CONTRAENTE" CLASS="BOTTONE">
+					<option></option>
+					<u:optionsLinked name="" scope="request" value="idSceltaContr"/>
+				</select>
+		[condition]
+		</c:if>
+		</td></tr>
+[condition]
+[condition]
+[condition] 	
+<tr><th><label for="MODALITA_RIAGGIUDICAZIONE">Modalit� di riaggiudicazione/affidamento dell'appalto</label></th>
+	<td><select onchange="setFormModified('Modificato0')" tabindex="" style="width:100%" [variable] name="MODALITA_RIAGGIUDICAZIONE" id="MODALITA_RIAGGIUDICAZIONE" CLASS="BOTTONE">
+		<option></option>
+		<u:options name="" scope="request" value="modoRiagg"/>
+		</select>
+		[condition]
+		</c:if>
+</td></tr>
+<tr><th><label for="ASTA_ELETTRONICA">Ricorso all'asta elettronica*</label></th>
+	<td><u:selectBooleanRadio name="ASTA_ELETTRONICA" value="[variable]" trueId="" falseId=""  readonly="[variable]"  tabindex="" onchange="setFormModified('Modificato0')" />
+	</td></tr>	
+		<tr><td colspan="2">
+			<div class="inthead">	
+			<label onclick="showMenuNoCheck('checkBoxList')" style="color:black; letter-spacing:0.2em;">
+				<img src="img/minus.gif" id="imgcheckBoxList"/>
+				Condizioni che giustificano il ricorso alla procedura negoziata senza previa pubblicazione di un bando oppure senza previa indizione di una gara
+			</label>
+			<div id="checkBoxList" class="mbody" style="display: block;">
+			<table width="80%" class="detailHelp"><colgroup><col width="60%"/><col width="40%"/></colgroup>
+			[condition] 
+			<u:multibox campo="ID_CONDIZIONE" lista="" listaCampiSelezionati="condizioni" readonly="[variable]" idField="idCondizione" onchange="setFormModified('Modificato4')" />								
+			</table>
+		</div></div>
+		</td></tr>  
+<tr><th><label  for="">Criteri di aggiudicazione</label></th>
+	<td><select onchange="setFormModified('Modificato0')" tabindex="" style="width: 100%" [variable] name="" id="sel_MODALITA_GARA" CLASS="BOTTONE">
+		[condition]
+		<option></option>
+		<u:options name="" scope="request" value="idModGara"/>
+		</select>
+		[condition]
+		</c:if>
+</td></tr>	
+<tr><th><label >E' stata utilizzata la procedura accelerata per ragioni di urgenza?*</label></th>
+	<td width="40%"> 
+	 	<u:selectBooleanRadio name="" value="[variable]" trueId="check2Y" falseId="check2N" readonly="[variable]" tabindex="" onchange="setFormModified('Modificato0')" />
+	</td></tr> 	
+<tr><th><label >E' stata effettuata la preinformazione?*</label></th>
+<td width="40%"> 
+	 		<u:selectBooleanRadio name="" value="[variable]" trueId="check3Y" falseId="check3N" readonly="[variable]"  tabindex="" onchange="setFormModified('Modificato0')" />
+</td></tr>	 	
+<tr><th><label >E' stato utilizzato un termine ridotto con avviso di preinformazione?*</label></th>
+	<td width="40%"> 
+		<u:selectBooleanRadio name="" value="[variable]" trueId="check4Y" falseId="check4N" readonly="[variable]" tabindex="" onchange="setFormModified('Modificato0')" />
+	</td></tr>
+<tr><th><label for="ID_MODO_GARA">Modalita di indizione della gara (art. 224 c. 1) Settori Speciali</label></th>
+<td><select onchange="setFormModified('Modificato0')" tabindex="" style="width: 100%" [variable] name="ID_MODO_GARA" id="sel_MODO_INDIZIONE_GARA" CLASS="BOTTONE">
+		[condition]
+		<option></option>
+		<u:options name="" scope="request" value="idModoIndizione"/>
+		</select>
+		[condition]
+		</c:if>
+</td></tr>
+<tr><td colspan="2">
+<div class="inthead">
+	<label onclick="showMenuNoCheck('TabRequisiti')" style="color:black; letter-spacing:0.2em;">
+	<img src="img/minus.gif" id="imgTabRequisiti"/>
+			 REQUISITI DI PARTECIPAZIONE / QUALIFICAZIONE
+			 </label>
+	<div id="TabRequisiti"  style="display: block;" [variable]>
+	[condition]
+		<col width="40%"/>
+		<col width="40%"/>
+	</colgroup>	
+	<tr>
+		<th rowspan="2">متطلبات القطاعات الخاصة</th>		
+		<th ><label for="">معايير الاختيار المحددة من قبل محطة التعاقد</label></th>
+		<td >
+			<u:selectBooleanRadio name=""  onclick="javascript:checkFlags(this.form,this.id);"
+		   			  value="[variable]" trueId="" 
+		  			  falseId="" readonly="[variable]" 
+		  			  tabindex="" onchange="setFormModified('Modificato0')" />
+		</td>
+	</tr>			
+	<tr>
+		<th><label for="">نظام التأهيل الداخلي</label></th>
+		<td>
+			<u:selectBooleanRadio name=""  onclick="javascript:checkFlags(this.form,this.id);"
+		   			  value="[variable]" trueId="" 
+		  			  falseId=""  readonly="[variable]"  
+		  			  tabindex="" onchange="setFormModified('Modificato0')" />
+		</td>
+	</tr>
+</table>
+<label style="color:black;">
+[condition]
+			[condition]
+			<tr id="[condition]">
+				[condition]',[],[],'')" title="تعديل">تعديل</a>
+						&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')"  title="حذف">حذف</a></td>					
+				</c:if>
+				[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>																
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td style="display: none;" id="[condition]">[condition]</td>
+				<td style="display: none;" id="[condition]">[condition]</td>	
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+			</tr>
+			[condition]
+			</c:forEach>							
+		</tbody>
+		</table>
+	</div> 
+	<!-- FINE 3.04.8.1 MAC 34181 -->
+	--%>
+	[condition]
+					</select>
+				</td>					
+			</tr>	
+			<tr>
+				<th><label>فئة المبلغ</label></th>
+				<td colspan="2">
+					<select onchange="setFormModified('Modificato')"  id="" CLASS="BOTTONE">
+						<option value=" "></option>
+						<u:options name="" scope="request"/>
+					</select>
+				</td>					
+			</tr>	
+			<tr style="display: none;">
+				<td>
+					<input disabled type="text" id="" value=""/>
+				</td>							
+			</tr>	
+			<tr>
+			<th><label>La categoria � Prevalente</label></th>
+				<td>
+				    <select onchange="setFormModified('Modificato')" id="" Class="BOTTONE">
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<th><label>La categoria � Scorporabile</label></th>
+				<td>
+				    <select onchange="setFormModified('Modificato')" id="" Class="BOTTONE">
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<th><label>La categoria � Sub-Appaltabile</label></th>
+				<td>
+					<select onchange="setFormModified('Modificato')" id="" Class="BOTTONE"> 
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>												
+			<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>
+		</table>			
+		<input type="hidden" id="Modificato" name ="Modificato" value="0">
+	</div> 
+	<!-- FINE 3.04.8.1 MAC 34181 -->
+	--%>
+<!--/div-->			
+<input type="hidden" id="Modificato3" name ="Modificato3" value="[condition]">
+<input type="hidden" id="selected" value="0" />     
+</div></div>
+</td></tr>	
+<tr><td colspan="2" align="center"><p class="detailHelp"><strong>INVITI E OFFERTE / SOGLIA DI ANOMALIA</strong></p></td></tr>
+<tr><th><label for="">Data di scadenza per la presentazione delle manifestazioni di interesse</label></th><td>
+<input  tabindex="" style="text-align:center" [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtmanif" name=""  value="[condition]">
+	[condition]
+	<script type="text/javascript">
+	    Calendar.setup({inputField:"dtmanif",ifFormat:"%d/%m/%Y",button:"CALdtmanif",align:"Tl",singleClick:true});
+	</script>
+	</c:if>
+</td></tr>
+<!-- inizio mev 34183 3.04.8-->
+<tr><th><label for="">Data di scadenza per la presentazione della richiesta di invito</label></th><td>
+<input  tabindex="" style="pointer-events: none;text-align:center" [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtscadinv" name=""  value="[condition]">
+	[condition]
+	<script type="text/javascript">
+    Calendar.setup({inputField:"dtscadinv",ifFormat:"%d/%m/%Y",button:"CALdtscadinv",align:"Tl",singleClick:true});
+	</script>
+	</c:if>							
+</td></tr>		
+<tr><th><label>Data Invito</label></th><td>
+<input  tabindex="" style="pointer-events: none;text-align:center" [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtinvito" name="" value="[condition]">
+	[condition]
+	<script type="text/javascript">
+    Calendar.setup({inputField:"dtinvito",ifFormat:"%d/%m/%Y",button:"CALdtinvito",align:"Tl",singleClick:true});
+	</script>
+	</c:if>						
+</td></tr>			
+<tr><th><label>[variable] Data di scadenza per la presentazione delle offerte*</label></th>
+<td><input tabindex="" style="pointer-events: none;text-align:center" [variable] [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtscadoff" name="" value="[condition]">
+	[condition]
+		<script type="text/javascript">
+		    Calendar.setup({inputField:"dtscadoff",ifFormat:"%d/%m/%Y",button:"CALdtscadoff",align:"Tl",singleClick:true});
+		</script>
+	</c:if>
+</td></tr>	
+<!-- fine mev 34183 3.04.8-->	
+<tr><th><label >n� Soggetti che hanno presentato manifestazione di interesse</label></th><td><input maxlength="9" style="text-align:right;" onblur="validateNumber(this)" tabindex="" [variable] type="text"  name="" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>	
+<tr><th><label >n� Soggetti che hanno presentato richiesta di invito</label></th><td><input style="text-align:right;" onblur="validateNumber(this)" tabindex="" [variable] type="text" name="" maxlength="5" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >[variable] n� Soggetti invitati a presentare offerta</label></th><td><input style="text-align:right;" onblur="validateNumber(this)" tabindex="" [variable] [variable] type="text" name="" maxlength="5" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >[variable] n� Soggetti che hanno presentato offerta</label></th><td><input style="text-align:right;" onblur="validateNumber(this)" tabindex="" [variable] [variable] type="text" name="" maxlength="5" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >[variable] n� offerte ammesse*</label></th><td><input style="text-align:right;" onblur="validateNumber(this)" tabindex="" [variable] [variable] type="text" name="" maxlength="5" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >[variable] Offerta di massimo ribasso</label></th><td><input tabindex="" [variable] [variable] onblur="validatePercentage(this)" style="text-align: right" type="text" name="" size="9" maxlength="9" value="[condition]" onchange="setFormModified('Modificato0')">%</td></tr>
+<tr><th><label >[variable] Offerta di minimo ribasso</label></th><td><input tabindex="" [variable] [variable] onblur="validatePercentage(this)" style="text-align: right" type="text" name="" size="9" maxlength="9" value="[condition]" onchange="setFormModified('Modificato0')" >%</td></tr>
+<tr><th><label >Valore soglia anomalia</label></th><td><input tabindex="" [variable] onblur="validatePercentage(this)" style="text-align: right" type="text" name="" size="9" maxlength="9" value="[condition]"  onchange="setFormModified('Modificato0')" >%</td></tr>
+<tr><th><label >N.offerte >= soglia anomalia</label></th><td><input maxlength="9" tabindex="" [variable] onblur="validateNumber(this)" style="text-align: right" type="text" name="" maxlength="1024" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >Numero imprese escluse automaticamente</label></th><td><input maxlength="9" tabindex="" [variable] onblur="validateNumber(this)" style="text-align: right" type="text" name="" maxlength="1024" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+<tr><th><label >Numero imprese escluse per insufficienti giustificazioni</label></th><td><input maxlength="9" tabindex="" [variable] onblur="validateNumber(this)" style="text-align: right" type="text" name="" maxlength="1024" value="[condition]" onchange="setFormModified('Modificato0')"></td></tr>
+</table>	
+	[condition] AGGIUDICAZIONE / AFFIDAMENTO</label>
+	<div id="TabAffidatario" style="display: block;" >
+	[condition]
+                                        <col width="40%" />
+                                    </colgroup>
+                                    <tr>
+                                        <th><label for="">[variable]
+                                                خصم الترسية
+                                            </label></th>
+                                        <td><input [variable] [variable] id="ribAgg"
+                                                tabindex=""
+                                                onblur="calcoloAggiudicazione(this,document.getElementById('percAum'),'')"
+                                                style="text-align: right;" type="text" size="9" maxlength="9"
+                                                name="" value="[condition]"
+                                            onchange="setFormModified('Modificato0')" >%</td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="">[variable]
+                                                العرض بالزيادة
+                                            </label></th>
+                                        <td><input [variable] [variable] id="percAum"
+                                                tabindex=""
+                                                onblur="calcoloAggiudicazione(document.getElementById('ribAgg'),this,'')"
+                                                style="text-align: right;" type="text" size="9" maxlength="9"
+                                                name="" value="[condition]"
+                                            onchange="setFormModified('Modificato0')">%</td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="">
+                                                مبلغ الترسية/التكليف*
+                                            </label></th>
+                                        <td>
+                                            <input [variable] tabindex="" id="euro" type="text"
+                                                style="text-align:right;font-weight:bold;width: 120px"
+                                                name=""
+                                                value="[condition]"
+                                            onchange="setFormModified('Modificato0')" onblur="validateAmount(this)" />
+                                            <input id="euroHidden" type="hidden" />
+                                            [condition]</a>
+                                            </c:if>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="">[variable]
+                                                تاريخ الترسية النهائية أو تعريف إجراء التفاوض*
+                                            </label></th>
+                                        <td><input tabindex="" style="text-align:center" [variable]
+                                                [variable] onchange="setFormModified('Modificato0')"
+                                                onblur="Calendar.validaData(this)" type="text" id="dtaggdef"
+                                                name=""
+                                                value="[condition]">
+                                            [condition]
+                                                <script type="text/javascript">
+                                                    Calendar.setup({
+                                                        inputField: "dtaggdef", ifFormat: "%d/%m/%Y", button: "CALdtaggdef", align: "Tl", singleClick: true
+                                                    });
+                                                </script>
+                                            </c:if>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>
+                                                هل طلب المتعهد في مكان العرض إمكانية إسناد جزء من الخدمات؟
+                                            </label></th>
+                                        <td width="40%">
+                                            <u:selectBooleanRadio name=""
+                                                value="[variable]" trueId="affidatarioY"
+                                                falseId="affidatarioN" readonly="[variable]"
+                                                onclick="setFormModified('Modificato0');alert('');"
+                                                tabindex="" onchange="setFormModified('Modificato0')" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                    [condition]
+                                    <input type="hidden" id="sottosogliaEsclusi" value="no" />
+                                    <input type="hidden" id=""
+                                        name="" value="[condition]">
+                                    <div id="DIVTabella" class="scrollTabs"
+                                        style="height: 200px; width: 99%;">
+                                        <table id="idTabella">
+                                            <tbody>
+                                                <tr>
+                                                    <th width="125">
+                                                        إجراء
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        الاسم
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        الرقم الضريبي
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        رمز البلد
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        النوع
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        مبلغ الترسية
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        خصم الترسية
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        العرض بالزيادة
+                                                    </th>
+                                                    <th class="garaTh">
+                                                        الاختيار
+                                                    </th>
+                                                </tr>
+                                                [condition]
+                                                [condition]
+                                                    <tr id="[condition]">
+                                                    [condition]
+                                                    [condition]
+                                                    [condition]',[],[
+                                                                ],'')">
+                                                                        تعديل</a>
+                                                                        &nbsp;<a title="حذف"
+                                                                        href="javascript:deleteRow('
+                                                                        [condition]',[
+                                                                            ],[
+                                                                            ],'
+                                                                                    ')">
+                                                                                    حذف
+                                                                                    </a>
+                                                        </td>
+                                                    </c:if>
+                                                    [condition]
+                                                    ">
+                                                        [condition]
+                                                        </td>
+                                                        <td nowrap class="garaTd" id="[condition]
+                                                        ">
+                                                            [condition]
+                                                            </td>
+                                                            <td nowrap class="garaTd" id="[condition]
+                                                            ">
+                                                                [condition]
+                                                                </td>
+                                                                <td nowrap class="garaTd" id="[condition]
+                                                                ">
+                                                                    [condition]
+                                                                    ">
+                                                                        [condition]
+                                                                        </td>
+                                                                        <td nowrap class="garaTd" id="[condition]
+                                                                        ">
+                                                                            [condition]
+                                                                            </td>
+                                                                            <td nowrap class="garaTd" id="[condition]
+                                                                            ">
+                                                                                [condition]
+                                                                                </td>
+                                                                                <td nowrap="nowrap" class="hmenu"
+                                                                                    id="[condition]
+                                                                                ">
+                                                                                    <a title="إدارة الشركات المساعدة"
+                                                                                    href="javascript:apriPopUpRubricaDittaAusiliaria('
+                                                                                    [condition]',[],[],'
+                                                                                        ','rubricaDittaAusiliaria','','
+                                                                                            إدارة الشركات المساعدة
+                                                                                            ','
+                                                                                            [condition]
+                                                                                            ')">
+                                                                                            إدارة الشركات المساعدة
+                                                                                            </a>
+                                                                                            </td>
+                                                                                            [condition]
+                                                                                                ">
+                                                                                                    <a title="إدارة تجميع الشركة"
+                                                                                                    href="javascript:apriPopUpRubricaDittaAusiliaria('
+                                                                                                    [condition]
+                                                                                                    ',[],[],'
+                                                                                                        ','rubricaRaggruppamento','
+                                                                                                        ','
+                                                                                                            إدارة تجميع الشركة
+                                                                                                            ','
+                                                                                                            [condition]
+                                                                                                            ')">
+                                                                                                            إدارة تجميع الشركة
+                                                                                                            </a>
+                                                                                                            </td>
+                                                                                            </c:if>
+                                                                                            [condition]
+                                                                                                "></td>
+                                                                                            </c:if>
+                                                                                            <td id="[condition]
+                                                                                            " style="display:
+                                                                                                none;">
+                                                                                                [condition]
+                                                                                                </td>
+                                                                                                <td id="[condition]
+                                                                                                " style="display:
+                                                                                                    none;">
+                                                                                                    [condition]
+                                                                                                    </td>
+                                                                                                    <td id="[condition]
+                                                                                                    "
+                                                                                                        style="display:
+                                                                                                        none;">
+                                                                                                        [condition]
+                                                                                                        </td>
+                                                                                                        <td id="[condition]
+                                                                                                        "
+                                                                                                            style="display:
+                                                                                                            none;">
+                                                                                                            [condition]
+                                                                                                            </td>
+                                                                                                            <td id="[condition]
+                                                                                                            "
+                                                                                                                style="display:
+                                                                                                                none;">
+                                                                                                                [condition]
+                                                                                                                </td>
+                                                                                                                <td id="[condition]
+                                                                                                                "
+                                                                                                                    style="display:
+                                                                                                                    none;">
+                                                                                                                    [condition]
+                                                                                                                    </td>
+                                                                                                                    <td id="[condition]
+                                                                                                                        "
+                                                                                                                        style="display:
+                                                                                                                        none;">
+                                                                                                                        [condition]
+                                                                                                                        </td>
+                                                                                                                        <td nowrap
+                                                                                                                            id="[condition]
+                                                                                                                            "
+                                                                                                                            style="display:
+                                                                                                                            none">
+                                                                                                                            [condition]
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            <td
+                                                                                                                                style="display: none;">
+                                                                                                                                <input
+                                                                                                                                    type="hidden"
+                                                                                                                                    id="hidden[condition]
+                                                                                                                                    "
+                                                                                                                                    name="
+                                                                                                                                    [condition]
+                                                                                                                                        "
+                                                                                                                                        value="
+                                                                                                                                        [condition]
+                                                                                                                                        ">
+                                                                                                                            </td>
+                                                                                                                            </tr>
+                                                                                                                            [condition]
+                                                                                                                            <td><input
+                                                                                                                                    disabled
+                                                                                                                                    type="text"
+                                                                                                                                    id=""
+                                                                                                                                    value=""
+                                                                                                                                    onchange="setFormModified('Modificato')" />
+                                                                                                                            </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <th><label>
+                                                                                                                                        المرسى عليه
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        disabled
+                                                                                                                                        id=""
+                                                                                                                                        maxlength="16"
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <th><label>
+                                                                                                                                        نوع المرسى عليه
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td
+                                                                                                                                    colspan="2">
+                                                                                                                                    <select
+                                                                                                                                        id=""
+                                                                                                                                        CLASS="BOTTONE"
+                                                                                                                                        onchange="setFormModified('Modificato')">
+                                                                                                                                        <option>
+                                                                                                                                        </option>
+                                                                                                                                        <u:options
+                                                                                                                                            name=""
+                                                                                                                                            scope="request" />
+                                                                                                                                    </select>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <th><label>
+                                                                                                                                        مبلغ الترسية/التعهد
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        maxlength="16"
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')"
+                                                                                                                                        onblur="validateAmount(this);" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <th><label>
+                                                                                                                                        تخفيض الترسية
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        maxlength="16"
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')"
+                                                                                                                                        onblur="validatePercentage(this);" />%
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <th><label>
+                                                                                                                                        عرض بالزيادة
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        maxlength="16"
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')"
+                                                                                                                                        onblur="validatePercentage(this);" />%
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <th><label>
+                                                                                                                                        الدور
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td><select
+                                                                                                                                        id=""
+                                                                                                                                        CLASS="BOTTONE"
+                                                                                                                                        onchange="setFormModified('Modificato')">
+                                                                                                                                        <option
+                                                                                                                                            value="">
+                                                                                                                                        </option>
+                                                                                                                                        <option
+                                                                                                                                            value="1">
+                                                                                                                                            الوكيل
+                                                                                                                                        </option>
+                                                                                                                                        <option
+                                                                                                                                            value="2">
+                                                                                                                                            الموكل
+                                                                                                                                        </option>
+                                                                                                                                    </select>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <th
+                                                                                                                                    rowspan="2">
+                                                                                                                                    <label>
+                                                                                                                                        لجأ المرسى عليه إلى مؤسسة الاستفادة
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td>
+                                                                                                                                    <input
+                                                                                                                                        type="checkbox"
+                                                                                                                                        id=""
+                                                                                                                                        value="1"
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                    للمتطلبات
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="checkbox"
+                                                                                                                                        id=""
+                                                                                                                                        value="2"
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                    للشهادة
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <th><label>
+                                                                                                                                        الرقم الضريبي للشركة المساعدة
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td>
+                                                                                                                                    <input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')"
+                                                                                                                                        maxlength="16" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <th><label>
+                                                                                                                                        تجميع تدريجي (1)
+                                                                                                                                    </label>
+                                                                                                                                </th>
+                                                                                                                                <td>
+                                                                                                                                    <input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')"
+                                                                                                                                        maxlength="16"
+                                                                                                                                        onblur="validateNumber(this)" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        value=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr
+                                                                                                                                style="display: none;">
+                                                                                                                                <td><input
+                                                                                                                                        type="text"
+                                                                                                                                        id=""
+                                                                                                                                        onchange="setFormModified('Modificato')" />
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td
+                                                                                                                                    class="hmenu">
+                                                                                                                                    <a id="AddMod"
+                                                                                                                                        href="javascript:addRow([],[],'')">
+                                                                                                                                        إضافة
+                                                                                                                                    </a>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                        </table>
+                                        <input type="hidden" id="Modificato"
+                                            name="Modificato" value="0">
+                                    </div>
+                                    <div>
+                                        <p class="garaTh">
+                                            لعرض/تعديل التجمع أو الشركات المساعدة اضغط على الزر المقابل بجانب السطر
+                                        </p>
+                                    </div>
+                                    <input type="hidden" id="Modificato2" name="Modificato2" value="[condition]">
+                                    <input type="hidden" id="selected" value="0" />
+                                    <input type="hidden" id="" name=""
+                                        value="[condition]">
+	</div></div>					
+</td></tr>					
+<tr><td colspan="2">
+<div class="inthead">
+	<label onclick="showMenu('TabResponsabileProcedimento')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+		<img src="img/minus.gif" id="imgTabResponsabileProcedimento"/> ANAGRAFICA E RIFERIMENTI DEI SOGGETTI AI QUALI LA STAZIONE APPALTANTE HA CONFERITO INCARICHI</label>
+	<div id="TabResponsabileProcedimento"  style="display: block;" >
+		[condition]
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<th><label>الدور</label></th>
+					<td>
+						<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')" >
+							<option></option>
+							[condition]
+							<u:options name="" scope="request" value="idRuoloResp"/>
+						</select>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>								
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>			
+			</table>
+					<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato1" name ="Modificato1" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+	</div>
+</div></td></tr>	
+</table>  			 
+</fieldset>
+<input type="hidden" name="FLAG_ACCORDO_QUADRO" id="FLAG_ACCORDO_QUADRO" value="[variable]" />
+<input type="hidden" name="CODICE_CONTRATTO" id="CODICE_CONTRATTO" value="[variable]" />
+<input type="hidden" name="FLAG_AGGIUD_PRINCIPALE" id="FLAG_AGGIUD_PRINCIPALE" value="[variable]" />
+<input type="hidden" id="Modificato0" name ="Modificato0" value="[condition]">
+<input type="hidden" id="Modificato4" name ="Modificato4" value="[condition]">
+<input type="hidden" id="Modificato5" name ="Modificato5" value="[condition]">

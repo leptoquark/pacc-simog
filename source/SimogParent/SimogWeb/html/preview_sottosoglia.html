@@ -1,0 +1,677 @@
+
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<div id="dialog"></div>
+<!-- fine import popup modali -->
+[condition]
+<fieldset class="gara">
+	<br>
+	<table width="100%" [variable]>
+	<tr><td colspan="2"><hr></td></tr>
+	<tr>	
+	<th><label>نوع الورقة</label></th>
+	<td>
+	[condition][condition]</td>
+	</tr>
+	</c:if>
+	[condition]</td>
+	</tr>
+	</c:if>
+	<tr><td colspan="2"><hr></td></tr>
+	<tr>
+	  	<td align="center" colspan="2"><p class="detailHelp"><strong>موضوع العقد</strong></p></td>
+	</tr>
+	<input type="hidden" id="canSearch" value="false" />	
+	<tr>
+		<th><label for="">رمز مكان تنفيذ العقد (ISTAT)</label></th>
+		<td >
+			<input onchange="setFormModified('Modificato0')" 
+				   maxlength="9" 
+				   tabindex="" [variable] 
+				   type="text" 
+				   name="" 
+				   value="[condition]" 
+				   id="sel_ISTAT" onblur="searchLE(this.id, 'ricercaIstat.jsp', 'isNotIstat')" 
+				   onkeyup="checkKeyLE(event, this, 'ricercaIstat.jsp', 'isNotIstat')"
+			/>
+			[condition]" 
+			id="sel_NUTS" onblur="searchLE(this.id, 'ricercaNuts.jsp', 'isNotNuts')" 
+		       	onkeyup="checkKeyLE(event, this, 'ricercaNuts.jsp', 'isNotNuts')" />
+			[condition]
+	[condition]
+			[condition]	
+			[condition]
+			[condition]
+	<tr>
+	<td colspan="2">
+		<h5>CUP</h5>
+	</td>
+	</tr>			
+	<tr>
+	<th align="left" ><label for="">
+L'appalto � finalizzato alla realizzazione di progetti d'investimento pubblico
+per i quali � prevista l'acquisizione del codice CUP ai sensi dell'art. 11 L 3/2003
+e ss.mm.? (E' necessario acquisire e comunicare il CUP per interventi finanziati, 
+anche in parte, con risorse Comunitarie)</label></th>
+	<td>
+	[condition]>NO</option>
+ 			<option value="S" [condition]>SI</option>
+ 		</select> 
+	</td>
+	</tr>	       
+	[condition]
+	</c:if>
+	<tr>
+	<td colspan="2">
+		<div class="inthead" style="padding-bottom: 15px">
+			<label onclick="showMenu('')" 
+					style="color:black; letter-spacing:0.2em; cursor:pointer;">
+					<img src="img/minus.gif" id="img"/> رموز CUP </label>
+			<div id=""  style="display: block;" ><br />
+				[condition]
+				</c:if>
+<!-- 
+	Nella pagina che include elencoCUP.jsp deve esserci la definizione delle variabili: 
+	* elencoCup : elenco degli oggetti di tipo CupLottoAgg
+	* readonlyCup : condizioni per la disabilitazione del componente e visualizzazione in sola lettura
+	* idLotto : id del lotto a cui si fa riferimento
+ -->
+<jsp:useBean id="elencoCup" type="java.util.LinkedList" class="java.util.LinkedList" scope="request"></jsp:useBean>
+<!-- le variabili sono impostate dal chiamante -->
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type="text/javascript">
+//<!--		
+    function confirmCup(prfx_valido, prfx_okutente)
+    {
+        $("input[id^='hiddenrowCUP'][id$='" + prfx_valido + "']").each(function(idx, item){
+            if( item.value == "S" ){
+                $("input[id='hiddenrowCUP" + idx + prfx_okutente + "']").attr("value","S");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").html("Si");
+                $("td[id='rowCUP" + idx + prfx_okutente + "']").css("background-color","#BBFFBB");
+            }
+        });       
+        alert("I codici CUP validati sono stati confermati, la conferma sara' memorizzata a fronte del salvataggio della scheda");
+    } 	
+	function addRowCup(args,argshidden,prefix) {
+		//Ticket ALM #2159
+		if(document.getElementById(prefix).value==null || document.getElementById(prefix).value=='')
+			alert("Inserire il codice CUP");
+		else //Fine Ticket ALM #2159
+			if(checkBeforeAdd(prefix))  {
+				if( validateRadio(prefix) )  
+				{
+					var idnext=getRowIndex(prefix); 
+					var idtable="idTabella"+prefix;
+					var table=document.getElementById(idtable); 
+					var newid="row"+prefix+(parseInt(idnext)+1);
+					var tbody=table.getElementsByTagName("TBODY")[0];
+					var row=createRow(newid,args,argshidden,prefix); 
+					tbody.appendChild(row);
+					appendHiddenTyped(row,newid,prefix,argshidden,true);
+					var idDIVTabella="DIVTabella"+prefix;
+					var numOfRows=idnext+1;
+					hideSezioneAggiungi(args,argshidden,prefix);
+					setModificato(prefix); 
+					document.getElementById("selected"+prefix).value=0;
+					afterAddRow(newid,args,argshidden,prefix,row);
+				}  
+			} 
+	}
+	function appendHiddenTyped(row,idrow,prefix,parametri,creazione) {
+		for(var j = 0;j<parametri.length;j++)  {
+			var idElement = idrow+parametri[j];
+			var field = document.getElementById(parametri[j]);
+			if( field != null ){
+				var changevalue = field.value;
+				if(creazione)  { 
+					var td = document.createElement("TD"); 
+					td.style.display = "none";
+					var hidden = document.createElement("INPUT");
+					hidden.setAttribute("name",idElement,0);
+			    	hidden.setAttribute("id","hidden"+idElement,0);
+					hidden.setAttribute("type","hidden",0);
+					hidden.value = changevalue; 
+					td.appendChild(hidden);
+					row.appendChild(td); 
+				}  else  {  
+					var hidden = document.getElementById("hidden"+idElement); 
+					hidden.value = changevalue; 
+				}
+			}  
+		} 
+	}
+	function afterAddRow(newid,args,argshidden,prefix,row){
+		//imposta il parametro numeri di righe
+		var counter = $("input[name='']").val();
+		counter++;
+		$("input[name='']").val(counter);
+		//setta le colonne con i valori di default
+		var  orbj = $("a[href*='setForModifyRow'][href*='rowCUP']")[0];
+		var par = orbj.parentNode;
+		par = par.parentNode;
+		orbj.parentNode.removeChild(orbj);
+		var ftd1 = document.createElement("td");
+		ftd1.innerHTML = "No";
+		ftd1.className="garaTd";
+		par.appendChild(ftd1);		
+		var ftd2 = document.createElement("td");
+		ftd2.innerHTML = "&nbsp;";
+		ftd2.className="garaTd";
+		par.appendChild(ftd2);		
+		var ftd3 = document.createElement("td");
+		ftd3.innerHTML = "&nbsp;";
+		ftd3.className="garaTd";
+		par.appendChild(ftd3);		
+		var ftd4 = document.createElement("td");
+		ftd4.innerHTML = "&nbsp;";
+		ftd4.className="garaTd";
+		par.appendChild(ftd4);			
+		//impostiamo l'addRow personalizzato (addRowCup)
+		var addRowElem = $("#AddMod"+prefix);
+		//var href = addRowElem.attr("href").replace("addRow", "addRowCup"); //ALM #2322
+		addRowElem.attr("href",addRowElem.attr("href"));
+	}
+//-->
+</script>
+[condition]
+	<div id="DIVTabella" class="scrollTabs" style="height: 150px; width: 99%; display: block;"><!-- class="scrollTabs"  -->
+		<table id="idTabella" width="100%" >
+			<tbody>
+			<tr> 
+			[condition]
+			[condition]
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]',[],[],'')">Modifica</> --%>
+							<a title="Cancella " href="javascript:deleteRow('[condition]',[],[],'')">Cancella</>
+						</td>
+					</c:if>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td class="garaTd" id="[condition]">[condition]</td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+					<td nowrap style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+				</tr>
+				[condition]
+				[condition]
+			</c:forEach> 
+			</tbody>		
+			</table> 			
+		</div>	 	
+		[condition]
+				</td>						
+				</tr>
+				<tr><td class="hmenu">
+						<a id="AddMod" href="javascript:addRowCup([],[],'')">Aggiungi</a>
+					</td>
+				</tr>							
+			</table>
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato7" name ="Modificato7" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+<input type="hidden" name="" value="[variable]" /> 
+			</div>
+		</div>
+	</td>
+	</tr>
+	<tr>
+		<th ><label for="">Codice CUP</label></th>
+		<td  width="40%" >
+			<input maxlength="15" 
+					onchange="setFormModified('Modificato0')" 
+					tabindex=""  
+					[variable] 
+					type="text" name="" 
+					value="[condition]">
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2"><p class="detailHelp"><strong>البيانات الاقتصادية للعقد</strong></p></td>
+	</tr> 
+	<tr>
+		<th><label for="ImpCompAppalto" 
+			title="Importo dell'appalto al netto di eventuali oneri per la sicurezza o altre somme non soggette a ribasso">[variable] Importo soggetto a ribasso</label></th>
+		<td>
+			<input onchange="setFormModified('Modificato0')" 
+					tabindex="" [variable] [variable]  
+					type="text" style="text-align:right;width:100px;" 
+					id="" 
+					name="" 
+					value="[condition]" 
+					onblur="validateAmount(this);valutaSubTotaleSottoEsclusi()" />
+		</td>
+	</tr>
+		<!-- PP 3.02.1.6 -->
+	<tr>
+		<th><label for="">Importo per l'attuazione della sicurezza e altre somme non soggette a ribasso</label></th>
+		<td>
+			<input onchange="setFormModified('Modificato0')"   [variable]
+					tabindex=""  
+					type="text" style="text-align:right;width:100px;" 
+					id="" 
+					name="" 
+					value="[condition]" 
+					onblur="validateAmount(this);valutaSubTotaleSottoEsclusi()" />
+		</td>
+	</tr>
+	<tr>
+		<th><label for="">Importo totale somme a disposizione</label></th>
+		<td>
+			<input onchange="setFormModified('Modificato0')" 
+					tabindex="" [variable] 
+					type="text" style="text-align:right;width:100px;" 
+					id="" 
+					name="" 
+					value="[condition]" 
+					onblur="validateAmount(this);valutaSubTotaleSottoEsclusi()" />
+		</td>
+	</tr>  
+	<tr>
+		<th><label for="ImpCompIntervento">Importo complessivo dell'intervento</label></th>
+		<td>
+	     [condition]
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2"><p class="detailHelp"><strong>البيانات الإجرائية للعقد</strong></p></td>
+	</tr>								
+	<tr>
+	 	[condition]
+			[condition]
+			</c:if>		
+		<th><label for="">Procedura di scelta contraente</label></th>
+		<td>
+		<select onchange="setFormModified('Modificato0')" tabindex="" style="width: 100%" [variable]  name="" id="sel_CONTRAENTE" CLASS="BOTTONE">
+			<option></option>
+			<u:options name="" scope="request" value="idSceltaContr"/>
+		</select>
+		[condition]
+		</c:if>
+		</td>
+	 </tr>		
+	<tr>
+		<th><label for="">Ricorso all'asta elettronica</label></th>
+		<td>
+			<u:selectBooleanRadio name="" 
+		   			 value="[variable]" trueId="" 
+		  			  falseId=""  readonly="[variable]" 
+		  			  tabindex="" onchange="setFormModified('Modificato0')" />
+		</td>
+	</tr>	
+	<tr>
+		<td colspan="2">
+			<div class="inthead">	
+				<label onclick="showMenuNoCheck('checkBoxList')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+					<img src="img/minus.gif" id="imgcheckBoxList"/>
+					Condizioni che giustificano il ricorso alla procedura negoziata senza previa pubblicazione di un bando oppure senza previa indizione di una gara
+				</label>
+				<div id="checkBoxList" class="mbody" style="display: block;">
+					<table width="80%" class="detailHelp">
+						<colgroup>
+							<col width="60%"/>
+							<col width="40%"/>
+	  						</colgroup>
+	  						[condition] 
+	  						<u:multibox campo="" lista="" 
+	  						listaCampiSelezionati="condizioni" readonly="[variable]" idField="idCondizione" onchange="setFormModified('Modificato4')" />								
+					</table>
+				</div>
+			</div>
+		</td>
+	</tr>
+	[condition]
+			  	<u:options name="" scope="request" value="idMotivoVarCO"/>
+			</select>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td colspan="2">
+			<div class="inthead">
+				<label onclick="showMenu('')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+					<img src="img/minus.gif" id="img"/> AGGIUDICAZIONE / AFFIDAMENTO</label>
+				<div id="" style="display: block;" >
+				[condition]
+		<col width="40%"/>
+     </colgroup> 
+		<tr>
+			<th><label for="">[variable] Ribasso di aggiudicazione</label></th>
+			<td>
+				<input [variable] [variable] id="ribAgg" tabindex="" onblur="calcoloAggiudicazione(this,document.getElementById('percAum'),'')" style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[condition]" onchange="setFormModified('Modificato0')" >
+			</td>
+		</tr>
+			<tr>
+				<th><label for="">[variable] العرض بالزيادة</label></th>
+				<td>
+				<input [variable] [variable] id="percAum" tabindex="" onblur="calcoloAggiudicazione(document.getElementById('ribAgg'),this,'')"  style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[condition]" onchange="setFormModified('Modificato0')">			
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">مبلغ الترسية/التكليف*</label></th>
+				<td>
+				<input tabindex="" id="euro" type="text" style="text-align:right;font-weight:bold;width: 120px" name="" value="[condition]"
+					  [variable] 
+					   onchange="setFormModified('Modificato0')" 
+					   onblur="validateAmount(this)" />
+				<input id="euroHidden" type="hidden" />
+				[condition]</a>
+				</c:if>			
+				</td>
+			</tr>
+			<tr>			
+				<th><label for="">[variable] تاريخ الترسية النهائية أو تعريف إجراء التفاوض*</label></th>
+				<td>
+					<input tabindex="" style="text-align:center" [variable] [variable]  onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtaggdef" name=""  value="[condition]">
+					[condition]
+						<script type="text/javascript">
+						    Calendar.setup({
+						        inputField     :    "dtaggdef",     
+						        ifFormat       :    "%d/%m/%Y",     
+						        button         :    "CALdtaggdef",  
+							    align          :    "Tl",           
+							    singleClick    :    true
+						    });
+						</script>
+					</c:if>								
+				</td>
+				</tr>
+				<tr>			
+				<th><label for="">تاريخ توقيع العقد</label></th>
+				<td>
+					<input tabindex="" style="text-align:center" [variable] onchange="setFormModified('Modificato0')" onblur="Calendar.validaData(this)" type="text" id="dtstip" name=""  value="[variable]">
+					[condition]
+						<script type="text/javascript">
+						    Calendar.setup({
+						        inputField     :    "dtstip",    
+						        ifFormat       :    "%d/%m/%Y",  
+						        button         :    "CALdtstip", 
+							    align          :    "Tl",         
+							    singleClick    :    true
+						    });
+						</script>
+					</c:if>								
+				</td>
+				</tr>
+				<tr>
+				<th><label for="">المدة التعاقدية بالأيام</label></th>
+				<td>
+					<input id="durContr" tabindex="" [variable] style="text-align: right;" type="text" size="9" maxlength="9" name="" value="[variable]" onblur="validateNumber(this)" onchange="setFormModified('Modificato0')">
+				</td>
+			</tr>
+		</table>
+		[condition]	
+		<!--gm hidden per disabilitare il tasto gestione ditte ausiliarie -->	
+		<input type="hidden" id="sottosogliaEsclusi" value="si" />
+		<input type="hidden" id="" name="" value="[condition]">
+		<div id="DIVTabella" class="scrollTabs" style="height: 200px; width: 99%;">
+			<table id="idTabella">
+				<tbody>
+					<tr>
+						<th width="125">إجراء</th>					
+						<th class="garaTh">الاسم</th>					
+						<th class="garaTh">الرقم الضريبي</th>		
+						<th class="garaTh">رمز البلد</th>
+						<th class="garaTh">النوع</th>
+						<!-- Rinaldo tiket 654 -->
+						<th class="garaTh">مبلغ الترسية</th>
+						<th class="garaTh">خصم الترسية</th>
+						<th class="garaTh">عرض بالزيادة</th>
+						<!-- ///////////////// -->
+						<th class="garaTh">Selezione</th>
+					</tr>
+					[condition] 
+					[condition]
+						<tr id="[condition]">
+							[condition]
+							[condition]				
+							[condition]',[],[],'')">تعديل</a>
+									&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')">حذف</a></td>																		   
+							</c:if>
+							[condition]">[condition]</td>																
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>   
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+ 						   ">
+								[condition]">
+ 						      [condition]">[condition]</td>
+						<td nowrap class="garaTd" id="[condition]">[condition]</td>
+						<td nowrap class="garaTd" id="[condition]">[condition]</td>
+						<!-- ///////////////// --> 	
+						       [condition]">
+                             <a title="إدارة تجميع الشركة" href="javascript:apriPopUpRubricaDittaAusiliaria('[condition]',[],[],'','rubricaRaggruppamento','','إدارة تجميع الشركة','[condition]')">إدارة تجميع الشركة</a>						 
+							      </td>
+							    </c:if>
+							    [condition]"></td>	
+							    </c:if>
+							">[condition]</td>												
+							[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>						
+							<!-- Rinaldo tiket 654 -->
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<!-- ///////////////// -->
+							<td id="[condition]" style="display: none">[condition]</td>                  
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+                     <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>	
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																													
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																						
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																										
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																																		
+						   	<!-- Rinaldo tiket 654 -->
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<!-- ///////////////// -->
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>																						
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td> 
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>					
+						</tr>
+						[condition]
+					</c:forEach>																
+				</tbody>
+			</table>
+		</div>	  	
+		<div>
+		<p class="garaTh">Per visualizzare/modficare il raggruppamento d'impresa premere il pulsante "Gestione Raggruppamento d'Impresa"</p>
+		</div>			
+		[condition] 	
+					    <input type="text" id="" maxlength="2" size="2" value="" disabled onchange="setFormModified('Modificato')" />
+					</td>
+					<td [variable]>
+					<div class="hmenu"><a title="تعديل البيانات الشخصية" href="javascript:modAnag();">تعديل البيانات الشخصية</a></div></td>
+					</td>
+					<td>
+						<div class="hmenu"><a title="البحث في الدليل" href="javascript:apriPopUpRubrica('rubrica','','دليل المشغلين الاقتصاديين')">البحث في الدليل</a></div>						
+					</td>					
+				</tr>
+				<tr>
+					<th><label>الاسم</label></th>
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>Aggiudicatario</label></th>
+					<td>
+						<input type="text" disabled id="" maxlength="16" value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>
+				<tr>
+					<th><label>Tipo Aggiudicatario</label></th>
+					<td colspan="2">
+						<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')">
+							<option></option>
+							<u:options name="" scope="request" />
+						</select>
+					</td>					
+				</tr>
+				<tr style="display: none;">
+				<td>
+					<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+				</td>	
+				</tr>	
+				<!-- Rinaldo tiket 654 -->
+				<tr><th><label>Importo di aggiudicazione/affidamento</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validateAmount(this);"/></td></tr>
+				<tr><th><label>Ribasso di aggiudicazione</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validatePercentage(this);"/>%</td></tr>
+				<tr><th><label>Offerta in aumento</label></th>
+				<td><input type="text" id="" maxlength="16" value=""  onchange="setFormModified('Modificato')" onblur="validatePercentage(this);"/>%</td></tr>
+				<!-- ///////////////// -->
+				<tr style="display: none;">
+					<th><label>Ruolo</label></th>
+					<td>
+						<select id="" CLASS="BOTTONE"  onchange="setFormModified('Modificato')">
+							<option value=""></option>
+							<option value="1">Mandataria</option>
+							<option value="2">Mandante</option>
+						</select>
+					</td>					
+				</tr>			
+				<tr style="display: none;">
+					<th><label>Percentuale</label></th>
+					<td>
+						<input onblur="validatePercentage(this)" type="text" id=""
+							size="6" maxlength="6"  style="text-align: right" value=""  onchange="setFormModified('Modificato')" />%
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th rowspan="2"><label>L'aggiudicatario ha fatto ricorso all'istituto dell'Avvalimento</label></th>
+					<td>
+						<input type="checkbox" id ="" value="1"  onchange="setFormModified('Modificato')" />Per i Requisiti
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>			
+						<input type="checkbox" id ="" value="2"  onchange="setFormModified('Modificato')" />Per l'Attestazione
+					</td>
+				</tr>				
+				<tr style="display: none;">
+					<th><label>Codice Fiscale Ditta Ausiliaria</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>Progressivo Raggruppamento (1)</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16" onblur="validateNumber(this)" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>			
+				<tr style="display: none;"><td><input type="text" id=""  onchange="setFormModified('Modificato')"/>
+				</td></tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a></td></tr>
+				<tr style="display: none;"><td>(1) In caso di raggruppamento indicare lo stesso 'progressivo raggruppamento' per ogni operatore economico facente parte dello stesso raggruppamento</td></tr>
+			</table>	
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">			
+		</div>		
+<input type="hidden" id="Modificato2" name ="Modificato2" value="[condition]">
+<input type="hidden" id="selected" value="0" />
+<input type="hidden" id="" name ="" value="[condition]">
+<script language=javascript type="text/javascript"> 
+		calcoloAggiudicazione(document.getElementById('ribAgg'),document.getElementById('percAum'),'');
+</script>	
+				</div>	
+			</div>					
+		</td>
+	</tr>					
+	<tr>
+		<td colspan="2">
+			<div class="inthead">
+				<label onclick="showMenu('')" style="color:black; letter-spacing:0.2em; cursor:pointer;">
+					<img src="img/minus.gif" id="img"/> ANAGRAFICA E RIFERIMENTI DEI SOGGETTI AI QUALI LA STAZIONE APPALTANTE HA CONFERITO INCARICHI</label>
+				<div id=""  style="display: block;" >
+					[condition]
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<th><label>الدور</label></th>
+					<td>
+						<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')" >
+							<option></option>
+							[condition]
+							<u:options name="" scope="request" value="idRuoloResp"/>
+						</select>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>								
+				<tr style="display: none;">
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+					</td>							
+				</tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>			
+			</table>
+					<input type="hidden" id="Modificato" name ="Modificato" value="0">
+		</div>
+<input type="hidden" id="Modificato1" name ="Modificato1" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 
+				</div>
+			</div>
+		</td>
+	</tr>	
+	</table>  			 
+</fieldset>	
+<input type="hidden" name="" id="" value="[variable]" />
+<input type="hidden" name="" id="" value="[variable]" />
+<input type="hidden" id="Modificato0" name ="Modificato0" value="[condition]">
+<input type="hidden" id="Modificato4" name ="Modificato4" value="[condition]">
+<input type="hidden" id="Modificato5" name ="Modificato5" value="[condition]">

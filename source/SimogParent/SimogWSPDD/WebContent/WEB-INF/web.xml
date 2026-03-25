@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>SimogWS</display-name>
+	
+	<servlet>
+		<servlet-name>SimogWSPDD</servlet-name>
+		<servlet-class>it.avlp.simog.ws.endpoint.SimogWSPDD</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SimogWSPDD</servlet-name>
+		<url-pattern>/services/SimogWSPDD</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoaderAppaltoWS</servlet-name>
+		<servlet-class>it.avlp.simog.ws.endpoint.LoaderAppaltoWS</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LoaderAppaltoWS</servlet-name>
+		<url-pattern>/services/LoaderAppaltoWS</url-pattern>
+	</servlet-mapping>
+
+   <servlet>
+      <servlet-name>SimogWSOSS</servlet-name>
+      <servlet-class>it.avlp.simog.ws.endpoint.SimogWSOSS</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>SimogWSOSS</servlet-name>
+      <url-pattern>/services/SimogWSOSS</url-pattern>
+   </servlet-mapping>
+
+   <servlet>
+      <servlet-name>LoaderAppaltoAVCPASS</servlet-name>
+      <servlet-class>it.avlp.simog.ws.endpoint.LoaderAppaltoWSAVCPASS</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>LoaderAppaltoAVCPASS</servlet-name>
+      <url-pattern>/services/LoaderAppaltoAVCPASS</url-pattern>
+   </servlet-mapping>
+		
+</web-app>

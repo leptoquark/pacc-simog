@@ -1,0 +1,419 @@
+package it.avlp.simog.actions.inizio;
+//FIXME: la leviamo ?
+//import it.avcp.simog.managers.inizio.InizioLavoriManager;
+//import it.avcp.simog.managers.inizio.PosizAggiudManager;
+//import it.avcp.simog.managers.inizio.RespInizioManager;
+//import it.avlp.simog.actions.ActionException;
+//import it.avlp.simog.actions.BaseAction;
+//import it.avlp.simog.beans.PubblicazioneBean;
+//import it.avlp.simog.beans.ResponsabileBean;
+//import it.avlp.simog.beans.RichiestaAnnullamento;
+//import it.avlp.simog.beans.inizio.InizioLavoriBean;
+//import it.avlp.simog.beans.inizio.PosizioneAggiudicatario;
+//import it.avlp.simog.beans.inizio.ResponsabileInizioBean;
+//import it.avlp.simog.beans.inizio.Scheda_B1;
+//import it.avlp.simog.common.servlet.ParametriServlet;
+//import it.avlp.simog.common.servlet.ParametriServletBloccoDati;
+//import it.avlp.simog.common.servlet.ParametriServletSchedaB1;
+//import it.avlp.simog.db.advanced.TableBean;
+//import it.avlp.simog.db.generated.INIZIO_LAVORI;
+//import it.avlp.simog.db.generated.POSIZ_AGGIUD;
+//import it.avlp.simog.util.ObjectIntrospector;
+//import it.avlp.simog.util.PageHelper;
+//import it.avlp.simog.validatore.Scheda_B1_Validator;
+//
+//import java.math.BigDecimal;
+//import java.sql.Connection;
+//import java.sql.SQLException;
+//import java.sql.Timestamp;
+//import java.util.HashMap;
+//
+//import javax.servlet.http.HttpServletRequest;
+//
+//import org.apache.log4j.Logger;
+//
+//public class Scheda_B1_Action extends BaseAction {
+//	public static String CLAZZ = "Scheda_B1_Action";
+//
+//	public Scheda_B1_Action(Connection activeConnection, Logger logger) {
+//		super(activeConnection, logger);		
+//	}
+//	
+//	public HashMap<String, TableBean> load(HttpServletRequest request) throws ActionException{
+//		return load(request,null);
+//	}
+//	
+//	public HashMap<String, TableBean> load(HttpServletRequest request,Timestamp nuovadata) throws ActionException{
+//		HashMap<String, TableBean> results = new HashMap<String, TableBean>();
+//		logger.debug(CLAZZ+".load: START");
+//		long id_iniziolavori = getLongReqParameter(request, 0, ParametriServletSchedaB1.ID_INIZIOLAVORI);
+//		if(nuovadata == null)
+//		   nuovadata=  getTimestampReqParameter(request, nuovadata, ParametriServletSchedaB1.DATA_INIZIO_INIZIOLAVORI);
+//		try {
+//			TableBean iniziolavori = (new InizioLavoriManager(connection,logger)).load(id_iniziolavori, nuovadata);
+//			TableBean posizioneAggiudicatari = (new PosizAggiudManager(connection,logger)).load(id_iniziolavori,nuovadata);
+//			TableBean incaricati = (new RespInizioManager(connection,logger)).load(id_iniziolavori, nuovadata);
+//		
+//			results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, iniziolavori);
+//			results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, posizioneAggiudicatari);
+//			results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, incaricati);
+//		} catch (SQLException e) {
+//			throw new ActionException(e);
+//		}
+//		logger.debug(CLAZZ+".load: END --> id = " + id_iniziolavori + "datainizio = " + nuovadata);
+//		return results;
+//	}
+//	
+//	public HashMap<String, TableBean> save(Scheda_B1 sb1Bean,HashMap<String, Boolean> flags,String cfUtente) throws ActionException{
+//		HashMap<String, TableBean> results = new HashMap<String, TableBean>();
+//		logger.debug(CLAZZ+".save: START");
+//		long id_iniziolavori = sb1Bean.getInizioLavori().getIdInizioLavori();
+//		Timestamp dataInizio_InizioLavori = sb1Bean.getInizioLavori().getDataInizioLavori();
+//		
+//		InizioLavoriManager iniziomanager = new InizioLavoriManager(connection,logger);
+//		PosizAggiudManager posizionimanager = new PosizAggiudManager(connection,logger);
+//		RespInizioManager respmanager = new RespInizioManager(connection,logger);
+//		try{
+//			if(iniziomanager.existInizioLavori(id_iniziolavori, dataInizio_InizioLavori)){			
+//				if(flags.get(ParametriServletSchedaB1.INIZIO_LAVORI).booleanValue()){
+//					iniziomanager.save(sb1Bean.getInizioLavori(), cfUtente);					
+//				}
+//				if(flags.get(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARIO).booleanValue()){
+//					posizionimanager.save(sb1Bean.getPosizioneAggiudicatari(),id_iniziolavori,dataInizio_InizioLavori);					
+//				}
+//				if(flags.get(ParametriServletSchedaB1.INCARICATI).booleanValue()){
+//					respmanager.save(sb1Bean.getResponsabili(), id_iniziolavori, dataInizio_InizioLavori);					
+//				}
+//				results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, iniziomanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//				results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, posizionimanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//				results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, respmanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//			}	
+//			else{
+//				throw new ActionException("InizioLavori inesistente");
+//			}
+//		}
+//		catch(SQLException e){
+//			throw new ActionException(e);
+//		}	
+//		logger.debug(CLAZZ+".save: END");
+//		return results;
+//	}
+//	
+//	public HashMap<String, TableBean> confirm(Scheda_B1 sb1Bean,HashMap<String, Boolean> flags,String cfUtente) throws ActionException{
+//		HashMap<String, TableBean> results = new HashMap<String, TableBean>();
+//		logger.debug(CLAZZ+".confirm: START");
+//		long id_iniziolavori = sb1Bean.getInizioLavori().getIdInizioLavori();
+//		Timestamp dataInizio_InizioLavori = sb1Bean.getInizioLavori().getDataInizioLavori();
+//		
+//		InizioLavoriManager iniziomanager = new InizioLavoriManager(connection,logger);
+//		PosizAggiudManager posizionimanager = new PosizAggiudManager(connection,logger);
+//		RespInizioManager respmanager = new RespInizioManager(connection,logger);
+//		try{
+//			if(iniziomanager.existInizioLavori(id_iniziolavori, dataInizio_InizioLavori)){
+//			
+//				
+//				iniziomanager.confirm(sb1Bean.getInizioLavori(), cfUtente);					
+//			
+//				posizionimanager.confirm(sb1Bean.getPosizioneAggiudicatari(),id_iniziolavori,dataInizio_InizioLavori);		 			
+//			
+//			
+//				respmanager.confirm(sb1Bean.getResponsabili(), id_iniziolavori, dataInizio_InizioLavori);					
+//				
+//				results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, iniziomanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//				results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, posizionimanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//				results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, respmanager.load(id_iniziolavori, dataInizio_InizioLavori));
+//			}
+//			else{
+//				throw new ActionException("InizioLavori inesistente");
+//			}
+//		}
+//		catch(SQLException e){
+//			throw new ActionException(e);
+//		}
+//		return results;
+//	}
+//	
+//	public Timestamp richiediAnnullamento(RichiestaAnnullamento bean) throws ActionException{
+//		Timestamp nuovadata = null;
+//		bean.setBlocco(ParametriServletSchedaB1.TAB_INIZIO_LAVORI);
+//		
+//		nuovadata = richiediAnnullamentoInizio(bean);
+//		logger.debug(CLAZZ+".richiediAnnullamento: START");
+//		if(nuovadata != null){
+//			Timestamp datavecchia = bean.getData_inizio_record();
+//			bean.setData_inizio_record(nuovadata);
+//			if(richiediAnnullamentoPosizioni(bean, datavecchia))
+//				if(richiediAnnullamentoResponsabile(bean, datavecchia))
+//					return nuovadata;
+//		}
+//		logger.debug(CLAZZ+".richiediAnnullamento: END");
+//		return null;			
+//	}
+//		
+//	private Timestamp richiediAnnullamentoInizio(RichiestaAnnullamento bean)throws ActionException {
+//		String idrecord = bean.getId_record();
+//		Timestamp datainiziorecord = bean.getData_inizio_record();
+//		String idLotto = bean.getId_lotto();
+//		String blocco = bean.getBlocco();
+//		String cfUtente = bean.getRichiedente();
+//		String idpubb = bean.getId_pub();
+//		Timestamp datainiziopub = bean.getData_inizio_pub();
+//		try{
+//			Timestamp nuovadatainizio = (new InizioLavoriManager(connection,logger)).copyRecord(Long.parseLong(idrecord), datainiziorecord, Long.parseLong(idpubb), datainiziopub);
+//			if(nuovadatainizio!=null){
+//				logger.debug("Data nuova: "+nuovadatainizio);
+//				if(super.richiediAnnullamento(blocco, cfUtente, bean.getMotivo_richiesta(),idrecord,datainiziorecord, idLotto))
+//					return nuovadatainizio;
+//			}
+//			return null;
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//			throw new ActionException(e);
+//		}		
+//	}
+//	
+//	private boolean richiediAnnullamentoPosizioni(RichiestaAnnullamento bean,Timestamp datavecchia)throws ActionException{
+//		PosizAggiudManager posaggMan = new PosizAggiudManager(connection, logger);
+//		
+//		try {
+//		
+//			return posaggMan.copyRecord(Long.parseLong(bean.getId_record()), bean.getData_inizio_record(), datavecchia);
+//		
+//		} catch (SQLException e) {
+//			logger.error(e);
+//			return false;
+//		}catch(Exception ex){
+//			logger.fatal(ex);
+//			throw new ActionException(ex);
+//		}
+//	}	
+//	
+//	private boolean richiediAnnullamentoResponsabile(RichiestaAnnullamento bean,Timestamp datavecchia) throws ActionException{
+//		RespInizioManager respmanager = new RespInizioManager(connection,logger);
+//		try{
+//			
+//			return respmanager.copyRecord(Long.parseLong(bean.getId_record()), bean.getData_inizio_record(), datavecchia);
+//		}
+//		catch(SQLException e){
+//			logger.error(e);
+//			return false;
+//		}
+//		catch(Exception e){
+//			logger.fatal(e);
+//			throw new ActionException(e);
+//		}
+//	}
+//	
+//	public Scheda_B1_Validator validate(HttpServletRequest request,Scheda_B1 sb1Bean, String sezione) throws ActionException{
+//		logger.debug(CLAZZ+".validate: START");
+//		Scheda_B1_Validator valid = new Scheda_B1_Validator(connection,sb1Bean); 
+//		valid.valida();
+//		
+//		logger.debug(CLAZZ+".validate: END");
+//		return valid;
+//	}
+//	
+//	public Scheda_B1 getBean(HttpServletRequest request) throws ActionException {
+//		Scheda_B1 sb1Bean = new Scheda_B1();
+//		sb1Bean.setInizioLavori(getInizioLavoriBean(request));
+//		sb1Bean.setPosizioneAggiudicatari(getPosAggiudicatari(request));
+//		sb1Bean.setResponsabili(getResponsabili(request));
+//		sb1Bean.setTipoScheda(getStringReqParameter(request, "", ParametriServlet.FIELD_NAME_TIPO_CONTRATTO));
+//		return sb1Bean;
+//	}
+//	
+//	public HashMap<String, TableBean> create(Scheda_B1 sb1Bean,HashMap<String, Boolean> flags,String cfUtente) throws ActionException{
+//		HashMap<String, TableBean> results = new HashMap<String, TableBean>();
+//		logger.debug(CLAZZ+".create: START");
+//		InizioLavoriBean iniziolavori = sb1Bean.getInizioLavori();
+//				
+//		InizioLavoriManager iniziomanager = new InizioLavoriManager(connection,logger);
+//		PosizAggiudManager posizionimanager = new PosizAggiudManager(connection,logger);
+//		RespInizioManager respmanager = new RespInizioManager(connection,logger);
+//		try{
+//			if(flags.get(ParametriServletSchedaB1.INIZIO_LAVORI).booleanValue()){
+//				iniziomanager.insert(iniziolavori, cfUtente);
+//				TableBean iniziotablebean = iniziomanager.load(iniziolavori.getIdInizioLavori(), iniziolavori.getDataInizioLavori());
+//				results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, iniziotablebean);
+//			}
+//			else
+//				results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, new TableBean());
+//			if(flags.get(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARIO).booleanValue()){
+//				posizionimanager.save(sb1Bean.getPosizioneAggiudicatari(),iniziolavori.getIdInizioLavori(), iniziolavori.getDataInizioLavori());
+//				TableBean posizioniTableBean = posizionimanager.load(iniziolavori.getIdInizioLavori(), iniziolavori.getDataInizioLavori());
+//				results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, posizioniTableBean);
+//			}
+//			else
+//				results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, new TableBean());
+//			if(flags.get(ParametriServletSchedaB1.INCARICATI).booleanValue()){
+//				respmanager.save(sb1Bean.getResponsabili(), iniziolavori.getIdInizioLavori(), iniziolavori.getDataInizioLavori());
+//				TableBean respTableBean = respmanager.load(iniziolavori.getIdInizioLavori(), iniziolavori.getDataInizioLavori());
+//				results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, respTableBean);
+//			}
+//			else
+//				results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, new TableBean());
+//			
+//			
+//			
+//			logger.debug(CLAZZ+".create: END");
+//		}
+//		catch(SQLException e){
+//			logger.error(e);
+//			throw new ActionException(e);
+//		}
+//		return results;
+//	}
+//	
+//	
+//	public void ricostruisci(HttpServletRequest request, HashMap<String, TableBean> results){
+//		
+//		TableBean inizioLavori = results.get(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN); 
+//		super.ricostruisci(request, inizioLavori); 
+//		TableBean posizioneAggiudicatari = new TableBean();
+//		super.ricostruisci(request, posizioneAggiudicatari,ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARIO,
+//				getIntReqParameter(request, 0, ParametriServletSchedaB1.NR_RIGHE_POSIZIONI),
+//				ParametriServletBloccoDati.FIELD_NAME_AGG_ID_SOGGETTO_PARTECIPANTE);
+//		TableBean incaricati = new TableBean();
+//		super.ricostruisci(request, incaricati, ParametriServletBloccoDati.RESPONSABILE,
+//				 getIntReqParameter(request, 0, ParametriServletBloccoDati.NR_RIGHE_RESPONSABILI),
+//				 ParametriServletBloccoDati.FIELD_NAME_ID_RESPONSABILE);
+//		
+//		results.put(ParametriServletSchedaB1.INIZIO_LAVORI_TABLEBEAN, inizioLavori);
+//		results.put(ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARI_TABLEBEAN, posizioneAggiudicatari);
+//		results.put(ParametriServletSchedaB1.INCARICATI_TABLEBEAN, incaricati);
+//	}
+//	
+//	private PosizioneAggiudicatario[] getPosAggiudicatari(HttpServletRequest request){
+//		int nrPosizioni = getIntReqParameter(request, 0, ParametriServletSchedaB1.NR_RIGHE_POSIZIONI);
+//		PosizioneAggiudicatario[] posizioni = new PosizioneAggiudicatario[nrPosizioni];
+//		
+//		String prefix = "row" + ParametriServletSchedaB1.POSIZIONE_AGGIUDICATARIO;
+//
+//		long idInizioLavori = getLongReqParameter(request, 0, ParametriServletSchedaB1.ID_INIZIOLAVORI);
+//		Timestamp dataInizioLavori =getTimestampReqParameter(request, null, ParametriServletSchedaB1.DATA_INIZIO_INIZIOLAVORI);
+//		int daleggere = nrPosizioni;
+//		int i = 0;
+//		int j = 0;
+//		while(daleggere>0){
+//			String name = prefix + i + ParametriServletBloccoDati.FIELD_NAME_AGG_ID_SOGGETTO_PARTECIPANTE;
+//			String idSoggString = request.getParameter(name);
+//			if(idSoggString != null){
+//				posizioni[j] = new PosizioneAggiudicatario();
+//			
+//			
+//				long idSoggettoParamValue = "".equalsIgnoreCase(idSoggString)
+//					? 0 : Integer.parseInt(idSoggString);
+//				posizioni[j].setIdSoggetto( idSoggettoParamValue );
+//			
+//				posizioni[j].setDataInizioSoggetto(getTimestampReqParameter(request, null, prefix + i + ParametriServletBloccoDati.FIELD_NAME_AGG_DATA_INIZIO_SOGG));
+//					
+//				posizioni[j].setIdInizioLavori(idInizioLavori);
+//				posizioni[j].setDataInizio_InizioLavori(dataInizioLavori);
+//				
+//				posizioni[j].setCodiceINPS(getStringReqParameter(request, "", prefix + i + POSIZ_AGGIUD.CODICE_INPS));
+//				posizioni[j].setCodiceINAIL(getStringReqParameter(request, "", prefix + i + POSIZ_AGGIUD.CODICE_INAIL));
+//				posizioni[j].setCodiceCassa(getStringReqParameter(request, "", prefix + i + POSIZ_AGGIUD.CODICE_CASSA));
+//			
+//				
+//				logger.debug("getBean: " + ObjectIntrospector.propertiesInfo(ResponsabileBean.class, posizioni[j]));
+//				j++;
+//				daleggere--;
+//			}
+//			i++;
+//		}
+//		return posizioni;
+//	}
+//	
+//	private InizioLavoriBean getInizioLavoriBean(HttpServletRequest request){
+//		
+//		InizioLavoriBean inizioBean = new InizioLavoriBean();
+//		InizioLavoriManager inman = new InizioLavoriManager(connection,logger);
+//		inizioBean.setIdInizioLavori(getLongReqParameter(request, -1, INIZIO_LAVORI.ID_INIZIO));
+//		inizioBean.setDataInizioLavori(getTimestampReqParameter(request, inman.getNow(), INIZIO_LAVORI.DATA_INIZIO_INIZIO));
+//		
+//		inizioBean.setIdAggiudicazione(getLongReqParameter(request, -1, ParametriServletBloccoDati.FIELD_NAME_ID_AGGIUDICAZIONE));
+//		inizioBean.setDataInizioAggiudicazione(getTimestampReqParameter(request, inman.getNow(), ParametriServletBloccoDati.DATA_INIZIO_AGGIUDICAZIONE));
+//		
+//		inizioBean.setIdPubblicazione(getLongReqParameter(request, -1, ParametriServlet.FIELD_NAME_ID_PUBBLICAZIONE));
+//		inizioBean.setDataInizioPubblicazione(getTimestampReqParameter(request, inman.getNow(), ParametriServlet.FIELD_NAME_DATA_INIZIO_PUB));
+//		
+//		inizioBean.setDataConsegna(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_CONSEGNA)));
+//		inizioBean.setDataEsecutivita(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_ESECUTIVITA)));
+//		inizioBean.setDataStipula(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_STIPULA)));
+//		inizioBean.setDataTermine(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_TERMINE)));
+//		inizioBean.setDataVerbaleConsegna(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_VERBALE_CONS)));
+//		inizioBean.setDataVerbaleInizio(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", INIZIO_LAVORI.DATA_VERB_INIZIO)));
+//		inizioBean.setFlagRiserva(request.getParameter(INIZIO_LAVORI.FLAG_RISERVA));
+//		
+//		PubblicazioneBean bean = getPubblicazioneBean(request);
+//		bean.setIdPubblicazione(inizioBean.getIdPubblicazione());
+//		bean.setDataInizioPubblicazione(inizioBean.getDataInizioPubblicazione());
+//		inizioBean.setDatiPubblicazione(bean);
+//		
+//		inizioBean.setFlagRiserva(request.getParameter(INIZIO_LAVORI.FLAG_RISERVA));
+//		//inizioBean.setIdStato(idStato);
+//		
+//		String importo_ant = PageHelper.replaceCommasWithDots(getStringReqParameter(request,"0",INIZIO_LAVORI.IMPORTO_ANTIC));
+//		inizioBean.setImportoAnticipazioni(new BigDecimal(importo_ant));
+//		String importo_cauz = PageHelper.replaceCommasWithDots(getStringReqParameter(request,"0",INIZIO_LAVORI.IMPORTO_CAUZ));
+//		inizioBean.setImportoCauzione(new BigDecimal(importo_cauz));		
+//		
+//		return inizioBean;
+//	}
+//	
+//	private ResponsabileInizioBean[] getResponsabili(HttpServletRequest request){
+//		int nrResponsabili = getIntReqParameter(request, 0, ParametriServletBloccoDati.NR_RIGHE_RESPONSABILI);
+//		ResponsabileInizioBean[] responsabili = new ResponsabileInizioBean[nrResponsabili];
+//		
+//		String prefix = "row" + ParametriServletBloccoDati.RESPONSABILE;
+//
+//		long idInizioLavori = getLongReqParameter(request, 0, ParametriServletSchedaB1.ID_INIZIOLAVORI);
+//		Timestamp dataInizioLavori =getTimestampReqParameter(request, null, ParametriServletSchedaB1.DATA_INIZIO_INIZIOLAVORI);
+//		int daleggere = nrResponsabili;
+//		int i = 0;
+//		int j = 0;
+//		while(daleggere>0){
+//			String name = prefix + i + ParametriServletBloccoDati.FIELD_NAME_ID_RESPONSABILE;
+//			String idrespString = request.getParameter(name);
+//			if(idrespString != null){
+//				responsabili[j] = new ResponsabileInizioBean();
+//			
+//			
+//				int idResponsabileParamValue = "".equalsIgnoreCase(idrespString)
+//					? 0 : Integer.parseInt(idrespString);
+//				responsabili[j].setIdResponsabile( idResponsabileParamValue );
+//			
+//				responsabili[j].setDataInizioResponsabile(getTimestampReqParameter(request, null, prefix + i +ParametriServletBloccoDati.FIELD_NAME_DATA_INIZIO_RES));
+//	//			responsabili[j].setDataFineResponsabile(PageHelper.parseTime(request.getParameter("rowResponsabile" + i +ParametriServletBloccoDati.FIELD_NAME_DATA_FINE_RES)));
+//				
+//				
+//				responsabili[j].setIdInizioLavori(idInizioLavori);
+//				responsabili[j].setDataInizioLavori(dataInizioLavori);
+//				
+//				String idruolo = request.getParameter(prefix + i +ParametriServletBloccoDati.FIELD_NAME_DESCRIZIONE_RUOLO_RESPONSABILE);
+//			
+//				responsabili[j].setIdRuolo(Integer.parseInt(idruolo));
+//				logger.debug("getBean: " + ObjectIntrospector.propertiesInfo(ResponsabileBean.class, responsabili[j]));
+//				j++;
+//				daleggere--;
+//			}
+//			i++;
+//		}
+//		return responsabili;
+//	}
+//	
+//	private PubblicazioneBean getPubblicazioneBean(HttpServletRequest request){
+//		PubblicazioneBean pubBean = new PubblicazioneBean();
+//		
+//		pubBean.setDataGuce(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", ParametriServlet.FIELD_NAME_GAZZETTA_UFFICIALE_CE)));
+//		pubBean.setDataGuri(PageHelper.getFormattedDBDate(getStringReqParameter(request, "", ParametriServlet.FIELD_NAME_GAZZETTA_UFFICIALE_RI)));
+//
+//		pubBean.setProfiloCommitente(request.getParameter(ParametriServlet.FIELD_NAME_PROFILO_COMMITTENTE));
+//		
+//		pubBean.setSitoOsservatorioCP(request.getParameter(ParametriServlet.FIELD_NAME_SITO_OSSERVATORIO_CP));
+//		 pubBean.setQuotidianiNaz(getIntReqParameter(request, 0, ParametriServlet.FIELD_NAME_QUOTIDIANI_NAZIONALI));
+//		 pubBean.setQuotidianiReg(getIntReqParameter(request, 0, ParametriServlet.FIELD_NAME_QUOTIDIANI_REGIONALI));
+//		return pubBean;
+//	}
+//}

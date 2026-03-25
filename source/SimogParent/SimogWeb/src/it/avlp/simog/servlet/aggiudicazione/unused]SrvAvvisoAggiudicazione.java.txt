@@ -1,0 +1,122 @@
+package it.avlp.simog.servlet.aggiudicazione;
+
+import it.avlp.simog.actions.PubblicazioneAction;
+import it.avlp.simog.beans.AllegatoBean;
+import it.avlp.simog.beans.PubblicazioneBean;
+import it.avlp.simog.beans.Utente;
+import it.avlp.simog.beans.ValidationBean;
+import it.avlp.simog.common.servlet.ParametriServlet;
+import it.avlp.simog.exception.ActionException;
+import it.avlp.simog.exception.SimogException;
+import it.avlp.simog.garamanager.AllegatoManager;
+import it.avlp.simog.servlet.ServletBase;
+import it.avlp.simog.util.PageHelper;
+import it.avlp.simog.validatore.PubblicazioneValidator;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Deprecated
+public class SrvAvvisoAggiudicazione  extends ServletBase implements ParametriServlet {
+	private static final long serialVersionUID = 1L;
+	@Deprecated
+	public void doGet(HttpServletRequest request,HttpServletResponse response)
+	throws ServletException, IOException {
+		perform(request, response);
+	}
+	@Deprecated	
+	protected void perform(HttpServletRequest request,HttpServletResponse response)
+	throws ServletException, IOException {
+		Connection currentActiveConnection = null;
+		Utente currentUser = (Utente) request.getSession().getAttribute(UTENTE);
+		try{
+		    currentActiveConnection = getSimogConnection(request.getSession().getId(),  getClass().getName());
+		    currentActiveConnection.setAutoCommit(false);
+		    currentActiveConnection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);	
+
+		    if ( checkSession(request) ) {
+		    	if ( currentUser.isRSSAorRUP()){ 
+		    		String action = request.getParameter("toDo");
+					String idGara = request.getParameter(SESSION_ID_GARA);
+			    	
+					//gm reinvio dei parametri per la visualizzazione della gara
+					request.setAttribute(SESSION_ID_GARA, idGara);
+					
+					String url = ParametriServlet.JSP_POPUP_AVVISO_AGGIUDICAZIONE;
+			    	String allAvviso = request.getParameter(ParametriServlet.ALLEGATO_AVVISO_AGGIUDICAZIONE);
+			    	
+			    	if (ParametriServlet.ACTION_CARICA_AVVISO.equals(action)){
+			    	    	
+			    	   	// cerco eventuali allegati presenti per la gara
+			        	AllegatoManager aMan = new AllegatoManager(currentActiveConnection, logger);
+			          	AllegatoBean aBean = new AllegatoBean();
+			    	   	aBean.setIdGara(Integer.parseInt(idGara));
+		    	    	aBean.setTipoDoc(PubblicazioneBean.TipoDocumento.AVVISO.getCodice());
+		    	    	List aBeans = aMan.load(aBean);
+			   	    	if(aBeans.size()>0){
+			   	    		aBean = (AllegatoBean)aBeans.get(0);
+			   	    		allAvviso = String.valueOf(aBean.getIdAllegato()).trim();
+			        	}
+			   	    	request.setAttribute(ParametriServlet.ALLEGATO_AVVISO_AGGIUDICAZIONE, allAvviso);
+				    	
+				    	if(allAvviso != null)
+				    		request.setAttribute(ParametriServlet.ALLEGATO_AVVISO_AGGIUDICAZIONE_DESC, ParametriServlet.PRESENTE);
+				    	else
+				    		request.setAttribute(ParametriServlet.ALLEGATO_AVVISO_AGGIUDICAZIONE_DESC, "");
+				    	
+				    	forward(url, request, response);
+			    	}
+			    	else if (ParametriServlet.ACTION_SALVA_AVVISO.equals(action)){
+			   	    	request.setAttribute(ParametriServlet.ALLEGATO_AVVISO_AGGIUDICAZIONE, allAvviso);
+			   	    	PubblicazioneBean pubblicazione = new PubblicazioneBean();
+		    	        PubblicazioneAction pubAction = new PubblicazioneAction(currentActiveConnection, logger);
+		    	        PubblicazioneValidator pv = new PubblicazioneValidator(currentActiveConnection, logger);
+
+			   	    	pubblicazione = pubAction.getBean(request);
+			    		pv.validaPubblicazioneBase(pubblicazione, 0);
+			    		//pv.validaPubblicazioneAvanzata(pubblicazione,ParametriServlet.PUBBLICAZIONE_BANDO_GARA,ParametriServlet.SRV_BANDO_GARA);
+		    	        pv.validaAllegatiAvviso(allAvviso);
+
+		    	        //se non ho avuto errori nella validazione dei bean
+			    	    if(pv.getEccezioni().getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR ).getSize() == 0){
+			    	    	request.getSession().setAttribute(ParametriServlet.PUBBLICAZIONE, pubblicazione);
+			    	    }
+			    	    //altrimenti
+			    	    else{
+			    	    	logger.error ( "pubblicazione dell'avviso di aggiudicazione fallito" );
+							sendValidations(request, response, pv.getEccezioni(), url);
+			    	    }
+				    	
+			    	}
+		    	}
+		    }
+		}
+		catch ( ActionException ae ) {
+		    ae.printStackTrace();
+	    	rollback(currentActiveConnection);					
+		    sendError( request, response, ae.getMessage(), JSP_ERRORE);
+		return;
+	    }
+	    catch ( SimogException se ) {
+		    se.printStackTrace();
+		    rollback(currentActiveConnection);					
+		    sendError( request, response, se.getMessage(), JSP_ERRORE);
+		return;
+	    } 
+	    catch ( Exception e ) {
+		    e.printStackTrace();
+		    rollback(currentActiveConnection);
+		    logger.fatal ( e.getMessage());
+		    sendError(request, response, e.getMessage(), JSP_ERRORE);
+		return;
+	    } 
+	    finally {		
+		    closeConnection(request.getSession().getId(),getClass().getName());
+	    }		
+	}
+}

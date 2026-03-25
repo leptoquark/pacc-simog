@@ -1,0 +1,36 @@
+//	
+//	protected final void setTabelleSchedaB2(HttpServletRequest request) throws SQLException{
+//		logger.debug ( "Inizializzazione delle tabelle per Scheda B2" );
+//		AccessiDB dbManager = null;
+//		try {
+//			dbManager = new AccessiDB(connectionMap, logger);
+//			TableBean motiviSospensione = dbManager.executeSelect(MOTIVI_SOSPENSIONE.TABLE_NAME, MOTIVI_SOSPENSIONE.DATA_FINE_VALIDITA, MOTIVI_SOSPENSIONE.DESCRIZIONE);
+//			TableBean motiviVariante = dbManager.executeSelect(MOTIVI_VARIANTE.TABLE_NAME, MOTIVI_VARIANTE.DATA_FINE_VALIDITA, MOTIVI_VARIANTE.DESCRIZIONE);
+//			
+//			request.setAttribute(ParametriServletSchedaB2.MOTIVI_SOSPENSIONE_TABLEBEAN, motiviSospensione);
+//			request.setAttribute(ParametriServletSchedaB2.MOTIVI_VARIANTE_TABLEBEAN, motiviVariante);
+//		
+//		} catch ( Exception e ) {
+//			logger.fatal(Messaggi.SIMOG_SQL_000, e);
+//			throw new RuntimeException ( Messaggi.SIMOG_SQL_000 );
+//		}
+//		
+//	}
+
+	/**********************************************************************************
+	 * Esegue il commit in caso di eccezioni effettua il rollback
+	 * 
+	 */
+//	protected synchronized void rollbackOrCommit() {
+//		try {
+//			connectionMap.commit(currentActiveConnection);
+//			logger.debug ( "Completata commit" );
+//		} catch(SQLException sqlCommit) {
+//			logger.debug("Errore durante l'operazione di commit", sqlCommit);
+//			try {
+//				connectionMap.rollback(currentActiveConnection);
+//			} catch(SQLException sqlRollback) {
+//				logger.fatal("Errore durante l'operazione di rollback", sqlRollback);
+//			}
+//		}
+//	}

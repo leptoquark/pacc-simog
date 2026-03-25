@@ -1,0 +1,82 @@
+//public static final String SIMOG_AGGIUDICAZIONI_003 = "SIMOG_AGGIUDICAZIONI_003 - Selezionare un'opzione per tutti i campi SI/NO";
+//public static final String SIMOG_AGGIUDICAZIONI_004 = "SIMOG_AGGIUDICAZIONI_004 - Errore nella selezione delle date";
+//public static final String SIMOG_AGGIUDICAZIONI_005 = "SIMOG_AGGIUDICAZIONI_005 - Selezionare almeno una delle date";
+
+//public static final String SIMOG_AGGIUDICAZIONI_008 = "SIMOG_AGGIUDICAZIONI_008 - Errore durante il recupero dei dati delle Aggiudicazioni";	
+
+
+//public static final String SIMOG_AGGIUDICAZIONI_013 = "SIMOG_AGGIUDICAZIONI_013 - Numero Quotidiani non valido";
+
+//public static final String SIMOG_AGGIUDICAZIONI_020 = "SIMOG_AGGIUDICAZIONI_020 - Inserimento dei dati sul Massimo Ribasso eseguito correttamente";
+//public static final String SIMOG_AGGIUDICAZIONI_021 = "SIMOG_AGGIUDICAZIONI_021 - Aggiornamento dei dati sul Massimo Ribasso eseguito correttamente";
+
+//public static final String SIMOG_AGGIUDICAZIONI_022	= "SIMOG_AGGIUDICAZIONI_022 - Il seguente campo deve essere numerico: ";
+
+//public static final String SIMOG_AGGIUDICAZIONI_026	= "SIMOG_AGGIUDICAZIONI_026 - Errore nell'inserimento dei dati";
+//public static final String SIMOG_AGGIUDICAZIONI_027	= "SIMOG_AGGIUDICAZIONI_027 - Il seguente campo e' obbligatorio: ";
+
+//public static final String SIMOG_AGGIUDICAZIONI_030 = "SIMOG_AGGIUDICAZIONI_030 - Inserimento dei dati su Pubblicazione Esito eseguito correttamente";
+//public static final String SIMOG_AGGIUDICAZIONI_031 = "SIMOG_AGGIUDICAZIONI_031 - Aggiornamento dei dati su Pubblicazione Esito eseguito correttamente";
+//public static final String SIMOG_AGGIUDICAZIONI_032 = "SIMOG_AGGIUDICAZIONI_032 - Conferma dei dati su Pubblicazione Esito eseguito correttamente";
+
+//public static final String SIMOG_AGGIUDICAZIONI_033 = "SIMOG_AGGIUDICAZIONI_033 - Errore nell'inserimento dei dati su Pubblicazione Esito";
+//public static final String SIMOG_AGGIUDICAZIONI_034 = "SIMOG_AGGIUDICAZIONI_034 - Errore nel reperimento dei dati su Pubblicazione Esito";
+
+//public static final String SIMOG_AGGIUDICAZIONI_040 = "SIMOG_AGGIUDICAZIONI_040 - Il campo Codice Fiscale Ditta e' obbligatorio";
+//public static final String SIMOG_AGGIUDICAZIONI_041 = "SIMOG_AGGIUDICAZIONI_041 - Selezionare un'opzione per il campo SI/NO";
+
+//public static final String SIMOG_AGGIUDICAZIONI_049 = "SIMOG_AGGIUDICAZIONI_049 - Inserimento dei dati eseguito correttamente";
+
+//public static final String SIMOG_AGGIUDICAZIONI_057 = "SIMOG_AGGIUDICAZIONI_057 - Errore: Valore del ribasso di aggiudicazione non valido";
+//public static final String SIMOG_AGGIUDICAZIONI_058 = "SIMOG_AGGIUDICAZIONI_058 - Errore: L'aggiudicatario selezionato e' gia' presente in lista";
+//public static final String SIMOG_AGGIUDICAZIONI_059 = "SIMOG_AGGIUDICAZIONI_059 - Cancellazione dei dati eseguito correttamente";
+
+//public static final String SIMOG_AGGIUDICAZIONI_060 = "SIMOG_AGGIUDICAZIONI_060 - Inserimento dei dati sul Responsabile eseguito correttamente";
+//public static final String SIMOG_AGGIUDICAZIONI_061 = "SIMOG_AGGIUDICAZIONI_061 - Aggiornamento dei dati sul Responsabile eseguito correttamente";	
+//public static final String SIMOG_AGGIUDICAZIONI_062 = "SIMOG_AGGIUDICAZIONI_062 - Valorizzare almeno un campo";	
+
+//public static final String SIMOG_AGGIUDICAZIONI_070 = "SIMOG_AGGIUDICAZIONI_070 - Errore: Numero percentuale non valido";
+
+//public static final String SIMOG_AGGIUDICAZIONI_072 = "SIMOG_AGGIUDICAZIONI_072 - Errore: Numero percentuale non valido";
+	
+//public static final String SIMOG_AGGIUDICAZIONI_092 = "SIMOG_INSERIMENTO_RUBRICA - Un utente con il codice fiscale digitato e' gia' presente in rubrica";
+
+//public static final String SIMOG_VALIDAZIONE_001 = "SIMOG_VALIDAZIONE_001 - E'obbligatorio effettuare una scelta";
+
+	//public static final String SIMOG_VALIDAZIONE_009 = "SIMOG_VALIDAZIONE_009 - L'oggetto dell'appalto non e' stato compilato";
+
+	//public static final String SIMOG_VALIDAZIONE_013 = "SIMOG_VALIDAZIONE_013 - Non e' stato indicato il numero complessivo dei lotti";
+
+	//public static final String SIMOG_VALIDAZIONE_020 = "SIMOG_VALIDAZIONE_020 - Non sono state indicate le condizioni che�";
+
+	//public static final String SIMOG_VALIDAZIONE_022 = "SIMOG_VALIDAZIONE_022 - Non e' stata indicata la data di pubblicazione oppure la data non e' cronologicamente coerente";
+	//public static final String SIMOG_VALIDAZIONE_023 = "SIMOG_VALIDAZIONE_023 - Non e' stata indicata la data di pubblicazione";
+	//public static final String SIMOG_VALIDAZIONE_024 = "SIMOG_VALIDAZIONE_024 - La pubblicita' sui quotidiani non e' sufficiente";
+	//public static final String SIMOG_VALIDAZIONE_025 = "SIMOG_VALIDAZIONE_025 - La data non e' stata valorizzata oppure non e' cronologicamente valida";
+	//public static final String SIMOG_VALIDAZIONE_026 = "SIMOG_VALIDAZIONE_026 - Il valore del campo e' non e' coerente";
+	//public static final String SIMOG_VALIDAZIONE_027 = "SIMOG_VALIDAZIONE_027 - Il valore del campo e' non e' coerente con l'importo totale";
+
+	//public static final String SIMOG_VALIDAZIONE_030 = "SIMOG_VALIDAZIONE_030 - Non e' stato indicato l'aggiudicatario dell'appalto";
+	//public static final String SIMOG_VALIDAZIONE_031 = "SIMOG_VALIDAZIONE_031 - Non e' stata indicata la tipologia del soggetto aggiudicatario";
+	//public static final String SIMOG_VALIDAZIONE_032 = "SIMOG_VALIDAZIONE_032 - Non e' stato indicato il ruolo dell'aggiudicatario nel raggruppamento";
+
+	//public static final String SIMOG_VALIDAZIONE_064 = "SIMOG_VALIDAZIONE_064 - Errore 2: L'indirizzo e-mail indicato non e' valido";
+
+	//public static final String SIMOG_VALIDAZIONE_074 = "SIMOG_VALIDAZIONE_074 - Non e' stata indicata la data verbale inizio lavori";
+	//public static final String SIMOG_VALIDAZIONE_075 = "SIMOG_VALIDAZIONE_075 - Non e' stato indicato il termine contrattuale per dare ultimazione ai lavori";
+
+	//public static final String SIMOG_VALIDAZIONE_079 = "SIMOG_VALIDAZIONE_079 - Non e' stata indicato il codice Cassa Edile";
+	//public static final String SIMOG_VALIDAZIONE_080 = "SIMOG_VALIDAZIONE_080 - Il codice INAIL inserito non e' valido";
+	//public static final String SIMOG_VALIDAZIONE_081 = "SIMOG_VALIDAZIONE_081 - Il codice INPS inserito non e' valido";
+	//public static final String SIMOG_VALIDAZIONE_082 = "SIMOG_VALIDAZIONE_082 - Il codice cassa edile inserito non e' valido";
+
+	//public static final String SIMOG_VALIDAZIONE_089 = "SIMOG_VALIDAZIONE_089 - Non e' stata indicata la data sottoscrizione eventuale accordo bonario";
+
+	//public static final String SIMOG_VALIDAZIONE_112 = "SIMOG_VALIDAZIONE_112 - Non e stato indicato l'$1";
+
+	//public static final String SIMOG_VALIDAZIONE_120 = "SIMOG_VALIDAZIONE_120 - $1: il valore digitato contiene caratteri non ammessi";
+
+	//public static final String SIMOG_VALIDAZIONE_122 = "SIMOG_VALIDAZIONE_122 - $1: problema di recupero data di confronto";
+
+	//public static final String SIMOG_VALIDAZIONE_124 = "SIMOG_VALIDAZIONE_124 - $1: Selezionare almeno un valore tra quelli previsti";
+

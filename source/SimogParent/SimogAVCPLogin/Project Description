@@ -1,0 +1,11 @@
+
+Il seguente progetto si propone di raggruppare tutte le Funzioni e Oggetti per il Login
+
+- xmlbean
+- stub ws 
+- librerie relative (solo reference)
+- xml di login (test) 
+
+NOTA: ritorna una stringa xml old stile per il momento benche' l' obiettivo sia
+		che questo modulo si occupi di tutte le problematiche relative al login
+		quali anche i profili selezionati autorizzazioni ecc.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+	<soggetto>
+		<cognome>Cognome RUP 1</cognome>
+		<nome>Nome RUP 1</nome>
+		<tel>065544332</tel>
+    	<fax>06778866</fax>
+    	<email>utente@sito.it</email>
+    	<admin_or>000</admin_or>
+	</soggetto>
+	<collaborazioni>
+		<collaborazione index="0">
+			<azienda>
+				<denominazione>Amministrazione afferente osservatorio lazio 06771101000</denominazione>
+				<codice_fiscale>06771101000</codice_fiscale>
+			<id_osservatorio>012</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 1 06771101000 </denominazione>
+				<id_ufficio>06771101000</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+		<collaborazione index="1">
+			<azienda>
+				<denominazione>Amministrazione osservatorio centrale</denominazione>
+				<codice_fiscale>97163520584</codice_fiscale>
+			<id_osservatorio>099</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 2</denominazione>
+				<id_ufficio>97163520584</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+	</collaborazioni>
+	<stato>2</stato>
+</check_login>

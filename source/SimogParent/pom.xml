@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>it.anticorruzione.simog</groupId>
+  <artifactId>SimogParent</artifactId>
+  <version>3.04.16-i18n</version>
+  <packaging>pom</packaging>
+
+  <name>SimogParent</name>
+
+    <modules>
+		<module>SimogXmlBeans</module>
+        <module>SimogCommon</module>
+		<module>SimogWSCommon</module>
+        <module>SimogAVCPLogin</module>
+        <module>SimogFlusso</module>
+        <module>SimogMassLoader</module>
+        <module>SimogWeb</module>
+        <module>SimogWSPDD</module>
+        <module>SimogWSAGG</module>
+        <module>SimogTEDCommon</module>
+        <module>SimogWSTED</module>
+    </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+</project>

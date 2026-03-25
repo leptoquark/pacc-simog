@@ -1,0 +1,80 @@
+	/*
+	private void validaServiziForniture(SchedaConclusione sconBea){
+		ConclusioneBean conBea = sconBea.getConclusione();
+		String dataVerbaleAggiudicazione = sconBea.getAggiudicazione().getDataVerbaleAggiudicazione();
+		BigDecimal importoComplessivo = new BigDecimal(0);
+		calcola(sconBea.getAggiudicazione(),importoComplessivo);
+		if(isEmpty(conBea.getMotiviInterruzione())){
+			//SELZIONARE UN VALORE ECE ECC
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_104.replace("$1", "Scheda Conclusione - Motivi interruzione "));
+		}
+		if(isEmpty(conBea.getMotiviRisoluzione())){
+			//selez come sopra
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_104.replace("$1", "Scheda Conclusione - Motivi risoluzione "));
+		}
+		if(!isDate(conBea.getDataRisoluzione()) && !isEmpty(conBea.getDataRisoluzione())){
+			//data formalmente non corretta
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_106.replace("$1", "Scheda Conclusione - Data risoluzione  "));
+		}else{
+			if(dataVerbaleAggiudicazione.compareTo(conBea.getDataRisoluzione())<0){
+				//data antecendete
+				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_119.replace("$1", "Scheda Conclusione - Data risoluzione "));
+			}
+		}
+		if(isEmpty(conBea.getFlagOneri())){
+			//selzionare almeno un valore tra quelli disp
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_104.replace("$1", "Scheda Conclusione - Motivi interruzione "));
+		}
+		if(!isEmpty(conBea.getOneriRisoluzione()) && importoComplessivo.compareTo(conBea.getOneriRisoluzione())<0){
+			//Valore elevato, verificare
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_132.replace("$1", "Scheda Conclusione - Oneri risoluzione "));
+		}else{
+			if(!(conBea.getFlagOneri().equals("0")) && (conBea.getOneriRisoluzione().compareTo(new BigDecimal(0))==0)){
+				//Inserire importo oneri economici
+				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_138.replace("$1", "Scheda Conclusione - Oneri risoluzione "));
+			}else if((conBea.getFlagOneri().equals("0")) && (conBea.getOneriRisoluzione().compareTo(new BigDecimal(0))>0)){
+				//Risoluzione/rescissione senza oneri! Verificare.
+				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_137.replace("$1", "Scheda Conclusione - Oneri risoluzione "));
+			}
+		}
+		if(isEmpty(conBea.getFlagPolizza())){
+			//Selezionare almeno un valore tra quelli previsti
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_104.replace("$1", "Scheda Conclusione - Flag polizza "));
+		}
+		if(!isDate(conBea.getDataUltimanzione())){
+			//from non corretta
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_106.replace("$1", "Scheda Conclusione - Data ultimazione "));
+		}else if(isDateBigger(dataVerbaleAggiudicazione, conBea.getDataUltimanzione())){
+			//Data antecedente la data di aggiudicazione, verificare
+			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_119.replace("$1", "Scheda Conclusione - Data ultimazione "));
+		}
+		if(!isEmpty(conBea.getNumInfortuni())){
+			if(!isNumber(""+conBea.getNumInfortuni())){
+				//inserire un numero
+				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_139.replace("$1", "Scheda Conclusione - Numero infortuni "));
+			}else if(conBea.getNumInfortuni()>9){
+				//verificare il numero (warn)
+				mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_140.replace("$1", "Scheda Conclusione - Numero infortuni "));
+			}else if(!isEmptyOrZero(conBea.getNumInfPerm())){
+				if(!isNumber(""+conBea.getNumInfPerm())){
+					//come sopra
+					mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_139.replace("$1", "Scheda Conclusione - Numero infortuni "));
+				}else if(isNumber(""+conBea.getNumInfPerm())){
+					//deve essere inferiore a quello sopra
+					//mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_104.replace("$1", "Scheda Conclusione - Motivi interruzione "));
+					if((conBea.getNumInfortuni() - conBea.getNumInfMort())<conBea.getNumInfPerm()){
+						//controllare numero
+						mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_140.replace("$1", "Scheda Conclusione - Numero infortuni permanenti "));
+					}
+				}
+			}else if( !isEmptyOrZero(conBea.getNumInfMort()) ){
+				if(isNumber(""+conBea.getNumInfMort())){
+					if((conBea.getNumInfortuni() - conBea.getNumInfPerm())<conBea.getNumInfMort()){
+						//controllare numero
+						mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_140.replace("$1", "Scheda Conclusione - Numero infortuni mortali "));
+					}
+				}
+			}
+		}		
+	}
+	*/

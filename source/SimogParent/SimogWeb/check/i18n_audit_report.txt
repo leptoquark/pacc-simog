@@ -1,0 +1,308 @@
+IT keys: 769
+AR keys: 792
+Missing in AR: 0
+Extra in AR (not in IT): 23
+Missing utils:message keys in IT bundle: 0
+Hardcoded text suspects: 2991
+
+--- Hardcoded suspects (first 300) ---
+WebContent\aggiornamentiListaUpload.jsp:33 :: ">Tabelle di Servizio
+WebContent\aggiornamentiListaUpload.jsp:34 :: ">Inserisci Aggiornamento
+WebContent\aggiornamentiListaUpload.jsp:36 :: ">Esegui Aggiornamento
+WebContent\aggiornamentiListaUpload.jsp:45 :: Aggiornamenti da completare
+WebContent\aggiornamentiListaUpload.jsp:55 :: Non sono presenti caricamenti in attesa
+WebContent\aggiornamentiListaUpload.jsp:63 :: Cancella aggiornamenti da completare
+WebContent\aggiornamentiListaUpload.jsp:68 :: Aggiornamenti completati
+WebContent\aggiornamentiListaUpload.jsp:79 :: Non sono presenti Caricamenti Completati
+WebContent\aggiornamentiTabellaDettaglio.jsp:31 :: ">Tabelle di Servizio
+WebContent\aggiornamentiTabellaDettaglio.jsp:33 :: &list=true">Visualizza Tabella completa
+WebContent\aggiornamentiTabellaDettaglio.jsp:35 :: ">Inserisci Aggiornamento
+WebContent\aggiornamentiTabellaDettaglio.jsp:42 :: Tabella di servizio
+WebContent\aggiornamentiTabellaDettaglio.jsp:54 :: Campi chiave:
+WebContent\aggiornamentiTabellaDettaglio.jsp:55 :: Elenco campi:
+WebContent\aggiornamentiTabellaDettaglio.jsp:71 :: Non risultano presenti aggiornamenti per la tabella
+WebContent\aggiornamentiTabellaDettaglio.jsp:72 :: Torna alle tabelle
+WebContent\aggiornamentiTabellaElenco.jsp:28 :: &list=true">Visualizza Tabella completa
+WebContent\aggiornamentiTabellaElenco.jsp:30 :: ">Inserisci Aggiornamento
+WebContent\aggiornamentiTabellaElenco.jsp:35 :: Tabella di servizio
+WebContent\aggiornamentiTabellaElenco.jsp:40 :: Non risultano presenti aggiornamenti per la tabella
+WebContent\aggiornamentiTabellaElenco.jsp:41 :: Torna alle tabelle
+WebContent\aggiornamentiTabellaElenco.jsp:49 :: Aggiornamento del
+WebContent\aggiornamentiTabellaElenco.jsp:50 :: " href="visualizzaStato?
+WebContent\aggiornamentiTabellaElenco.jsp:50 :: ">Visualizza dettaglio al
+WebContent\cancellaGara.jsp:151 :: Informazioni sulla Gara
+WebContent\cancellaGara.jsp:155 :: Giustificazione della cancellazione
+WebContent\cancellaGara.jsp:162 :: Motivazione*
+WebContent\cancellaGara.jsp:166 :: " scope="request" value='
+WebContent\cancellaGara.jsp:171 :: Note
+WebContent\cancellaGara.jsp:181 :: Confermare
+WebContent\cancellaLotto.jsp:185 :: Informazioni sulla Gara
+WebContent\cancellaLotto.jsp:188 :: Informazioni sui Lotti componenti
+WebContent\cancellaLotto.jsp:194 :: Lotto - CIG [
+WebContent\cancellaLotto.jsp:197 :: La pubblicazione del lotto &egrave; stata comunicata al Sistema Esattore in data
+WebContent\cancellaLotto.jsp:340 :: Categorie scorporabili
+WebContent\cancellaLotto.jsp:353 :: Giustificazione della cancellazione
+WebContent\cancellaLotto.jsp:360 :: Motivazione*
+WebContent\cancellaLotto.jsp:364 :: " scope="request" value='
+WebContent\cancellaLotto.jsp:369 :: Note
+WebContent\cancellaLotto.jsp:379 :: Confermare
+WebContent\consultaLogOperazioni.jsp:89 :: " type="text" name="
+WebContent\consultaLogOperazioni.jsp:106 :: " name="
+WebContent\consultazioneLog.jsp:88 :: " type="text" name="
+WebContent\consultazioneLog.jsp:95 :: " type="text" name="
+WebContent\consultazioneLog.jsp:102 :: " type="text" name="
+WebContent\consultazioneLog.jsp:109 :: " type="text" size="10" maxlength="10" title="CIG" id="txt_CIG" name="
+WebContent\consultazioneLog.jsp:115 :: " type="text" size="10" maxlength="8" title="ID_GARA" id="txt_ID_GARA" name="
+WebContent\consultazioneLog.jsp:137 :: checked="checked"
+WebContent\datiComuni.jsp:125 :: fieldToHighlight = new HashMap
+WebContent\datiComuni.jsp:163 :: ">Ritorna
+WebContent\datiComuni.jsp:182 :: Storico Presa in carico
+WebContent\datiComuni.jsp:206 :: " onclick="doAction('
+WebContent\datiComuni.jsp:222 :: Dati Comuni Aggiudicazioni
+WebContent\datiComuni.jsp:225 :: (*) Il campo \ufffd protetto perch\ufffd validato dal sistema AVCPass
+WebContent\datiComuni.jsp:240 :: Responsabile del procedimento
+WebContent\datiComuni.jsp:247 :: Numero Gara
+WebContent\datiComuni.jsp:253 :: Codice di individuazione dell'appalto (CIG)
+WebContent\datiComuni.jsp:259 :: Oggetto dell'appalto
+WebContent\datiComuni.jsp:263 :: Numero di riferimento alla nomenclatura CPV
+WebContent\datiComuni.jsp:267 :: Codice Fiscale dell'Amministrazione
+WebContent\datiComuni.jsp:271 :: Denominazione dell'Amministrazione
+WebContent\datiComuni.jsp:279 :: Importo lotto
+WebContent\datiComuni.jsp:299 :: " name="
+WebContent\datiComuni.jsp:323 :: " name="
+WebContent\datiComuni.jsp:326 :: >Lavori
+WebContent\datiComuni.jsp:327 :: >Servizi
+WebContent\datiComuni.jsp:328 :: >Forniture
+WebContent\datiComuni.jsp:349 :: " name="
+WebContent\datiComuni.jsp:428 :: In base alle informazioni fornite la rilevazione sar\ufffd strutturata secondo quanto previsto per i
+WebContent\datiComuni.jsp:439 :: STAZIONE APPALTANTE
+WebContent\datiComuni.jsp:442 :: Codice Fiscale della Stazione Appaltante
+WebContent\datiComuni.jsp:443 :: " tabindex="
+WebContent\datiComuni.jsp:444 :: " maxlength="11"/>
+WebContent\datiComuni.jsp:447 :: Denom.ne della Stazione Appaltante competente
+WebContent\datiComuni.jsp:448 :: " tabindex="
+WebContent\datiComuni.jsp:452 :: Codice univoco centro di costo
+WebContent\datiComuni.jsp:453 :: " tabindex="
+WebContent\datiComuni.jsp:454 :: " maxlength="50"/>
+WebContent\datiComuni.jsp:457 :: Denominazione del centro di costo nell'ambito della Stazione Appaltante
+WebContent\datiComuni.jsp:458 :: " tabindex="
+WebContent\datiComuni.jsp:459 :: " maxlength="50"/>
+WebContent\datiComuni.jsp:476 :: La stazione appaltante agisce per conto di altro soggetto singolo?*
+WebContent\datiComuni.jsp:487 :: Tipologia della SA (nel caso agisca per conto di altro/i soggetto/i)
+WebContent\datiComuni.jsp:489 :: " style="width: 100%"
+WebContent\datiComuni.jsp:498 :: Tipologia procedura (nel caso agisca per conto di altro/i soggetto/i)
+WebContent\datiComuni.jsp:500 :: " style="width: 100%"
+WebContent\datiComuni.jsp:510 :: Durata della convenzione o accordo quadro in giorni
+WebContent\datiComuni.jsp:521 :: ">La centrale di committenza procede alla stipula?
+WebContent\datiComuni.jsp:525 :: " id="
+WebContent\datiComuni.jsp:530 :: " id="
+WebContent\datiComuni.jsp:540 :: Codice fiscale soggetto per conto del quale agisce la S.A.
+WebContent\datiComuni.jsp:541 :: id="cfSoggettoA" name="
+WebContent\datiComuni.jsp:541 :: " tabindex="
+WebContent\datiComuni.jsp:542 :: " maxlength="20"/>
+WebContent\datiComuni.jsp:546 :: Denominazione dell'Amministrazione per la quale agisce la S.A.
+WebContent\datiComuni.jsp:547 :: id="denSoggettoA" maxlength="50" style="width:100%" name="
+WebContent\datiComuni.jsp:547 :: " tabindex="
+WebContent\datiComuni.jsp:553 :: PUBBLICITA' DELL'APPALTO
+WebContent\datiComuni.jsp:562 :: STATO ATTUALE
+WebContent\datiComuni.jsp:583 :: type="button" value="Salva" onclick="checkAndAction('check',
+WebContent\datiComuni.jsp:584 :: type="button" value="Conferma" onclick="checkAndAction('check',
+WebContent\datiComuni.jsp:585 :: type="button" value="Reimposta" onclick="reimpostaForm('
+WebContent\datiComuni.jsp:587 :: " onclick="doAction('
+WebContent\datiSospensione.jsp:53 :: &Egrave; stato superato il quarto di tempo contrattuale
+WebContent\datiSubappalto.jsp:63 :: Importo presunto
+WebContent\datiVarianti.jsp:29 :: Data di approvazione della
+WebContent\datiVarianti.jsp:84 :: Importo totale per l'attuazione della sicurezza
+WebContent\dettaglioPartecipante.jsp:100 :: Paese Operatore Economico
+WebContent\dettaglioPartecipante.jsp:109 :: Codice Fiscale / Partita Iva
+WebContent\dettaglioPartecipante.jsp:115 :: Denominazione
+WebContent\dettaglioPartecipante.jsp:122 :: Camera Commercio
+WebContent\dettaglioPartecipante.jsp:129 :: Partita IVA
+WebContent\dettaglioPartecipante.jsp:136 :: Indirizzo
+WebContent\dettaglioPartecipante.jsp:141 :: Civico
+WebContent\dettaglioPartecipante.jsp:147 :: Citt\ufffd
+WebContent\dettaglioPartecipante.jsp:151 :: Provincia
+WebContent\dettaglioPartecipante.jsp:157 :: CAP
+WebContent\dettaglioPartecipante.jsp:163 :: Codice Fiscale del Rappresentante
+WebContent\dettaglioPartecipante.jsp:169 :: Cognome
+WebContent\dettaglioPartecipante.jsp:174 :: Nome
+WebContent\dettaglioPartecipante.jsp:196 :: Codice Fiscale / Partita Iva
+WebContent\dettaglioPartecipante.jsp:203 :: Denominazione
+WebContent\dettaglioPartecipante.jsp:210 :: Camera Commercio
+WebContent\dettaglioPartecipante.jsp:216 :: Partita IVA
+WebContent\dettaglioPartecipante.jsp:223 :: Indirizzo
+WebContent\dettaglioPartecipante.jsp:228 :: Civico
+WebContent\dettaglioPartecipante.jsp:234 :: Citt\ufffd
+WebContent\dettaglioPartecipante.jsp:238 :: Provincia
+WebContent\dettaglioPartecipante.jsp:244 :: CAP
+WebContent\dettaglioPartecipante.jsp:250 :: Codice Fiscale del Rappresentante
+WebContent\dettaglioPartecipante.jsp:257 :: Cognome
+WebContent\dettaglioPartecipante.jsp:262 :: Nome
+WebContent\dettaglioResponsabile.jsp:110 :: Codice Fiscale
+WebContent\dettaglioResponsabile.jsp:116 :: Cognome
+WebContent\dettaglioResponsabile.jsp:123 :: Nome
+WebContent\dettaglioResponsabile.jsp:130 :: Telefono
+WebContent\dettaglioResponsabile.jsp:137 :: Fax
+WebContent\dettaglioResponsabile.jsp:143 :: Email
+WebContent\dettaglioResponsabile.jsp:150 :: Indirizzo
+WebContent\dettaglioResponsabile.jsp:156 :: Cap
+WebContent\dettaglioResponsabile.jsp:164 :: Codice Istat del Comune
+WebContent\dettaglioResponsabile.jsp:203 :: Incaricato Estero
+WebContent\dettaglioResponsabile.jsp:221 :: Codice Fiscale
+WebContent\dettaglioResponsabile.jsp:228 :: Cognome
+WebContent\dettaglioResponsabile.jsp:235 :: Nome
+WebContent\dettaglioResponsabile.jsp:242 :: Telefono
+WebContent\dettaglioResponsabile.jsp:249 :: Fax
+WebContent\dettaglioResponsabile.jsp:255 :: Email
+WebContent\dettaglioResponsabile.jsp:261 :: Indirizzo
+WebContent\dettaglioResponsabile.jsp:267 :: Cap
+WebContent\dettaglioResponsabile.jsp:281 :: Comune Istat
+WebContent\dettaglioRichAnnullamento.jsp:71 :: SCHEDA:
+WebContent\dettaglioRichAnnullamento.jsp:71 :: CIG / CUI:
+WebContent\dettaglioRichAnnullamento.jsp:140 :: " type="radio" name ="
+WebContent\dettaglioRichAnnullamento.jsp:140 :: value="
+WebContent\dettaglioRichAnnullamento.jsp:141 :: " type="radio" name ="
+WebContent\dettaglioRichAnnullamento.jsp:141 :: value="
+WebContent\dettaglioRichAnnullamento.jsp:148 :: Motivazione Esito Richiesta Modifica
+WebContent\dettaglioRichAnnullamento.jsp:154 :: " id="
+WebContent\dettaglioRichCancellazione.jsp:71 :: SCHEDA:
+WebContent\dettaglioRichCancellazione.jsp:71 :: CIG / CUI:
+WebContent\dettaglioRichCancellazione.jsp:147 :: " type="radio" name ="
+WebContent\dettaglioRichCancellazione.jsp:147 :: value="
+WebContent\dettaglioRichCancellazione.jsp:148 :: " type="radio" name ="
+WebContent\dettaglioRichCancellazione.jsp:148 :: value="
+WebContent\dettaglioRichCancellazione.jsp:155 :: Motivazione Esito Richiesta Cancellazione
+WebContent\dettaglioRichCancellazione.jsp:161 :: " id="
+WebContent\documentiManager.jsp:16 :: SIMOG - Gestione Documenti per lotto [
+WebContent\editMultilotto.jsp:140 :: ">Torna
+WebContent\editMultilotto.jsp:150 :: Aggiudicazioni presenti per il Codice Contratto n\ufffd
+WebContent\editMultilotto.jsp:157 :: Elimina
+WebContent\editMultilotto.jsp:158 :: Aggiudicazione Principale
+WebContent\editMultilotto.jsp:159 :: CIG e Progressivo Aggiudicazione
+WebContent\editMultilotto.jsp:160 :: Data Inserimento Aggiudicazione
+WebContent\editMultilotto.jsp:161 :: Stato Aggiudicazione
+WebContent\editMultilotto.jsp:167 :: " value="
+WebContent\editMultilotto.jsp:167 :: " checked />
+WebContent\editMultilotto.jsp:169 :: " value="
+WebContent\elencoGare.jsp:83 :: SIMOG - Ricerca Gara - Elenco Gare
+WebContent\elencoGare.jsp:104 :: Ricerca Gare
+WebContent\elencoGare.jsp:108 :: ">Nuova Ricerca
+WebContent\elencoGare.jsp:128 :: ">Dettaglio Gara
+WebContent\elencoGare.jsp:133 :: Informazioni Gara
+WebContent\elencoGare.jsp:137 :: Amministrazione Competente
+WebContent\elencoGare.jsp:142 :: Stazione Appaltante
+WebContent\elencoGare.jsp:146 :: Numero Gara
+WebContent\elencoGare.jsp:150 :: Oggetto della Gara
+WebContent\elencoGare.jsp:154 :: Data Creazione
+WebContent\elencoGare.jsp:158 :: Informazioni Lotti
+WebContent\elencoGare.jsp:161 :: CIG
+WebContent\elencoGare.jsp:162 :: Oggetto Lotto
+WebContent\elencoGare.jsp:163 :: Importo
+WebContent\elencoGare.jsp:164 :: Data Pubblicazione
+WebContent\elencoGare.jsp:165 :: Stato del lotto
+WebContent\elencoGare.jsp:191 :: ">Dettaglio Gara
+WebContent\elencoGareRSSA.jsp:26 :: " + maxRigheExp + "
+WebContent\elencoGareRSSA.jsp:144 :: Ricerca Gare
+WebContent\elencoGareRSSA.jsp:148 :: " title="Nuova Ricerca">Nuova Ricerca
+WebContent\elencoGareRSSA.jsp:151 :: " title="Visualizza prima pagina">Inizio elenco
+WebContent\elencoGareRSSA.jsp:153 :: Inizio elenco
+WebContent\elencoGareRSSA.jsp:156 :: " title="Visualizza Precedenti">Precedenti
+WebContent\elencoGareRSSA.jsp:158 :: Precedenti
+WebContent\elencoGareRSSA.jsp:161 :: " title="Visualizza Successive">Successive
+WebContent\elencoGareRSSA.jsp:163 :: Successive
+WebContent\elencoGareRSSA.jsp:166 :: " title="Visualizza ultima pagina">Fine elenco
+WebContent\elencoGareRSSA.jsp:169 :: Fine elenco
+WebContent\elencoGareRSSA.jsp:174 :: );visualizza('ricercaGareRUP_CS?
+WebContent\elencoGareRSSA.jsp:174 :: ');">Esporta elenco
+WebContent\elencoGareRSSA.jsp:182 :: ');">Esporta elenco
+WebContent\elencoGareRSSA.jsp:195 :: Visualizzati
+WebContent\elencoGareRSSA.jsp:195 :: Elementi
+WebContent\elencoGareRSSA.jsp:284 :: &lt&lt Nella prossima pagina altri lotti appartenenti alla gara numero
+WebContent\elencoGareRSSA.jsp:284 :: &gt&gt
+WebContent\elencoGareRSSA.jsp:297 :: ">Dettaglio Gara
+WebContent\elencoGareRSSA.jsp:304 :: Informazioni Gara
+WebContent\elencoGareRSSA.jsp:309 :: Amministrazione Competente
+WebContent\elencoGareRSSA.jsp:313 :: Stazione Appaltante
+WebContent\elencoGareRSSA.jsp:317 :: Numero Gara
+WebContent\elencoGareRSSA.jsp:321 :: Oggetto della Gara
+WebContent\elencoGareRSSA.jsp:330 :: Importo Gara
+WebContent\elencoGareRSSA.jsp:334 :: Data Creazione
+WebContent\elencoGareRSSA.jsp:338 :: Data perfezionamento bando
+WebContent\elencoGareRSSA.jsp:342 :: Stato gara
+WebContent\elencoGareRSSA.jsp:348 :: Funzione delegata
+WebContent\elencoGareRSSA.jsp:352 :: CF Amministrazione delegata
+WebContent\elencoGareRSSA.jsp:356 :: Denominazione Amministrazione delegata
+WebContent\elencoGareRSSA.jsp:360 :: CF Amministrazione delegante
+WebContent\elencoGareRSSA.jsp:364 :: Denominazione Amministrazione delegante
+WebContent\elencoGareRSSA.jsp:369 :: >Informazioni Lotti
+WebContent\elencoGareRSSA.jsp:373 :: CIG
+WebContent\elencoGareRSSA.jsp:374 :: Oggetto Lotto
+WebContent\elencoGareRSSA.jsp:375 :: Importo &euro;
+WebContent\elencoGareRSSA.jsp:376 :: Data Pubblicazione
+WebContent\elencoGareRSSA.jsp:377 :: Stato Lotto
+WebContent\elencoGareRSSA.jsp:378 :: Esito Procedura
+WebContent\elencoGareRSSA.jsp:531 :: ">Presa in carico
+WebContent\elencoGareRSSA.jsp:558 :: ">Presa in carico CIG delegato
+WebContent\elencoGareRSSA.jsp:591 :: ');">Presa in carico
+WebContent\elencoGareRSSA.jsp:597 :: ');">Presa in carico
+WebContent\elencoGareRSSA.jsp:624 :: &action=load">Presa in carico gara delegata
+WebContent\elencoGareRSSA.jsp:673 :: ">Dettaglio Gara
+WebContent\elencoInvitati.jsp:93 :: Informazioni Gara
+WebContent\elencoInvitati.jsp:97 :: Numero Gara
+WebContent\elencoInvitati.jsp:101 :: Oggetto della Gara
+WebContent\elencoInvitati.jsp:105 :: Importo della Gara &euro;
+WebContent\elencoInvitati.jsp:109 :: Numero totale dei Lotti
+WebContent\elencoInvitati.jsp:113 :: Stato gara
+WebContent\faq_simog.jsp:5 :: ANAC
+WebContent\faq_simog.jsp:19 :: Logo ANAC
+WebContent\gestioneGareEXT.jsp:107 :: Ricerca Gara
+WebContent\gestioneGareEXT.jsp:115 :: Filtri nominali
+WebContent\gestioneGareEXT.jsp:119 :: Inserire una o pi&ugrave; chiavi di ricerca per l'oggetto della gara
+WebContent\gestioneGareEXT.jsp:122 :: Oggetto della gara
+WebContent\gestioneGareEXT.jsp:140 :: Oggetto del lotto
+WebContent\gestioneGareEXT.jsp:152 :: Indicare il CIG del lotto di interesse
+WebContent\gestioneGareEXT.jsp:155 :: CIG
+WebContent\gestioneGareEXT.jsp:168 :: Indicare il Numero della Gara di interesse
+WebContent\gestioneGareEXT.jsp:171 :: Numero Gara
+WebContent\gestioneGareEXT.jsp:185 :: Indicare il Codice Fiscale dell'Amministrazione
+WebContent\gestioneGareEXT.jsp:188 :: CF Amministrazione
+WebContent\gestioneGareEXT.jsp:201 :: Stazione appaltante che ha bandito la Gara
+WebContent\gestioneGareEXT.jsp:204 :: ID Stazione Appaltante
+WebContent\gestioneGareEXT.jsp:208 :: " name="
+WebContent\gestioneGareEXT.jsp:211 :: size="40" maxlength="200"/>
+WebContent\gestioneGareEXT.jsp:215 :: Indicare la fascia importo di interesse
+WebContent\gestioneGareEXT.jsp:218 :: Fascia Importo
+WebContent\gestioneGareEXT.jsp:232 :: Filtri Accessori
+WebContent\gestioneGareEXT.jsp:238 :: />Richieste Modifica
+WebContent\gestioneGareEXT.jsp:242 :: " type="radio" value="S" name="
+WebContent\gestioneGareEXT.jsp:245 :: />Presente
+WebContent\gestioneGareEXT.jsp:246 :: " type="radio" name ="
+WebContent\gestioneGareEXT.jsp:249 :: />Assente
+WebContent\gestioneGareEXT.jsp:261 :: Filtri temporali
+WebContent\gestioneGareEXT.jsp:273 :: Da data Pubblicazione
+WebContent\gestioneGareEXT.jsp:299 :: A data Pubblicazione
+WebContent\gestioneGareEXT.jsp:322 :: Inserire l'intervallo di date di pubblicazione
+WebContent\gestioneGareEXT.jsp:334 :: Da data Scadenza
+WebContent\gestioneGareEXT.jsp:362 :: A data Scadenza
+WebContent\gestioneGareEXT.jsp:385 :: Inserire l'intervallo di date di scadenza richiesto
+WebContent\gestioneGareRSSA.jsp:4 :: Gestione Gare
+WebContent\gestioneGareRSSA.jsp:155 :: Indicare la fascia importo di interesse
+WebContent\gestioneGareRSSA.jsp:158 :: Fascia Importo
+WebContent\gestioneGareRSSA.jsp:169 :: Stazione appaltante che ha bandito la Gara
+WebContent\gestioneGareRSSA.jsp:177 :: " value="TUTTE" tabindex="
+WebContent\gestioneGareRSSA.jsp:177 :: ">TUTTE (TRANNE LE STAZIONI APPALTANTI DELEGATE)
+WebContent\gestioneGareRSSA.jsp:184 :: " value="
+WebContent\gestioneGareRSSA.jsp:184 :: " tabindex="
+WebContent\gestioneGareRSSA.jsp:199 :: Filtri temporali
+WebContent\gestioneGareRSSA.jsp:211 :: Da data Pubblicazione
+WebContent\gestioneGareRSSA.jsp:237 :: A data Pubblicazione
+WebContent\gestioneGareRSSA.jsp:260 :: Inserire l'intervallo di date di pubblicazione
+WebContent\gestioneGareRSSA.jsp:272 :: Da data Scadenza
+WebContent\gestioneGareRSSA.jsp:300 :: A data Scadenza
+WebContent\gestioneGareRSSA.jsp:323 :: Inserire l'intervallo di date di scadenza richiesto
+WebContent\gestioneMultilotto.jsp:150 :: CIG e Progressivo Aggiudicazione
+WebContent\gestioneMultilotto.jsp:151 :: Data Inserimento Aggiudicazione
+WebContent\gestioneMultilotto.jsp:152 :: Stato Aggiudicazione
+WebContent\gestioneMultilotto.jsp:184 :: Raggruppamento n\ufffd
+WebContent\gestioneMultilotto.jsp:187 :: Aggiudicazioni non raggruppate
+WebContent\gestioneMultilotto.jsp:196 :: Aggiungi

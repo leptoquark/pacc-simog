@@ -1,0 +1,268 @@
+package it.avlp.simog.garamanager;
+
+import it.avlp.simog.beans.StatiScheda;
+import it.avlp.simog.db.AccessiDB;
+import it.avlp.simog.db.generated.AGGIUDICAZIONI;
+import it.avlp.simog.db.generated.GARA;
+import it.avlp.simog.db.generated.INFO_AGGIUDICAZIONI;
+import it.avlp.simog.db.generated.LOTTO;
+import it.avlp.simog.db.generated.PUBBLICAZIONI;
+import it.avlp.simog.db.generated.SIMOG_PUBBLICAZIONE_BANDO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
+import org.apache.log4j.Logger;
+
+
+/**
+ * @author ppientini
+ *
+ */
+public class PubblicazioneBandoManager extends AccessiDB {
+
+	/***********************************************************************
+	 * <b>GaraManager</b><br>
+	 * Costruttore 
+	 * @param activeConnection Connection
+	 * @param logger Logger
+	 */
+	public PubblicazioneBandoManager ( Connection activeConnection, Logger logger ) {
+		super ( activeConnection, logger );
+	}
+
+	private final String INSERT_RECORD_BASE =
+		
+		"INSERT INTO " + SIMOG_PUBBLICAZIONE_BANDO.TABLE_NAME 
+		+ " ( "
+		+ SIMOG_PUBBLICAZIONE_BANDO.T_ID_GARA 
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.OGGETTO_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_CREAZIONE_GARA 
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CF_UTENTE 
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_STAZIONE_APPALTANTE 
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DENOM_STAZIONE_APPALTANTE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CF_AMMINISTRAZIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DENOM_AMMINISTRAZIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_OSSERVATORIO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_STATO_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_COMUN
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_SA_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_INIB_PAGAM
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_TERMINE_PAGAMENTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_CANCELLAZIONE_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_CONFERMA_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.TIPO_SCHEDA_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_MODO_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_MODO_REAL
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_MOTIVAZIONE_CANC
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.NOTE_CANC_GARA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CIG_ACC_QUADRO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_PERFEZIONAMENTO_BANDO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CIG_CICLE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CIG
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.CIG_KKK
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.OGGETTO_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.SOMMA_URGENZA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_SA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_IMPRESA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_PUBBLICAZIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_COMUNICAZIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_TIPOLOGIA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_CPV
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_SCELTA_CONTRAENTE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_CATEGORIA_PREVALENTE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_INIB_PAGAMENTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_SCADENZA_PAGAMENTI
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_CANCELLAZIONE_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_MOTIVAZIONE_CANC_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.NOTE_CANC_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.TIPO_CONTRATTO_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.FLAG_ESCLUSO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_ESCLUSIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_CREAZIONE_LOTTO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.LUOGO_NUTS
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.LUOGO_ISTAT
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.IMPORTO_ATTUAZIONE_SICUREZZA
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_PUBBLICAZIONE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_INIZIO_PUBB
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_FINE_PUBB
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_ALBO
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_GUCE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_GURI
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.QUOTIDIANI_NAZ
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.QUOTIDIANI_REG
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.ID_STATO_PUBB
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.PROFILO_COMMITTENTE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.SITO_MINISTERO_INF_TRASP
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.SITO_OSSERVATORIO_CP
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.DATA_BORE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.PERIODICI
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.NUMERO_GURI
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.NUMERO_GUCE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.NUMERO_BORE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.LINK_SITO_COMMITTENTE
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.TIPO_OPERAZIONE
+		//gm nuovo codice estensione pubblicazione bandi
+		+ ", " + SIMOG_PUBBLICAZIONE_BANDO.FLAG_BENICULT
+		+ " ) "
+		+ " SELECT "
+		+ GARA.T_ID_GARA 
+		+ ", " + GARA.T_OGGETTO 
+		+ ", " + GARA.T_DATA_CREAZIONE 
+		+ ", " + GARA.T_CF_UTENTE 
+		+ ", " + GARA.T_ID_STAZIONE_APPALTANTE 
+		+ ", " + GARA.T_DENOM_STAZIONE_APPALTANTE
+		+ ", " + GARA.T_CF_AMMINISTRAZIONE
+		+ ", " + GARA.T_DENOM_AMMINISTRAZIONE
+		+ ", " + GARA.T_ID_OSSERVATORIO
+		+ ", " + GARA.T_ID_STATO
+		+ ", " + GARA.T_DATA_COMUN
+		+ ", " + GARA.T_IMPORTO_GARA
+		+ ", " + GARA.T_IMPORTO_SA_GARA
+		+ ", " + GARA.T_DATA_INIB_PAGAM
+		+ ", " + GARA.T_DATA_TERMINE_PAGAMENTO
+		+ ", " + GARA.T_DATA_CANCELLAZIONE_GARA
+		+ ", " + GARA.T_DATA_CONFERMA_GARA
+		+ ", " + GARA.T_TIPO_SCHEDA_GARA
+		+ ", " + GARA.T_ID_MODO_GARA
+		+ ", " + GARA.T_ID_MODO_REAL
+		+ ", " + GARA.T_ID_MOTIVAZIONE_CANC
+		+ ", " + GARA.T_NOTE_CANC_GARA
+		+ ", " + GARA.T_CIG_ACC_QUADRO
+		+ ", " + GARA.T_DATA_PERFEZIONAMENTO_BANDO
+		+ ", " + LOTTO.T_ID_LOTTO
+		+ ", " + LOTTO.T_CIG_CICLE
+		+ ", " + LOTTO.T_CIG
+		+ ", " + LOTTO.T_CIG_KKK
+		+ ", " + LOTTO.T_OGGETTO
+		+ ", " + LOTTO.T_SOMMA_URGENZA
+		+ ", " + LOTTO.T_IMPORTO_LOTTO
+		+ ", " + LOTTO.T_IMPORTO_SA
+		+ ", " + LOTTO.T_IMPORTO_IMPRESA
+		+ ", " + LOTTO.T_DATA_PUBBLICAZIONE
+		+ ", " + LOTTO.T_DATA_COMUNICAZIONE
+		+ ", " + LOTTO.T_ID_TIPOLOGIA
+		+ ", " + LOTTO.T_ID_CPV
+		+ ", " + LOTTO.T_ID_SCELTA_CONTRAENTE
+		+ ", " + LOTTO.T_ID_CATEGORIA_PREVALENTE
+		+ ", " + LOTTO.T_DATA_INIB_PAGAMENTO
+		+ ", " + LOTTO.T_DATA_SCADENZA_PAGAMENTI
+		+ ", " + LOTTO.T_DATA_CANCELLAZIONE_LOTTO
+		+ ", " + LOTTO.T_ID_MOTIVAZIONE
+		+ ", " + LOTTO.T_NOTE_CANC
+		+ ", " + LOTTO.T_TIPO_CONTRATTO_LOTTO
+		+ ", " + LOTTO.T_FLAG_ESCLUSO
+		+ ", " + LOTTO.T_ID_ESCLUSIONE
+		+ ", " + LOTTO.T_DATA_CREAZIONE_LOTTO
+		+ ", " + LOTTO.T_LUOGO_NUTS
+		+ ", " + LOTTO.T_LUOGO_ISTAT
+		+ ", " + LOTTO.T_IMPORTO_ATTUAZIONE_SICUREZZA
+		+ ", " + PUBBLICAZIONI.T_ID_PUBBLICAZIONE
+		+ ", " + PUBBLICAZIONI.T_DATA_INIZIO_PUBB
+		+ ", " + PUBBLICAZIONI.T_DATA_FINE_PUBB
+		+ ", " + PUBBLICAZIONI.T_DATA_ALBO
+		+ ", " + PUBBLICAZIONI.T_DATA_GUCE
+		+ ", " + PUBBLICAZIONI.T_DATA_GURI
+		+ ", " + PUBBLICAZIONI.T_QUOTIDIANI_NAZ
+		+ ", " + PUBBLICAZIONI.T_QUOTIDIANI_REG
+		+ ", " + PUBBLICAZIONI.T_ID_STATO
+		+ ", " + PUBBLICAZIONI.T_PROFILO_COMMITTENTE
+		+ ", " + PUBBLICAZIONI.T_SITO_MINISTERO_INF_TRASP
+		+ ", " + PUBBLICAZIONI.T_SITO_OSSERVATORIO_CP
+		+ ", " + PUBBLICAZIONI.T_DATA_BORE
+		+ ", " + PUBBLICAZIONI.T_PERIODICI
+		+ ", " + PUBBLICAZIONI.T_NUMERO_GURI
+		+ ", " + PUBBLICAZIONI.T_NUMERO_GUCE
+		+ ", " + PUBBLICAZIONI.T_NUMERO_BORE
+		+ ", " + PUBBLICAZIONI.T_LINK_SITO_COMMITTENTE
+		+ ", " + PUBBLICAZIONI.T_TIPO_OPERAZIONE
+		+ ", " + PUBBLICAZIONI.T_FLAG_BENICULT;
+
+		private final String FROM_GARA = 
+		" FROM " + PUBBLICAZIONI.TABLE_NAME 
+		+"  JOIN " +  GARA.TABLE_NAME 
+			+ " ON  "+ PUBBLICAZIONI.T_ID_PUBBLICAZIONE + " = " + GARA.T_ID_PUBBLICAZIONE
+			+ " AND " + PUBBLICAZIONI.T_DATA_INIZIO_PUBB + " = " + GARA.T_DATA_INIZIO_PUBB 
+		+ " LEFT OUTER JOIN " + LOTTO.TABLE_NAME
+		+ " ON " + GARA.T_ID_GARA + "=" + LOTTO.T_ID_GARA
+		+ " WHERE " + PUBBLICAZIONI.T_ID_PUBBLICAZIONE + " = ?"
+		+ " AND " + PUBBLICAZIONI.T_DATA_INIZIO_PUBB + " = ?"
+		+ " AND " + LOTTO.DATA_PUBBLICAZIONE + " IS NOT NULL"
+		+ " AND " + LOTTO.DATA_CANCELLAZIONE_LOTTO + " IS NULL"
+		+ " AND " + LOTTO.DATA_INIB_PAGAMENTO + " IS NULL";
+	
+	private final String FROM_AGGIUD = 
+		" FROM " + PUBBLICAZIONI.TABLE_NAME 
+		+"  JOIN " +  AGGIUDICAZIONI.TABLE_NAME 
+		+ " ON  "+ PUBBLICAZIONI.T_ID_PUBBLICAZIONE + " = " + AGGIUDICAZIONI.T_ID_PUBBLICAZIONE_AGG
+		+ " AND " + PUBBLICAZIONI.T_DATA_INIZIO_PUBB + " = " + AGGIUDICAZIONI.T_DATA_INIZIO_PUBB_AGG
+		+ " AND " + AGGIUDICAZIONI.T_ID_STATO + " = " + StatiScheda.CONFERMATO 
+
+		+"  JOIN " +  INFO_AGGIUDICAZIONI.TABLE_NAME 
+		+ " ON  "+ INFO_AGGIUDICAZIONI.T_ID_INFO + " = " + AGGIUDICAZIONI.T_ID_INFO
+		+ " AND " + INFO_AGGIUDICAZIONI.T_ID_STATO + " = " + StatiScheda.CONFERMATO 
+
+		+ " JOIN " + LOTTO.TABLE_NAME
+		+ " ON " + LOTTO.T_ID_LOTTO + "=" + INFO_AGGIUDICAZIONI.T_ID_LOTTO
+	
+		+"  JOIN " +  GARA.TABLE_NAME
+		+ " ON " + GARA.T_ID_GARA + "=" + LOTTO.T_ID_GARA
+		+ " WHERE " + AGGIUDICAZIONI.T_ID_PUBBLICAZIONE_AGG + " = ?"
+		+ " AND " + AGGIUDICAZIONI.T_DATA_INIZIO_PUBB_AGG + " = ?"
+		+ " AND " + LOTTO.DATA_PUBBLICAZIONE + " IS NOT NULL"
+		+ " AND " + LOTTO.DATA_CANCELLAZIONE_LOTTO + " IS NULL"
+		+ " AND " + LOTTO.DATA_INIB_PAGAMENTO + " IS NULL";
+
+
+	/**
+	 * Inserisce un record nella tabella di scambio pubblicazione bandi
+	 * @param idPubblicazione
+	 * @param dataInizioPubblicazione
+	 * @throws SQLException
+	 */
+	public void insert(long idPubblicazione, Timestamp dataInizioPubblicazione) throws SQLException {
+
+		String query = INSERT_RECORD_BASE + FROM_GARA;
+		PreparedStatement pstmt = activeConnection.prepareStatement(query);		
+		try{			
+			int posCounter = 1;		
+			pstmt.setLong(posCounter++, idPubblicazione);
+			pstmt.setTimestamp(posCounter++, dataInizioPubblicazione);
+			pstmt.execute();
+		}
+		finally{
+				close(null,pstmt);
+		}				
+	}	
+
+	/**
+	 * Inserisce un record nella tabella di scambio pubblicazione bandi
+	 * Utilizzare per avvisi di aggiudicazione e relative rettifiche
+	 * @param idPubblicazione
+	 * @param dataInizioPubblicazione
+	 * @throws SQLException
+	 */
+	public void insertFromAgg(long idPubblicazione, Timestamp dataInizioPubblicazione) throws SQLException {
+
+		String query = INSERT_RECORD_BASE + FROM_AGGIUD;
+		
+		logger.debug(query);
+		
+		PreparedStatement pstmt = activeConnection.prepareStatement(query);		
+		try{			
+			int posCounter = 1;		
+			pstmt.setLong(posCounter++, idPubblicazione);
+			pstmt.setTimestamp(posCounter++, dataInizioPubblicazione);
+			pstmt.execute();
+		}
+		finally{
+				close(null,pstmt);
+		}				
+	}	
+}

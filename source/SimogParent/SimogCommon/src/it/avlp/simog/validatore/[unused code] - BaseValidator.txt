@@ -1,0 +1,209 @@
+//	/*
+//	 * controlli comuni di tipo applicativo
+//	 */
+//	public class Checkers {
+//		
+//		static final String FLAG_VALORE_SI = "S";
+//		static final String FLAG_VALORE_NO = "N";
+//		
+//		protected static String checkPercentuals(String num,String messaggio) {
+//			
+//			if (num == null) return messaggio;
+//				
+//			BigDecimal bigDec = BigDecimal.valueOf(0);
+//		
+//			try {
+//				bigDec = new BigDecimal(num);
+//			} catch (NumberFormatException nfe) {
+//				return messaggio; 
+//			}
+//			
+//			// controllo che sia minore di 100
+//			BigDecimal cento = new BigDecimal("100");
+//			if (cento.compareTo(bigDec) <= 0){
+//				return Messaggi.SIMOG_VALIDAZIONE_102; 
+//			}
+//			
+//			return null;
+//		}
+//		
+//		static Boolean controllaLunghezzaStringa(String stringaPassata, int lunghezzaDaControllare){
+//
+//			if (stringaPassata.length() == lunghezzaDaControllare) {
+//				return true;
+//			}
+//			return false;
+//			
+//		}
+//		
+//		static Boolean ControllaCF(String cf) {
+//		    int i, s, c;
+//		    String cf2;
+//		    int setdisp[] = {1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20,
+//		        11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23 };
+//
+//		    if( cf.length() == 0 ) return true;
+//		    if (!controllaLunghezzaStringa(cf,16))
+//		        return false;
+//		    cf2 = cf.toUpperCase();
+//		    for( i=0; i<16; i++ ){
+//		        c = cf2.charAt(i);
+//		        if( ! ( c>='0' && c<='9' || c>='A' && c<='Z' ) )
+//		            return false;
+//		    }
+//		    s = 0;
+//		    for( i=1; i<=13; i+=2 ){
+//		        c = cf2.charAt(i);
+//		        if( c>='0' && c<='9' )
+//		            s = s + c - '0';
+//		        else
+//		            s = s + c - 'A';
+//		    }
+//		    for( i=0; i<=14; i+=2 ){
+//		        c = cf2.charAt(i);
+//		        if( c>='0' && c<='9' )     c = c - '0' + 'A';
+//		        s = s + setdisp[c - 'A'];
+//		    }
+//		    if( s%26 + 'A' != cf2.charAt(15) )
+//		        return false;
+//		    return true;
+//		}
+//
+//		/**
+//		 * verifica validità della partita iva
+//		 * @param partita iva da validare
+//		 * @return true se valida, altrimenti false
+//		 */
+//		static Boolean partitaIvaValida(String pi)
+//		{
+//			if(pi == null) return false;
+//			
+//		    int i, c, s;
+//		    if( pi.length() == 0 )  return true;
+//		    if (!controllaLunghezzaStringa(pi,11))
+//		        return false;
+//		    if (!validaParametroDiSoliNumeri(pi,11)) return false;
+//		    for( i=0; i<11; i++ ){
+//		        if( pi.charAt(i) < '0' || pi.charAt(i) > '9' )
+//		            return false;
+//		    }
+//		    s = 0;
+//		    for( i=0; i<=9; i+=2 )
+//		        s += pi.charAt(i) - '0';
+//		    for( i=1; i<=9; i+=2 ){
+//		        c = 2*( pi.charAt(i) - '0' );
+//		        if( c > 9 )  c = c - 9;
+//		        s += c;
+//		    }
+//		    if( ( 10 - s%10 )%10 != pi.charAt(10) - '0' )
+//		        return false;
+//		    return true;
+//		}
+//
+//		static Boolean validaParametroDiSoliNumeri(String stringa, int quanti){
+//			
+//			for(int i=0; i<quanti; i++ ){
+//			        if( stringa.charAt(i) < '0' || stringa.charAt(i) > '9' )
+//			            return false;
+//			}
+//			return true;
+//		}
+//		
+//		static Boolean isNumerico(String stringa){
+//			
+//			for(int i=0; i<stringa.length(); i++ ){
+//			        if( stringa.charAt(i) < '0' || stringa.charAt(i) > '9' )
+//			            return false;
+//			}
+//			return true;
+//		}
+//		
+//		/**
+//		 * @param valoreCampo
+//		 * @return false se il campo è null o vuoto altrimenti ritorna true
+//		 */
+//		static Boolean campoValorizzato(String valoreCampo){
+//			if (valoreCampo == null)
+//				return false;
+//					
+//			if(valoreCampo.length()==0 || valoreCampo.equals("")) 
+//				return false;
+//			
+//			return true;
+//		}
+//		
+//		static Boolean controllaImporto(Float importo, String maggioreMinoreUguale, Float limite){
+//
+//			if (maggioreMinoreUguale.equals(">")){
+//				if (importo > limite) return true;
+//			}else if (maggioreMinoreUguale.equals("<")){
+//				if (importo < limite) return true;
+//			}else if (maggioreMinoreUguale.equals(">=")){
+//				if (importo >= limite) return true;
+//			}else if (maggioreMinoreUguale.equals("<=")){
+//				if (importo <= limite) return true;
+//			}else if (maggioreMinoreUguale.equals("=")){
+//				if (importo == limite) return true;
+//			}
+//			return false;
+//		}
+//		
+//		static Boolean controllaData(String data){
+//			//cambiata la data nel formato yyyy-mm-dd
+//			if (! DateValidator.getInstance().isValid(data, "yyyymmdd", false)) return false;	
+//			return true;
+//		}
+//		
+//		static Boolean controllaMail(String mail){
+//			if( ! EmailValidator.getInstance().isValid(mail)) return false;
+//			return true;
+//		}
+//		
+//		static Boolean controllaQuantiDecimali(String strDaControllare, int quantiDecimali){
+//	        String str = strDaControllare;
+//	        String[] arr = str.split("\\.");
+//	        // PP  controllo solo che non siano troppi 
+//	        // PP if (arr[1].length() != quantiDecimali) return false;
+//	        
+//	        if (arr[1].length() > quantiDecimali) return false;
+//		    return true;	
+//		}
+//		
+//		/**
+//		 * Controlla  il valore del flag in base al valore standard
+//		 * @param flag
+//		 * @return true se uguale a valore SI altrimenti false
+//		 */
+//		static Boolean flagSI(String flag){
+//			if (flag == null) return false;
+//			
+//			return FLAG_VALORE_SI.equals(flag);
+//		}
+//		/**
+//		 * Controlla  il valore del flag in base ai valori standard
+//		 * @param flag
+//		 * @return true se uguale a valore SI o NO altrimenti false
+//		 */
+//		static Boolean controllaFlag(String flag){
+//			if (flag == null) return false;
+//			
+//			return FLAG_VALORE_SI.equals(flag) || FLAG_VALORE_NO.equals(flag);
+//		}
+//
+//	}
+//
+//	/*
+//	 * variabili di classe
+//	 */
+//	// String sezione="";
+//	// boolean validata = false;	
+//	// AllValidationBeans eccezioni = new AllValidationBeans();
+//	
+//	/*
+//	 * metodi che devono essere presenti
+//	 */
+//	public boolean valida();
+//	public boolean isValidata();
+//	public AllValidationBeans getEccezioni();
+//	public String getSezione();
+//	public Object getDati();

@@ -1,0 +1,144 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/stile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" >
+<link rel="icon" href="img/animated_favicon1.gif" type="image/gif" >
+<link rel="stylesheet" href="theme/stile.css"/>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="xtree/treeutils.js"></script> 
+<script type="text/javascript" src="xtree/xtree2.js"></script>
+<script type="text/javascript" src="xtree/xmlextras.js"></script>
+<script type="text/javascript" src="xtree/xloadtree2.js"></script>
+<link type="text/css" rel="stylesheet" href="xtree/xtree2.css" /> 
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" /> 
+<title>CPV الثانوية</title>
+<base target="_self">
+<script type="text/javascript">
+function getSender(wnd) {
+	if(wnd.dialogArguments)
+		return wnd.dialogArguments.Sender;
+	else return wnd.opener;
+}
+function loadCpv(){
+	var padre = getSender(window); //window.opener; 
+	 var idRigaAgg = "hidden_lista_cpv_secondarie1"; 
+	 console.log("idRigaAgg:"+idRigaAgg);
+	var rigaAgg = window.showModalDialog ? padre.document.getElementById(idRigaAgg) : window.opener.document.getElementById(idRigaAgg).value;
+	if(rigaAgg!=null && rigaAgg!=""){
+      var campi = rigaAgg.split("~");
+      //l'ultima riga contiene campi nulli e non ci interessano
+      for (i=0;i<campi.length-1;i++){
+         var listaCpv = campi[i].split("|");
+         console.log(listaCpv);
+      }
+	}
+}
+function salvaCpv(prefix){
+	var idtable = "idTabella"+prefix;
+	var table = document.getElementById(idtable);
+	var lista = "";
+	var record = "";
+	//var cellaAvvalimento = 4;
+	var cellaId = 4;
+	var errori = false;
+	var messaggio="";
+	if(table != null){
+	    var numrows = table.rows.length;
+	    //la riga zero contiene i campi th e non ci interessano
+	    for(i=1;i<numrows;i++){
+	    	 var cells = table.rows[i].getElementsByTagName("td");
+	    	 //la riga zero contiene i campi azione e non ci interessano
+			 for (j=1; j<cells.length;j++) {
+				 var valore = cells[j].getElementsByTagName("input")[0].value;
+				 if(j==cellaId){
+					 if(cells[j].innerHTML == null || cells[j].innerHTML == ""){
+						 errori = true;
+					   	 messaggio = messaggio + i + " ";
+					 }	 
+				 }
+             record = record + valore + "|";
+		    }
+			 lista = lista + record + "~";
+          //reset del record
+			 record = "";
+		 }
+		 console.log(lista);
+		 if(errori == false){  
+	       var padre = getSender(window); //window.opener;
+	       var idRigaAgg = "hidden_lista_cpv_secondarie1";
+	       var listaCpv = padre.document.getElementById(idRigaAgg);
+           listaCpv.value = lista;
+           window.close(); 
+		 }
+		 else{
+			 alert("Errore riga: " + messaggio);
+		 }
+	} 
+}
+</script>
+</head>
+<body onload="">    
+<div class="bodypage-e">
+	<form id="IdFormPopup" action=""  method="post">
+	<div class="bodypage-e">
+	 <fieldset style="margin: 2px;padding: 2px">
+	<legend>CPV الثانوية</legend>
+	<fieldset style="margin: 2px;padding: 2px">
+		<div id="DIVTabellaCpv" class="scrollTabs" style="height: 200px; width: 99%;">
+			<table id="idTabellaCpv">
+				<tbody>
+				    <tr>
+						<th width="125" class="garaTh">إجراء</th>			
+						<th class="garaTh">CPV</th>		 
+						<th width="125" class="garaTh">الوصف</th>	
+					 </tr> 
+				 </tbody> 			
+			</table>  
+	     </div> 
+	</fieldset>  
+ 	<div class="detailHelp" id="divAgg" style="border: 1px solid #cfcfcf;">
+			<table width="100%">					
+				<tr>
+					<td>
+						<input type="text" id="sel_CPV"  maxlength="12"  name="" 
+						   value=""  
+						   id="sel_CPV" >			
+						<!-- <input type="button" value="Cerca" onclick="apripopup('ricercaCPV.jsp', 'sel_CPV')" /> 	 -->
+			 			<a class="getCPV" href="#"  onclick="apripopup('ricercaCPV.jsp', 'sel_CPV')" title="قائمة CPV"><img src="img/icon_info_sml.gif"></a> 
+					 </td> 
+				</tr>
+				<tr>
+					<td class="hmenu">
+						<a id="AddMod" href="#" onclick="addRowCpv()">إضافة</a>
+					</td>
+				</tr>							
+			</table>
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">
+	</div>		
+	<div align="left" style="margin: 2px;padding: 2px"> 
+		<input
+			type="button" id="salva" name="salva" value="حفظ"
+			onclick="salvaCpv('Cpv')"> 
+		<input type="button" value="إلغاء" onclick="chiudiPopUp()" />
+	</div>
+	</fieldset> 
+ </div>
+ </form>
+ </div>
+ <script type="text/javascript">
+  window.onload = function(){loadCpv();}
+</script>
+</body>
+</html>
+	

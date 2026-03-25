@@ -1,0 +1,1250 @@
+
+[condition]	
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+[condition]
+<script type="text/javascript"> 
+// <!--
+/*******************************************************************************
+ * Browser Utility
+ */
+var isNav4, isNav6, isIE4;
+function setBrowser() {  isIE4 = false;  isNav4 = false;  isNav6 = false;  if (navigator.appName.indexOf("Explorer") >= 0 || navigator.appName.indexOf("MSIE") >= 0) {  isIE4 = true;  } else {  isNav4 = true;  isNav6 = true;  } }
+setBrowser();
+/*******************************************************************************
+ * Common Utility
+ */
+function showElement(id) {  setIdProperty(id, "display", "block"); }
+function hideElement(id) {  setIdProperty(id, "display", "none"); }
+function ricreaStringa(parametri) { 
+	var stringa = ""; 
+	if (parametri.length == 0)
+		return stringa;
+	var stringa = "'"; 
+	for(var i=0;i<parametri.length;i++)  { 
+		if(parametri[i]!="")  {
+			stringa = stringa + parametri[i];
+			if(i<(parametri.length-1))  { 
+				stringa = stringa + "','";
+			}  
+		}  
+	}  
+	stringa = stringa + "'";
+	return stringa; 
+}
+function ricreaArray(parametri,parametri2) {
+	var array = new Array(); 
+	for(var i=0;i<parametri.length;i++)  { 
+		array[i] = parametri[i];
+	} 
+	var index = parametri.length;
+	for(var i=0;i<parametri2.length;i++)  { 
+		array[index++] = parametri2[i];
+	} 
+	return array; 
+}
+function getRowIndex(prefix) { 
+	var idtable = "idTabella"+prefix;
+	var table = document.getElementById(idtable);
+	var rowList = table.rows;
+	var idnext = -1; 
+	for(var i=0;i<rowList.length;i++)  {
+		var row = rowList.item(i); 
+		var id = row.getAttribute("id");
+		if(id != null && id != "")  { 
+			var idnum =(id.split("row"+prefix))[1];
+			if(parseInt(idnum) >= parseInt(idnext))  { 
+				idnext = idnum;  
+			}  
+		} 
+	}  
+	return idnext; 
+}
+function setModificato(prefix) {
+	var index = 0;
+	setFormModified("Modificato"+index);					
+}
+function cercaIndex(array, index, value) {
+	if (index == array.length)
+		return - 1;
+	if (array[index].text == value)
+		return index;
+	return cercaIndex(array, (index + 1), value); 
+}
+function cercaIndexValue(array, index, value) {
+	if (index == array.length)
+		return - 1;
+	if (array[index].value == value)
+		return index;
+	return cercaIndexValue(array, (index + 1), value); 
+}
+function isSelectTag(element){
+	if( element == null ) return false;
+	return element.tagName.toLowerCase() == 'select';
+}
+/*******************************************************************************
+ * Show Menu Utility
+ */
+function getStyleBySelector( selector ) {  
+	if (!isNav6)  {  
+		return null;  
+	}  
+	var sheetList = document.styleSheets;  
+	var ruleList;  
+	var i, j;  
+	for (i=sheetList.length-1;i >= 0;i--)  {  
+		ruleList = sheetList[i].cssRules;  
+		for (j=0;j<ruleList.length;j++)  {  
+			if (ruleList[j].type == CSSRule.STYLE_RULE && ruleList[j].selectorText == selector)  {  
+				return ruleList[j].style;  
+			}  
+		}  
+	}  
+	return null; 
+}
+function getIdProperty(id, property) {  var styleObject = document.getElementById(id);  if (styleObject != null) {  styleObject = styleObject.style;  if (styleObject[property]) {  return styleObject[property];  }  }  styleObject = getStyleBySelector("#" + id);  return (styleObject != null) ? styleObject[property] : null; }
+function setIdProperty(id, property, value) {  var styleObject = document.getElementById(id);  if (styleObject != null) {  styleObject = styleObject.style;  styleObject[property] = value;  } }
+function showMenu(id) {
+	if(document.getElementById(id) != null)  {
+		if (getIdProperty(id, "display") != "block")  {
+			setIdProperty(id, "display", "block");
+			document.images["img"+id].src = "img/minus.gif";
+		}  else  {
+			setIdProperty(id, "display", "none");
+			document.images["img"+id].src = "img/plus.gif";  
+		}  
+	} 
+}
+/*******************************************************************************
+ * Show Sezione Utility
+ */
+function showSezioneAggiungi(args,argshidden,prefix) {
+	var idsezione = "divAgg"+prefix;
+	var idpulsante = "showHide"+prefix+"Button";
+	var argsString = ricreaStringa(args);
+	var argshiddenString = ricreaStringa(argshidden);
+	showElement(idsezione);
+	var pulsante = document.getElementById(idpulsante); 
+	pulsante.innerHTML="Annulla"; 
+	pulsante.href = "javascript:hideSezioneAggiungi(["+argsString+"],["+argshiddenString+"],'"+prefix+"')"; 
+	afterShowSezioneAggiungi(args,argshidden,prefix);
+}
+function hideSezioneAggiungi(args,argshidden,prefix) {
+	var idsezione = "divAgg"+prefix;
+	var idpulsante = "showHide"+prefix+"Button";
+	var titolo = "Aggiungi "+" Requisito";
+	var argsString = ricreaStringa(args);
+	var argshiddenString = ricreaStringa(argshidden);
+	hideElement(idsezione);
+	var pulsante = document.getElementById(idpulsante);
+	pulsante.innerHTML = titolo; 
+	pulsante.href = "javascript:showSezioneAggiungi(["+argsString+"],["+argshiddenString+"],'"+prefix+"')";
+	var array = ricreaArray(args,argshidden);
+	resetParameters(prefix,array);
+	setButtonForAdd(args,argshidden,prefix);
+	var modifica = document.getElementById("inModifica"+prefix);
+	if(modifica != null){
+		modifica.parentNode.removeChild(modifica);
+	}
+}
+function resetParameters(prefix,parametri) {
+	var preForReq = "";
+	for(var i=0;i<parametri.length;i++)  {
+		var element = document.getElementById(preForReq+parametri[i]);
+		if(element != null)  {
+			element.value = "";
+			element.selectedIndex = 0;
+		}   
+	}
+}
+function setButtonForAdd(args,argshidden,prefix) { 
+	var button = document.getElementById("AddMod"+prefix);
+	var argsString = ricreaStringa(args);
+	var argshiddenString = ricreaStringa(argshidden); 
+	button.href = "javascript:addRow(["+argsString+"],["+argshiddenString+"],'"+prefix+"')"; 
+	button.innerHTML="Aggiungi"; 
+}
+/*******************************************************************************
+ * Modify Utility
+ */
+function setForModifyRow(idrow, args, argshidden, prefix) {  
+	var array = ricreaArray(args, argshidden); 
+	resetParameters(prefix, array);  
+	var preForReq = "";  
+	for (var j = 0; j < args.length; j++) {  
+		var idtd = idrow + args[j];  
+		var field = document.getElementById(preForReq + args[j]);
+		var td = document.getElementById(idtd);
+		if( td != null &&  field != null ){
+			// SELECT
+			if( isSelectTag(field) ){	
+				var tablevalue = "";  
+				if (td.childNodes[0] != null) {
+					tablevalue = td.childNodes[0].data; //.trim()
+				}
+				field.selectedIndex = cercaIndex(field.options, 0, tablevalue);
+			} 
+			else { // Tutti gli altri casi
+				var tablevalue = "";  
+				if (td.childNodes[0] != null) {
+					tablevalue = td.childNodes[0].data; //.trim()
+				}
+				if (field != null) {
+					field.value = tablevalue;
+				}  
+			}
+		} 
+	}  
+	var button = document.getElementById("AddMod" + prefix);  
+	var argsString = ricreaStringa(args);  
+	var argshiddenString = ricreaStringa(argshidden);  
+	button.href = "javascript:modifyRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')";  
+	button.innerHTML = "Modifica";  
+	var idtable = "idTabella" + prefix;  
+	var table = document.getElementById(idtable);  
+	var inmodifica = document.getElementById("inModifica" + prefix);
+	if (inmodifica == null) {  
+		inmodifica = document.createElement("TD");  
+		inmodifica.style.display = "none";  
+		inmodifica.setAttribute("id", ("inModifica" + prefix), 0);  
+		table.appendChild(inmodifica);  
+	}  
+	inmodifica.value = idrow;  
+	showSezioneAggiungi(args, argshidden, prefix); 
+	afterSetForModifyRow(idrow, args, argshidden, prefix);
+}
+function modifyRow(idrow, args, argshidden, prefix) {
+	if (checkBeforeAdd(prefix)) {  
+		var row = document.getElementById(idrow);  
+		var id = row.getAttribute("id");  
+		fillRow(id, args, argshidden, prefix);  
+		appendHiddenTyped(row, id, prefix, argshidden, false);  
+		setModificato(prefix);  
+		hideSezioneAggiungi(args, argshidden, prefix);  
+	}  
+}
+function fillRow(idrow, args, argshidden, prefix) {
+	var preForReq = ""; 
+	for (var i = 0; i < args.length; i++) {
+		var idtd = idrow + args[i]; 
+		var element = document.getElementById(preForReq + args[i]);
+		var td = document.getElementById(idtd);
+		var contenuto = "";
+		if( element != null ){
+			if( isSelectTag(element) ){							//SELECT
+				contenuto = getSelectValue(element, false); 
+			} else{												//TEXT
+				contenuto = element.value;
+			}
+		}
+		if (td.childNodes[0] != null) {  
+			if( contenuto != "" ){
+				td.childNodes[0].data = contenuto;
+			}
+		} else { 
+			td.appendChild(document.createTextNode(contenuto));  
+		}  
+	}
+}
+function getSelectValue(elem, flagValue){  
+	var ret = "";  
+	if(elem.selectedIndex >=0){  
+		var selectedelement = elem.options[elem.selectedIndex];  
+		ret = selectedelement.text;  
+		if (flagValue == true) {  
+			ret = selectedelement.value;  
+		}  
+	}  
+	return ret; 
+}
+/*******************************************************************************
+ * Delete Utility
+ */
+function deleteRow(idRow,args,argshidden,prefix) {
+	if(confirm("Si sta per cancellare il record. Proseguire?"))  {
+		beforeDeleteRow(idRow,args,argshidden,prefix);
+		var modifica = document.getElementById("inModifica"+prefix);
+		if((modifica != null) && (modifica.value == idRow))  {
+			hideSezioneAggiungi(args,argshidden,prefix);
+		}  
+		var row = document.getElementById(idRow); 
+		row.parentNode.removeChild(row);
+		var idnext = document.getElementById("idTabella"+prefix).rows.length-1;
+		var idDIVTabella = "DIVTabella"+prefix;  
+		var numOfRows = idnext + 1;
+		setModificato(prefix); 
+		afterDeleteRow(idRow,args,argshidden,prefix);
+	} 
+}
+/*******************************************************************************
+ * addRow Utility
+ */
+function addRow(args,argshidden,prefix){
+	if(checkBeforeAdd(prefix))  {
+		if( validateRadio(prefix) )  
+		{
+			var idnext=getRowIndex(prefix); 
+			var idtable="idTabella"+prefix;
+			var table=document.getElementById(idtable); 
+			var newid="row"+prefix+(parseInt(idnext)+1);
+			var tbody=table.getElementsByTagName("TBODY")[0];
+			var row = document.createElement("TR");  
+			row.setAttribute("id", newid, 0);  
+			var td1 = document.createElement("TD");  
+			td1.setAttribute("nowrap", "nowrap");
+			td1.setAttribute("align", "center"); 
+			td1.className = "garaTd";
+			td1.setAttribute("valign", "top");  
+			// Radio button di selezione dei requisiti 
+			var radioInput = document.createElement("input");
+		    radioInput.setAttribute("type", "radio");
+		    radioInput.setAttribute("name", prefix+"Radio");
+		    radioInput.setAttribute("class", "requisitiRadio");
+		    radioInput.setAttribute("id", "radio"+newid);
+		    radioInput.setAttribute("value", parseInt(idnext)+1);
+		    radioInput.setAttribute("onclick","document.getElementById('requisitoSelezionato').value=this.value;");
+			td1.appendChild(radioInput); 
+			row.appendChild(td1);
+			var row=appendRow(newid,args,argshidden,prefix,row);
+			//Campo Stato
+			var tdStato = document.createElement("TD");
+			tdStato.setAttribute("id", newid + "Stato");
+			tdStato.setAttribute("nowrap", "nowrap");
+			tdStato.appendChild(document.createTextNode("Valido per tutti i lotti"));
+			row.appendChild(tdStato);
+			//Pulsante Documenti
+			var td2 = document.createElement("TD");  
+			td2.setAttribute("nowrap", "nowrap");
+			td2.setAttribute("align", "center"); 			
+			td2.setAttribute("class", "hmenu");
+			var linkDocumenti = document.createElement("A");
+			linkDocumenti.setAttribute("title", "apriDocumenti" + prefix);
+			linkDocumenti.setAttribute("href", "javascript:apriPopUpDocumentiRequisito('" + newid + "', '', '', '', '', 'Elenco documenti', '')")
+			linkDocumenti.appendChild(document.createTextNode("Documenti"));
+			td2.appendChild(linkDocumenti);
+			row.appendChild(td2);
+			tbody.appendChild(row);
+			appendHiddenTyped(row,newid,prefix,argshidden,true);
+			// Campo listaDocumenti
+			var td3 = document.createElement("TD");
+			td3.style.display = "none";
+			var docInput = document.createElement("input");
+			docInput.setAttribute("type", "hidden");
+			docInput.setAttribute("name", newid + "");
+			docInput.setAttribute("id", "hidden" + newid + "");
+			docInput.setAttribute("value", "");
+			td3.appendChild(docInput);
+			row.appendChild(td3);
+			// Campo tipo Uso
+			var td4 = document.createElement("TD");
+			td4.style.display = "none";
+			var docInput = document.createElement("input");
+			docInput.setAttribute("type", "hidden");
+			docInput.setAttribute("name", newid + "");
+			docInput.setAttribute("id", "hidden" + newid + "");
+			docInput.setAttribute("value", "F");
+			td4.appendChild(docInput);
+			row.appendChild(td4);
+			var idDIVTabella="DIVTabella"+prefix;
+			var numOfRows=idnext+1;
+			hideSezioneAggiungi(args,argshidden,prefix);
+			setModificato(prefix); 
+			document.getElementById("selected"+prefix).value=0;  
+			afterAddRow(newid,args,argshidden,prefix,row);
+		}  
+	} 
+}
+function checkBeforeAdd(prefix){
+	return true;
+}
+function validateRadio(prefix) { 
+	return true; 
+}
+function appendHidden(row,idrow,prefix,parametri,creazione) {
+	for(var j = 0;j<parametri.length;j++)  {
+		var idElement = idrow+parametri[j];
+		var element = document.getElementById(idElement);
+		var changevalue;
+		var tdvalue = ""; 
+		if(element.childNodes[0] != null)
+			tdvalue = element.childNodes[0].data; 
+		changevalue = tdvalue;  
+		if(creazione)  { 
+			var td = document.createElement("TD"); 
+			var hidden = document.createElement("INPUT");
+			hidden.setAttribute("name",idElement,0);
+	    	hidden.setAttribute("id","hidden"+idElement,0);
+			hidden.setAttribute("type","hidden",0);
+			hidden.value = changevalue; 
+			td.appendChild(hidden);
+			row.appendChild(td); 
+		}  else  {  
+			var hidden = document.getElementById("hidden"+idElement); 
+			hidden.value = changevalue; 
+		}  
+	} 
+}
+function appendHiddenTyped(row,idrow,prefix,parametri,creazione) {
+	for(var j = 0;j<parametri.length;j++)  {
+		var idElement = idrow+parametri[j];
+		var field = document.getElementById(parametri[j]);
+		if( field != null ){
+			var changevalue = field.value;
+			if(creazione)  { 
+				var td = document.createElement("TD"); 
+				td.style.display = "none";
+				var hidden = document.createElement("INPUT");
+				hidden.setAttribute("name",idElement,0);
+		    	hidden.setAttribute("id","hidden"+idElement,0);
+				hidden.setAttribute("type","hidden",0);
+				hidden.value = changevalue; 
+				td.appendChild(hidden);
+				row.appendChild(td); 
+			}  else  {  
+				var hidden = document.getElementById("hidden"+idElement); 
+				hidden.value = changevalue; 
+			}
+		}  
+	} 
+}
+function createRow(idrow, args, argshidden, prefix) {  
+	var row = document.createElement("TR");  
+	row.setAttribute("id", idrow, 0);  
+	var tdmod = document.createElement("TD");  
+	tdmod.className = "hmenu";  
+	tdmod.setAttribute("nowrap", "nowrap");  
+	var linkmod = document.createElement("A");  
+	linkmod.appendChild(document.createTextNode("Modifica"));  
+	var argsString = ricreaStringa(args);  
+	var argshiddenString = ricreaStringa(argshidden);  
+	linkmod.setAttribute("href", "javascript:setForModifyRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);  
+	tdmod.appendChild(linkmod);  
+	var linkcanc = document.createElement("A");  
+	linkcanc.appendChild(document.createTextNode("Cancella"));  
+	linkcanc.setAttribute("href", "javascript:deleteRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);  
+	tdmod.appendChild(linkcanc);  
+	row.appendChild(tdmod);  
+	var preForReq = "";  
+	for (var i = 0; i < args.length; i++) {  
+		var td1 = document.createElement("TD");  
+		td1.setAttribute("nowrap", "nowrap");  
+		td1.setAttribute("id", idrow + args[i]); 
+		td1.className = "garaTd";  
+		var idtd = idrow + args[i];  
+		var element = document.getElementById(preForReq + args[i]);
+		var contenuto = "";
+		if( element != null ){
+			if( isSelectTag(element) ){ 						//SELECT
+				contenuto = getSelectValue(element, false); 
+			} else{												//TEXT
+				contenuto = element.value;
+			}
+		}
+		td1.appendChild(document.createTextNode(contenuto));  
+		row.appendChild(td1);
+	}
+	return row; 
+}
+/*******************************************************************************
+ * AppendRow  Utility
+ */
+function appendRow(idrow, args, argshidden, prefix, row) {  
+	var tdmod = document.createElement("TD");  
+	tdmod.className = "hmenu";  
+	tdmod.setAttribute("nowrap", "nowrap");
+	tdmod.setAttribute("align", "center");
+	var linkmod = document.createElement("A");  
+	linkmod.appendChild(document.createTextNode("Modifica"));  
+	var argsString = ricreaStringa(args);  
+	var argshiddenString = ricreaStringa(argshidden);  
+	linkmod.setAttribute("id",idrow + "SetForModifyRow");
+	linkmod.setAttribute("href", "javascript:setForModifyRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);  
+	tdmod.appendChild(linkmod); 
+	tdmod.appendChild(document.createTextNode("\n")); 
+	var linkcanc = document.createElement("A");  
+	linkcanc.appendChild(document.createTextNode("Cancella")); 
+	linkcanc.setAttribute("id",idrow + "DeleteRow");
+	linkcanc.setAttribute("href", "javascript:deleteRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);  
+	tdmod.appendChild(linkcanc);  
+	row.appendChild(tdmod);  
+	var preForReq = "";  
+	for (var i = 0; i < args.length; i++) {  
+		var td1 = document.createElement("TD");  
+		//td1.setAttribute("nowrap", "nowrap");
+		td1.setAttribute("id", idrow + args[i]); 
+		td1.className = "garaTd";  
+		var idtd = idrow + args[i];  
+		var element = document.getElementById(preForReq + args[i]);
+		var contenuto = "";
+		if( element != null ){
+			if( isSelectTag(element) ){ 							//SELECT
+				contenuto = getSelectValue(element, false); 
+			} else{													//TEXT
+				contenuto = element.value;
+			}
+		}
+		td1.appendChild(document.createTextNode(contenuto));  
+		row.appendChild(td1);
+	}
+	return row; 
+}
+function afterSetForModifyRow(idrow, args, argshidden, prefix) {}
+function afterAddRow(newid, args, argshidden, prefix) {}
+function beforeDeleteRow(idrow, args, argshidden, prefix) {}
+function afterShowSezioneAggiungi(args,argshidden,prefix) {}
+function apriPopUp(idrow, args, argshidden, prefix, url, titlePopup, parametri) {  
+	var paramsString = "?" + "titlePopup=" + titlePopup + "&idrow=" + idrow +"&" + parametri;  
+	dialogArgs = new MyDialogArguments();  
+	dialogArgs.Sender = window;
+	if (!window.showModalDialog) {
+		var windowprops = "width=800,height=600, chrome,centerscreen,dependent=yes,resizable=yes,scrollbars=yes,location=no,status=no,directories=no,menubar=no,toolbar=no,modal=yes,dialog=yes";  
+		popup = window.open(url + paramsString, dialogArgs, windowprops);  
+		popup.focus();  
+	} else {  
+		var windowprops = "dialogWidth: 800px; dialogHeight: 600px; center: 1; scroll: 1; help: 1; status: 0;";  
+		popup = window.showModalDialog(url + paramsString, dialogArgs, windowprops);  
+	} 
+}
+// -->
+</script>
+<style>
+	.precaricatoStyle td {
+		background-color: #dddddd;
+	}
+	.precaricatoStyle td#tdRadio {
+		background-color: #f1f2f8;
+	}
+	.precaricatoStyle td#tdAction {
+		background-color: #f1f2f8;
+	}
+</style>
+<script type="text/javascript">
+//<!--
+var MESSAGE_NO_SELECT_REQUISITO = "Selezionare un requisito";
+var MESSAGE_OPERAZIONE_EFFETTUATA = "Operazione effettuata";
+var MESSAGE_CONFERMA_ASSOCIAZIONE = "Confermi l'associazione ?";
+var MESSAGE_CONFERMA_ELIMINAZIONE = "Confermi l'eliminazione ?";
+var maxPage = [condition]; //Numero di pagine
+var currentPage = 0; //Indice pagina corrente
+function afterSetForModifyRow(idrow, args, argshidden, prefix) {
+	//setta la combo "Requisito"
+	var field = document.getElementById("");
+	var hiddenField = document.getElementById("hidden" + idrow + "");
+	if( field != null && hiddenField != null ){
+		field.disabled = false;
+		var tipoUso = document.getElementById("hidden" + idrow + "");
+		var fieldDesc = document.getElementById("");
+		if( tipoUso.value == "") { 
+			field.disabled = false; 
+			fieldDesc.disabled = false;
+		} else { 
+			field.disabled = true;  
+			fieldDesc.disabled = true;
+		}
+		field.value = hiddenField.value;
+	}
+}
+function afterAddRow(newid, args, argshidden, prefix) {
+	//Valorizzare il campo listaDocumenti
+	var selectReqDocMap = document.getElementById("");
+	var hiddenReqCodice = document.getElementById("hidden" + newid + "");
+	var hiddenListaDocumenti = document.getElementById("hidden" + newid + "");
+	var targetIndex = cercaIndexValue(selectReqDocMap, 0, hiddenReqCodice.value);
+	hiddenListaDocumenti.value = selectReqDocMap.options[targetIndex].text;
+	//Privilegi Modifica-Cancellazione
+	var selectReqUsoMap = document.getElementById("");
+	var reqIndex = cercaIndexValue(selectReqUsoMap, 0, hiddenReqCodice.value);
+	var reqTipoUsoHidden = document.getElementById("hidden"+newid+"");
+	reqTipoUsoHidden.value = selectReqUsoMap.options[reqIndex].text;
+	var linkmod = document.getElementById(newid+"SetForModifyRow");
+	if( reqTipoUsoHidden.value != "" ){
+		linkmod.id = "disabledMenu";
+		linkmod.href = null;
+	}
+	" ); --%> 
+	var reqAssegnabile = (reqTipoUsoHidden.value == "" );
+	var radio = document.getElementById("radio"+newid);
+	radio.disabled = !reqAssegnabile;
+	if( reqAssegnabile ) {
+		//Aggiungere il requisito alla select accanto al Lotto
+		var oRows = document.getElementById("idTabellaLotti").getElementsByTagName("tr");
+		for (var i = 0; i < oRows.length-1; i++) {  
+			var select = document.getElementById("idSelect" + prefix + "SelectLotto" + i);
+			if (select != null) {
+				var key = document.getElementById("radio" + newid).value;
+				var value = document.getElementById(newid + "").childNodes[0].data;
+				if( key != null && value != null ){
+					var option = document.createElement("option");
+					option.setAttribute("value", key);
+					option.appendChild(document.createTextNode(value));
+					select.appendChild(option);
+					$("#"+select.id).multiselect("refresh");
+				}
+			}
+		}
+	}
+	// var indexReq = newid.charAt( newid.length-1 );
+	var indexReq = newid.replace("row","");
+	aggiornaCampoStato(prefix, indexReq)
+}
+function beforeDeleteRow(idrow, args, argshidden, prefix) {
+	//Elimina il requisito dalla select accanto al Lotto
+	var oRows = document.getElementById("idTabellaLotti").getElementsByTagName("tr");
+	for (var i = 0; i < oRows.length-1; i++) {  
+		var select = document.getElementById("idSelect"+prefix+"SelectLotto"+i);
+		if (select != null) {
+			var radioValue = document.getElementById("radio" + idrow).value;
+			var targetOptionIndex = cercaIndexValue(select.options, 0, radioValue);
+			if( targetOptionIndex >= 0 ){
+				var option = select.options[targetOptionIndex];
+				select.removeChild(option);
+				$("#"+select.id).multiselect("refresh");
+			}
+		}
+	}
+}
+//Abilita il campo descrizione
+function editDescrizione(requisito, idElement, fromSelect){
+	var element = document.getElementById(idElement);
+	 if( requisito.value >  ){
+		element.readOnly = "";
+		if(fromSelect)
+			element.value = "";
+	} else {
+		element.value = getSelectValue(requisito, false);
+		element.readOnly = "readonly";
+	}
+     var found = false;
+	 var elements = requisito.options;
+	    for(var i = 0; i < elements.length; i++){
+		      if(elements[i].value==requisito.value){
+	             var optGroup = elements[i].parentElement;
+	             if(optGroup.label == "REQUISITO DI ORDINE GENERALE"){
+	            	 found = true;
+	            	 $("select[name=FLG_AVVALIMENTO]").val('N');
+	            	 $("select[name=FLG_AVVALIMENTO]").prop("disabled",true); 
+	            	 break;     
+	             }
+			   }
+	    }
+	    if(!found)
+	    	$("select[name=FLG_AVVALIMENTO]").removeAttr("disabled");
+}
+function getMaxRowIndex(){
+	var oRows = document.getElementById("idTabella").getElementsByTagName("tr");
+	var lastTRid = oRows[oRows.length-1].id;
+	var numero = lastTRid.replace("row","");
+	return numero;
+	//return parseInt(lastTRid.charAt( lastTRid.length-1 ));
+}
+//Segna/Elimina il requisito ai lotti selezionati
+function impostaReqLottiSel(idrow, prefix, selected){
+	var radioSelectedValue = document.getElementById("requisitoSelezionato").value;
+	var oRows = document.getElementById("idTabellaLotti").getElementsByTagName("tr");
+	for (var i = 0; i < oRows.length-1; i++) {  
+		var checkLotto = document.getElementById("check" + idrow + i);
+		if( checkLotto.checked ){
+			var select = document.getElementById("idSelect" + idrow + i);
+			if (select != null) {
+				var indexSelectedValue = cercaIndexValue(select.options, 0, radioSelectedValue);
+				if(select.options[indexSelectedValue].selected != selected){
+					select.options[indexSelectedValue].selected = selected;
+					$("#"+select.id).multiselect("refresh");
+				}
+			}
+		}
+	}	
+	aggiornaCampoStato(prefix, radioSelectedValue);
+	alert(MESSAGE_OPERAZIONE_EFFETTUATA);
+}
+function assegnaReqLottiSel(idrow, prefix){ 
+	if (confirm(MESSAGE_CONFERMA_ASSOCIAZIONE)){
+		var radioSelectedValue = document.getElementById("requisitoSelezionato").value;
+		if(radioSelectedValue == -1){
+			alert(MESSAGE_NO_SELECT_REQUISITO);
+			return;
+		}
+		impostaReqLottiSel(idrow, prefix, true); 
+		resetRadioCheckbox();
+	}
+}
+function eliminaReqLottiSel(idrow, prefix){ 
+	if (confirm(MESSAGE_CONFERMA_ELIMINAZIONE)){
+		var radioSelectedValue = document.getElementById("requisitoSelezionato").value;
+		if(radioSelectedValue == -1){
+			alert(MESSAGE_NO_SELECT_REQUISITO);
+			return;
+		}		
+		impostaReqLottiSel(idrow, prefix, false); 
+		resetRadioCheckbox();
+	}
+}
+//Elimina il requisito selezionato da tutti i lotti
+function eliminaReqTuttiLotti(idrow, prefix){
+	if (confirm(MESSAGE_CONFERMA_ELIMINAZIONE)){
+		var radioSelectedValue = document.getElementById("requisitoSelezionato").value;
+		if(radioSelectedValue == -1){
+			alert(MESSAGE_NO_SELECT_REQUISITO);
+			return;
+		}
+		var oRows = document.getElementById("idTabellaLotti").getElementsByTagName("tr");
+		for (var i = 0; i < oRows.length-1; i++) {  
+			var select = document.getElementById("idSelect" + idrow + i);
+			if (select != null) {
+				var indexSelectedValue = cercaIndexValue(select.options, 0, radioSelectedValue);
+				select.options[indexSelectedValue].selected = false;
+				$("#"+select.id).multiselect("refresh");
+			}
+		}	
+		aggiornaCampoStato(prefix, radioSelectedValue);
+		resetRadioCheckbox();
+		alert(MESSAGE_OPERAZIONE_EFFETTUATA);
+	}
+}
+//Elimina tutti i requisiti da tutti i lotti
+function eliminaTuttiReqTuttiLotti(idrow, prefix){
+	if (confirm(MESSAGE_CONFERMA_ELIMINAZIONE)){
+		var oRows = document.getElementById("idTabellaLotti").getElementsByTagName("tr");
+		for (var i = 0; i < oRows.length-1; i++) {  
+			var select = document.getElementById("idSelect" + idrow + i);
+			if (select != null) {
+				$("#"+select.id+" option").attr("selected",false);
+				$("#"+select.id).multiselect("uncheckAll");
+				$(".requisitiRadio").each(function(index){
+					aggiornaCampoStato('', this.value);
+				});
+			}
+		}		
+		resetRadioCheckbox();
+		alert(MESSAGE_OPERAZIONE_EFFETTUATA);
+	}		
+}
+function resetRadioCheckbox(){
+	$(".requisitiRadio").attr('checked',false);
+	$(".checkboxLotto").attr('checked',false);
+	$("#requisitoSelezionato").attr("value","-1");
+}
+function salva(){
+	if(confirm("I dati saranno salvati, Confermi?")){
+		document.requisitiGaraForm..value = getMaxRowIndex();
+		document.requisitiGaraForm..value = "";
+		document.requisitiGaraForm.submit();
+	}
+}
+function elimina(){
+	if(confirm("Tutti i requisiti saranno eliminati, Confermi?")){
+		document.requisitiGaraForm..value = getMaxRowIndex();
+		document.requisitiGaraForm..value = "";
+		document.requisitiGaraForm.submit();
+	}
+}
+function checkBeforeAdd(prefix){
+	var reqField = document.getElementById("");
+	if( reqField == null || reqField.value == null || reqField.value == "" ){
+		alert("Requisito: Campo non valorizzato");
+		return false;
+	}
+	var descrField = document.getElementById("");
+	if( descrField == null || descrField.value == null || descrField.value == "" ){
+		alert("Descrizione: Campo non valorizzato");
+		return false;
+	}
+	return true;
+}
+function apriPopUpDocumentiRequisito(idrow, args, argshidden, prefix, url, titlePopup, parametri) {
+	parametri += "reqDescrizione=" + document.getElementById(idrow+"").innerHTML;
+	parametri += "&reqValore=" + document.getElementById(idrow+"").innerHTML;
+	var reqTipoUsoHidden = document.getElementById("hidden"+idrow+"");
+	if( reqTipoUsoHidden != null ){ parametri += "&reqUso=" + reqTipoUsoHidden.value; }
+	else { parametri += "&reqUso=F"}
+	var reqCodiceHidden = document.getElementById("hidden"+idrow+"");
+	if( reqCodiceHidden != null ){ parametri += "&reqCodice=" + reqCodiceHidden.value; }
+	parametri += "&=" ;
+	parametri += "&=" ;
+	apriPopUp(idrow, args, argshidden, prefix, url, titlePopup, parametri);
+}
+/** Paginazione **/
+function nextPage(){
+	if(currentPage < maxPage){
+		$('.pagina'+currentPage).hide();
+		$("select[tabindex='"+currentPage+"']").multiselect("destroy");
+		currentPage++;
+		$("select[tabindex='"+currentPage+"']").css('width', '200px');
+		$("select[tabindex='"+currentPage+"']").multiselect({header: [condition] });
+		$('.pagina'+currentPage).show();	
+		setNavPaginazione();
+		setShowButton();
+	}
+}
+function prevPage(){
+	if(currentPage > 0){
+		$('.pagina'+currentPage).hide();
+		$("select[tabindex='"+currentPage+"']").multiselect("destroy");
+		currentPage--;
+		$("select[tabindex='"+currentPage+"']").css('width', '200px');
+		$("select[tabindex='"+currentPage+"']").multiselect({header: [condition] });
+		$('.pagina'+currentPage).show();	
+		setNavPaginazione();
+		setShowButton();
+	}
+}
+function firstPage(){
+	if( currentPage != 0 ){
+		$("#idTabellaLotti tbody tr").hide();
+		$(".selectLotto").multiselect("destroy");
+		currentPage = 0;
+		$("select[tabindex='0']").css('width', '200px');
+		$("select[tabindex='0']").multiselect({header: [condition] });
+		$(".pagina0").show();
+		setNavPaginazione();
+		setShowButton();
+	}
+}
+function lastPage(){
+	if( currentPage < maxPage ){
+		$("#idTabellaLotti tbody tr").hide();
+		$(".selectLotto").multiselect("destroy");
+		currentPage = maxPage;
+		$("select[tabindex='"+maxPage+"']").css('width', '200px');
+		$("select[tabindex='"+maxPage+"']").multiselect({header: [condition] });
+		$(".pagina"+maxPage).show();	
+		setNavPaginazione();
+		setShowButton();
+	}
+}
+//Gestisce la label che indica la pagina corrente
+function setNavPaginazione(){
+	var navPage = document.getElementById("navPaginazione");
+	navPage.innerHTML = "Pagina " + (currentPage+1) + " di " + (maxPage+1);
+}
+// Gestisce la disabilitazione dei pulsanti di paginazione
+function setShowButton(){
+	if(currentPage == maxPage){
+		$('#fisrt a').removeAttr("id");
+		$('#prev a').removeAttr("id");
+		$('#next a').attr("id","disabledMenu");
+		$('#last a').attr("id","disabledMenu");
+	} 
+	else if(currentPage == 0){
+		$('#fisrt a').attr("id","disabledMenu");
+		$('#prev a').attr("id","disabledMenu");
+		$('#next a').removeAttr("id");
+		$('#last a').removeAttr("id");	
+	}
+	else {
+		$('#fisrt a').removeAttr("id");
+		$('#prev a').removeAttr("id");
+		$('#next a').removeAttr("id");
+		$('#last a').removeAttr("id");	
+	}
+}
+function setLabel(idElem, text){
+	var elem = document.getElementById(idElem);
+	elem.innerHTML = text;
+} 
+function aggiornaCampoStato(prefix, indexReq){
+	var numAssegnazioni = $(".selectLotto option[value='" + indexReq + "']:selected").length;
+	if(numAssegnazioni == 0){
+		setStato("row"+prefix+indexReq, "Valido per tutti i lotti");
+	} else {
+		setStato("row"+prefix+indexReq, "Assegnato a " + numAssegnazioni + " lotti");
+	}
+}
+//Setta il campo stato della tabella Requisiti
+function setStato(idrow, text){
+	var stato = document.getElementById(idrow + "Stato");
+	stato.childNodes[0].data = text;
+}
+//Seleziona/Deseleziona tutti i checkbox lotto
+function allSelect(checked){
+	$(".checkboxLotto[tabindex='" + currentPage + "']").each(function(){
+		this.checked = checked;  
+	})
+	var selezionati = $(".checkboxLotto:checked").length;
+	setLabel("labelSelezionati","Selezionati " + selezionati + " lotti");	
+}
+	// Abilita campi del requisito che potrebbero essere disabilitati
+	function afterShowSezioneAggiungi(args,argshidden,prefix) {
+		var fieldReq = document.getElementById("");
+		var fieldDesc = document.getElementById("");
+		fieldReq.disabled = false;
+		fieldDesc.disabled = false;
+		// is3029_MAC01Active preseleziono si su avvalimento, solo in aggiunta
+			var fieldAvv = document.getElementById("");
+			var bottone = document.getElementById("AddModRequisitoGara");
+			if(bottone.text != "Modifica")
+				fieldAvv.selectedIndex = 1;
+	}
+//-->
+</script>
+<form id="idRequisitiGaraForm"" name="requisitiGaraForm" action="" method="post">
+<input type="hidden" name="" value=""/>
+<div class="scrollInside">		
+	<div class="gara">
+	   <div id="PanelHead">
+			<label style="color: black; letter-spacing: 0.2em;" onclick="showElem('PanelBody')">
+			<img id="imgPanelBody" src="img/minus.gif"/> REQUISITI DEFINITI</label>
+		</div>
+		<div id="PanelBody" style="display: block;">
+			<br/>
+			<div id="DIVTabella"  class="scrollTabs" style="height: 200px; width: 99%; border: 0px;">
+				<table id="idTabella">
+					<tbody>
+					<tr>
+						<th class="garaTh">Sel</th>
+						<th class="garaTh" width="125px">Azione</th>
+						<th class="garaTh" width="30%" >Requisito</th>
+						<th class="garaTh" width="10%" >Valore</th>
+						<th class="garaTh" width="90px">Esclusione</th>
+						<th class="garaTh" width="90px">Comprova offerta</th>
+						<th class="garaTh" width="90px">Avvalimento</th>
+						<th class="garaTh" width="90px">Bando tipo</th>
+						<th class="garaTh" width="90px">Riservatezza</th>
+						<th class="garaTh">Stato</th>
+					</tr>
+					[condition]
+					[condition]
+						[condition]
+						[condition]
+						<tr id="[condition]" [condition]>
+							<td id="tdRadio" nowrap="nowrap" align="center" class="garaTd" valign="top">
+								<input type="radio"
+										name="Radio"
+										class="requisitiRadio"
+										id="radio[condition]" 
+										value="[condition]"
+										onclick="document.getElementById('requisitoSelezionato').value = this.value;"
+										[condition]
+										/>
+							</td>
+							<td id="tdAction"  nowrap="nowrap" align="center" class="hmenu">
+								<a id="[condition]SetForModifyRow" title="Modifica" href="javascript:setForModifyRow('[condition]',[],[],'');editDescrizione(document.getElementById(''), '', false);">Modifica</a>
+								[condition]DeleteRow" title="Cancella" href="javascript:deleteRow('[condition]',[],[],'')">Cancella</a>
+								</c:if>
+								[condition]DeleteRow" title="Cancella" href="javascript:deleteRow('[condition]',[],[],'')">Cancella</a>
+									</c:if>
+									[condition]SetForModifyRow" title="Modifica" href="javascript:setForModifyRow('[condition]',[],[],'');editDescrizione(document.getElementById(''), '', false);">Modifica</a>
+									<a id="[condition]DeleteRow" title="Cancella" href="javascript:deleteRow('[condition]',[],[],'')">Cancella</a>
+								</c:if>
+								[condition]DeleteRow" title="Cancella" href="javascript:deleteRow('[condition]',[],[],'')">Cancella</a>
+									</c:if>
+									[condition]">[condition]</td>
+							<td class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							[condition]Stato">Assegnato a [condition] lotti</td>
+							</c:if>
+							[condition]Stato">Valido per tutti i lotti</td>
+							</c:if>
+							<td nowrap="nowrap" align="center" class="hmenu">
+								<a title="apriDocumenti" href="javascript:apriPopUpDocumentiRequisito('[condition]', '', '', '', '', 'Elenco documenti', '')">Documenti</a>
+							</td>
+							<td style="display: none">
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+								<input type="hidden" name="[condition]" id="hidden[condition]" value="[condition]"/>
+							</td>
+			 			</tr>											
+						[condition]
+					</c:forEach>
+					</tbody>		
+				</table>
+				<input type="hidden" name="" value="[condition]"/> 			
+			</div>	
+<!---- START :: GESTIONE INSERIMENTO REQUISITI ---->
+			<p>&nbsp;</p>
+			<div class="hmenu">
+				<a id="showHideButton" 
+					href="javascript:showSezioneAggiungi([],[],'')" 
+					title="Aggiungi Requisito">Aggiungi Requisito</a>
+			</div>
+			<div class="detailHelp" id="divAgg" style="display: none; border: 1px solid #cfcfcf;">
+				<table width="100%">				
+				<tr>
+					<th width="15%"><label for="">Requisito</label></th>
+					<td colspan="2">
+						<select id="" 
+								  class="BOTTONE" 
+								  style="width: 100%"
+								  onchange="editDescrizione(this, '', true)">
+							<option value=""></option>
+							[condition]
+							<optGroup label="[variable]">
+								[condition]" title="[condition]">[condition]</option>
+								</c:forEach>
+							</optGroup>
+							</c:forEach>
+							[condition]" title="[condition]">[condition]</option>
+							</c:forEach>
+							<!-- Caricamento requisiti obbligatori [nascosti] -->
+							[condition]">[condition]</option>
+							</c:forEach>
+							<!-- -->
+						</select>
+						<div style="display:none;">
+							<!-- Mappa dei documenti standard di un requisito -->
+							<select id="" hidden="true">
+								[condition]">[condition]</option>
+								</c:forEach>								
+							</select>
+							<!-- Mappa dei tipi uso di un requisito -->						
+							<select id="" hidden="true">
+								[condition]">[condition]</option>
+								</c:forEach>								
+							</select>
+						</div>
+					</td>	
+				</tr>
+				<tr>
+					<th width="15%"><label for="">Descrizione</label></th>
+					<td>						
+						<input type="text" readonly="readonly"						
+								id="" 
+								name="" 
+								maxlength="1024" 
+								style="width: 100%"/>
+					</td>
+				</tr>	
+				<tr>
+					<th width="15%"><label for="">Valore</label></th>
+					<td>
+						<input type="text" 
+								id="" 
+								name="" 
+								maxlength="20" 
+								style="width: 100%"/>
+					</td>
+				</tr>		
+				<tr>
+					<th width="15%"><label for="">Esclusione</label></th>
+					<td>
+						<select id="" name="">
+							<option value="" selected="selected">NO</option>
+							<option value="">SI</option>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<th width="15%"><label for="">Comprova offerta</label></th>
+					<td>
+						<select id="" name="">
+							<option value="" selected="selected">NO</option>
+							<option value="">SI</option>
+						</select>
+					</td>
+				</tr>					
+				<tr>
+					<th width="15%"><label for="">Avvalimento</label></th>
+					<td>
+						<select id="" name="">
+							<option value="" selected="selected">NO</option>
+							<option value="">SI</option>
+						</select>
+					</td>
+				</tr>					
+				<tr>
+					<th width="15%"><label for="">Bando tipo</label></th>
+					<td>
+						<select id="" name="">
+							<option value="" selected="selected">NO</option>
+							<option value="">SI</option>
+						</select>
+					</td>
+				</tr>					
+				<tr>
+					<th width="15%"><label for="">Riservatezza</label></th>
+					<td>
+						<select id="" name="">
+							<option value="" selected="selected">NO</option>
+							<option value="">SI</option>
+						</select>
+					</td>
+				</tr>													
+				<tr>
+					<td class="hmenu">
+						<a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a>
+					</td>
+				</tr>
+				</table>
+				<input type="hidden" id="Modificato" name ="Modificato" value="0">
+			</div>
+<!---- END :: GESTIONE INSERIMENTO REQUISITI ---->
+		</div>
+	</div>	
+</div>
+<p>
+	<input type="button" value="Conferma Requisiti" onclick="salva()"/>
+	<input type="button" value="Elimina tutti i Requisiti" onclick="elimina()"/>
+</p>
+<div class="scrollInside">		
+	<div class="gara">
+	   <div id="PanelHead2">
+			<label style="color: black; letter-spacing: 0.2em;" onclick="showElem('PanelBody2')">
+			<img id="imgPanelBody2" src="img/minus.gif"/> ELENCO LOTTI</label>
+			<br/>
+		</div>
+		<div id="PanelBody2">
+			<br/>
+			<div class="hmenu">
+Button" href="javascript:showSezioneAggiungi([],[],'')" >Assegna selezionato a tutti</a> --%>
+				<a id="showHideButton" href="javascript:assegnaReqLottiSel('SelectLotto','')">Assegna selezionato a lotti selezionati</a>
+Button" href="javascript:showSezioneAggiungi([],[],'')" >Assegna tutti i requisiti</a> --%>
+			</div>	
+			<div class="hmenu">
+				<a id="showHideButton" href="javascript:eliminaReqLottiSel('SelectLotto','')" >Elimina selezionato da lotti selezionati</a>
+				<a id="showHideButton" href="javascript:eliminaReqTuttiLotti('SelectLotto','')" >Elimina selezionato da tutti</a>
+				<a id="showHideButton" href="javascript:eliminaTuttiReqTuttiLotti('SelectLotto','')" >Elimina tutte le associazioni</a>
+			</div>
+			[condition] </h3>
+				<div class="hmenu">
+				<ul>
+					<li id="fisrt"><a id="disabledMenu" href="javascript:firstPage()" title="Visualizza prima pagina">Inizio elenco</a></li>
+					<li id="prev"><a id="disabledMenu" href="javascript:prevPage()" title="Visualizza precedente">Precedenti</a></li>
+					<li id="next"><a href="javascript:nextPage()" title="Visualizza successive">Successive</a></li>
+					<li id="last"><a href="javascript:lastPage()" title="Visualizza ultima pagina">Fine elenco</a></li>
+				</ul>
+				</div>
+			</c:if>
+			<small id="labelSelezionati">Selezionati 0 lotti</small>
+			<div id="DIVTabellaLotti"  class="scrollTabs"  style="height: 200px; width: 99%; border: 0px;">
+				<table id="idTabellaLotti">
+					<thead>
+					<tr>
+						<th class="garaTh" width="130">
+							Sel 
+						<!-- Seleziona/deselezione tutti [DISATTIVATO] 
+							[<a href="javascript:allSelect(true)">tutti</a>] 
+							[<a href="javascript:allSelect(false)">nessuno</a>]
+						-->
+						<th class="garaTh">CIG</th>
+						<th class="garaTh">Importo lotto</th>
+						<th class="garaTh">Oggetto</th>
+					</tr>
+					</thead>
+					<tbody>
+					[condition]
+					[condition]
+						<tr class="pagina[condition]">
+							<td nowrap class="garaTd">
+								<input type="checkbox" 
+									tabindex="[condition]"
+									class="checkboxLotto"
+									id="check[condition]" 
+									value="[condition]"/>
+							</td>
+							<td nowrap class="garaTd">[condition]</td>
+							<td nowrap class="garaTd">[condition]</td>
+							<td class="garaTd" width="30%">[condition]</td>
+							<td id="col[condition]">
+								<select id="idSelect[condition]" 
+										tabindex="[condition]"
+										title="Seleziona requisiti"
+										class="selectLotto"
+										name="select[condition]" 
+										multiple="multiple">
+								[condition]
+								[condition]
+									[condition]
+									[condition]
+									[condition]R[condition]" 
+										     value="[condition]" [condition] >
+											[condition]
+										</option>
+									</c:if>
+									[condition]R[condition]" 
+										     value="[condition]" [condition] >
+											[condition]
+										</option>
+									</c:if>									
+									[condition]
+								</c:forEach>
+								</select>
+							</td>
+							<td style="display: none">
+								<input name="idLotto[condition]" 
+										type="hidden" 
+										id="idLotto[condition]" 
+										value="[condition]"/>
+							</td>
+						</tr>
+						[condition]
+					</c:forEach>		
+					<input type="hidden" name="" value="[condition]"/> 	
+					</tbody>		
+				</table> 	
+				[condition]
+					<div class="hmenu">
+					<ul>
+						<li id="fisrt"><a id="disabledMenu" href="javascript:firstPage()" title="Visualizza prima pagina">Inizio elenco</a></li>
+						<li id="prev"><a id="disabledMenu" href="javascript:prevPage()" title="Visualizza precedente">Precedenti</a></li>
+						<li id="next"><a href="javascript:nextPage()" title="Visualizza successive">Successive</a></li>
+						<li id="last"><a href="javascript:lastPage()" title="Visualizza ultima pagina">Fine elenco</a></li>
+					</ul>
+					</div>
+				</c:if>
+			</div>	 	
+		</div>
+	</div>	
+</div>
+<p>
+	<input type="button" value="Conferma Requisiti" onclick="salva()"/>
+	<input type="button" value="Elimina tutti i Requisiti" onclick="elimina()"/>
+</p>
+</form>
+<script type="text/javascript">
+//<!--
+$(document).ready(function(){
+	/** Paginazione **/
+	$("#idTabellaLotti tbody tr").hide();
+	$(".pagina0").show();
+	$(".checkboxLotto").click(function() {
+		var selezionati = $(".checkboxLotto:checked").length;
+		setLabel("labelSelezionati","Selezionati " + selezionati + " lotti");
+	});
+	/** Componente multiselect **/
+	$("select[tabindex='0']").css('width', '200px');
+	$("select[tabindex='0']").multiselect({header: [condition] });
+	$('.selectLotto').bind("multiselectclick", function(event, ui){
+		// Propaga la selezione dal componente "jquery multiselect" alla "select html" sottostante
+		$("#"+ this.id + " option[value='" + ui.value + "']").attr("selected",ui.checked);
+		aggiornaCampoStato('', ui.value);
+	});
+	$('.selectLotto').bind("multiselectcheckall", function(event, ui){
+		$(".requisitiRadio").each(function(index){
+			aggiornaCampoStato('', this.value);
+		});
+	});
+	$('.selectLotto').bind("multiselectuncheckall", function(event, ui){
+		$(".requisitiRadio").each(function(index){
+			aggiornaCampoStato('', this.value);
+		});
+	});
+	//$("#").multiselect({minWidth: "1110", header: false, multiple: false, selectedList: 1});
+});
+//-->
+</script>
+<input type="hidden" id="selected" value="0" />
+<input type="hidden" id="requisitoSelezionato" value="-1" />

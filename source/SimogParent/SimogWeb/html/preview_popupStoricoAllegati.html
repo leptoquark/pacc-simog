@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/stile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" >
+<link rel="icon" href="img/animated_favicon1.gif" type="image/gif" >
+<title>SIMOG - سجل المرفقات لرقم المناقصة []</title>
+<base target="_self" />
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<script type="text/javascript">
+<!--
+function viewFile(id){
+	document.forms[0].action='?action=view&=' + id;
+   document.forms[0].target="_blank";
+	document.forms[0].submit();	
+	//var t=setTimeout("window.close()",2000); // patch chrome
+}
+//-->
+//TB: gestione popup modale
+function closePopup() {
+	if(window.showModalDialog) {
+		window.returnValue=null;
+		window.close();
+	} else {
+		window.parent.jQuery("#dialog").dialog("close");
+	}
+}
+</script>
+</head>
+<body>
+	<form id="InviaFileAggiornamento" ENCTYPE="multipart/form-data" method="POST" action="?action=save">
+<h1>سجل المرفقات</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+	<br><br>
+	<div class="hmenu">
+		<ul>
+		<li><a href="javascript:closePopup();">إغلاق</a></li>
+		</ul>
+	</div>		
+	<div class="gara">
+		<fieldset>
+		<legend>Allegati inclusi</legend>
+			<div class="elencoCategorie" style="height:150px;">
+				<table background="#F1F2F8" class="TableBean" cellpadding="3" style="width:90%;">
+					<tr>
+						<th class='TableBeanTitle'>نوع المستند</th>
+						<th class='TableBeanTitle'>اسم المستند</th>
+						<th class='TableBeanTitle'>ملاحظات</th>
+					</tr>
+					<tr class="TableBeanOdd">
+						<td></td>
+						<td align="left"></td>
+						<td align="left"></td>
+						<td><button type="button" name="visualizza" onclick="viewFile();">عرض </button></td>			
+						<td></td>			
+					</tr>	
+				</table>		
+			</div>
+			</fieldset>
+		</div>
+	</form>
+</body>
+</html>

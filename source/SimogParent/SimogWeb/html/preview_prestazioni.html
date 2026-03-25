@@ -1,0 +1,167 @@
+
+[condition]
+[condition]
+[condition]
+<script type="text/javascript">
+<!--
+function modAnagPrest(){var E=document.getElementById("").value.indexOf("-")<0;apriPopUpMod(E?"rubricaResponsabili":"rubrica","",document.getElementById(""),document.getElementById(""),E?"دليل المكلفين":"دليل المشغلين الاقتصاديين",document.getElementById("").value)}
+//-->
+</script>
+<div id="DIVTabella" class="scrollTabs" style="height: 200px; width: 99%;">
+<table id="idTabella">
+<tbody>
+<tr>
+<th width="125">إجراء [variable]</th>
+<th class="garaTh">الاسم الأخير/التسمية</th>
+<th class="garaTh">الاسم الأول</th>							  
+<th class="garaTh">الرقم الضريبي</th>   
+<th class="garaTh">نوع الكيان</th>
+<th class="garaTh">CIG تكليف مهمة خارجية</th>							  
+<th class="garaTh">تاريخ تكليف المهمة</th>							  
+<th class="garaTh">تاريخ تسليم المشروع</th>							  
+</tr>
+[condition]
+[condition]
+<tr id="[condition]">
+[condition]		
+[condition]		
+[condition]',[],[],'')">تعديل</a>
+<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')">حذف</a></td>
+</c:if>
+[condition]
+[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]"></td>
+[condition]					
+[condition]				
+<td nowrap class="garaTd" id="[condition]">[condition]</td> 
+</c:if>
+[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+</c:if>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+<td nowrap class="garaTd" id="[condition]">[condition]</td>
+<td id="[condition]" style="display: none">[condition]</td>
+[condition]" style="display: none">[condition]</td>
+<td id="[condition]" style="display: none">[condition]</td>
+<td id="[condition]" style="display: none">[condition]</td>         
+</c:if>
+[condition]" style="display: none">[condition]</td>
+<td id="[condition]" style="display: none">[condition]</td>
+<td id="[condition]" style="display: none">[condition]</td>         
+</c:if>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" >[condition]</td>					
+</c:if>
+[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value=""></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+<td style="display: none"><input type="hidden" id="hidden[condition]" name="[condition]" >[condition]</td>					
+</c:if>
+[condition]">
+<a title="إدارة تجميع الشركة" href="javascript:apriPopUpRubricaDittaAusiliaria('[condition]',[],[],'','rubricaRaggruppamento','tabInc','إدارة تجميع الشركة','[condition]')">إدارة تجميع الشركة</a>
+</td>
+<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[variable]"></td>
+</c:if>
+[condition]"></td>
+<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value=""></td>
+</c:if>
+</tr>
+[condition]
+</c:if>
+</c:forEach> 
+</tbody>
+</table> 
+</div>	 			
+[condition]
+</td>
+<td [variable]>
+<div class="hmenu"><a title="Modifica scheda anagrafica" href="javascript:modAnagPrest();">Modifica anagrafica</a></div></td>
+</td>
+</tr>		
+<tr>
+<th><label for="">Nome</label></th>
+<td>
+<input type="text" id="" maxlength="20" value="" disabled onchange="setFormModified('Modificato')" />
+</td>
+</tr>	
+<tr>
+<th><label for="" style="text-align: left;">CIG affidamento incarico esterno di progettazione (in caso di progettista esterno)</label></th>
+<td>
+<input  [variable] type="text" id="" maxlength="10" value="" onchange="setFormModified('Modificato')" />
+</td>
+</tr>	
+<tr>
+<th><label for="">Data di affidamento incarico (per progettazione esterna)</label></th>
+<td>
+<input  [variable] type="text" id="" style="text-align:center" [condition] onchange="setFormModified('Modificato')" onblur="Calendar.validaData(this)"  value="" />
+[condition]
+<script type="text/javascript">
+Calendar.setup({inputField: "", 
+ifFormat: "%d/%m/%Y", button: "CALdaff",align : "Tl", singleClick: true });
+</script>
+</c:if>		
+</td>
+</tr>	
+<tr>
+<th><label for="">Data di consegna progetto (per progettazione esterna)</label></th>
+<td>
+<input type="text" id="" style="text-align:center" [condition] [variable] onchange="setFormModified('Modificato')" onblur="Calendar.validaData(this)"  value="" />
+[condition]
+<script type="text/javascript">
+Calendar.setup({inputField:"", 
+ifFormat: "%d/%m/%Y", button: "CALdest", align: "Tl", singleClick :    true});
+</script>
+</c:if>	
+</td>
+</tr>	
+<tr><td>&nbsp;</td></tr>
+<tr>
+<th><label>Tipologia del soggetto incaricato della prestazione</label></th>
+<td>
+<select id="" CLASS="BOTTONE" onchange="setFormModified('Modificato')" >
+<option></option>
+[condition]
+<u:options name="" scope="request" value="idRuoloPrest"/>
+</select>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>	
+<tr style="display: none;">
+<td>
+<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>					
+<tr style="display: none;">
+<td>
+<input disabled type="text" id=""  onchange="setFormModified('Modificato')"/>
+</td>							
+</tr>
+<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a></td></tr>			
+</table>
+<input type="hidden" id="Modificato" name ="Modificato" value="0">
+</div>
+<input type="hidden" id="Modificato6" name ="Modificato6" value="[condition]">
+<input type="hidden" id="selected" value="0" /> 

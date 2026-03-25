@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The SQL Server 2005 Database JCA connection factory config $Id:
+                             sql2005jdbc-ds.xml,v 1.0 2005/10/7 mattn Exp $ -->
+
+<datasources>
+
+	<local-tx-datasource>
+		<!-- The jndi name of the DataSource, it is prefixed with java:/ -->
+		<!-- Datasources are not available outside the virtual machine -->
+		<jndi-name>jdbc/SIMOG</jndi-name>
+
+		<!-- The datasource class and default properties -->
+		<connection-url>jdbc:sqlserver://dati.ril.avcp.local:1433;QueryTimeout=60;SelectMethod=cursor;DatabaseName=simog;sendStringParametersAsUnicode=true;characterEncoding=UTF-8;lockTimeout=60000</connection-url>
+		
+		<!-- The driver class -->
+		<driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
+	  
+		<!-- The login and password -->
+		
+		<user-name>simog</user-name>
+		<password>simog.1</password>
+		<metadata> 
+			<type-mapping>SQLServer</type-mapping> 
+		</metadata> 
+		<!-- This will be run before a managed connection is removed from the pool or use by a client-->
+		<check-valid-connection-sql>select 1</check-valid-connection-sql>
+
+		<!-- The minimum connections in a pool/sub-pool. Pools are lazily constructed on first use -->
+		<min-pool-size>5</min-pool-size>
+
+		<!-- The maximum connections in a pool/sub-pool -->
+		<max-pool-size>20</max-pool-size>
+	</local-tx-datasource>
+
+</datasources>

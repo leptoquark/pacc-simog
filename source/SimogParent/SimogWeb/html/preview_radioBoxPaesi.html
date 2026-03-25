@@ -1,0 +1,37 @@
+
+<script type="text/javascript">
+<!--
+function disable(val) {
+	//var cmbPaesi = document.getElementById("");
+	//var txtPaesi = document.getElementById("textPaese");
+	var divText = document.getElementById("divText");
+	var divCombo = document.getElementById("divCombo");
+	if (val == 'N') {
+		//cmbPaesi.disabled = true;
+		//cmbPaesi.value = "";
+		showElement("divText");
+		hideElement("divCombo");
+	}
+	else {
+		showElement("divCombo");
+		hideElement("divText");
+		//cmbPaesi.disabled = false;
+    }
+}
+//-->
+</script>
+<tr>
+	<th><label>Operatore Economico Estero</label></th>
+<td>
+<input onchange="disable('S')" 
+		id="" 
+		type="radio" name="" 
+		value="" 
+		/>SI 
+<input onchange="disable('N')" 
+		id="" 
+		type="radio" name="" 
+		value="" 
+		/>NO
+</td>	
+</tr>

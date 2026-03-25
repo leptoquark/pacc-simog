@@ -1,0 +1,217 @@
+package it.avlp.simog.validatore;
+
+
+public class Scheda_B1_Validator implements BaseValidator {
+//	
+//
+//	
+//	private boolean mValidata = false;	
+//	private AllValidationBeans mEccezioni = new AllValidationBeans();
+//
+//	private Scheda_B1 mDati = null;
+//	
+//	private Connection conn = null;
+//	
+//	public Scheda_B1_Validator(Connection connect,Scheda_B1 lDati) {  
+//		mDati    = lDati;
+//		
+//		conn     = connect;
+//	} 
+//
+//	public Object getDati() {
+//		return mDati;
+//	}
+//
+//	public AllValidationBeans getEccezioni() {
+//		return mEccezioni;
+//	}
+//
+//	
+//	/**
+//	 * Indica se è stata chiamata la validazione
+//	 * @return
+//	 */
+//	public boolean isValidata() {
+//		return mValidata;
+//	}
+//	
+//	private void setValidata(boolean validata) {
+//		mValidata = validata;
+//	}
+//
+//	/**
+//	 * Esegue la validazione
+//	 * @return TRUE se la validazione non ha rilevato errori, ma solo WARN o INFO
+//	 *         FALSE se ci sono errori bloccanti
+//	 */
+//	public boolean valida() {
+//		if (isValidata()) mEccezioni.clear();
+//		
+//		inizioLavori(mDati.getInizioLavori());
+//		pubblicazioni(mDati.getInizioLavori().getDatiPubblicazione());
+//		posizioniAggiudicatari(mDati.getPosizioneAggiudicatari());
+//		responsabile(mDati.getResponsabili());			
+//		
+//		setValidata(true);
+//		
+//		return (mEccezioni.getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR).getSize() == 0);
+//	}
+//	private void pubblicazioni(PubblicazioneBean pub){
+//		try {
+//			if(!Checkers.campoValorizzato(pub.getDataGuce()))
+//			 
+//			   throw new Exception();
+//		} catch (Exception e) {
+//			mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_057);
+//		}
+//		
+//		try {
+//			if(!Checkers.campoValorizzato(pub.getDataGuri())) 
+//			  throw new Exception();
+//		} catch (Exception e) {
+//			mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_058);
+//		}
+//		
+//		
+//		//quote nazionali
+//		try {
+//			if ( (!Checkers.campoValorizzato( String.valueOf( pub.getQuotidianiNaz() ) ) || (pub.getQuotidianiNaz() < 2) ) ) throw new Exception();
+//		} catch (Exception e) {
+//			mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_060);
+//		}
+//        //quote locali
+//		try {
+//			if ( (!Checkers.campoValorizzato( String.valueOf( pub.getQuotidianiReg() ) ) || (pub.getQuotidianiReg() < 2) ) ) throw new Exception();
+//		} catch (Exception e) {
+//			mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_061);
+//		}
+//	}
+//
+//	private void inizioLavori(InizioLavoriBean iniziobean){
+////		try{
+////			if (!Checkers.controllaImporto( new Float(iniziobean.getImportoAnticipazioni().toString()) , ">=", SimogProperties.getImportoMinLotto().floatValue() ) )throw new Exception();
+////		}catch (Exception e) {
+////			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_012);
+////		}
+//		
+//		try{
+//			if (!Checkers.campoValorizzato(iniziobean.getDataStipula()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_069);
+//		}
+//		
+//		try{
+//			if (!Checkers.campoValorizzato(iniziobean.getImportoCauzione().toString()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_070);
+//		}
+//		if (tipoScheda("LM",mDati.getTipoScheda())){
+//			try{
+//				if (!Checkers.campoValorizzato(iniziobean.getDataConsegna()))throw new Exception();
+//			}catch (Exception e) {
+//				mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_071);
+//			}
+//			
+//			try{
+//				if (!Checkers.campoValorizzato(iniziobean.getDataVerbaleConsegna()))throw new Exception();
+//			}catch (Exception e) {
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_072);
+//			}
+//			try{
+//				if (!Checkers.campoValorizzato(iniziobean.getFlagRiserva()))throw new Exception();
+//			}catch (Exception e) {
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_073);
+//			}
+//		}
+//		try{
+//			if (!Checkers.campoValorizzato(iniziobean.getDataVerbaleInizio()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_074);
+//		}
+//		
+//		try{
+//			if (!Checkers.campoValorizzato(iniziobean.getDataTermine()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_075);
+//		}
+//		
+//	}
+//	
+//		
+//	private void posizioniAggiudicatari(PosizioneAggiudicatario[] posizioni){
+//		if(posizioni == null) return;
+//		
+//		for(int i = 0; i < posizioni.length; i++){
+//			try{
+//				if(!Checkers.campoValorizzato(Long.toString(posizioni[i].getIdSoggetto())) )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_076);
+//			}
+//			
+//			try{
+//				if(!Checkers.campoValorizzato(posizioni[i].getCodiceINAIL()) )
+//						throw new Exception();
+//				try{
+//					
+//				}catch(Exception e){
+//					
+//				}
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_077);
+//			}
+//			
+//			
+//			try{
+//				if(!Checkers.campoValorizzato(posizioni[i].getCodiceINPS()) )
+//						throw new Exception();
+//				try{
+//				}catch(Exception e){
+//					
+//				}
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_078);
+//			}
+//			
+////			try{
+////				if(!Checkers.controllaSeCampoNoNValorizzato(posizioni[i].getCodiceCassa()) )
+////						throw new Exception();
+////				try{
+////				
+////				}catch(Exception e){
+////					
+////				}
+////			}catch(Exception e){
+////				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_079);
+////			}
+//			
+//		}
+//		
+//	}
+//	
+//	private void responsabile (ResponsabileInizioBean[] rsp){
+//    	if(rsp==null) return;
+//    	
+//		for (int i=0; i<rsp.length; i++){
+//			//Ruolo del  soggetto --> valorizzato
+//			try {
+//				if(!Checkers.campoValorizzato(String.valueOf(rsp[i].getIdRuolo()))) throw new Exception();
+//			} catch (Exception e) {
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_043, i+1);
+//			}
+//		}
+//    }
+//
+//	public String getSezione() {
+//		
+//		return null;
+//	}
+//	
+//	private static Boolean tipoScheda(String lista,String tipoScheda){
+//	    
+//	    if(lista!= null && lista.contains(tipoScheda))
+//	    	return true;
+//	    else return false;
+//	}
+//
+}

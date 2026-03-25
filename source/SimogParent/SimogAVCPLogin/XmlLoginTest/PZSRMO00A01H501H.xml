@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PZSRMO00A01H501H.xml  -->
+<check_login>
+	<soggetto>
+		<cognome>IPZS</cognome>
+		<nome>RUP</nome>
+		<tel>065544332</tel>
+    	<fax>06778866</fax>
+    	<email>utente@sito.it</email>
+    	<admin_or>000</admin_or>
+	</soggetto>
+	<collaborazioni>
+		<collaborazione index="0">
+			<azienda>
+				<denominazione>Istituto Poligrafico e Zecca dello Stato</denominazione>
+				<codice_fiscale>11111111115</codice_fiscale>
+			<id_osservatorio>12</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Acquisti</denominazione>
+				<id_ufficio>IPZSACQ</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+	</collaborazioni>
+	<stato>1</stato>
+</check_login>

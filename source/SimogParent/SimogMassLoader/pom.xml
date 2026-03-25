@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<parent>
+	  <groupId>it.anticorruzione.simog</groupId>
+	  <artifactId>SimogParent</artifactId>
+  <version>3.04.16-i18n</version>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>SimogMassLoader</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogCommon</artifactId>
+			<version>3.04.16</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogWSCommon</artifactId>
+			<version>3.04.16</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogFlusso</artifactId>
+			<version>3.04.16</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.13</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>PubblicazioneWS</artifactId>
+			<version>3.04.7</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>TrasferimentoScheda_A</artifactId>
+			<version>3.04.7</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>GaraLottoWS</artifactId>
+			<version>3.04.7</version>
+		</dependency>
+		<!-- Da testare per le versioni -->
+		<!-- Non erano specificate nei JAR -->
+
+        <dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans-qname</artifactId>
+			<version>2.3.0</version>
+		</dependency>  -->
+	</dependencies>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			 <plugin>
+		         <artifactId>maven-jar-plugin</artifactId>
+		         <version>3.3.0</version>
+		         <configuration>
+		           <archive>
+		             <manifest>
+		               <addClasspath>true</addClasspath>
+		               <classpathPrefix>../../lib/</classpathPrefix>
+		               <mainClass>it.avlp.simog.massload.Main</mainClass>
+		             </manifest>
+		           </archive>
+		         </configuration>
+		      </plugin>
+		</plugins>
+	</build>
+</project>

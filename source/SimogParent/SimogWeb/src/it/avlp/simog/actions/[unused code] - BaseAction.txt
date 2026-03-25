@@ -1,0 +1,27 @@
+//FIXME: lo leviamo ?
+//	public void caricaRuoli(HttpServletRequest request, String idScheda){
+//        
+//		String tipoEnte = "O";
+//		String tipoContratto = "F";
+//		TableBean datiScheda =(TableBean) request.getAttribute(ParametriServlet.DATI_ENTE_CONTRATTO_TABLEBEAN);
+//		
+//		if(datiScheda != null){
+//			tipoEnte = datiScheda.getNulledField(INFO_AGGIUDICAZIONI.FLAG_ENTE_SPECIALE,0);
+//			tipoContratto = datiScheda.getNulledField(INFO_AGGIUDICAZIONI.TIPO_CONTRATTO,0);
+//			
+//		}else if (request.getParameter(ParametriServlet.FIELD_NAME_FLAG_ENTE_SPECIALE)!=null) {
+//			tipoEnte = request.getParameter(ParametriServlet.FIELD_NAME_FLAG_ENTE_SPECIALE);
+//			tipoContratto = request.getParameter(ParametriServlet.FIELD_NAME_TIPO_CONTRATTO);
+//		}	
+//		
+//		AccessiDB man = new AccessiDB(connection, logger);	
+//		try {
+//			//TableBean tb = man.caricaCombo(idLotto);
+//			TableBean tb = man.caricaRuoli(idScheda, tipoContratto, tipoEnte);
+//			//logger.debug("man.caricaComboTipoAppalto(idLotto); size"  + tb.getFullSize());
+//			request.setAttribute(ParametriServletBloccoDati.RUOLI_RESPONSABILE_TABLEBEAN, tb);
+//		} catch (SQLException e) {
+//			logger.error(e.getMessage());
+//			//e.printStackTrace();
+//		}	
+//	}

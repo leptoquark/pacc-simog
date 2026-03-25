@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+	<soggetto>
+		<cognome>Cognome RUP 1</cognome>
+		<nome>Nome RUP 1</nome>
+		<tel>065544332</tel>
+    	<fax>06778866</fax>
+    	<email>utente@sito.it</email>
+    	<admin_or>999</admin_or>
+	</soggetto>
+	<collaborazioni>
+		<collaborazione index="0">
+			<azienda>
+				<denominazione>STAZIONE APPALTANTE 1</denominazione>
+				<codice_fiscale>11111111115</codice_fiscale>
+			<id_osservatorio>099</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>>CENTRO DI COSTO 2</denominazione>
+				<id_ufficio>2255008F-1A1B-42BF-8973-B0C2DDAD54F9</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+		<collaborazione index="1">
+			<azienda>
+				<denominazione>STAZIONE APPALTANTE 1</denominazione>
+				<codice_fiscale>11111111115</codice_fiscale>
+			<id_osservatorio>099</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>CENTRO DI COSTO 1</denominazione>
+				<id_ufficio>ED9F0AA4-A910-4B55-A713-DA51D06E3CA6</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+	</collaborazioni>
+	<stato>2</stato>
+</check_login>

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/stile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" >
+<link rel="icon" href="img/animated_favicon1.gif" type="image/gif" >
+<title>SIMOG - Visualizzazione elenco delle iniziative disponibili</title>
+<base target="_self" />
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<!-- TICKET ALM #4222 - 3.04.4 - Lib jquery per chiamata asincrona soggetti aggregatori -->
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type="text/javascript">
+//TB: gestione popup modale
+function closePopup(annulla,from) {
+       if(!annulla){
+             var selValue = $('input[name=soggAggr]:checked').val();
+            // alert(from)
+             if(from=="gara") {
+            	var flagNoIniziativa = $('input[name=noSelIniz]').prop('checked');
+            	 if(!flagNoIniziativa && 
+                    	     (selValue==null || selValue=="")
+                   ){
+                     alert("");
+                     return;
+                 } else {
+                     if(from=="gara") {
+                          if(flagNoIniziativa) 
+                        	  window.parent.jQuery("#idNoCheckSoggAggrByUser").val("OK");
+                           else {
+                               var cigAccordoQuadro = selValue.split("##")[0];
+                               var flagComp = selValue.split("##")[1];
+                               var idModoReal = null;
+                               if(flagComp=="S")
+                            	   idModoReal = "2";
+                               else if(flagComp=="N")
+                            	   idModoReal = "11";
+                               window.parent.jQuery("input[name='CIGQUADRO']").val(cigAccordoQuadro);
+                               if(idModoReal != null)
+                            	    window.parent.jQuery("select[name='modoRealizzazione']").val(idModoReal);
+                           }
+						 window.parent.jQuery("#dialogSoggAggr").dialog("close");
+                       } 
+                  }
+              } else {
+                      var flagSaNonSoggetta = $('input[name=checkSaNonSoggetta]').prop('checked');
+                      var flagSaNonClassificata = $('input[name=checkSaNonClassificata]').prop('checked');
+                  //   alert(flagSaNonSoggetta);
+                  //   alert(flagSaNonSoggetta);
+                    if(!flagSaNonSoggetta && !flagSaNonClassificata && (selValue==null || selValue==""))
+                        alert("Selezionare una iniziativa o almeno una autodichiarazione");
+                    else {
+                             //Se sono state selezionate le autodichiarazioni, queste valgono per prime rispetto all'iniziativa
+                             if(flagSaNonSoggetta || flagSaNonClassificata) {
+                            	 if(flagSaNonSoggetta)
+                            	      window.parent.jQuery("input[name='FIELD_NAME_FLAG_SA_NO_DPCM']").val("OK");
+                                 if(flagSaNonClassificata)
+                                      window.parent.jQuery("input[name='FIELD_NAME_FLAG_SA_NO_CLASSIFICATA']").val("OK");
+                             } else {
+                            	 var cigAccordoQuadro = selValue.split("##")[0];
+                            	 window.parent.jQuery("input[name='FIELD_NAME_CIG_INIZIATIVA_SEL']").val(cigAccordoQuadro);
+                             }
+							 window.parent.jQuery("#dialogSoggAggr").dialog("close");
+                        }
+                  }
+           } else
+		window.parent.jQuery("#dialogSoggAggr").dialog("close");
+}
+function enableOrDisbleList(cb,otherCb){
+	var disableList = cb.checked || (otherCb!=null && $("#"+otherCb).prop('checked'));
+	if(disableList) {
+		$("input[name='soggAggr']").prop("disabled", true);
+		$("input[name='soggAggr']").prop("checked", false);
+	 } else
+		 $("input[name='soggAggr']").prop("disabled", false);
+}
+</script>
+</head>
+<body>
+<h1>Elenco iniziative</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+	<br><br>	
+	<div class="gara">
+		<fieldset>
+		<legend>المبادرات المتاحة حسب الفئات التجارية موضوع التوريد بموجب مرسوم رئيس الوزراء للمواضيع المجمعة</legend>
+			<div class="elencoCategorie" style="height:150px;">
+				<table background="#F1F2F8" class="TableBean" cellpadding="3" style="width:95%;">
+					<tr>
+						<th class='TableBeanTitle'>الاختيار</th>
+						<th class='TableBeanTitle'>CIG المبادرة</th>
+						<th class='TableBeanTitle'>موضوع المبادرة</th>
+						<th class='TableBeanTitle'>الموضوع المجمع</th>
+						<th class='TableBeanTitle'>ملاحظات</th>
+						<th class='TableBeanTitle'>رابط</th>
+					</tr>
+					<tr class="TableBeanOdd">
+						<td width="5%" ><input type="radio" name="soggAggr" value="" /></td>
+						<td width="10%" align="left"></td>
+						<td width="25%" align="left"></td>
+						<td width="20%" align="left"></td>
+						<td width="30%" align="left"></td>
+                        <td width="10%" align="left"><a href="" target="_blank">Link</a></td>
+					</tr>		
+				</table>		
+			</div>
+			</fieldset>
+		</div>
+		     <table>
+		     <tr>
+			   <td>
+                  <label><p style="font-weight: bold;"><a href="" target="_blank">&nbsp;<img title="Cliccare per informazioni estese" src="img/info-32x32.png" /></a>Il sottoscritto, consapevole che la falsit&agrave; in atti e le dichiarazioni mendaci sono punite ai sensi del codice penale e delle leggi speciali in materia, dichiara:</label>
+			   </td>
+		     </tr>
+			<tr>
+			   <td>
+			     <input type="checkbox" onchange="enableOrDisbleList(this,'checkSaNonClassificata')" id="checkSaNonSoggetta" name="checkSaNonSoggetta">1. che questa stazione appaltante non � soggetta agli obblighi del DPCM 24 dicembre 2015 e ss.mm.ii.
+			   </td>
+		     </tr>
+		     <tr>
+			   <td>
+			   	<input type="checkbox" onchange="enableOrDisbleList(this,'checkSaNonSoggetta')" id="checkSaNonClassificata" name="checkSaNonClassificata">2. che nessuna delle iniziative disponibili presso i soggetti aggregatori di riferimento ha caratteristiche in grado di soddisfare i fabbisogni di questa stazione appaltante
+			   </td>
+		     </tr>
+		     </table>
+		   <table>
+				<tr>
+				   <td>
+				     <input type="checkbox" onchange="enableOrDisbleList(this)" id="noSelIniz" name="noSelIniz"><label for="noSelIniz">Nessuna iniziativa da selezionare</label>
+				   </td>
+			     </tr>
+					</table>
+		<table>
+			<tr><td>
+				<div class="hmenu">
+					<ul>
+					<li><a href="javascript:closePopup(false,'');">تأكيد الاختيار</a></li>
+					</ul>
+				</div>	</td><td>&nbsp;</td><td>
+				<div class="hmenu">
+					<ul>
+					<li><a href="javascript:closePopup(true,'');">إلغاء</a></li>
+					</ul>
+				</div>	
+			</td></tr>
+		</table>
+</body>
+</html>

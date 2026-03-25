@@ -1,0 +1,278 @@
+package it.avlp.simog.servlet.conclusione;
+
+//import it.avlp.simog.actions.aggiudicazione.InfoComuniAction;
+//import it.avlp.simog.actions.aggiudicazione.ResponsabileAction;
+//import it.avlp.simog.actions.conclusione.Scheda_B4_Action;
+//import it.avlp.simog.beans.RichiestaAnnullamento;
+//import it.avlp.simog.beans.ValidationBean;
+//import it.avlp.simog.beans.conclusione.Scheda_B4;
+//import it.avlp.simog.common.servlet.ParametriServlet;
+//import it.avlp.simog.common.servlet.ParametriServletBloccoDati;
+//import it.avlp.simog.common.servlet.ParametriServletSchedaB4;
+//import it.avlp.simog.db.advanced.TableBean;
+//import it.avlp.simog.db.generated.FINE_LAVORI;
+//import it.avlp.simog.errormessage.Messaggi;
+//import it.avlp.simog.servlet.ServletBase;
+//import it.avlp.simog.util.PageHelper;
+//import it.avlp.simog.validatore.Scheda_B4_Validator;
+//
+//import java.io.IOException;
+//import java.sql.Timestamp;
+//import java.util.HashMap;
+//
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+///**
+// * Servlet implementation class for Servlet: SrvSchedaB4
+// *
+// */
+// public class SrvSchedaB4 extends ServletBase {
+//   
+//	/**
+//	 * 
+//	 */
+//	private static final long serialVersionUID = 5646493230551314012L;
+//
+//	public SrvSchedaB4() {
+//		super();
+//	}   	
+//	
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		perform(request,response);
+//	}
+//
+//	
+//	protected void perform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		if (checkSession(request)) {
+//			if (currentUser.isRUP()) {
+//				String tab = null;
+//				String pagina = ParametriServletSchedaB4.JSP_SCHEDA_B4;
+//				long idUltimazione;
+//				try {
+//					idUltimazione = Long.parseLong(request.getParameter(FINE_LAVORI.ID_ULTIM));
+//					logger.debug("idAvanzamento:"+idUltimazione);
+//				} catch (NumberFormatException e)
+//				{idUltimazione = -1;}
+//				String dataInizioUltimazione = request.getParameter(FINE_LAVORI.DATA_INIZIO_ULTIM);
+//				try {					
+//					currentActiveConnection = getSimogConnection(request.getSession().getId(),getClass().getName());
+//					currentActiveConnection.setAutoCommit(false);
+//					logger.debug("connection opened: " + currentActiveConnection != null);
+//					if(currentActiveConnection != null)
+//						logger.debug(currentActiveConnection.getWarnings());
+//									
+//					// utile per il debug, visualizza una lista parametro-valore
+//					// della request e response
+//					visualizzaListaParametriValori(request, response);
+//					// actionType e il tipo di operazione da eseguire sui dati:
+//					// conferma - modifica - salva
+//					String actionType = request
+//							.getParameter(ParametriServletBloccoDati.ACTION_TYPE);
+//					// tab e la pagina di destinazione che puo essere solo
+//					// InfoComuni...
+//					tab = request
+//							.getParameter(ParametriServletBloccoDati.TAB);
+//					HashMap<String, TableBean> results =  null;
+//					Scheda_B4_Action sb4Action = new Scheda_B4_Action(currentActiveConnection, logger);
+//					
+//					if (ParametriServletBloccoDati.ACTION_LOAD.equalsIgnoreCase(actionType)) {
+//					    results =  sb4Action.load(request);					
+//					}
+//					else if (ParametriServletBloccoDati.ACTION_SALVA.equalsIgnoreCase(actionType)) {
+//						Scheda_B4 sb4Bean = sb4Action.getBean(request);
+//						Scheda_B4_Validator validator = sb4Action.validate(request, sb4Bean, ParametriServletBloccoDati.TAB);
+//						
+//						if(idUltimazione < 0 && isRefresh(request)){
+//						
+//							validator.getEccezioni().addValidationErr(Messaggi.SIMOG_VALIDAZIONE_000);
+//							pagina = ParametriServlet.SRV_VISUALIZZA_RIEPILOGO_SCHEDA + "?"
+//							+ParametriServlet.FIELD_NAME_ID_LOTTO + "=" + request.getParameter(ParametriServlet.FIELD_NAME_ID_LOTTO) +
+//							"&"+ParametriServlet.FIELD_NAME_ID_INFO+"="+request.getParameter(ParametriServlet.FIELD_NAME_ID_INFO)
+//							+"&"+ParametriServlet.FIELD_NAME_DATA_INIZIO_INFO+"="+request.getParameter(ParametriServlet.FIELD_NAME_DATA_INIZIO_INFO);
+//							sb4Action.sendValidations(request, validator.getEccezioni());
+//							forward(pagina, request, response);
+//							return;
+//						}
+//						
+//						if(validator.getEccezioni().getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR).getSize() == 0){
+//							if(idUltimazione == -1) {
+//								results =  sb4Action.create(sb4Bean, getModifiedFlags(request), currentUser.getLogin());
+//								idUltimazione = sb4Bean.getFineLavori().getIdUltimazione();
+//								dataInizioUltimazione = sb4Bean.getFineLavori().getDataInizioUltimazione().toString();
+//						
+//								validator.getEccezioni().addValidationInfo(Messaggi.SIMOG_AGGIUDICAZIONI_023);
+//							}
+//							else{
+//								results =  sb4Action.save(sb4Bean,getModifiedFlags(request), currentUser.getLogin());
+//								
+//								validator.getEccezioni().addValidationInfo(Messaggi.SIMOG_AGGIUDICAZIONI_024);
+//							}							
+//						}
+//						else{
+//							results = sb4Action.load(request);
+//							sb4Action.ricostruisci(request, results);
+//							 
+//							setModifiedFlags(request);						
+//						}
+//						sb4Action.sendValidations(request, validator.getEccezioni());
+//						commit(currentActiveConnection);
+//					}
+//					else if (ParametriServletBloccoDati.ACTION_CONFERMA.equalsIgnoreCase(actionType)) {
+//						Scheda_B4 sb4Bean = sb4Action.getBean(request);
+//						Scheda_B4_Validator validator = sb4Action.validate(request, sb4Bean, ParametriServletBloccoDati.TAB);
+//						if(validator.getEccezioni().getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR).getSize() == 0){
+//							results = sb4Action.confirm(sb4Bean,currentUser.getLogin());
+//							validator.getEccezioni().addValidationInfo(Messaggi.SIMOG_AGGIUDICAZIONI_025);
+//						}
+//						else{
+//							results = sb4Action.load(request);
+//							sb4Action.ricostruisci(request, results);
+//							 
+//							setModifiedFlags(request);														
+//						}
+//						sb4Action.sendValidations(request, validator.getEccezioni());
+//						commit(currentActiveConnection);
+//					}
+//					else if (ParametriServletBloccoDati.ACTION_CARICA_JSP_ANNULLAMENTO.equalsIgnoreCase(actionType)) {
+//						pagina=ParametriServlet.JSP_RICHIEDI_ANNULLAMENTO;
+//						request.setAttribute(ParametriServlet.SHOW_DATI_COMUNI, "true");
+//						
+//					}
+//					else if (ParametriServletBloccoDati.ACTION_RICHIESTA_ANNULLAMENTO.equalsIgnoreCase(actionType)) {
+//						String motivazione = request.getParameter(ParametriServletBloccoDati.MOTIVAZIONE_ANNULLAMENTO);
+//						String idLotto = request.getParameter(ParametriServlet.FIELD_NAME_ID_LOTTO);
+//						
+//						RichiestaAnnullamento bean = new RichiestaAnnullamento();
+//						bean.setId_lotto(idLotto);
+//						bean.setMotivo_richiesta(motivazione);
+//						bean.setRichiedente(currentUser.getLogin());
+//						boolean successo = false;
+//						bean.setId_record(Long.toString(idUltimazione));
+//
+//						
+//						bean.setData_inizio_record(PageHelper.parseTime(dataInizioUltimazione));
+//						
+//						Timestamp nuovadata = null;
+//						
+//						nuovadata = sb4Action.richiediAnnullamento(bean);
+//						
+//						successo = nuovadata != null;										
+//						
+//						if(successo){
+//							results = sb4Action.load(request,nuovadata);
+//							dataInizioUltimazione = nuovadata.toString();
+//							commit(currentActiveConnection);
+//							sendMessage(request,Messaggi.SIMOG_AGGIUDICAZIONI_080);
+//						}
+//						else{
+//							results = sb4Action.load(request);
+//							rollback(currentActiveConnection);
+//							sendError(request, Messaggi.SIMOG_RICHIESTA_ANNULLAMENTO_001);	
+//						}
+//					}
+//					else if (ParametriServletBloccoDati.ACTION_CERCA.equalsIgnoreCase(actionType)) {
+//						TableBean soggetti = null;
+//						logger.debug("ACTION:cerca responsabili - START");
+//						ResponsabileAction resp = new ResponsabileAction(currentActiveConnection,logger);
+//						soggetti = resp.cerca(request);
+//						logger.debug("ACTION:cerca responsabili - END");
+//						
+//						pagina= "scheda1/popupRubrica.jsp";
+//						request.removeAttribute(ParametriServletBloccoDati.BLOCCO_DATI_SOGGETTI);
+//						
+//						request.setAttribute(ParametriServletBloccoDati.BLOCCO_DATI_SOGGETTI, soggetti);
+//					}
+//					else{
+//						logger.debug("CREA");
+//						results = new HashMap<String, TableBean>();
+//						results.put(ParametriServletSchedaB4.FINE_LAVORI_TABLEBEAN, new TableBean());
+//						results.put(ParametriServletSchedaB4.RESPONSABILI_FINE_TABLEBEAN, new TableBean());
+//						results.put(ParametriServletSchedaB4.SUBAPPALTI_TABLEBEAN, new TableBean());						
+//					}
+//					
+//					if(!ParametriServletBloccoDati.ACTION_CARICA_JSP_ANNULLAMENTO.equalsIgnoreCase(actionType) && !ParametriServletBloccoDati.ACTION_CERCA.equalsIgnoreCase(actionType)) {
+//						logger.debug("setta dati in request");
+//						(new InfoComuniAction(currentActiveConnection,logger)).loadInfoEnteEContratto(request);
+//						(new ResponsabileAction(currentActiveConnection, logger)).caricaRuoli(request,"B4");						
+//						
+//						request.setAttribute(ParametriServletSchedaB4.FINE_LAVORI_TABLEBEAN, results.get(ParametriServletSchedaB4.FINE_LAVORI_TABLEBEAN));
+//						request.setAttribute(ParametriServletSchedaB4.RESPONSABILI_FINE_TABLEBEAN, results.get(ParametriServletSchedaB4.RESPONSABILI_FINE_TABLEBEAN));
+//						request.setAttribute(ParametriServletSchedaB4.SUBAPPALTI_TABLEBEAN, results.get(ParametriServletSchedaB4.SUBAPPALTI_TABLEBEAN));
+//					}
+//
+//					request.setAttribute(ParametriServlet.FIELD_NAME_ID_INFO, 
+//							request.getParameter(ParametriServlet.FIELD_NAME_ID_INFO));
+//					// ID_LOTTO
+//					request.setAttribute(ParametriServlet.FIELD_NAME_ID_LOTTO, 
+//							request.getParameter(ParametriServlet.FIELD_NAME_ID_LOTTO));
+//					// idAvanzamento
+//					request.setAttribute(FINE_LAVORI.ID_ULTIM, 
+//							Long.toString(idUltimazione));
+//					
+//					// DATA_INIZIO_INIZIOLAVORI
+//					request.setAttribute(FINE_LAVORI.DATA_INIZIO_ULTIM, 
+//							dataInizioUltimazione);
+//					
+//					request.setAttribute(ParametriServletBloccoDati.ACTION_TYPE, 
+//							ParametriServletBloccoDati.ACTION_CAMBIA_TAB);
+//					
+//					request.setAttribute(ParametriServletBloccoDati.TAB, 
+//							tab);
+//					if(request.getAttribute(ParametriServlet.SHOW_DATI_COMUNI)!=null)
+//						request.setAttribute(ParametriServlet.SHOW_DATI_COMUNI, 
+//								request.getAttribute(ParametriServlet.SHOW_DATI_COMUNI));
+//					else
+//						request.setAttribute(ParametriServlet.SHOW_DATI_COMUNI, 
+//								request.getParameter(ParametriServlet.SHOW_DATI_COMUNI));
+//					
+//					forward(pagina , request, response);
+//				}
+//				catch (Exception e) {
+//					e.printStackTrace();
+//					rollback(currentActiveConnection);
+//					sendError(request, response, Messaggi.SIMOG_LOGIN_004, JSP_LOGIN );
+//					
+//					return;
+//
+//				}
+//				finally {
+//					logger.debug("Chiudo connessione");
+//					closeConnection(request.getSession().getId(),getClass().getName());
+//				}
+//			}
+//			else {
+//				sendError(request, response, Messaggi.SIMOG_LOGIN_004, JSP_LOGIN );
+//				return;
+//			}
+//		}
+//		else {
+//			sendError(request, response, Messaggi.SIMOG_LOGIN_003, JSP_LOGIN );
+//			return;
+//		}		
+//
+//	}
+//	
+//private HashMap<String, Boolean> getModifiedFlags(HttpServletRequest request){
+//		
+//		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+//		String saveUltimazione = request.getParameter("Modificato0");
+//		String saveResponsabili = request.getParameter("Modificato1");
+//		
+//		String saveSubappalti = request.getParameter("Modificato2");
+//				
+//		result.put(ParametriServletSchedaB4.FINE_LAVORI_FLAG, new Boolean(saveUltimazione.equals("1")));
+//		result.put(ParametriServletSchedaB4.SUBAPPALTI_FLAG, new Boolean(saveSubappalti.equals("1")));
+//		result.put(ParametriServletSchedaB4.RESPONSABILI_FINE_FLAG, new Boolean(saveResponsabili.equals("1")));
+//				
+//		return result;		  
+//	}
+//	
+//	private void setModifiedFlags(HttpServletRequest request){
+//		request.setAttribute("Modificato", request.getParameter("Modificato"));
+//		request.setAttribute("Modificato0", request.getParameter("Modificato0"));
+//		request.setAttribute("Modificato1", request.getParameter("Modificato1"));
+//		request.setAttribute("Modificato2", request.getParameter("Modificato2"));		
+//	}
+//}

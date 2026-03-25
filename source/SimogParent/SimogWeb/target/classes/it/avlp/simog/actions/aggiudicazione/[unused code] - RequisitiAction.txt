@@ -1,0 +1,34 @@
+//	/*******************************************************************************************************
+//	 * Carica le categorie  [non risulta usato]
+//	 * @param idLotto long
+//	 * @param o deve essere Timestamp o String [yyyymmdd] per l'estensione della validità di una tipologia a posteriori
+//	 * @return Map&lt;String, String&gt;
+//	 * @throws ActionException
+//	 */
+//	public Map<String, String> loadCategorie(long idLotto,Object o) throws ActionException{
+//		RequisitiManager rManager = new RequisitiManager(connection, logger);
+//		try {
+//			return rManager.caricaCategorie(idLotto,o);
+//		} catch (Exception e) {
+////			log come fatal demandato al chiamante
+//			logger.error(e);
+//			throw new ActionException(e);
+//		}
+//	}
+//	
+//	/*******************************************************************************************************
+//	 * Carica le classi di importo
+//	 * @param o deve essere Timestamp o String [yyyymmdd] per l'estensione della validità di una tipologia a posteriori
+//	 * @return Map&lt;String, String&gt;
+//	 * @throws ActionException
+//	 */
+//	public Map<String, String> loadClassiImporto(Object o) throws ActionException{
+//		RequisitiManager rManager = new RequisitiManager(connection, logger);
+//		try {
+//			return rManager.caricaClassiImporto(o);
+//		} catch (Exception e) {
+////			log come fatal demandato al chiamante
+//			logger.error(e);
+//			throw new ActionException(e);
+//		}
+//	}

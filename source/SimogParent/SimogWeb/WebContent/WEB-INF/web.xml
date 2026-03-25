@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<display-name>SimogWeb</display-name>
+ 
+<session-config>
+	<session-timeout>60</session-timeout>
+</session-config>
+ 
+<!-- PP tolto, obsoleto  -->
+<!-- <filter> -->
+<!--     <filter-name>ExtendSession</filter-name> -->
+<!--     <filter-class>it.avlp.simog.servlet.ExtendSession</filter-class> -->
+<!--  </filter> -->
+<!--  <filter-mapping> -->
+<!--     <filter-name>ExtendSession</filter-name> -->
+<!--     <url-pattern>/*</url-pattern> -->
+<!--  </filter-mapping>   -->
+
+   <!-- Filtro per la gestione della locale e internazionalizzazione -->
+   <filter>
+      <filter-name>LocaleFilter</filter-name>
+      <filter-class>it.avlp.simog.servlet.LocaleFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>LocaleFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+   <filter>
+      <filter-name>AuthFilter</filter-name>
+      <filter-class>it.avlp.simog.servlet.AuthenticationFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>AuthFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+    
+<servlet>
+	<display-name>Apache-Axis Servlet</display-name>
+	<servlet-name>AxisServlet</servlet-name>
+	<servlet-class>
+	org.apache.axis.transport.http.AxisServlet</servlet-class>
+</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvCancellaGara</display-name>
+		<servlet-name>SrvCancellaGara</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvCancellaGara</servlet-class>
+	</servlet>
+
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvModificaLotto</display-name>
+		<servlet-name>SrvModificaLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvModificaLotto</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ricercaCPV</display-name>
+		<servlet-name>ricercaCPV</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.cpv.SrvRicercaCPV</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ricercaIstat</display-name>
+		<servlet-name>ricercaIstat</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.luogo.SrvRicercaIstat</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ricercaNuts</display-name>
+		<servlet-name>ricercaNuts</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.luogo.SrvRicercaNuts</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>SrvPerfezionaLotto</display-name>
+		<servlet-name>perfezionaLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvPerfezionaLotto</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<description></description>
+		<display-name>SrvCancellaLotto</display-name>
+		<servlet-name>cancellaLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvCancellaLotto</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>AggiornaTabelleServizio</display-name>
+		<servlet-name>AggiornaTabelleServizio</servlet-name>
+		<servlet-class>it.avlp.simog.tabmanager.app.SrvAggiornaTabelleServizio</servlet-class>
+	</servlet>	
+	<servlet>
+		<description></description>
+		<display-name>Dettaglio Tabella di Servizio</display-name>
+		<servlet-name>DettaglioTabellaServizio</servlet-name>
+		<servlet-class>it.avlp.simog.tabmanager.app.SrvVisualizzaTabelleServizio</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>Aggiornamenti Tabella di Servizio</display-name>
+			<servlet-name>VisualizzaAggiornamenti</servlet-name>
+		<servlet-class>it.avlp.simog.tabmanager.app.SrvVisualizzaAggiornamenti</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvInizializzaLotto</display-name>
+		<servlet-name>SrvInizializzaLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvInizializzaLotto</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>MultiboxMng</display-name>
+		<servlet-name>MultiboxMng</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.MultiboxMng</servlet-class>
+	</servlet>
+	
+		<servlet>
+		<description>Servlet per la visualizzazione dei LOTTI pubblicati AVCP
+		</description>
+		<display-name>SrvVisualizzaLottiPubblicati</display-name>
+		<servlet-name>SrvVisualizzaLottiPubblicati</servlet-name>
+		<servlet-class>it.avlp.simog.transazioni.SrvVisualizzaLottiPubblicati</servlet-class>
+	</servlet>
+	
+		<servlet>
+		<description>
+		</description>
+		<display-name>GestisciLotto</display-name>
+		<servlet-name>GestisciLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvGestisciLotto</servlet-class>
+	</servlet>
+		<servlet>
+		<description>
+		</description>
+		<display-name>SrvInizializzaGara</display-name>
+		<servlet-name>SrvInizializzaGara</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvInizializzaGara</servlet-class>
+	</servlet>
+	<!-- Ticket 20055 -->
+		<servlet>
+		<description>
+		</description>
+		<display-name>SrvAnnullaRettifica</display-name>
+		<servlet-name>SrvAnnullaRettifica</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvAnnullaRettifica</servlet-class>
+	</servlet>
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvBandoGara</display-name>
+      <servlet-name>SrvBandoGara</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvBandoGara</servlet-class>
+   </servlet>
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvGestioneElencoInvitati</display-name>
+      <servlet-name>SrvGestioneElencoInvitati</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvGestioneElencoInvitati</servlet-class>
+   </servlet>
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvGestioneRettifica</display-name>
+      <servlet-name>SrvGestioneRettifica</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvGestioneRettifica</servlet-class>
+   </servlet>
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvVariazioneSA</display-name>
+      <servlet-name>SrvVariazioneSA</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvVariazioneSA</servlet-class>
+   </servlet>
+		<servlet>
+		<description>
+		</description>
+		<display-name>SrvPaesi</display-name>
+		<servlet-name>SrvPaesi</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.paesi.SrvPaesi</servlet-class>
+	</servlet>
+<servlet>
+	<display-name>
+	Axis Admin Servlet</display-name>
+	<servlet-name>AdminServlet</servlet-name>
+	<servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
+	<load-on-startup>100</load-on-startup>
+</servlet>
+	<servlet>
+		<description>Effettua la verifica dell'accesso presso il sistema di autenticazione remoto</description>
+		<servlet-name>SrvAutentica</servlet-name>
+		<servlet-class>it.avlp.simog.auth.manager.SrvAutentica</servlet-class>
+		<init-param>
+			<param-name>LOG_CONFIG_FILENAME</param-name>
+<!--         <param-value>/WEB-INF/simog_log4j.properties</param-value>-->
+<!--	// FIXME: PP simog.ini esterno		<param-value>/opt/simog/simog_log4j.properties</param-value> -->
+      <param-value>/opt/SIMOG/simog_log4j.properties</param-value>
+		</init-param>
+		<init-param>
+			<param-name>CONFIG_FILENAME</param-name>
+<!--  FIXME: PP logger esterno		<param-value>/opt/simog/simog.ini</param-value> -->
+<!--         <param-value>/WEB-INF/simog.ini</param-value>-->
+         <param-value>/opt/SIMOG/simog.ini</param-value> 
+         
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+   <servlet>
+      <display-name>SrvIAALogout</display-name>
+      <servlet-name>SrvIAALogout</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvIAALogout</servlet-class>
+   </servlet>
+
+   <servlet>
+      <display-name>SrvIAACambiaProfilo</display-name>
+      <servlet-name>SrvIAACambiaProfilo</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvIAACambiaProfilo</servlet-class>
+   </servlet>
+
+	<servlet>
+		<display-name>SrvInserisciGara</display-name>
+		<servlet-name>SrvInserisciGara</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvInserisciGara</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<display-name>SrvInserisciLotto</display-name>
+		<servlet-name>SrvInserisciLotto</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvInserisciLotto</servlet-class>
+	</servlet>
+<!--	<servlet>-->
+<!--		<display-name>SrvRicercaLotto</display-name>-->
+<!--		<servlet-name>SrvRicercaLotto</servlet-name>-->
+<!--		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvRicercaLotto</servlet-class>-->
+<!--	</servlet>-->
+	<servlet>
+		<display-name>SrvVisualizzaDocumento</display-name>
+		<servlet-name>SrvVisualizzaDocumento</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvVisualizzaDocumento</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>SrvCancellaDocumento</display-name>
+		<servlet-name>SrvCancellaDocumento</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvCancellaDocumento</servlet-class>
+	</servlet>
+<!--	<servlet>-->
+<!--		<display-name>-->
+<!--		SrvLoadUtilita</display-name>-->
+<!--		<servlet-name>SrvLoadUtilita</servlet-name>-->
+<!--		<servlet-class>it.avlp.simog.servlet.SrvLoadUtilita</servlet-class>-->
+<!--	</servlet>-->
+	<servlet>
+		<display-name>
+		SrvLogout</display-name>
+		<servlet-name>SrvLogout</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.SrvLogout</servlet-class>
+	</servlet>
+<!--	<servlet>-->
+<!--		<servlet-name>RicercaGareRSSA</servlet-name>-->
+<!--		<servlet-class>it.avlp.simog.garamanager.app.SrvVisualizzaGareRSSA</servlet-class>-->
+<!--	</servlet>-->
+	<servlet>
+		<servlet-name>RicercaGareRUP_CS</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvVisualizzaGareRUP_CS</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RicercaGareEXT</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvVisualizzaGareEXT</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Avvia l'aggiornamento delle tabelle amministrative</description>
+		<display-name>EseguiAggiornamento</display-name>
+		<servlet-name>EseguiAggiornamento</servlet-name>
+		<servlet-class>it.avlp.simog.tabmanager.app.SrvAggiornaTabelle</servlet-class>
+	</servlet>
+			
+			
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvVisualizzaDettagliGara</display-name>
+		<servlet-name>SrvVisualizzaDettagliGara</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.app.SrvVisualizzaDettagliGara</servlet-class>
+	</servlet>
+  
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvConsultaLog</display-name>
+		<servlet-name>SrvConsultaLog</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.SrvConsultaLog</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvConsultaLogOperazioni</display-name>
+		<servlet-name>SrvConsultaLogOperazioni</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.aggiudicazione.SrvConsultaLogOperazioni</servlet-class>
+	</servlet>
+	
+<!--	<servlet>-->
+<!--		<description>-->
+<!--		</description>-->
+<!--		<display-name>-->
+<!--		SrvVisualizzaTransazioni</display-name>-->
+<!--		<servlet-name>SrvVisualizzaTransazioni</servlet-name>-->
+<!--		<servlet-class>it.avlp.simog.transazioni.SrvVisualizzaTransazioni</servlet-class>-->
+<!--	</servlet>-->
+<!--	<servlet>-->
+<!--		<description>-->
+<!--		</description>-->
+<!--		<display-name>SessionHolder</display-name>-->
+<!--		<servlet-name>SessionHolder</servlet-name>-->
+<!--		<servlet-class>it.avlp.simog.servlet.sessionmanager.SessionHolder</servlet-class>-->
+<!--	</servlet>-->
+<!--	<servlet>-->
+<!--		<description>-->
+<!--		Servlet per l'esportazione della lista CPV in formato PDF</description>-->
+<!--		<display-name>-->
+<!--		SrvListaCompletaCPV</display-name>-->
+<!--		<servlet-name>SrvListaCompletaCPV</servlet-name>-->
+<!--		<servlet-class>-->
+<!--		it.avcp.simog.cpv.manager.app.SrvCPVListManager</servlet-class>-->
+<!--	</servlet>-->
+
+	<servlet>
+		<description>Servlet per la gestione documentale relativa ai lotti</description>
+		<display-name>SrvGestioneDocumenti</display-name>
+		<servlet-name>SrvGestioneDocumenti</servlet-name>
+		<servlet-class>it.avlp.simog.garamanager.lotto.app.SrvGestioneDocumenti</servlet-class>
+	</servlet>
+<!--	<servlet>-->
+<!--		<description>-->
+<!--		</description>-->
+<!--		<display-name>-->
+<!--		SrvInserisciDatiComuni</display-name>-->
+<!--		<servlet-name>SrvInserisciDatiComuni</servlet-name>-->
+<!--		<servlet-class>-->
+<!--		it.avlp.simog.aggiudicazionimanager.app.SrvInserisciDatiComuni</servlet-class>-->
+<!--	</servlet>-->
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvVisualizzaRiepilogoScheda</display-name>
+		<servlet-name>SrvVisualizzaRiepilogoScheda</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvVisualizzaRiepilogoScheda</servlet-class>
+	</servlet>
+	<servlet>
+      <description>
+      </description>
+      <display-name>SrvGestioneMultilotto</display-name>
+      <servlet-name>SrvGestioneMultilotto</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvGestioneMultilotto</servlet-class>
+   </servlet>
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvEditMultilotto</display-name>
+      <servlet-name>SrvEditMultilotto</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvEditMultilotto</servlet-class>
+   </servlet>
+	<servlet>
+		<description>
+		</description>
+      <display-name>SrvVisualizzaRiepilogoSchedeMultilotto</display-name>
+      <servlet-name>SrvVisualizzaRiepilogoSchedeMultilotto</servlet-name>
+      <servlet-class>
+      it.avlp.simog.servlet.aggiudicazione.SrvVisualizzaRiepilogoSchedeMultilotto</servlet-class>
+   </servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		Servlet Dati Comuni</display-name>
+		<servlet-name>SrvDatiComuni</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvDatiComuni</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvSchedaA</display-name>
+		<servlet-name>SrvSchedaA</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvSchedaA</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvSchedaSottosoglia</display-name>
+		<servlet-name>SrvSchedaSottosoglia</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvSchedaSottosoglia</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvSchedaEsclusi</display-name>
+		<servlet-name>SrvSchedaEsclusi</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvSchedaEsclusi</servlet-class>
+	</servlet>
+	
+	<!-- <servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvPreInsertDatiComuni</display-name>
+		<servlet-name>SrvPreInsertDatiComuni</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvPreInsertDatiComuni</servlet-class>
+	</servlet> -->
+	
+	
+	<servlet>
+		<description></description>
+		<display-name>SrvRubrica</display-name>
+		<servlet-name>SrvRubrica</servlet-name>
+		<servlet-class>it.avlp.simog.rubricamanager.app.SrvRubrica</servlet-class>
+	</servlet>
+   
+   <servlet>
+      <description></description>
+      <display-name>SrvRubricaDittaAusiliaria</display-name>
+      <servlet-name>SrvRubricaDittaAusiliaria</servlet-name>
+      <servlet-class>it.avlp.simog.rubricamanager.app.SrvRubricaDittaAusiliaria</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <description></description>
+      <display-name>SrvRubricaRaggruppamento</display-name>
+      <servlet-name>SrvRubricaRaggruppamento</servlet-name>
+      <servlet-class>it.avlp.simog.rubricamanager.app.SrvRubricaRaggruppamento</servlet-class>
+   </servlet>
+   
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvGestioneRichiestaAnnullamento</display-name>
+		<servlet-name>SrvGestioneRichiestaAnnullamento</servlet-name>
+		<servlet-class>
+		it.avlp.simog.gestioneannullamentomanager.app.SrvGestioneRichiestaAnnullamento</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvGestioneRichiestaCancellazione</display-name>
+		<servlet-name>SrvGestioneRichiestaCancellazione</servlet-name>
+		<servlet-class>
+		it.avlp.simog.gestionecancellazionemanager.app.SrvGestioneRichiestaCancellazione</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvRubricaResponsabili</display-name>
+		<servlet-name>SrvRubricaResponsabili</servlet-name>
+		<servlet-class>
+		it.avlp.simog.rubricamanager.app.SrvRubricaResponsabili</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvInizioLavori</display-name>
+		<servlet-name>SrvInizioLavori</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.inizio.SrvInizioLavori</servlet-class>
+	</servlet>
+	
+	<servlet>
+      <description>
+      </description>
+      <display-name>
+      SrvStipula</display-name>
+      <servlet-name>SrvStipula</servlet-name>
+      <servlet-class>
+      it.avlp.simog.servlet.stipula.SrvStipula</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <description>
+      </description>
+      <display-name>
+      SrvSchedaAdesione</display-name>
+      <servlet-name>SrvSchedaAdesione</servlet-name>
+      <servlet-class>
+      it.avlp.simog.servlet.adesione.SrvSchedaAdesione</servlet-class>
+   </servlet>
+   
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvServizio</display-name>
+		<servlet-name>SrvServizio</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.SrvServizio</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda R129</display-name>
+		<servlet-name>SrvSchedaR129</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.r129.SrvSchedaR129</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>SrvPresaInCarico</display-name>
+		<servlet-name>SrvPresaInCarico</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.aggiudicazione.SrvPresaInCarico</servlet-class>
+	</servlet>
+	
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvPresaInCaricoGara</display-name>
+      <servlet-name>SrvPresaInCaricoGara</servlet-name>
+      <servlet-class>
+      it.avlp.simog.servlet.SrvPresaInCaricoGara</servlet-class>
+   </servlet>
+
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Sospensioni</display-name>
+		<servlet-name>SrvSchedaSospensioni</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.sospensioni.SrvSchedaSospensioni</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Accordo</display-name>
+		<servlet-name>SrvSchedaAccordo</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.accordo.SrvSchedaAccordo</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Subappalti</display-name>
+		<servlet-name>SrvSchedaSubappalti</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.subappalti.SrvSchedaSubappalti</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Avanzamento</display-name>
+		<servlet-name>SrvSchedaAvanzamento</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.avanzamento.SrvSchedaAvanzamento</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Varianti</display-name>
+		<servlet-name>SrvSchedaVarianti</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.variante.SrvSchedaVarianti</servlet-class>
+	</servlet>
+
+   <servlet>
+      <description>Servlet per la gestione degli allegati</description>
+      <display-name>SrvGestioneAllegati</display-name>
+      <servlet-name>SrvGestioneAllegati</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvGestioneAllegati</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <description>Servlet per lo storico degli allegati</description>
+      <display-name>SrvStoricoAllegati</display-name>
+      <servlet-name>SrvStoricoAllegati</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvStoricoAllegati</servlet-class>
+   </servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaVarianti</servlet-name>
+		<url-pattern>/SrvSchedaVarianti</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaAccordo</servlet-name>
+		<url-pattern>/srvSchedaAccordo</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SrvPaesi</servlet-name>
+		<url-pattern>/Paesi</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaSubappalti</servlet-name>
+		<url-pattern>/srvSchedaSubappalti</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaAvanzamento</servlet-name>
+		<url-pattern>/srvSchedaAvanzamento</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Conclusioni</display-name>
+		<servlet-name>SrvSchedaConclusioni</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.conclusione.SrvSchedaConclusioni</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaConclusioni</servlet-name>
+		<url-pattern>/srvSchedaConclusioni</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>Servlet Scheda Collaudo</display-name>
+		<servlet-name>SrvCollaudo</servlet-name>
+		<servlet-class>it.avlp.simog.servlet.collaudo.SrvCollaudo</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		ListTypes</display-name>
+		<servlet-name>ListTypes</servlet-name>
+		<servlet-class>
+		it.avlp.simog.servlet.ListTypes</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		SrvCancellaTabelleServizio</display-name>
+		<servlet-name>SrvCancellaTabelleServizio</servlet-name>
+		<servlet-class>
+		it.avlp.simog.tabmanager.app.SrvCancellaTabelleServizio</servlet-class>
+	</servlet>
+
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		RichiestaCancellazione</display-name>
+		<servlet-name>RichiestaCancellazione</servlet-name>
+		<servlet-class>
+		it.avlp.simog.gestionecancellazionemanager.app.SrvGestioneRichiestaCancellazione</servlet-class>
+	</servlet>
+	
+   <servlet>
+   	<description>
+   	</description>
+   	<display-name>SrvSceltaProfilo</display-name>
+   	<servlet-name>SrvSceltaProfilo</servlet-name>
+   	<servlet-class>it.avlp.simog.auth.manager.SrvSceltaProfilo</servlet-class>
+   </servlet>
+   
+   <servlet>
+   	<description>
+   	</description>
+   	<display-name>SrvCommaSeparatedValues</display-name>
+   	<servlet-name>SrvCommaSeparatedValues</servlet-name>
+   	<servlet-class>it.avlp.simog.csv.SrvCommaSeparatedValues</servlet-class>
+   </servlet>
+   
+<!--    <servlet> -->
+<!--       <description> -->
+<!--       </description> -->
+<!--       <display-name> -->
+<!--       SrvRigettaTutteRichieste</display-name> -->
+<!--       <servlet-name>SrvRigettaTutteRichieste</servlet-name> -->
+<!--       <servlet-class> -->
+<!--       it.avlp.simog.gestioneannullamentomanager.app.SrvRigettaTutteRichieste</servlet-class> -->
+<!--    </servlet> -->
+
+   <servlet>
+      <description>
+      </description>
+      <display-name>
+      SrvElencoCig</display-name>
+      <servlet-name>SrvElencoCig</servlet-name>
+      <servlet-class>
+      it.avlp.simog.garamanager.app.SrvElencoCig</servlet-class>
+   </servlet>
+   
+   <!-- UN 26/10/2012 Gestione Requisiti Gara e documenti -->
+   <servlet>
+      <description>
+      </description>
+      <display-name>
+      SrvRequisitiGL</display-name>
+      <servlet-name>SrvRequisitiGL</servlet-name>
+      <servlet-class>
+      it.avlp.simog.garamanager.app.SrvRequisitiGL</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <description>
+      </description>
+      <display-name>
+      ListTable</display-name>
+      <servlet-name>ListTable</servlet-name>
+      <servlet-class>
+      it.avlp.simog.servlet.ListTable</servlet-class>
+   </servlet>   
+   
+   <!-- UN 30/04/2014 Gestione Integrazione CUP -->
+   <servlet>
+      <description></description>
+      <display-name>SrvElencoCigIntegrazioneCup</display-name>
+      <servlet-name>SrvElencoCigIntegrazioneCup</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvElencoCigIntegrazioneCup</servlet-class>
+   </servlet>  
+   <servlet>
+      <description></description>
+      <display-name>SrvIntegrazioneCigUpdateCup</display-name>
+      <servlet-name>SrvIntegrazioneCigUpdateCup</servlet-name>
+      <servlet-class>it.avlp.simog.garamanager.app.SrvIntegrazioneCigUpdateCup</servlet-class>
+   </servlet>      
+
+   <servlet>
+      <description>
+      </description>
+      <display-name>SrvReload</display-name>
+      <servlet-name>SrvReload</servlet-name>
+      <servlet-class>it.avlp.simog.servlet.SrvReload</servlet-class>
+   </servlet>
+   <servlet>
+   	<description>
+   	</description>
+   	<display-name>SrvPresaInCaricoGaraDelegata</display-name>
+   	<servlet-name>SrvPresaInCaricoGaraDelegata</servlet-name>
+   	<servlet-class>it.avlp.simog.garamanager.app.SrvPresaInCaricoGaraDelegata</servlet-class>
+   	<init-param>
+   		<description>
+   		</description>
+   		<param-name>action</param-name>
+   		<param-value>load</param-value>
+   	</init-param>
+   </servlet>
+   <servlet>
+   	<description>
+   	Verifica l'elenco delle iniziative disponibili presso i soggetti aggregatori</description>
+   	<display-name>SrvVerificaIniziativeSoggAggr</display-name>
+   	<servlet-name>SrvVerificaIniziativeSoggAggr</servlet-name>
+   	<servlet-class>it.avlp.simog.servlet.SrvVerificaIniziativeSoggAggr</servlet-class>
+   </servlet>
+
+ <servlet>
+   	<description>
+   	Carica l'elenco delle iniziative disponibili presso i soggetti aggregatori</description>
+   	<display-name>SrvCaricaIniziativeSoggAggr</display-name>
+   	<servlet-name>SrvCaricaIniziativeSoggAggr</servlet-name>
+   	<servlet-class>it.avlp.simog.servlet.SrvCaricaIniziativeSoggAggr</servlet-class>
+   </servlet>
+ <servlet>
+ 	<description>
+ 	Carica la descrizione della cpv in base all'id</description>
+ 	<display-name>SrvLoadCpvSecDesc</display-name>
+ 	<servlet-name>SrvLoadCpvSecDesc</servlet-name>
+ 	<servlet-class>it.avlp.simog.servlet.SrvLoadCpvSecDesc</servlet-class>
+ </servlet>
+
+   
+   <servlet-mapping>
+      <servlet-name>SrvElencoCig</servlet-name>
+      <url-pattern>/elencoCig</url-pattern>
+   </servlet-mapping>
+
+<!--    <servlet-mapping> -->
+<!--       <servlet-name>SrvRigettaTutteRichieste</servlet-name> -->
+<!--       <url-pattern>/__rigetta</url-pattern> -->
+<!--    </servlet-mapping> -->
+
+	<servlet-mapping>
+		<servlet-name>SrvCollaudo</servlet-name>
+		<url-pattern>/srvCollaudo</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaSospensioni</servlet-name>
+		<url-pattern>/srvSchedaSospensioni</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaR129</servlet-name>
+		<url-pattern>/srvSchedaR129</url-pattern>
+	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>SrvGestioneDocumenti</servlet-name>
+		<url-pattern>/gestisciDocumenti</url-pattern>
+	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>RicercaGareRSSA</servlet-name>-->
+<!--		<url-pattern>/ricercaGare</url-pattern>-->
+<!--	</servlet-mapping>-->
+	
+	<servlet-mapping>
+		<servlet-name>RicercaGareRUP_CS</servlet-name>
+		<url-pattern>/ricercaGareRUP_CS</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RicercaGareEXT</servlet-name>
+		<url-pattern>/ricercaGareExt</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet-mapping>
+	<servlet-name>AxisServlet</servlet-name>
+	<url-pattern>/servlet/AxisServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	<servlet-name>AxisServlet</servlet-name>
+	<url-pattern>*.jws</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	<servlet-name>AxisServlet</servlet-name>
+	<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	<servlet-name>AdminServlet</servlet-name>
+	<url-pattern>/servlet/AdminServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvInizializzaLotto</servlet-name>
+		<url-pattern>/inizializzaLotto</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>SrvVisualizzaLottiPubblicati</servlet-name>
+		<url-pattern>/visualizzaLotti</url-pattern>
+	</servlet-mapping>
+		
+		
+	<servlet-mapping>
+		<servlet-name>SrvAutentica</servlet-name>
+		<url-pattern>/checkAuthentication</url-pattern>
+	</servlet-mapping>
+	
+   <servlet-mapping>
+      <servlet-name>SrvIAALogout</servlet-name>
+      <url-pattern>/IAALogout</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SrvIAACambiaProfilo</servlet-name>
+      <url-pattern>/IAACambiaProfilo</url-pattern>
+   </servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SrvLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>GestisciLotto</servlet-name>
+		<url-pattern>/gestisciLotto</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>cancellaLotto</servlet-name>
+		<url-pattern>/cancellaLotto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>perfezionaLotto</servlet-name>
+		<url-pattern>/perfezionaLotto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvModificaLotto</servlet-name>
+		<url-pattern>/aggiornaLotto</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvVisualizzaDettagliGara</servlet-name>
+		<url-pattern>/visualizzaDettaglio</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvInserisciGara</servlet-name>
+		<url-pattern>/InserisciGara</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvInserisciLotto</servlet-name>
+		<url-pattern>/InserisciLotto</url-pattern>
+	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SrvRicercaLotto</servlet-name>-->
+<!--		<url-pattern>/RicercaLotto</url-pattern>-->
+<!--	</servlet-mapping>-->
+	<servlet-mapping>
+		<servlet-name>SrvVisualizzaDocumento</servlet-name>
+		<url-pattern>/VisualizzaDocumento</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvCancellaDocumento</servlet-name>
+		<url-pattern>/CancellaDocumento</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvInizializzaGara</servlet-name>
+		<url-pattern>/inizializzaGara</url-pattern>
+	</servlet-mapping>  
+	<!-- Ticket 20055 --> 
+	<servlet-mapping>
+		<servlet-name>SrvAnnullaRettifica</servlet-name>
+		<url-pattern>/annullaRettifica</url-pattern>
+	</servlet-mapping> 
+   <servlet-mapping>
+      <servlet-name>SrvBandoGara</servlet-name>
+      <url-pattern>/bandoGara</url-pattern>
+   </servlet-mapping>  
+   <servlet-mapping>
+      <servlet-name>SrvGestioneElencoInvitati</servlet-name>
+      <url-pattern>/gestioneElencoInvitati</url-pattern>
+   </servlet-mapping>  
+   <servlet-mapping>
+      <servlet-name>SrvGestioneRettifica</servlet-name>
+      <url-pattern>/gestioneRettifica</url-pattern>
+   </servlet-mapping> 
+   <servlet-mapping>
+      <servlet-name>SrvVariazioneSA</servlet-name>
+      <url-pattern>/variazioneSA</url-pattern>
+   </servlet-mapping>  
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SrvLoadUtilita</servlet-name>-->
+<!--		<url-pattern>/loadUtilita</url-pattern>-->
+<!--	</servlet-mapping>-->
+	<servlet-mapping>
+		<servlet-name>SrvCancellaGara</servlet-name>
+		<url-pattern>/cancellaGara</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvConsultaLog</servlet-name>
+		<url-pattern>/consultaLog</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvConsultaLogOperazioni</servlet-name>
+		<url-pattern>/consultaLogOperazioni</url-pattern>
+	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SrvVisualizzaTransazioni</servlet-name>-->
+<!--		<url-pattern>/visualizzaTransazioni</url-pattern>-->
+<!--	</servlet-mapping>-->
+	<servlet-mapping>
+		<servlet-name>AggiornaTabelleServizio</servlet-name>
+		<url-pattern>/importaFile</url-pattern>
+	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SessionHolder</servlet-name>-->
+<!--		<url-pattern>/holdSession</url-pattern>-->
+<!--	</servlet-mapping>-->
+	<servlet-mapping>
+		<servlet-name>DettaglioTabellaServizio</servlet-name>
+		<url-pattern>/visualizzaStato</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>VisualizzaAggiornamenti</servlet-name>
+		<url-pattern>/visualizzaAggiornamenti</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EseguiAggiornamento</servlet-name>
+		<url-pattern>/aggiornaTabelle</url-pattern>
+	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SrvListaCompletaCPV</servlet-name>-->
+<!--		<url-pattern>/listaCompletaCPV</url-pattern>-->
+<!--	</servlet-mapping>-->
+		
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>SrvInserisciDatiComuni</servlet-name>-->
+<!--		<url-pattern>/inserisciDatiComuni</url-pattern>-->
+<!--	</servlet-mapping>-->
+	<servlet-mapping>
+		<servlet-name>SrvVisualizzaRiepilogoScheda</servlet-name>
+		<url-pattern>/visualizzaRiepilogoScheda</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+      <servlet-name>SrvGestioneMultilotto</servlet-name>
+      <url-pattern>/gestioneMultilotto</url-pattern>
+   </servlet-mapping>
+   
+	<servlet-mapping>
+      <servlet-name>SrvEditMultilotto</servlet-name>
+      <url-pattern>/editMultilotto</url-pattern>
+   </servlet-mapping>
+   
+	<servlet-mapping>
+      <servlet-name>SrvVisualizzaRiepilogoSchedeMultilotto</servlet-name>
+      <url-pattern>/visualizzaRiepilogoSchedeMultilotto</url-pattern>
+   </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvDatiComuni</servlet-name>
+		<url-pattern>/datiComuni</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvSchedaA</servlet-name>
+		<url-pattern>/schedaA</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvSchedaSottosoglia</servlet-name>
+		<url-pattern>/schedaSottosoglia</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SrvSchedaEsclusi</servlet-name>
+		<url-pattern>/schedaEsclusi</url-pattern>
+	</servlet-mapping>
+	
+	<!-- <servlet-mapping>
+		<servlet-name>SrvPreInsertDatiComuni</servlet-name>
+		<url-pattern>/preInsertDatiComuni</url-pattern>
+	</servlet-mapping>
+	 -->
+	<servlet-mapping>
+		<servlet-name>SrvRubrica</servlet-name>
+		<url-pattern>/rubrica</url-pattern>
+	</servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>SrvRubricaDittaAusiliaria</servlet-name>
+      <url-pattern>/rubricaDittaAusiliaria</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>SrvRubricaRaggruppamento</servlet-name>
+      <url-pattern>/rubricaRaggruppamento</url-pattern>
+   </servlet-mapping>
+   
+	<servlet-mapping>
+		<servlet-name>SrvGestioneRichiestaAnnullamento</servlet-name>
+		<url-pattern>/richiestaAnnullamento</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvGestioneRichiestaCancellazione</servlet-name>
+		<url-pattern>/richiesteCancellazione</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvRubricaResponsabili</servlet-name>
+		<url-pattern>/rubricaResponsabili</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvInizioLavori</servlet-name>
+		<url-pattern>/srvInizioLavori</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+      <servlet-name>SrvStipula</servlet-name>
+      <url-pattern>/SrvStipula</url-pattern>
+   </servlet-mapping>
+  
+   <servlet-mapping>
+      <servlet-name>SrvSchedaAdesione</servlet-name>
+      <url-pattern>/SrvSchedaAdesione</url-pattern>
+   </servlet-mapping>
+   
+	<servlet-mapping>
+		<servlet-name>SrvServizio</servlet-name>
+		<url-pattern>/SrvServizio</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ricercaCPV</servlet-name>
+		<url-pattern>/ricercaCPV</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ricercaIstat</servlet-name>
+		<url-pattern>/ricercaIstat</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ricercaNuts</servlet-name>
+		<url-pattern>/ricercaNuts</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvPresaInCarico</servlet-name>
+		<url-pattern>/presaInCarico</url-pattern>
+	</servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>SrvPresaInCaricoGara</servlet-name>
+      <url-pattern>/presaInCaricoGara</url-pattern>
+   </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListTypes</servlet-name>
+		<url-pattern>/ListTypes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvCancellaTabelleServizio</servlet-name>
+		<url-pattern>/cancellaTabelleServizio</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SrvSceltaProfilo</servlet-name>
+		<url-pattern>/srvSceltaProfilo</url-pattern>
+	</servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SrvGestioneAllegati</servlet-name>
+      <url-pattern>/gestisciAllegati</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>SrvStoricoAllegati</servlet-name>
+      <url-pattern>/storicoAllegati</url-pattern>
+   </servlet-mapping>
+   
+   <!-- UN 26/10/2012 Gestione Requisiti Gara e documenti -->
+   <servlet-mapping>
+      <servlet-name>SrvRequisitiGL</servlet-name>
+      <url-pattern>/srvRequisitiGL</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>ListTable</servlet-name>
+      <url-pattern>/listTable</url-pattern>
+   </servlet-mapping>   
+   
+   <!-- UN 30/04/2014 Gestione Integrazione CUP -->
+   
+   <servlet-mapping>
+      <servlet-name>SrvElencoCigIntegrazioneCup</servlet-name>
+      <url-pattern>/elencoCigIntegrazioneCup</url-pattern>
+   </servlet-mapping>  
+   
+   <servlet-mapping>
+      <servlet-name>SrvIntegrazioneCigUpdateCup</servlet-name>
+      <url-pattern>/integrazioneCigUpdateCup</url-pattern>
+   </servlet-mapping>     
+
+   <servlet-mapping>
+      <servlet-name>SrvReload</servlet-name>
+      <url-pattern>/reloadProperties</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SrvPresaInCaricoGaraDelegata</servlet-name>
+   	<url-pattern>/presaInCaricoGaraDelegata</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+   	<servlet-name>SrvVerificaIniziativeSoggAggr</servlet-name>
+   	<url-pattern>/SrvVerificaIniziativeSoggAggr</url-pattern>
+   </servlet-mapping>
+  <servlet-mapping>
+   	<servlet-name>SrvCaricaIniziativeSoggAggr</servlet-name>
+   	<url-pattern>/SrvCaricaIniziativeSoggAggr</url-pattern>
+   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SrvLoadCpvSecDesc</servlet-name>
+  	<url-pattern>/SrvLoadCpvSecDesc</url-pattern>
+  </servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/SIMOG</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

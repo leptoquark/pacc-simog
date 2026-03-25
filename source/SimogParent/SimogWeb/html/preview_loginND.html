@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<script type="text/javascript">
+<!--
+function f_setfocus( aForm )
+{
+	if( aForm.elements[0]!=null) {
+		var i;
+		var max = aForm.length;
+		for( i = 0; i < max; i++ ) {
+			if( aForm.elements[ i ].type == "text" &&
+				!aForm.elements[ i ].disabled &&
+				!aForm.elements[ i ].readOnly ) {
+				aForm.elements[ i ].focus();
+				break;
+			}
+		}
+	}
+}
+function controllaCF(campo) {
+	cf=campo.value.toUpperCase()
+	var validi, i, s, set1, set2, setpari, setdisp
+	validi = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	for( i = 0; i < 16; i++ ) {
+		if( validi.indexOf( cf.charAt(i) ) == -1 ) {
+			alert("")
+			return false
+		}
+	}
+	/*set1 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	set2 = "ABCDEFGHIJABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	setpari = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	setdisp = "BAKPLCQDREVOSFTGUHMINJWZYX"
+	s = 0;
+	for( i = 1; i <= 13; i += 2 )
+		s += setpari.indexOf( set2.charAt( set1.indexOf( cf.charAt(i) )));
+	for( i = 0; i <= 14; i += 2 )
+		s += setdisp.indexOf( set2.charAt( set1.indexOf( cf.charAt(i) )));
+	if( s%26 != cf.charCodeAt(15)-'A'.charCodeAt(0) ) {
+		alert("ERRORE: codice fiscale formalmente errato")
+		return false
+	}*/
+	return true
+}
+function checkCampi() {
+	campoCF = document.forms[0].elements[""] 
+	campoPW = document.forms[0].elements[""]
+	if (!controllaCF(campoCF)){
+		campoCF.focus()
+	} else {
+		if (campoPW.value == "" || campoPW.value==null){
+			alert("");
+			campoPW.focus()
+		} else {
+			document.forms[0].action="checkAuthentication"
+			document.forms[0].submit()
+			}
+		}
+}
+//-->
+</script>
+</head>
+<body onload="f_setfocus(document.forms[0])">
+<div id="gabbia">  
+<div id="header">
+</div>
+	<div id="bodypage">	
+		<div class="bodypage-e">
+			<h4>الوصول إلى SIMOG <font color="red"><big></big></font></h4>
+			<br>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			<table width="86%" border="1" cellpadding="5"><tr>
+			<td><img src="img/simogWarning_little.jpg" width="60px" height="55px" align="left" alt="img simog warning"></td>
+			<td align="left" valign="top"><p style="color:rgb(180,0,28);">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+				<big><strong>Avviso: Il servizio � temporaneamente sospeso</strong></big>
+			</p></td></tr>
+			</table>
+		</div>		
+	</div>
+	</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+<SCRIPT type="text/javascript">
+<!--
+var popupblock = false;
+var test = window.open('','','top=9000,left=9000,width=1,height=1');
+if (!test) popupblock = true; else test.close();
+if (popupblock) alert("");
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<head>
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<!-- fine import popup modali -->
+	<title>SIMOG - إدارة المناقصات</title>
+</head>
+<body>
+<div id="dialog"></div>
+<div id="gabbia">
+<div id="header">
+</div>
+	<div id="bodypage">
+		<div class="bodypage-e">
+<form name="eseguiCancella" action="cancellaGara" method="post">
+				<h1>إلغاء المناقصة</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			<div class="hmenu">
+			<ul>
+				<li><a title="الصفحة السابقة" href="?=">عودة</a></li>
+			</ul>
+			</div>
+		<div class="testo">
+	<input type="hidden" name="idLotto" value="">
+	<input type="hidden" name = "" value=""/>
+	<input type="hidden" name = "" value=""/>
+	<input type="hidden" name = "cfAmministrazione" value=""/>
+	<input type="hidden" name = "" value=""/>		
+	<h4>Informazioni sulla Gara</h4>
+<script type="text/javascript">
+//<!--
+function popupAnnullaRettifica(param){ 
+	 if(confirm("Vuoi annullare la rettifica?")){
+		 window.location.href="annullaRettifica?"+param
+	 }else{
+		return false;
+	}
+	 return true;
+}
+function getDateAndAction(azione){ 
+	var dataInput = prompt("Modifica data di conferma", "Inserire la nuova data in formato GG/MM/AAAA");
+	var mesg = isDate(dataInput);
+	if(mesg != ""){
+		alert(mesg);
+		return;
+	}
+	if (confirm("La data di conferma sarà modificata. Procedere?")) {
+		window.location.href=azione + dataInput;
+	}
+}
+function getConfermaSbloccaGara(){
+	msg="Attenzione si sta per sbloccare la gara. Continuare?";
+	if(confirm(msg)){
+		alert("ok");
+	}	
+}
+function doActionPerfezionamentoGaraLotti(url, action){
+	if(action==null){
+//		if(confirm("Confermare l'operazione. Procedere ?")){
+			location.href = url;
+//		}
+	}
+	else if(action==true){
+		if(confirm("Il perfezionamento non richiede l'inserimento di ulteriori informazioni. Procedere ?")){
+			location.href = url;
+		}
+	}
+	else if(action==false){
+		if(confirm("Alcuni dati non risultano coerenti. Controllare la scelta contraente dei lotti inseriti, oppure il numero dei lotti afferenti alla Gara. Si desidera proseguire comunque?")){
+			location.href = url;
+		}
+	}		
+}
+//-->
+</script>
+<h5>Stazione Appaltante</h5>
+<div class="elenco">
+<div class="gara">
+<table>
+	<tr>
+		<th class="garaTh" width="40%">Denom.ne della Stazione Appaltante competente</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Codice Fiscale Amministrazione Competente</th>
+		<td class="garaTd"></TD>
+	</tr>
+	   <tr>
+		<th class="garaTh" width="40%">Codice AUSA</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Codice univoco centro di costo</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Denominazione del centro di costo nell'ambito della Stazione Appaltante</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">RUP che ha creato la gara</th> 
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">RUP che ha in carico la gara</th> 
+		<td class="garaTd"></TD>
+		</tr>
+	</table>
+</div>
+</div>
+<div class="elenco">
+<div class="gara">	
+<table>
+	<tr>
+		<th class="garaTh" width="40%">Numero Gara</th>
+		<td>
+		<table><tr>
+		<td nowrap class="garaTd">&nbsp;</td>
+		<td>(da utilizzare in sede di versamento del contributo da parte della SA)</td>
+		</tr></table>
+		</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Oggetto della Gara</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Creazione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Importo complessivo Gara</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Importo contributo SA</th>
+		<td class="garaTd">&nbsp;</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Numero totale dei Lotti</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Settore attivita' della SA</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di indizione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di indizione servizi di cui all'allegato IX</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Modalita' di realizzazione</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Durata della convenzione o accordo quadro in giorni</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Strumenti per lo svolgimento delle procedure</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Motivo urgenza</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">CIG relativo all'accordo quadro/convenzione cui si aderisce</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Stato gara</th>
+		<td class="garaTd"> ()</td>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Cancellazione</th>
+		<td class="warning"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Termine Pagamenti</th>
+		<td class="garaTd"></TD>
+	</tr>
+	<tr>
+		<th class="garaTh" width="40%">Data Comunicazione Pagamento</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Data Inibizione Pagamento</th>
+		<td class="warning"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Data perfezionamento bando</th>
+		<td class="garaTd"></TD>
+	</tr>
+		<TR>
+			<TH>Motivazione </TH>
+			<TD class="warning"></TD>
+		</TR>
+		<TR>
+			<TH>Note</TH>
+			<TD class="warning"></TD>
+		</TR>
+	<tr>
+		<!-- 3.04.7.1 cambiata la label AVCPass in FVOE -->
+		<th class="garaTh" width="40%">Gara esclusa dall'acquisizione obbligatoria dei requisiti ai fini FVOE</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%"></th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<tr>
+		<th class="garaTh" width="40%">Estrema urgenza/Esecuzione di lavori di somma urgenza</th>
+		<td class="garaTd"></TD>
+	</tr>	
+	<!-- fix 34470 3.04.8 -->
+	<tr>
+		<th class="garaTh" width="40%">Link ai documenti relativi all'affidamento diretto in somma urgenza e protezione civile</th>
+		<td class="garaTd"></td>
+	</tr>
+	<!-- FINE fix 34470 3.04.8 -->
+		 <tr>
+			 <th class="garaTh" width="40%"></th>
+			 <td class="garaTd">
+<!-- 				<table width="100%"> -->
+<!-- 					<tr> -->
+					<p></p>
+<!-- 					</tr> -->
+<!-- 				</table> -->
+			</td>
+		 </tr>
+	<tr>
+		<th class="garaTh" width="40%"></th>
+		<td class="garaTd"></TD>
+	</tr>	
+			<tr>
+				<th class="garaTh" width="40%">La stazione appaltante agisce per conto di altro soggetto?</th>
+				<td class="garaTd"></TD>
+			</tr>	
+			<tr>
+				<th class="garaTh" width="40%">Funzioni delegate</th>
+				<td class="garaTd"></TD>
+			</tr>
+			<tr>
+				<th class="garaTh" width="40%">Codice fiscale soggetto per conto del quale agisce la S.A. (in caso di soggetto singolo)</th>
+				<td class="garaTd"></TD>
+			</tr>
+			<tr>
+				<th class="garaTh" width="40%">Denominazione dell'Amministrazione per la quale agisce la S.A.</th>
+				<td class="garaTd"></TD>
+			</tr>
+	</table>
+	<div class="hmenu">
+	<ul>
+<!-- 	<li> -->
+ nowrap="nowrap"> --%>
+<!-- 						<ul> -->
+						<li >
+						<a title="Modifica Gara" href="inizializzaGara?=">Modifica Gara</a>
+						</li>
+<!-- 					</ul> -->
+<!-- 						</td> -->
+ nowrap="nowrap"> --%>
+<!-- 					<ul> -->
+					<li >
+					<a title="Cancella Gara" href="inizializzaGara?action=cancella&=">Cancella Gara</a>
+					</li>
+<!-- 					</ul> -->
+<!-- 					</td> -->
+ nowrap="nowrap"> --%>
+<!-- 				<ul> -->
+				<li >
+				<a href="javascript:confirmAction('inizializzaGara?action=ripristina&=');">Ripristina</a>
+				</li>
+<!-- 				</td> -->
+<!-- 				</ul> -->
+ nowrap="nowrap"> --%>
+<!-- 					<ul> -->
+					<li >
+					<a title="Aggiungere un lotto" href="inizializzaLotto">Aggiungi lotto</a>
+					</li>
+<!-- 					</ul> -->
+ nowrap="nowrap"> --%>
+<!-- 				             <ul> -->
+								<li >
+				             <a title="Pubblica/Perfeziona bando di gara" href="javascript:doActionPerfezionamentoGaraLotti('',)"></a>
+				             </li>
+<!-- 				             </ul>							    	     -->
+ nowrap="nowrap"> --%>
+<!-- 							    <ul> -->
+								<li >
+							    <a title="Pubblica rettifica" href="?toDo=&=&=&=RETTIFICA&=RETTIFICA">Pubblica rettifica</a>
+							    </li>
+<!-- 							    </ul> -->
+			              <li>
+			              		<a title="Perfezionamento procedure con piu' fasi" href="?toDo=&=&=">Perfezionamento procedure con piu' fasi</a> 
+			              </li>
+ nowrap="nowrap"> --%>
+<!-- 			   		    <ul> -->
+							<li >
+			   		    <a title="Gestisci elenco invitati" href="?toDo=&=">Gestisci elenco invitati</a>
+			   		    </li>
+<!-- 			   		    </ul>	 -->
+					&=&checkIfOK=&dataConferma=');">Modifica data conferma</a></td>--%>
+ nowrap="nowrap"> --%>
+<!-- 			 <ul> -->
+			<li >
+			 <a title="Sblocca gara" href="javascript:confirmAction('InserisciGara?toDo=&=&checkIfOK=');">Sblocca gara</a>
+			 </li>
+<!-- 			 </ul> -->
+ nowrap="nowrap"> --%>
+<!-- 			 <ul> -->
+				<li >
+			 <a title="Modifica mod realizzazione" href="javascript:confirmAction('InserisciGara?toDo=&=&checkIfOK=');">Cambia in accordo quadro</a>
+			 </li>
+<!-- 			 </ul> -->
+	 nowrap="nowrap"> --%>
+	<!-- 			 <ul> -->
+					<li >
+				 <a title="Modifica limitata al solo valore del campo Estrema urgenza ex art. 9 commi 1 e 2 D.L. 133/2014" href="inizializzaGara?=&toDo=">Modifica Gara</a>
+				 </li>
+	<!-- 			 </ul> -->
+			<!-- Ticket 20055 -->
+	            	  <li >
+						<!--   <a title="Annulla Rettifica" href="annullaRettifica?=&toDo=">Annulla Rettifica</a> -->
+						<a title="Termina Rettifica" onclick="popupAnnullaRettifica('=&toDo=')">Termina Rettifica</a> 
+					  </li>
+ nowrap="nowrap"> --%>
+<!-- 				  <ul> -->
+					<li >
+				  <a title="Variazione Stazione Appaltante" href="variazioneSA?=">Variazione Stazione Appaltante</a>
+					</li>				  
+<!-- 				  </ul> -->
+						<!-- MAC 48964 3.04.12.1 -->
+						<li > <!--MAC 34163 3.04.8--> 
+						> --%> 						
+					       <a href="javascript:confirmAction('presaInCaricoGara?=');">Presa in carico</a>
+					    </li>
+							<li > 					
+					       <a href="javascript:confirmAction('presaInCaricoGara?=');">Presa in carico</a>
+					    </li>
+	 nowrap="nowrap"> --%>
+	<!-- 			 <ul> -->
+					<li > <!--MAC 34163 3.04.8-->
+	                <!--<li >-->					
+				 		<a title="Presa in carico gara delegata"  href="?=&action=load">Presa in carico gara delegata</a>
+				 	</li>
+	<!-- 			 </ul> -->
+<!--     </li> -->
+		</ul>
+    </div>
+			 		<fieldset>
+						<legend>Storico Pubblicazioni</legend>
+			 				<fieldset class="gara">
+								<div align="center">
+									<table width="100%">	
+					              <tr>
+						             <th class="garaTh">Tipo pubblicazione</th>
+						             <th class="garaTh">Data pubblicazione</th>
+						             <th class="garaTh">Allegati</th>
+					              </tr>
+					              <tr>
+					                <td></td>
+					                <td></td>
+					                <td><input type="button" onclick="apripopup('?=&='); return false;"; value="visualizza" /></td>    
+					                ?=&=" >visualizza</a></td>
+					                --%>
+					              </tr>
+					            </table>		
+								</div>
+							</fieldset>									
+					</fieldset>			
+			    <fieldset>
+					<legend>Storico Delega Gara</legend>
+					<table>
+								<tr>
+									<th class="garaTh" width="40%">RUP Amministrazione delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Codice Fiscale Amministrazione Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Denominazione Amministrazione Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">ID SA Delegata</th>
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Denominazione SA Delegata</th> 
+									<td class="garaTd"></TD>
+								</tr>
+								<tr>
+									<th class="garaTh" width="40%">Data della presa in carico da parte dell'amministrazione delegante</th> 
+									<td class="garaTd"></TD>
+								</tr>
+						</table>
+				</fieldset>
+</div>
+</div>
+	<h4>Giustificazione della cancellazione</h4>
+	<table>
+		<tr>
+			<th>Motivazione*</th>
+			<td>
+				<select name="">
+					<option></option>
+					<x:options name="" scope="request" value=''/>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>Note</th>
+			<td>
+				<textarea rows="2" cols="35" name=""></textarea>
+			</td>
+		</tr>
+	</table>
+	<div class="infoBlock">
+		<div class="inlineInfo">
+			<ul>
+			<li>Confermare</li>
+			</ul>
+			</div>
+			<div class="rightLineInfo">
+			<ul>
+			<li><input type="submit" value="Conferma la cancellazione"></li>
+			</ul>
+		</div>
+	</div>
+	</div>	
+</form>
+	</div>
+	</div>	
+	</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+</body>
+</html>
+	

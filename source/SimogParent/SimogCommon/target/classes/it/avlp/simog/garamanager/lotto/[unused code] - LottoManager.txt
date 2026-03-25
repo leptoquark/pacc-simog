@@ -1,0 +1,20 @@
+	// PP non utilizzata 	
+//	public TableBean getLottoByCig( long cig ) throws SQLException {
+//		
+//
+// 		PreparedStatement pstmt = null;
+// 		
+// 		try {
+//	 		pstmt = activeConnection.prepareStatement(GET_LOTTO_BY_CIG);
+//			pstmt.setLong(1, cig);
+//	
+//			ResultSet rs = pstmt.executeQuery();
+//	
+//			return new TableBean ( rs, 0,1 );
+// 		} finally {
+// 			try {
+// 				pstmt.close();
+// 			} catch ( Exception e ) {}
+// 			pstmt = null;
+// 		}
+//	}

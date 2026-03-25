@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+   <soggetto>
+      <cognome>BRUNOZZI</cognome>
+      <nome>ALBERTO</nome>
+      <tel>1111111</tel>
+      <fax>1111111</fax>
+      <email>utente@sito.it</email>
+      <admin_or>10</admin_or>
+   </soggetto>
+   <collaborazioni>
+      <collaborazione index="0">
+         <azienda>
+            <denominazione>Regione Umbria</denominazione>
+            <codice_fiscale>01212820540</codice_fiscale>
+         </azienda>
+         <ufficio>
+            <denominazione>Ufficio appalti</denominazione>
+            <id_ufficio>01212820540</id_ufficio>
+            <profilo>1</profilo>
+         </ufficio>
+      </collaborazione>
+      <collaborazione index="0">
+         <azienda>
+            <denominazione>Regione Umbria</denominazione>
+            <codice_fiscale>01212820540</codice_fiscale>
+         </azienda>
+         <ufficio>
+            <denominazione>Ufficio appalti</denominazione>
+            <id_ufficio>01212820540</id_ufficio>
+            <profilo>5</profilo>
+         </ufficio>
+      </collaborazione>
+      </collaborazioni>
+   <stato>2</stato>
+</check_login>

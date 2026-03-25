@@ -1,0 +1,229 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<title>Presa in carico</title>
+<script type="text/javascript">
+function checkSelection() {
+	if(confirm("Procedere con la presa in carico?"))
+		document.getElementById("presaInCarico").submit(); 
+	else
+		return false;
+}
+</script>
+</head>
+<script type="text/javascript">
+function changeTab(tabName, idmodificato) {  var scelta = true;  if (document.forms[0].elements[idmodificato].value == 1) {  scelta = confirm("Attenzione ! I dati potrebbero essere cambiati. Prosegui con il rischio di perdere i dati?");  }  if (scelta) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit();  } }
+function checkAndChange(tabName, idmodificato) {  alert("checkAndChange - funzione obsoleta"); }
+function setFormModified(idmodificato) {  if (document.getElementById("Modificato") != null) document.getElementById("Modificato").value = 1;  document.getElementById(idmodificato).value = 1; }
+function resetFormModified(idmodificato) {  document.getElementById(idmodificato).value = 0; }
+function salva(tabName) {  if (validateRadios(tabName)) {  if (confirm("I dati verranno salvati. Procedere?")) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements[''].value = "true";  }  document.forms[0].submit();  }  } }
+function salvaDue(actiontype) {  if (confirm("I dati verranno salvati. Procedere?")) {  document.forms[0].elements[''].value = actiontype;  document.forms[0].submit();  } }
+function conferma(tabName) {  if (confirm("I dati verranno confermati. Procedere?")) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements[''].value = "true";  }  document.forms[0].submit();  } }
+function aggiungi(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  setForwardPage(tabName);  document.forms[0].submit(); }
+function setForwardPage(tabName) {  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/aggiudicazioni.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/schedaSottosoglia.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/pubblicazioneEsito.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/affidatario.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/responsabileProcedimento.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/contenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addContenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/listaSoggettiPartecipanti.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "gestioneAggiudicazioni.jsp";  } }
+function reimposta(tabName) {  var scelta = true;  if (tabName == "" || tabName == "" || tabName == "" || tabName == "") {  if (document.getElementById("Modificato").value == 1) {  scelta = confirm("Attenzione! In questo modo tutte le modifiche apportate al documento andranno perse. Continuare?");  if (scelta) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit();  }  }  } else {  if (document.getElementById("Modificato0").value == 1) {  scelta = confirm("Attenzione! In questo modo tutte le modifiche apportate al documento andranno perse. Continuare?");  if (scelta) {  document.forms[0].reset();  }  }  } }
+function add(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addContenzioso.jsp";  }  if (tabName == "") {  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  }  document.forms[0].submit(); }
+function changePage(servletdacaricare, idmodificato) {  var scelta = true;  if (document.forms[0].elements[idmodificato].value == 1) {  scelta = confirm("Attenzione ! I dati potrebbero essere cambiati. Prosegui con il rischio di perdere i dati?");  }  if (scelta) {  document.forms[0].action = servletdacaricare;  document.forms[0].submit();  } }
+function cancella(tabName, args) {  if (confirm("Si sta per cancellare il record. Proseguire?")) {  document.forms[0].elements[''].value = tabName;  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit();  } }
+function modificaTab(tabName, args) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit(); }
+function modifica(tabName, args) {  if (document.forms[0].elements['Modificato0'].value == 1) {  alert("Sono state apportate delle modifiche ai dati. E' necessario effettuare prima un salvataggio.");  } else {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  for (var i = 0; i < args.length; i++) {  document.forms[0].elements[args[i]].value = args[++i];  }  document.forms[0].submit();  } }
+function changeFromAffidatario(tabName, idPartecipante, denPartecipante, dataInizioAggiudicatario) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].elements[''].value = idPartecipante;  document.forms[0].elements[''].value = denPartecipante;  document.forms[0].elements[''].value = dataInizioAggiudicatario;  document.forms[0].elements['pagina'].value = "scheda1/addAffidatario.jsp";  document.forms[0].submit(); }
+function cerca(tabName) {  document.forms[0].elements[''].value = tabName;  document.forms[0].elements[''].value = "";  document.forms[0].submit(); }
+function trim(stringa) {  while (stringa.substring(0, 1) == ' ') {  stringa = stringa.substring(1, stringa.length);  }  while (stringa.substring(0, 1) == '\n') {  stringa = stringa.substring(1, stringa.length);  }  while (stringa.substring(stringa.length - 1, stringa.length) == ' ') {  stringa = stringa.substring(0, stringa.length - 1);  }  tmpStringa = "";  for (i = 0; i < stringa.length; i = i + 1) {  if (stringa.charAt(i) == ' ' || stringa.charAt() == '%') {} else tmpStringa = tmpStringa + stringa.charAt(i);  }  return tmpStringa; }
+function cercaInRubrica(tabName) {  document.forms[0].elements[''].value = tabName;  codiceFiscale = trim(document.getElementById("codiceFiscale").value);  cognome = trim(document.getElementById('').value);  if (document.getElementById('') != null)  nome = trim(document.getElementById('').value);  else  nome = "";  if ((codiceFiscale == "" || codiceFiscale == null) && (cognome == "" || cognome == null) && (nome == "" || nome == null)) {  alert("Inserire almeno uno dei filtri di ricerca");  return;  }  if (codiceFiscale == "" || codiceFiscale == null) {  if (! ((nome.length > 1) || (cognome.length > 1))) {  alert("I filtri di ricerca per Nome e Cognome o Denominazione devono contenere almeno due caratteri");  return;  }  }  document.getElementById('cerca').disabled = true;  document.forms[0].action = 'rubrica?' + "=Cerca in rubrica";  var paramsString = "?" + "=" + "Cerca in rubrica";  document.forms[0].submit(); }
+function cercaInRubricaDittaAusiliaria(tabName) {  document.forms[0].elements[''].value = tabName;  codiceFiscale = trim(document.getElementById("codiceFiscale").value);  cognome = trim(document.getElementById('').value);  if (document.getElementById('') != null)  nome = trim(document.getElementById('').value);  else  nome = "";  if ((codiceFiscale == "" || codiceFiscale == null) && (cognome == "" || cognome == null) && (nome == "" || nome == null)) {  alert("Inserire almeno uno dei filtri di ricerca");  return;  }  if (codiceFiscale == "" || codiceFiscale == null) {  if (! ((nome.length > 1) || (cognome.length > 1))) {  alert("I filtri di ricerca per Nome e Cognome o Denominazione devono contenere almeno due caratteri");  return;  }  }  document.getElementById('cerca').disabled = true;  document.forms[0].action = 'rubricaDittaAusiliaria?' + "=Cerca in rubrica";  var paramsString = "?" + "=" + "Cerca in rubrica";  document.forms[0].submit(); }
+function loadAnnullamentJSP(tabName) {  var scelta = "Richiedere la modifica del blocco dati in esame?";  var codiceContratto = document.getElementById("CODICE_CONTRATTO");  if (codiceContratto != null && codiceContratto.value != "") {  scelta = "ATTENZIONE: L'Aggiudicazione fa parte di un contratto multi lotto. Procedendo oltre, la presente Aggiudicazione e tutte le altre Aggiudicazioni partecipanti al contratto saranno svincolate dallo stesso. Si desidera proseguire?";  }  if (confirm(scelta)) {  document.forms[0].elements[''].value = tabName;  if (document.forms[0].elements['toDo']) document.forms[0].elements['toDo'].value = "";  document.forms[0].elements[''].value = "";  document.forms[0].submit();  } }
+function richiediAnnullamento2(idMotivazioneEsito) {  var motivazione = document.forms[0].elements[idMotivazioneEsito].value;  if (trim(motivazione).length >= 10 && trim(motivazione).length <= 1000) {  return true;  } else {  alert('Inserire una motivazione di almeno 10 caratteri e minore di 1000');  return false;  } }
+function loadPages(srv, param) {  document.forms[0].elements[''].value = param;  document.forms[0].elements[''].value = "false";  changePage(srv); }
+function urlCallFromCombo(combo) {  var pick = combo.options[combo.selectedIndex].value;  if (pick != "") window.location.replace(pick); }
+function inputRadio() {  var radio1 = document.getElementById('radio1');  var radio2 = document.getElementById('radio2');  if (radio1.checked == false && radio2.checked == false) {  alert("Scegliere un tipo di richiesta");  return false;  } else {  return true;  } }
+//-->
+</script>
+<body>
+	<div id="gabbia">
+		<div id="header">
+</div>
+		<div id="bodypage">
+			<div class="bodypage-e">
+				<form name="gestioneTab" id="presaInCarico" action="presaInCarico"  method="post" onkeypress="setFormModified('Modificato')">
+					<input type="hidden" name="" 
+						id="" 
+						value="">
+					<input type="hidden" name="" 
+						id="" 
+						value="">
+					<input type="hidden" name=""
+						id=""
+						value="">
+					<input type="hidden" name="pagina" id="pagina" value="">
+					<input type="hidden" name="tipoAzione" id="tipoAzione" value="">					
+					<input type="hidden" name="" 
+								id="" 
+								value="">					
+					<h1>Gestione Schede - Presa in carico</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+					<br>
+					<fieldset>
+							<div class="gara">
+									<fieldset>
+									<legend>Selezionare il Centro di Costo di destinazione della gara</legend>
+											<table width="100%">
+													   <tr>
+														<td><input type="radio" name="" value="" tabindex=""
+														></td>
+														<td><label for=""> - </label></td>
+													  </tr>
+											 </table>					
+										</fieldset>
+									</div>
+						<fieldset>
+							<table width="100%">
+								<tr>
+									<th><label for="">Estremi del provvedimento di nomina</label></th>
+									<td>
+										<textarea maxlength="250" rows="5" cols="40" name="" id=""></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h2>ATTENZIONE: NON E' POSSIBILE PROCEDERE ALLA PRESA IN CARICO IN QUANTO LA SCHEDA DATI COMUNI HA UNA RICHIESTA DI MODIFICA O CANCELLAZIONE IN CORSO</h2>
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+						<input type="hidden" name="Modificato" value="0">
+							<input type="submit" name="toDo" value="Conferma">
+							<input type="submit" onclick="javascript: checkSelection();" name="toDo" value="Conferma">
+						<input type="button" value="Torna" onclick="javascript:history.back(-1)">
+						<input type="reset" value="Reimposta" onclick="reimposta()">					
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+	</div>
+</body>	

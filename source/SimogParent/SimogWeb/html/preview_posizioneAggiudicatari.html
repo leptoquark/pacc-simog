@@ -1,0 +1,137 @@
+
+<!-- fieldset class="detailHelp" style="border: 2px solid #cfcfcf;"-->
+[condition]
+[condition]
+[condition]
+<script type="text/javascript">
+<!--
+// La funzione controlla che si sia inserito un valore nella combo-box
+// altrimenti visualizza un messagio di alert. 
+// Al momento questa funzione non risulta utilizzata
+function contrInserimento(element) {
+	if (element.selectedIndex == 0 ) {
+		alert("Attenzione selezionare dal menu un codice fiscale aggiudicatario ");
+	}  	
+}
+// Vengono prelevati i valori dalla select ed inseriti negli elementi cos da essere presenti nella request
+// LUCA : viene effettuato inoltre il parse del value che contiene idSoggetto e dataInizioSoggetto che dovranno
+// essere inseriti negli opportuni campi hidden per poter poi essere recuperati all'interno della request.
+function copiaDenom(index) {
+	var parseArray = document.getElementById("").options[index].value.split("~");
+	var denominazione = parseArray[0];
+	var codice_paese = parseArray[3]
+	var idSoggetto = parseArray[1];
+	var dataInizioSoggetto = parseArray[2];
+	document.getElementById("").value = denominazione;
+	if(codice_paese == "" || codice_paese == null) codice_paese = ""; 
+	document.getElementById("").value = codice_paese;
+	var id = "";
+	document.getElementById(id).value = idSoggetto;
+	id = "";
+	document.getElementById(id).value = dataInizioSoggetto;
+document.getElementById("selected").value 
+	= document.getElementById("").options[index].text;
+}
+//-->
+</script>	
+		<div id="DIVTabella" class="scrollTabs" style="height: 200px; width:99%">
+			<table id="idTabella">
+				<tbody>
+					<tr>
+						<th width="125">Azione</th>
+						<th class="garaTh">Denominazione</th>
+						<th class="garaTh">Codice Fiscale</th>							
+						<th class="garaTh">Codice Paese</th>
+						<th class="garaTh">Codice INPS</th>
+						<th class="garaTh">Codice INAIL</th>  
+						<th class="garaTh">Codice Cassa Edile</th>
+					</tr>
+					[condition] 
+					[condition]
+						<tr id="[condition]">
+							[condition]
+							[condition]',[],[],'')">Modifica</a>
+									&nbsp;<a title="Cancella " href="javascript:deleteRow('[condition]',[],[],'')" ">Cancella</a></td>											
+							</c:if>
+							[condition]">[condition]</td>																
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">
+							[condition]
+							</c:if>
+							[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td nowrap class="garaTd" id="[condition]">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td id="[condition]" style="display: none;">[condition]</td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+						    <td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+							<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+						</tr>
+						[condition]
+					</c:forEach>																
+				</tbody>
+			</table>
+		</div>	  		
+		[condition]
+						</select>
+						<input disabled type="text" id="" maxlength ="2" size=2 value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>
+				<tr>
+					<th><label>Denominazione</label></th>
+					<td>
+						<input disabled type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th><label>Aggiudicatario</label></th>
+					<td>
+						<input type="text" disabled id="" maxlength="16" value="" onchange="setFormModified('Modificato')" />
+					</td>					
+				</tr>
+				<tr>
+					<th><label>Codice INPS</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr>
+					<th><label>Codice INAIL</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr>
+					<th><label>Codice Cassa</label></th>
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" maxlength="16"/>
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr style="display: none;">	
+					<td>
+						<input type="text" id="" value="" onchange="setFormModified('Modificato')" />
+					</td>
+				</tr>
+				<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">Aggiungi</a></td></tr>
+			</table>
+			<input type="hidden" id="idPaese" name="idPaese" value="">
+			<input type="hidden" id="Modificato" name ="Modificato" value="0">			
+		</div>		
+</fieldset> 
+<input type="hidden" id="selected" value="0" /> 
+<input type="hidden" id="Modificato3" name ="Modificato3" value="[condition]" />

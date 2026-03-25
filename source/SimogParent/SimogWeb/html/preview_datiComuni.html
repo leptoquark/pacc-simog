@@ -1,0 +1,561 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<title>إدارة الأوراق - البيانات المشتركة - </title>
+	<link rel="stylesheet" type="text/css" href="theme/tabmenu.css"/>
+	<!-- calendar stylesheet -->
+	<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+	<!-- main calendar program -->
+	<script type="text/javascript" src="calendar/calendar.js"></script>
+	<script type="text/javascript" src="script/pageutils.js"></script>
+	<!-- language for the calendar -->
+	<script type="text/javascript" src="calendar/calendar-it.js"></script>
+	<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+	<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+	<!-- MAC 36768 3.04.8.1 -->
+	<!-- import jQuery -->
+	<script type="text/javascript" src="script/other/jquery.js"></script>
+	<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+	<!-- FINE MAC 36768 -->
+	<script type="text/javascript">
+	function showHint(settore, contratto, escluso, modoReal, dataPubb, importo)
+	{
+		var xmlhttp;
+		var str;
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {	// impostazione ritorno
+		    document.getElementById("tipoFlusso").innerHTML=xmlhttp.responseText;
+		  }
+		}
+		str="&s=" + settore + "&c=" + contratto + "&e=" + escluso + "&m=" + modoReal + "&d=" + dataPubb + "&i=" + importo;
+		xmlhttp.open("GET","datiComuni?toDo=qry"+str,true);
+		xmlhttp.send();
+	}
+	</script>
+	<!-- MAC 36768 3.04.8.1 -->
+	<script>
+	$( document ).ready(function() {
+		 if (document.querySelectorAll('#TAB_MESSAGGI_ERRORE li').length >1){
+				for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+					li.style.display = li.textContent.indexOf('SIMOG_VALIDAZIONE_264') != -1 ? "none" : "";
+					}
+			 }
+			 else {
+				 	for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+						if (li.textContent.indexOf('SIMOG_VALIDAZIONE_264') != -1)
+							$('#TAB_MESSAGGI_ERRORE').closest('table').hide();
+					}
+			 }
+		});
+	</script>
+	<!--FINE MAC 36768-->
+</head>
+[condition]
+[condition]
+[condition]
+	[condition]
+[condition]
+[condition]
+<SCRIPT type="text/javascript">
+// codice ricavato da classe SimogFlusso
+function askMe1(url){
+	if(!confirm("Attenzione: la possibilita' di inserire aggiudicazioni successive alla prima e' limitata"
+				 + " alle sole gare di servizi e forniture pubblicate entro la data del 31 gennaio 2008 "
+				 + " e per le quali era prevista l'acquisizione di un unico CIG anche se espletate su piu' lotti."
+				 +"\n\nPer la gare pubblicate a decorrere dal 1 febbraio 2008 e' possibile inserire una aggiudicazione"
+				 + " successiva alla prima dopo aver correttamente compilato i dati di conclusione relativi al"
+				 + " precedente contratto, e comunque limitatamente ai casi previsti dalla norma"
+				 + " \n\nSi intende proseguire comunque?")){
+		if(url != null){
+			location.href = url;
+		}else{
+			location.href = '';
+		}
+	}
+}
+</script>
+<body>
+<div id="gabbia">
+		<div id="header">
+</div>
+		<div class="bodypage-e">
+			<h1>إدارة الأوراق - البيانات المشتركة</h1>
+			<br>
+			<div class="hmenu" >	
+			  <ul> 
+						<li><a title="Pagina precedente" href="">Ritorna</a></li>
+			     [condition] type="button" value="حفظ" onclick="checkAndAction('check',,'')"/></td>
+				<td><input [condition]  type="button" value="تأكيد" onclick="checkAndAction('check',,'')"/></td>
+				<td><input [condition] type="button" value="إعادة تعيين" onclick="reimpostaForm('')"/></td>
+				[condition]</td>	
+				</c:if>
+				[condition]</td>	
+				</c:if>
+				</c:if>
+				[condition]
+				[condition]
+				[condition]
+				<!-- Include not found: ../include/statoscheda.inc -->
+			</tr>
+		</table>
+		 <fieldset>
+		 <legend>Dati Comuni Aggiudicazioni</legend>
+		 	[condition]
+		 		<input type="hidden" id="Modificato"  value="0">
+		 		<input type="hidden" name="" id="" value='[condition]' />
+				<input type="hidden" name="" id="" value='[condition]' />
+				<input type="hidden" name = "descrizioneStato"  value="[condition]" />
+				<input type="hidden" name = "idStato"  value="[condition]" />
+				<input type="hidden" name="" value="[variable]"/>
+		 		<fieldset class="gara">
+				  <table width="100%">
+				  	<tr>
+				  		<th><label >Responsabile del procedimento</label></th>
+				  		<td  width="45%" > <strong>[condition]
+				  		</td>
+				  	</tr>
+				  	<tr>
+				  		<th><label >Codice di individuazione dell'appalto (CIG)</label></th>
+				  		<td  width="45%" >
+				  			[condition]
+				  		</td>
+				  	</tr>
+				  	<tr>
+				  		<th><label >Oggetto dell'appalto</label></th>
+				  		<td  > [condition]
+				  		</td>
+				  	</tr>
+				  	<tr>
+				  		<th><label >[variable] Tipo Settore</label></th>
+				  		<td>
+				  		<select 
+				  			onchange="showHint(
+				  							document.getElementById('').value
+				  						 , document.getElementById('').value
+				  						 , document.getElementById('check5Y').checked
+				  						 , document.getElementById('').value
+				  						 , [variable] 
+				  						 , [variable]);"
+				  			            id="" name="" style="width: 13em"  
+				  			[condition]
+				  			<option></option>
+				  			<u:options name="listaTipiEnte" scope="request" value="flagEnte"/>  
+				  		</select>
+			  			[condition]
+			  			</c:if>				  		
+				  	</td>
+				  	</tr>
+				  	<tr>
+				  		<th><label>[variable] Oggetto principale del contratto</label></th>
+				  		<td> 
+				  		<select 
+				  			onchange="showHint(
+				  							document.getElementById('').value
+				  						 , document.getElementById('').value
+				  						 , document.getElementById('check5Y').checked
+				  						 , document.getElementById('').value
+				  						 , [variable] 
+				  						 , [variable]);" 
+							id="" name="" style="width: 13em" 
+				  			[condition]>Lavori</option>
+				  			<option value="S" [condition]>Servizi</option>
+				  			<option value="F" [condition]>Forniture</option>
+				  		</select>
+				  		[condition]
+				  		</c:if>	
+				  	</td>
+				  	</tr>
+				  	<tr>
+						<th><label for="">[variable] Modalita' di realizzazione*</label></th>
+						<td>
+				  			[condition]
+							<select 
+					  			onchange="showHint(
+					  							document.getElementById('').value
+					  						 , document.getElementById('').value
+					  						 , document.getElementById('check5Y').checked
+					  						 , document.getElementById('').value
+					  						 , [variable] 
+					  						 , [variable]);" 
+							id="" name="" 
+							[condition]  
+				  			</select>
+							[condition]
+			  				</c:if>				  			
+						</td>
+					</tr>
+					<tr style="display:none">
+					<th><label>[variable] Contratto escluso in tutto o in parte dall'ambito di applicazione del codice</label></th>
+					<td>
+					[condition]SI
+  			   	<input 
+				  			onclick="showHint(
+				  							document.getElementById('').value
+				  						 , document.getElementById('').value
+				  						 , document.getElementById('check5Y').checked
+				  						 , document.getElementById('').value
+				  						 , [variable] 
+				  						 , [variable]);" 
+				  			onclick="getDescrizioneTipoFlusso([variable], [variable]);"
+  			   		     disabled
+  			   		[condition]NO
+		  	   		[condition]
+			  			</c:if>	   			   		
+  			   	</td>
+				</tr>
+			 	<tr style="display:none">
+				<th><label for="">[variable] Esclusione ai sensi dell'articolo</label></th>
+				<td>
+		  			[condition]
+					<select name="" 
+					 disabled
+					>
+						<option></option>
+						<u:options name="listaArtEsclusione" scope="request" value="idEsclusione" revert="yes"/>
+					</select>
+	  	   		[condition]
+		  			</c:if>	 					
+				</td>
+			 </tr>
+			  	<tr>
+	   				<td colspan="2"><hr></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">In base alle informazioni fornite la rilevazione sar� strutturata secondo quanto previsto per i </td>
+				</tr>				
+				<tr>
+					<td colspan="2"><center><h2 style="color:red;" id="tipoFlusso">.</h2></center></td>
+				</tr>				
+			  	<tr>
+	  				<td colspan="2"><hr></td>
+				</tr>
+					<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>STAZIONE APPALTANTE</strong></p></td>
+					</tr>
+					<tr>  
+	   					<th><label>Codice Fiscale della Stazione Appaltante</label></th>
+	   					<td><input readonly="readonly"  name=""  tabindex="" [condition]
+							type="text" value="[condition]"   maxlength="11"/></td>
+	   				</tr>
+	   				<tr>
+	   					<th><label>Denom.ne della Stazione Appaltante competente</label></th>
+	   					<td><input readonly="readonly" style="width:100%"  name=""  tabindex="" [condition]
+							type="text" value="[condition]"  /></td>
+	   				</tr>
+	   				<tr>
+	   					<th><label>Codice univoco centro di costo</label></th>
+	   					<td><input readonly="readonly" style="width:100%"  name=""  tabindex="" [condition]
+							type="text" value="[condition]"   maxlength="50"/></td>
+	   				</tr>
+	   				<tr>
+	   					<th><label>Denominazione del centro di costo nell'ambito della Stazione Appaltante</label></th>
+	   					<td><input readonly="readonly" maxlength="50" style="width:100%"  name=""  tabindex="" [condition]
+							type="text" value="[condition]" maxlength="50"/></td>
+	   				</tr>
+<!--	   			<tr>-->
+<!--				  		<th><label >Categoria Stazione Appaltante</label></th>-->
+<!--				  		<td  > -->
+<!--				  		<select  name="" style="width: 100%" [condition]-->
+<!--				  			<u:options name="listaCategorieSA" scope="request" value="categSA"/>  -->
+<!--				  		</select>-->
+<!--				  		</td>-->
+<!--				  	</tr>-->
+						<!--PP hidden su richiesta di Obino 28.10.2009-->
+						<input type="hidden" name="" value="[variable]" />
+				  	<tr>
+						<th><label >La stazione appaltante agisce per conto di altro soggetto singolo?*</label></th>
+				  		<td width="40%" > 
+				  			<input  onchange="chComboStateOnFieldChange('tipologiaSA','check4Y');chComboStateOnFieldChange('tipologiaProcedura','check4Y');chElemStateOnRadioChange(['cfSoggettoA','denSoggettoA','',''],'check4Y')"  tabindex="" id="check4Y" type="radio" name="" value="S" [condition] [condition]/>SI 
+	   					<input  onchange="chComboStateOnFieldChange('tipologiaSA','check4Y');chComboStateOnFieldChange('tipologiaProcedura','check4Y');chElemStateOnRadioChange(['cfSoggettoA','denSoggettoA','',''],'check4Y')" tabindex="" id="check4N" type="radio" name="" value="N"  [condition] [condition]/>NO
+	   					</td>
+				  	</tr>
+				  	<tr>
+				  		<th><label >Tipologia della SA (nel caso agisca per conto di altro/i soggetto/i)</label></th>
+				  		<td  > 
+				  		<select disabled id="tipologiaSA" name="" style="width: 100%" [condition] >
+				  			<option></option>
+				  			[condition]
+				  			<u:options name="listaTipologieSA" scope="request" value="tipologSA"/>  
+				  		</select>
+				  		</td>
+				  	</tr>	               	  	 	
+				  	<tr>
+				  		<th><label >Tipologia procedura (nel caso agisca per conto di altro/i soggetto/i)</label></th>
+				  		<td  > 
+				  		<select disabled id="tipologiaProcedura" name="" style="width: 100%" [condition] >
+				  			<option></option>
+				  			[condition]
+				  			<u:options name="listaTipologieProcedura" scope="request" value="tipologProc"/>  
+				  		</select>
+				  		</td>
+				  	</tr>
+					  	<tr>
+			           <th><label>Durata della convenzione o accordo quadro in giorni</label></th>
+			           <td>
+				          <input id="durataConvenzione" name="" 
+				          tabindex="" maxlength="9" onblur="validateNumber(this)" 
+				          style="text-align: right" type="text" value="[condition]" 
+				          [condition] onchange="setFormModified('Modificato0')">
+			           </td>
+		            </tr>
+				  	<tr>
+		           <th><label for="">La centrale di committenza procede alla stipula? </label></th>
+		           <td>
+			          <input disabled onchange="setFormModified('Modificato0')" 
+					      tabindex="" id="" 
+					      type="radio" name="" 
+					      value="S" [condition] 
+					      [condition]/>SI 
+	  			       <input disabled onchange="setFormModified('Modificato0')" 
+	  					   tabindex="" id="" 
+	  					   type="radio" name="" 
+	  					   value="N" [condition] 
+	  					   [condition]/>NO
+		           </td>
+	            </tr>	
+				  	<tr>
+	   					<th><label>Codice fiscale soggetto per conto del quale agisce la S.A.</label></th>
+	   					<td><input  id="cfSoggettoA"   name=""  tabindex="" [condition] 
+							type="text" value="[condition]" maxlength="20"/></td>
+	   				</tr>
+				   	<tr>
+	   					<th><label>Denominazione dell'Amministrazione per la quale agisce la S.A.</label></th>
+	   					<td><input   id="denSoggettoA"  maxlength="50" style="width:100%"  name=""  tabindex="" 
+							type="text" value="[condition]" [condition] /></td>
+	   				</tr>
+				  	<tr>
+		     			<td colspan="2" align="center"><p class="detailHelp"><strong>PUBBLICITA' DELL'APPALTO</strong></p></td>
+					</tr>
+					[condition]
+			</td>
+	   	</tr>
+	   	<tr>
+ 			<th><label >Quotidiani locali</label></th>
+ 			<td>
+				<input  name=""  tabindex="" style="text-align:right;" 
+				 [variable]
+				type="text" value="[condition]"  onblur="validateNumber(this)" maxlength="9"/>
+			</td>
+	   	</tr>
+	   	<tr>
+ 			<th><label >Periodici</label></th>
+ 			<td>
+				<input  name=""  tabindex="" style="text-align:right;" 
+				[variable]
+				type="text" value="[condition]"  onblur="validateNumber(this)" maxlength="4"/>
+			</td>
+	   	</tr>
+	   	<tr>
+			<th><label >Profilo del Committente</label></th>
+		  	<td>
+		  	    <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check1Y" 
+			    falseId="check1N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>
+		<tr>
+			<th><label >Sito Informatico Ministero Infrastrutture<br>e piattaforma digitale ANAC tramite i sistemi<br>informatizzati regionali</label></th>
+		  	<td>
+		  	   <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check2Y" 
+			    falseId="check2N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>
+		<tr>
+			<th><label >Sito Informatico Osservatorio Contratti Pubblici</label></th>
+		  	<td>
+		  	    <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check3Y" 
+			    falseId="check3N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>
+					<tr>
+		     			<td colspan="2" align="center"><p class="detailHelp"><strong>STATO ATTUALE</strong></p></td>
+					</tr>
+					<tr>
+						<th><label >[variable] Esito della procedura*</label></th>
+						<td>
+							<select name="" [condition] [condition] >
+								<option/>
+								[condition]
+								<u:options name="listaEsitiProcedura" scope="request" value="esito"/>
+							</select>
+							[condition]
+							</c:if>
+						</td>
+					</tr>
+				  </table>
+				</fieldset>
+		 		<table>	
+					<tr>
+					   <input type="hidden" name="checkIfOK" id="checkIfOK" value="" />
+						<td><input [condition] type="button" value="Salva" onclick="checkAndAction('check',,'')"/></td>
+						<td><input [condition]  type="button" value="Conferma" onclick="checkAndAction('check',,'')"/></td>
+						<td><input [condition] type="button" value="Reimposta" onclick="reimpostaForm('')"/></td>
+						[condition]</td>	
+						</c:if>
+						[condition]</td>	
+						</c:if>
+						</c:if>
+						<!-- Include not found: ../include/statoscheda.inc -->
+					</tr>
+				</table>
+		  		[condition]
+		  			<input type="hidden"  name="" value="[variable]" />
+		  			<input type="hidden"  name="" value="[variable]" />
+		  			<input type="hidden"  name="" value="[variable]" />
+		  			<input type="hidden"  name="" value="[variable]" />
+		  		</c:if>
+		 	</form>
+		 </fieldset>		 
+		</div>  
+		</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+	</div>
+	    [block]
+<script type="text/javascript">
+	// valorizzazione iniziale tipo flusso
+		showHint(document.getElementById('').value
+				 , document.getElementById('').value
+				 , document.getElementById('check5Y').checked
+				 , document.getElementById('').value
+				 , [variable] 
+				 , [variable]); 
+ 		getDescrizioneTipoFlusso([variable], [variable]);
+</script>
+</body>
+</html>

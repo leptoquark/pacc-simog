@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+  <soggetto>
+    <cognome>OSSERVATORIO</cognome>
+    <nome>NAZIONALE</nome>
+    <admin_or></admin_or>
+  </soggetto>
+  <stato>0</stato>
+</check_login>

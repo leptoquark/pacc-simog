@@ -1,0 +1,675 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+[condition]
+ [condition]
+  [condition]
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+<!-- main calendar program -->
+<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- language for the calendar -->
+<script type="text/javascript" src="calendar/calendar-it.js"></script>
+<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+<script type="text/javascript"  src="script/pageutils.js"></script>
+<title>إدارة الأوراق - المقاولات الفرعية - </title>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+</head>
+<body>
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<script type = "text/javascript">
+function setIdProperty(id, property, value) {  var styleObject = document.getElementById(id);  if (styleObject != null) {  styleObject = styleObject.style;  styleObject[property] = value;  } }
+function showElement(id) {  setIdProperty(id, "display", "block"); }
+function hideElement(id) {  setIdProperty(id, "display", "none"); }
+function modAnagAgg(){ apriPopUpMod('rubrica','',document.getElementById(''),document.getElementById(''),'Rubrica Operatori Economici',document.getElementById('').value); }
+function ricreaStringa(parametri) {  var stringa = "";  if (parametri.length == 0) return stringa;  var stringa = "'";  for (var i = 0; i < parametri.length; i++) {  if (parametri[i] != "") {  stringa = stringa + parametri[i];  if (i < (parametri.length - 1)) {  stringa = stringa + "','";  }  }  }  stringa = stringa + "'";  return stringa; }
+function ricreaArray(parametri, parametri2) {  var array = new Array();  for (var i = 0; i < parametri.length; i++) {  array[i] = parametri[i];  }  var index = parametri.length;  for (var i = 0; i < parametri2.length; i++) {  array[index++] = parametri2[i];  }  return array; }
+function createRow(idrow, args, argshidden, prefix) {
+    var row = document.createElement("tr");
+    console.log("idrow:"+idrow);
+    row.setAttribute("id", idrow, 0);
+    var tdmod = document.createElement("td");
+    tdmod.className = "hmenu";
+    tdmod.setAttribute("nowrap", "nowrap");
+    var linkmod = document.createElement("A");
+    linkmod.appendChild(document.createTextNode("Modifica"));
+    var argsString = ricreaStringa(args);
+    var argshiddenString = ricreaStringa(argshidden);
+    linkmod.setAttribute("href", "javascript:setForModifyRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);
+    tdmod.appendChild(linkmod);
+    var spanElement = document.createElement("span");
+    spanElement.innerHTML = "&nbsp;&nbsp;";
+    tdmod.appendChild(spanElement);
+    var linkcanc = document.createElement("a");
+    linkcanc.appendChild(document.createTextNode("Cancella"));
+    linkcanc.setAttribute("href", "javascript:deleteRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')", 0);
+    tdmod.appendChild(linkcanc); 
+    row.appendChild(tdmod); 
+    var already = false;
+    var preForReq = "";
+    for (var i = 0; i < args.length; i++) {
+        var td1 = document.createElement("td");
+        td1.setAttribute("nowrap", "nowrap");
+        td1.className = "garaTd";
+        var idtd = idrow + args[i];
+        var element = document.getElementById(preForReq + args[i]);
+        console.log("element demo:"+element);
+        if ( "" == args[i] || "" == args[i] || "" == args[i] || "" == args[i] ) {
+            if ("" == args[i]) {
+                element = document.getElementById(preForReq + "");
+            }
+            var contenuto = "";
+            if ("" == args[i]) {
+                contenuto = getSelectValue(element, true);
+            } else {
+                contenuto = getSelectValue(element, false);
+            }
+            td1.appendChild(document.createTextNode(contenuto));
+            td1.setAttribute("id", idtd, 0);
+        } else if ("" == args[i]) {
+            var idElement = document.getElementById("").value;
+            var textElement = "";
+            textElement = getTipoAggiudicatario(idElement);
+            td1.appendChild(document.createTextNode(textElement));
+            td1.setAttribute("id", idtd, 0);
+        } else if ("" == args[i]) {
+            var text = document.getElementById(args[i]).value;
+            var input = document.createElement("INPUT");
+            input.setAttribute("id", idtd, 0);
+            input.setAttribute("type", "text", 0);
+            input.setAttribute("maxlength", "1024", 0);
+            input.setAttribute("value", text, 0);
+            input.disabled = true;
+            td1.appendChild(input);
+        } else if ("" == args[i]) {
+            var text = document.getElementById(args[i]).value;
+            var input = document.createElement("TEXTAREA");
+            input.setAttribute("id", idtd, 0);
+            input.setAttribute("rows", "2", 0);
+            input.setAttribute("cols", "40", 0);
+            input.value = text;
+            input.disabled = true;
+            td1.appendChild(input);
+        } else {
+            if ("" == args[i]) {
+                var testo = document.getElementById(preForReq + args[i]).value;
+                if (testo == "0") {
+                    testo = "";
+                }
+                td1.appendChild(document.createTextNode(testo));
+                td1.setAttribute("id", idtd, 0);
+            } else {
+                td1.appendChild(document.createTextNode(document.getElementById(preForReq + args[i]).value));
+                td1.setAttribute("id", idtd, 0);
+            }
+        }
+        row.appendChild(td1);
+    } 
+    if (prefix == "") {
+        var tdmod = document.createElement("td");
+        tdmod.className = "hmenu";
+        tdmod.setAttribute("nowrap", "nowrap");
+         tdmod.setAttribute("id", idrow + "", 0); {
+            var argsString = ricreaStringa(args);
+            var argshiddenString = ricreaStringa(argshidden);
+            var parametri = "=" + idrow + "&=" + document.getElementById("").value + "&=" + document.getElementById("").value + "&=" + document.getElementById("").value + "&=" + document.getElementById("").value;
+             linkmod.setAttribute("href", "javascript:apriPopUpRubricaDittaAusiliaria('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "','rubricaRaggruppamento','','Rubrica Raggruppamento Impresa','" + parametri + "')");
+            tdmod.appendChild(linkmod);
+        }
+        row.appendChild(tdmod);
+        var tdaux = document.createElement("td");
+        tdaux.style.display = "none";
+        var idaux = idrow + "";
+        var hidden = document.createElement("INPUT");
+        hidden.setAttribute("name", idaux, 0);
+        hidden.setAttribute("id", "hidden" + idaux, 0);
+        hidden.setAttribute("type", "hidden", 0);
+        hidden.value = "";
+        tdaux.appendChild(hidden);
+        row.appendChild(tdaux);
+    } 
+    for (var i = 0; i < argshidden.length; i++) {
+        var td1 = document.createElement("td");
+        var idtd = idrow + argshidden[i];
+        var element = document.getElementById(preForReq + argshidden[i]);
+        if ("" == argshidden[i]) { 
+        	selector = document.getElementById("");
+            var descrizione = selector[selector.selectedIndex].value;
+            td1.appendChild(document.createTextNode(descrizione));
+        } else if ("" == argshidden[i]) {
+            element = document.getElementById(preForReq + "");
+            var idruolo = getSelectValue(element, true);
+            td1.appendChild(document.createTextNode(idruolo));
+        } else if ("" == argshidden[i]) {
+            element = document.getElementById(preForReq + "");
+            var idruolo = getSelectValue(element, true);
+            td1.appendChild(document.createTextNode(idruolo));
+        } else {
+            if (element != null) {
+                td1.appendChild(document.createTextNode(element.value));
+            }
+        }
+        td1.style.display = "none";
+        td1.setAttribute("id", idtd, 0);
+        row.appendChild(td1);
+    }
+    return row;
+}
+function modifyRow(idrow, args, argshidden, prefix) {  if (document.getElementById("").selectedIndex <= 0) {  alert("E' necessario scegliere un soggetto per poter proseguire.");  } else if (prefix == "" && document.getElementById("").value!='' && document.getElementById("").value!=''){ alert("Sono stati indicati sia Ribasso aggiudicazione che Offerta in aumento."); } else if (prefix == "" && document.getElementById("").selectedIndex == 0){ alert("SIMOG_VALIDAZIONE_104 - Tipologia del soggetto aggiudicatario/affidatario: selezionare un valore tra quelli previsti."); }  }
+function showSezioneAggiungi(args, argshidden, prefix) {   var idsezione = "divAgg" + prefix;    var argsString = ricreaStringa(args);  var argshiddenString = ricreaStringa(argshidden);  showElement(idsezione);  }
+function hideSezioneAggiungi(args, argshidden, prefix) {  var idsezione = "divAgg" + prefix;  var idpulsante = "showHide" + prefix + "Button";  var titolo = "Aggiungi " + prefix;    var argsString = ricreaStringa(args);  var argshiddenString = ricreaStringa(argshidden);  hideElement(idsezione);  var pulsante = document.getElementById(idpulsante);  pulsante.innerHTML = titolo;  pulsante.href = "javascript:showSezioneAggiungi([" + argsString + "],[" + argshiddenString + "],'" + prefix + "')";  var array = ricreaArray(args, argshidden);  resetParameters(prefix, array);  setButtonForAdd(args, argshidden, prefix);  if (prefix == "" || prefix == "" ) {  resetFormModified("selected" + prefix);  }  var modifica = document.getElementById("inModifica" + prefix);  if (modifica != null) modifica.parentNode.removeChild(modifica); }
+function MyDialogArguments() {  this.Sender = null; }
+function apriPopUpRubrica(url, tabName, titlePopup) {
+    var paramsString = "?" + "=" + tabName + "&titleRubrica=" + titlePopup + "&=" + "Cerca in rubrica" + "&from=menu";
+    dialogArgs = new MyDialogArguments();
+    dialogArgs.Sender = window;
+    if (!window.showModalDialog) {
+        var windowprops = "width=800,height=600, chrome,centerscreen,dependent=yes,resizable=yes,scrollbars=yes,location=no,status=no,directories=no,menubar=no,toolbar=no,modal=yes,dialog=yes";
+        popup = window.open(url + paramsString, dialogArgs, windowprops);
+        popup.focus();
+    } else {
+        var windowprops = "dialogWidth: 800px; dialogHeight: 600px; center: 1; scroll: 1; help: 1; status: 0;";
+        popup = window.showModalDialog(url + paramsString, dialogArgs, windowprops);
+    }
+}
+function deleteRow(idRow, args, argshidden, prefix) {  if (confirm("Si sta per cancellare il record. Proseguire?")) {  var modifica = document.getElementById("inModifica" + prefix);  if ((modifica != null) && (modifica.value == idRow)) {  hideSezioneAggiungi(args, argshidden, prefix);  }  var row = document.getElementById(idRow);  row.parentNode.removeChild(row);  var idnext = document.getElementById("idTabella" + prefix).rows.length - 1;  var idDIVTabella = "DIVTabella" + prefix;  var numOfRows = idnext + 1;  if ("" != prefix) {  if (numOfRows >= 3) {  setIdProperty(idDIVTabella, "height", "200px");  } else {  setIdProperty(idDIVTabella, "height", "150px");  }  }  setModificato(prefix);  } }
+function getArray(prefix, isCheck) {  var arr = new Array();  if ("" == prefix) {  arr[0] = "";  arr[1] = "";  if (!isCheck) {  arr[2] = "";  arr[3] = "";  arr[4] = "";  arr[5] = "";  arr[6] = "";  arr[7] = "";  arr[8] = "";  arr[9] = "";  arr[10] = "";  }  }  else if (("" == prefix)) {  arr[0] = "";  arr[1] = "";  }  return arr; }
+function getRowIndex(prefix) {  var idtable = "idTabella" + prefix;  var table = document.getElementById(idtable);  var rowList = table.rows;  var idnext = -1;  for (var i = 0; i < rowList.length; i++) {  var row = rowList.item(i);  var id = row.getAttribute("id");  if (id != null && id != "") {  var idnum = (id.split("row" + prefix))[1];  if (parseInt(idnum) >= parseInt(idnext)) {  idnext = idnum;  }  }  }  return idnext; }
+function checkBeforeAdd(prefix) {  if (prefix == "" && !checkElement(prefix, getArray(prefix, true))) {  var message = "Hai gia' selezionato questo soggetto";  var plus = ".";  if (("" == prefix)) {  message = "Hai gia' inserito un requisito per questa categoria";  }   alert(message + plus);  return false;  }  return true; }
+function validateRadio(prefix) {  if (prefix == "" ) return true;  else return false; }
+function checkElement(prefix, parameters) {  var idtable = "idTabella" + prefix;  var table = document.getElementById(idtable);  if (table != null) {  var numrows = table.rows.length;  if (numrows == 0) return true;  var esiste = true;  for (var i = 0; i < numrows; i++) {  var uguale = false;  for (var j = 0; j < parameters.length; j++) {  var idElem = "row" + prefix + i + parameters[j];  var element = document.getElementById(idElem);  var inmodifica = document.getElementById("inModifica" + prefix);  if (element != null && (inmodifica == null || inmodifica.value != ("row" + prefix + i))) {  var value = "";  if (element.childNodes[0] != null) value = element.childNodes[0].data;  var field = document.getElementById(parameters[j]);  var fieldvalue;  if (prefix == "") {  value = element.innerHTML;  }  if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, false);  var id = "hiddenrow" + prefix + i + "";  field = document.getElementById(id).value;  value = field;  } else if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, true);  } else if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, true);  } else if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, true);  } else if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, true);  } else if ("" == parameters[j]) {  fieldvalue = getSelectValue(field, false);  } else if ("" == parameters[j]) {  field = document.getElementById("");  fieldvalue = getSelectValue(field, true);  } else {  fieldvalue = field.value;  }  if (value != fieldvalue) {  uguale = false;  break;  } else {  uguale = true;  }  } else {  j++;  }  }  if (uguale == true) {  return false;  }  }  return true;  } }
+function getTipoAggiudicatario(idElement) {  var textElement = "";  if (idElement == 1) {  textElement = "";  } else if (idElement == 2) {  textElement = "";  } else if (idElement == 3) {  textElement = "";  } else if (idElement == 4) {  textElement = "";  } else if (idElement == 5) {  textElement = "";  } else {  textElement = "";  }  return textElement; }
+function addRow(args, argshidden, prefix) {
+    if (prefix == "" && (document.getElementById("selected" + prefix).value == 0)) {
+        alert("E' necessario scegliere un soggetto per poter proseguire.");
+    } else if (prefix == "" && document.getElementById("").selectedIndex == 0) {
+        alert("SIMOG_VALIDAZIONE_104 - Tipologia del soggetto aggiudicatario/affidatario: selezionare un valore tra quelli previsti.");
+    } else {
+        if (checkBeforeAdd(prefix)) {
+            if (validateRadio(prefix)) {
+                var idnext = getRowIndex(prefix); 
+                var idtable = "idTabella" + prefix; 
+                console.log("idTabella" +idtable);
+                var table = document.getElementById(idtable);
+                var newid = "row" + prefix + (parseInt(idnext) + 1);
+                var tbody = table.getElementsByTagName("tbody")[0];
+                var row = createRow(newid, args, argshidden, prefix);
+                tbody.appendChild(row);
+                appendHidden(row, newid, prefix, getArray(prefix, false), true);
+                var idDIVTabella = "DIVTabella" + prefix;
+                var numOfRows = idnext + 1;
+                hideSezioneAggiungi(args, argshidden, prefix);
+                setModificato(prefix);
+                document.getElementById("selected" + prefix).value = 0;
+            }
+        }
+    }
+}
+function resetParameters(prefix, parametri) {  var preForReq = "";  for (var i = 0; i < parametri.length; i++) {  var element = document.getElementById(preForReq + parametri[i]);  if (element != null) {  if (("" == parametri[i]) || ("" == parametri[i]) || ("" == parametri[i])) {  element.value = "";  }  if (("" == parametri[i]) || ("" == parametri[i]) || ("" == parametri[i])) {  element.checked = false;  if ("" == parametri[i]) {  document.getElementById("").checked = false;  }  } else if ("" == parametri[i] || "" == parametri[i] || "" == parametri[i] || "" == parametri[i] || "" == parametri[i] || "" == parametri[i] || "" == parametri[i] || "" == parametri[i]) {  element.selectedIndex = 0;  } else {  element.value = "";  }  }  } }
+function setAndSave(idform, tabName) {  if (!hasErrors(document.forms[0])) {  if (validateRadios(tabName)) {  if (confirm("I dati verranno salvati. Procedere?")) {  if (tabName == "") {  creaHidden(idform, "");  creaHidden(idform, "");  creaHidden(idform, ""); creaHidden(idform, ""); creaHidden(idform, "");  creaHidden(idform, "");  }    document.getElementById('').value = tabName;  document.getElementById('').value = "";  document.getElementById(idform).submit();  }  }  } }
+function setForModifyRow(idrow, args, argshidden, prefix) {
+    var array = ricreaArray(args, argshidden);
+    resetParameters(prefix, array);
+    var preForReq = "";
+    for (var j = 0; j < args.length; j++) {
+        var idtd = idrow + args[j];
+        var field = document.getElementById(preForReq + args[j]);
+        if ("" == args[j]) {
+            var td = document.getElementById(idtd);
+            var tablevalue = "";
+            if (td.childNodes[0] != null) tablevalue = td.childNodes[0].data;
+            var optarray = field.options;
+            field.selectedIndex = cercaIndex(optarray, 0, tablevalue);
+        } else if ("" == args[j]) {
+            var td = document.getElementById(idtd);
+            var tablevalue = "";
+            if (td.childNodes[0] != null) tablevalue = td.childNodes[0].data;
+            tablevalue = tablevalue.split(" ")[0];
+            var optarray = field.options;
+            field.selectedIndex = cercaIndex(optarray, 0, tablevalue);
+        } if ("" == args[j] || "" == args[j]) {
+            var td = document.getElementById(idtd);
+            if (td != null) {
+                var text = td.value;
+                if (field != null) {
+                    field.value = text;
+                }
+            }
+        }
+        if ("" == args[j] ) {
+            var td = document.getElementById("hidden" + idtd);
+            var td = document.getElementById(idtd);
+            if (td != null) {
+                if (td.innerHTML != null && td.innerHTML != "") field.value = td.innerHTML;
+                else field.value = "";
+            }
+        } 
+        if ("" == args[j] ) {
+            var td = document.getElementById(idtd);
+            if (td != null) {
+                if (td.innerHTML != null && td.innerHTML != "") field.value = td.innerHTML;
+                else field.value = "IT";
+            }
+        } else if ("" == args[j]) {
+            var td = document.getElementById("hidden" + idtd);
+            if (td != null) {
+                var text = td.value;
+                if (field != null) {
+                    if (text != "") field.value = text;
+                    else field.value = "IT";
+                }
+            }
+        } else {
+            var td = document.getElementById(idtd);
+            if (td != null) {
+                var tablevalue = "";
+                if (td.childNodes[0] != null) tablevalue = td.childNodes[0].data;
+                if (field != null) {
+                    field.value = tablevalue;
+                }
+            }
+        }
+    }
+    for (var j = 0; j < argshidden.length; j++) {
+        var idtd = idrow + argshidden[j];
+        var td = document.getElementById(idtd);
+        if (td != null) {
+            var tablevalue = "";
+            if (td.childNodes[0] != null) tablevalue = td.childNodes[0].data;
+            var field = document.getElementById(preForReq + argshidden[j]);
+            if ("" == argshidden[j]) {
+                var td = document.getElementById(idtd);
+                var optarray = field.options;
+                field.selectedIndex = cercaIndex(optarray, 0, tablevalue);
+            } else if ("" == argshidden[j]) {
+                field = document.getElementById(preForReq + "");
+                var optarray = field.options;
+                field.selectedIndex = cercaIndex(optarray, 0, tablevalue);
+            } else {
+                field.value = tablevalue;
+            }
+        }
+    }
+    var button = document.getElementById("AddMod" + prefix);
+    var argsString = ricreaStringa(args);
+    var argshiddenString = ricreaStringa(argshidden);
+    button.href = "javascript:modifyRow('" + idrow + "',[" + argsString + "],[" + argshiddenString + "],'" + prefix + "')";
+    button.innerHTML = "Modifica";
+    var idtable = "idTabella" + prefix;
+    var table = document.getElementById(idtable);
+    var inmodifica = document.getElementById("inModifica" + prefix);
+    if (inmodifica == null) {
+        inmodifica = document.createElement("TD");
+        inmodifica.style.display = "none";
+        inmodifica.setAttribute("id", ("inModifica" + prefix), 0);
+        table.appendChild(inmodifica);
+    }
+    inmodifica.value = idrow;
+    showSezioneAggiungi(args, argshidden, prefix);
+}
+function apriPopUpRubricaDA( url, tabName, titlePopup, cf_ditta, idSubappalto) {
+    var paramsString = "?" + "=" + tabName + "&titleRubrica=" + titlePopup + "&=" + "Cerca in rubrica" + "&from=menu" + "&CF_DITTA=" + cf_ditta + "&idSubappalto=" +idSubappalto;
+    dialogArgs = new MyDialogArguments();
+    dialogArgs.Sender = window;
+    if (!window.showModalDialog) {
+    	var $dialog = $("#dialogDitteAusiliarie").html('<iframe style="border: 0px; " src="' + url + paramsString + '" width="100%" height="100%"></iframe>').dialog({
+            title: "ANAC: Autorit&agrave; Nazionale Anticorruzione",
+            autoOpen: !1,
+            dialogClass: "no-close",
+            modal: !0,
+            height: 700,
+            minWidth: 1100,
+            minHeight: 600,
+            draggable: !0
+        });
+        $dialog.dialog("open");
+    } else {
+        var windowprops = "dialogWidth: 800px; dialogHeight: 600px; center: 1; scroll: 1; help: 1; status: 0;";
+        popup = window.showModalDialog(url + paramsString,'_blank', dialogArgs, windowprops);
+    }
+}
+</script>
+<div id="dialog"></div>
+<div id="dialogDitteAusiliarie"></div>
+<!-- fine import popup modali -->
+	<div id="gabbia" align="left">
+		<div id="header">
+</div>
+		<div class="bodypage-e" align="left">
+		<h1>إدارة الأوراق - المقاولات الفرعية</h1>
+		<div  class="hmenu" align="left">	
+			  <ul>
+					<li><a title="العودة إلى قائمة الإضافات" href="javascript:changePage('[variable]','Modificato')">قائمة الإضافات</a></li>  
+			    [condition]" >إضافة ورقة جديدة</a>
+				 </li>
+				</c:if>
+			  </ul>
+		</div> 
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			 <h2>Lista Schede Subappalti</h2>
+			<div style="overflow: auto;height: 13em; width: 100%;"  >
+			<div class="gara">	 	
+		     <table align="center" width="300px">   
+			<tr> 
+		     	<th class="garaTh">Codice Fiscale Ditta</th> 
+		     	<th class="garaTh">Data Autorizzazione</th>
+		     	<th class="garaTh">Stato scheda</th>
+		     	<th class="garaTh">Azioni</th>
+		     </tr>
+		        [condition]
+			[condition]">Modifica</a>
+					    	</c:when>
+					    	[condition]">Visualizza</a>
+					    	</c:otherwise>
+					    </c:choose>
+					</td>
+				</tr>
+				[condition]
+			</c:forEach> 
+			</table>
+		</div></div>
+		<!-- Include not found: ../include/RichAnnPanel.jsp -->
+				<table >	
+					<tr>
+						[condition] type="button" value="Salva" onclick="checkAndAction('check',0,'')"/></td></c:if>
+						[condition]</td></c:if>
+						<td><input [condition]  type="button" value="Conferma" onclick="checkAndAction('check',0,'')"/></td>
+						<td><input [condition] type="button" value="Reimposta" onclick="reimpostaForm('')"/></td>	
+						[condition]</td>	
+						</c:if>
+						[condition]</td>	
+						</c:if>
+				[condition]
+				[condition]
+				[condition]
+				<!-- Include not found: ../include/statoscheda.inc -->
+					</tr>
+				</table>
+			 <fieldset>
+			 <h2>Scheda Subappalti - [condition]</h2>
+			 <form action="" method="post" onkeypress="setFormModified('Modificato')" >
+				<input type="hidden" name="checkIfOK" id="checkIfOK" value="" />
+				<input type="hidden" name="" id="" value="" />	
+				<input type="hidden" name="" id="" value="" />
+				<input type="hidden" name="" id="" value='[condition]' />
+				<input type="hidden" name="" id="" value='[condition]' />
+				<input type="hidden" name="" value='[condition]'/>
+				<input type="hidden" name="" value='[condition]'/>
+				<input type="hidden" id="Modificato"  value="0" />
+ 				<input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]">
+				<fieldset class="gara">
+				<table width="100%">
+				  	<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>RIFERIMENTO AI DATI DELLA FASE DI AGGIUDICAZIONE O DI DEFINIZIONE DI PROCEDURA NEGOZIATA</strong></p></td>
+					</tr>
+	<tr><td colspan="2"><hr></td></tr>
+	<tr>	
+	<th><label>نوع الورقة</label></th>
+	<td>
+	[condition][condition]</td>
+	</tr>
+	</c:if>
+	[condition]</td>
+	</tr>
+	</c:if>
+	<tr><td colspan="2"><hr></td></tr>
+	   				<tr>
+						<td align="center" colspan="2"><p class="detailHelp"><strong>SUBAPPALTO</strong></p></td>
+					</tr>
+					<tr>
+	   					<td><label for="" >Codice fiscale ditta subappaltatrice (impresa singola o mandataria)</label></td>
+	   					<td>
+	   						<input name="" 
+	   							   tabindex="" 
+	   							   style="text-align: left;" 
+	   							   [condition] 
+	   							   type="text" 
+	   							   value="[condition]"
+	   							   maxlength="20" />
+	   					</td>
+	   				</tr>
+					<tr>
+						<td></td>
+						<td class="hmenu"> 
+							 <a title="Gestione raggruppamento" href="javascript:apriPopUpRubricaDA('rubricaRaggruppamento','','Gestione mandanti','[condition]&=[condition]','')">Gestione mandanti</a>
+						</td>
+					</tr> 
+					<tr>
+					<!-- MEV 36771 3.04.8.1 -->
+						<td><label for="">Ditta subappaltatrice estera</label></td>
+						<td><select tabindex="" name="" [condition] id="sel_FLAG_DITTA_SUB_ESTERA" >
+			  				<option></option>
+			  				<option value="N" >NO</option> <!-- TODO equals -->
+			  				<option value="S" >SI</option> <!-- TODO equals -->
+						</select></td>
+					</tr>
+	   				<tr>
+	   					<td><label for="" >Codice fiscale ditta aggiudicatrice nel caso di aggiudicatari multipli</label></td>
+	   					<td>
+	   					<select onchange="setFormModified('Modificato')" tabindex="" style="width:100%" [condition] name="" id= class="BOTTONE">
+								<option></option>
+				  				[condition]
+				  				[condition]
+				  				<u:options name="aggiudCombo" scope="request" value="currAgg"/>
+							</select>
+<!--	   						<input name="" -->
+<!--	   							   tabindex="" -->
+<!--	   							   style="text-align: left;" -->
+<!--	   							   [condition] -->
+<!--	   							   type="text" -->
+<!--	   							   value="[condition]"-->
+<!--	   							   maxlength="20" />-->
+	   					</td>
+	   				</tr>
+	   				<tr>
+	   					<td><label for="">Data di autorizzazione subappalto</label></td>
+	   					<td><input name="" 
+	   							   tabindex=""
+	   							   style="text-align: center;"
+	   							   onchange="setFormModified('Modificato')"
+	   							   [condition]
+	   							   type="text"
+	   							   id=""
+	   							   onblur="Calendar.validaData(this)"
+	   							   value="[condition]" />
+	   						[condition]
+	   							<script type="text/javascript">
+									    Calendar.setup({
+								        inputField     :    "",     // id of the input field
+								        ifFormat       :    "%d/%m/%Y",      // format of the input field
+								        button         :    "calendarTermine",  // trigger for the calendar (button ID)
+								        align          :    "Tl",           // alignment (defaults to "Bl")
+								        singleClick    :    true							       
+							    		});					    	
+								</script>
+							</c:if>
+						</td>
+					</tr>
+					<tr>
+						<td><label for=""> [condition] 
+	   							   type="text"
+	   							   value="[condition]"
+	   							   maxlength="1000" />
+	   					</td>
+	   				</tr>
+	   				<tr>
+	   					<td><label for="">Importo presunto [condition]
+	   							   type="text"
+	   							   value="[condition]"
+	   							   onblur="validateAmount(this)" />
+	   					</td>
+	   				</tr>
+	   				<tr>
+	   					<td><label>Categoria [condition] name="" id= class="BOTTONE">
+								<option></option>
+				  				[condition]
+				  				<u:options name="categorie" scope="request" value="categoria"/>
+							</select>
+	   					</td>
+	   				</tr>
+	   				<tr>
+	   				<input type="hidden" id="canSearch" value="false" />
+	   				<td><label  for="">CPV Correnti</label></td>
+	   					<td><input type="text" onblur="searchLE(this.id, 'ricercaCPV.jsp?nameField=sel_CPV', 'isNotCPV')" 
+	   					name="" 
+	   					value="[variable]" id="sel_CPV" 
+	   					onkeyup="checkKeyLE(event, this, 'ricercaCPV.jsp?nameField=sel_CPV', 'isNotCPV')" [condition] >
+							[condition]
+	   							   type="text"
+	   							   value="[condition]"
+	   							   onblur="validateAmount(this)" />
+	   					</td>
+	   				</tr>
+		   				</tr>
+	   			</table>	
+	   			<input type="hidden"  value="save" name="toDo" id="toDo"/>		
+				</fieldset>
+				<table >	
+					<tr>
+						[condition] type="button" value="Salva" onclick="checkAndAction('check',0,'')"/></td></c:if>
+						[condition]</td></c:if>
+						<td><input [condition]  type="button" value="Conferma" onclick="checkAndAction('check',0,'')"/></td>
+						<td><input [condition] type="button" value="Reimposta" onclick="reimpostaForm('')"/></td>	
+						[condition]</td>	
+						</c:if>
+						[condition]</td>	
+						</c:if>
+				<!-- Include not found: ../include/statoscheda.inc -->
+					</tr>
+				</table>
+			</form>
+				</fieldset>
+		</div>  
+		</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+		</div>
+</body>
+</html>

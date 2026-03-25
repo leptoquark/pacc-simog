@@ -1,0 +1,107 @@
+package it.avlp.simog.validatore;
+
+
+public class Scheda_B4_Validator implements BaseValidator {
+
+//	String mSezione="";
+//	private boolean mValidata = false;	
+//	private AllValidationBeans mEccezioni = new AllValidationBeans();
+//
+//	private Scheda_B4 mDati = null;
+//	
+//	private Connection conn = null;
+//	
+//	public Scheda_B4_Validator(Connection connect,Scheda_B4 lDati) {  
+//		mDati    = lDati;
+//		conn     = connect;
+//	} 
+//	
+//	public Scheda_B4 getDati() {
+//		return mDati;
+//	}
+//
+//	public AllValidationBeans getEccezioni() {
+//		return mEccezioni;
+//	}
+//
+//	public String getSezione() {
+//		return mSezione;
+//	}
+//
+//	/**
+//	 * Indica se è stata chiamata la validazione
+//	 * @return
+//	 */
+//	public boolean isValidata() {
+//		return mValidata;
+//	}
+//	
+//	private void setValidata(boolean validata) {
+//		mValidata = validata;
+//	}
+//
+//	public boolean valida() {
+//		if (isValidata()) mEccezioni.clear();
+//		ultimazioneLavori(mDati.getFineLavori());
+//		responsabiliFine(mDati.getResponsabili());
+//		subappalti(mDati.getSubappalti());
+//		
+//		setValidata(true);
+//		
+//		return (mEccezioni.getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR).getSize() == 0);
+//	}
+//	
+//	private void ultimazioneLavori(FineLavoriBean fineLavori){
+//		try{
+//			if (!Checkers.campoValorizzato(fineLavori.getDataUltimazione()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_091);
+//		}
+//		
+//		
+//	}
+//	
+//	private void responsabiliFine(ResponsabileFineBean[] responsabiliBean){
+//		
+//	}
+//	
+//	private void subappalti(SubappaltiBean[] subappalti){
+//		if(subappalti == null) return;
+//		
+//		for (int i = 0; i < subappalti.length; i++) {
+//			
+//		
+//			try {
+//				if(!Checkers.campoValorizzato(subappalti[i].getCfDitta())) throw new Exception();
+//			} catch (Exception e) {
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_092, i+1);
+//			}
+//			try {
+//				if (Checkers.validaParametroDiSoliNumeri(subappalti[i].getCfDitta(), 11)){
+//					if(!Checkers.partitaIvaValida(subappalti[i].getCfDitta())) throw new Exception();
+//				}else if(!Checkers.ControllaCF(subappalti[i].getCfDitta())) throw new Exception();
+//
+////				if(!Checkers.ControllaCF(subappalti[i].getCfDitta())) throw new Exception();
+//			} catch (Exception e) {
+//				mEccezioni.addValidationWarn(Messaggi.SIMOG_VALIDAZIONE_093, i+1);
+//			}
+//			
+//			try {
+//				if(!Checkers.campoValorizzato(subappalti[i].getFornitura())) throw new Exception();
+//			} catch (Exception e) {
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_094, i+1);
+//			}
+//			
+//			try{
+//				if(subappalti[i].getImporto().intValue() < 0 )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_095, i+1);
+//			}
+//			
+//	       
+//		}
+//		
+//	}
+//
+}

@@ -1,0 +1,123 @@
+
+<!-- 
+	Nella pagina che include elencoCPVSecondarie.jsp deve esserci la definizione delle variabili: 
+	* elencoCPVSecondarie : elenco degli oggetti di tipo CupLottoAgg
+	* readonlyCpv : condizioni per la disabilitazione del componente e visualizzazione in sola lettura
+	* idLotto : id del lotto a cui si fa riferimento
+ -->
+<jsp:useBean id="elencoCPVSecondarie" type="java.util.LinkedList" class="java.util.LinkedList" scope="request"></jsp:useBean>
+<!-- le variabili sono impostate dal chiamante -->
+<script type="text/javascript">
+	function callCpvDesc(args,argshidden,prefix) {
+		var cpvVal = $("#"+prefix).val();
+		     if(validateCpv(cpvVal)) {
+					 $.get("SrvLoadCpvSecDesc", {
+						 idCPV : cpvVal
+			         }, function(responseText) {        
+			               if(responseText=="KO")
+				               alert("La CPV indicata non e' valida")
+				            else
+					            addRowCpv(args,argshidden,prefix,responseText,cpvVal);
+			        });
+				}
+	   }
+   function validateCpv(cpvVal){
+		if(cpvVal==null || cpvVal=='') {
+			alert("Inserire il codice CPV");
+			return false;
+		} else {
+           var foundcpv = false;
+           var values = $("input[name*='CodCPV']").map(function(){return $(this).val();}).get();
+           for(var i=0;i<values.length;i++) {
+	               var cpvins = values[i];
+	               if(cpvins==cpvVal)
+	            	   foundcpv=true;
+               }
+			if(foundcpv){
+				alert("La CPV con codice "+cpvVal+" e' stata gia' inserita come CPV secondaria");
+				return false;
+	          } else {
+                     var cpvPrimaria = $("input[name='cpv']").val();
+                     if(cpvPrimaria==cpvVal) {
+                    	 alert("La CPV con codice "+cpvVal+" e' stata gia' inserita come CPV prevalente");
+                    	 return false;
+                         }
+		          }
+		}
+		return true;
+   }
+	function addRowCpv(args,argshidden,prefix,desc,cpvVal) {
+           var countMax = $("#maxCpvIndex").val();
+           var countInt = parseInt(countMax);
+           $("#tbodyCpvTab").append(createTableCPVRow(countInt+1,cpvVal,desc));
+           $("#maxCpvIndex").val(countInt+1);
+           countMax = $("#ModificatoCPV").val();
+           countInt = parseInt(countMax);
+           $("#ModificatoCPV").val(countInt+1);
+           $('#divAggCPV').css('display', 'none');
+           $("#"+prefix).val("");
+           $("#showHideCPVButton").html("Aggiungi CPV");
+	}
+function deleteRowCpv(idx){
+	if(confirm("confermare l'operazione?")) {
+		$("#"+idx).remove();
+		 var count = $("#ModificatoCPV").val();
+	     var countInt = parseInt(count);
+	     $("#ModificatoCPV").val(countInt-1);
+	}
+}
+    function createTableCPVRow(index,cpv,desc){
+        return '<tr id="rowCPV'+index+'">'+
+                       '<td nowrap="nowrap" class="hmenu"><a title="Cancella CPV" href="javascript:deleteRowCpv(\'rowCPV'+index+'\')">Cancella</></td>'+
+                       '<td nowrap class="garaTd" id="CPV'+index+'CodCPV">'+(cpv)+'</td>'+
+                       '<td nowrap class="garaTd" id="CPV'+index+'DescrizioneCPV">'+(desc)+'</td>'+
+                       '<td><input type="hidden" name="rowCPV'+index+'CodCPV" value="'+(cpv)+'" /><input type="hidden" name="rowCPV'+index+'DescrizioneCPV" value="'+(desc)+'" /></td>'
+                '</tr>';
+        }
+	function showSezioneAggiungiCpv(){
+		   var cssProp = $('#divAggCPV').css('display');
+		   if(cssProp=="none"){
+			    cssProp = $('#divAggCPV').css('display','block');
+			    $("#showHideCPVButton").html("Annulla");
+		   } else {
+			   cssProp = $('#divAggCPV').css('display','none');
+			   $("#showHideCPVButton").html("Aggiungi CPV");
+		   }
+		}
+</script>
+[condition]
+	<div id="DIVTabella" class="scrollTabs" style="height: 150px; width: 99%; display: block;"><!-- class="scrollTabs"  -->
+		<table id="idTabella" width="100%" >
+			<tbody id="tbodyCpvTab">
+			<tr> 
+			[condition]
+			[condition]
+			[condition]
+				<tr id="[condition]">
+					[condition]',[],[],'')">Modifica</> --%>
+							<a title="Cancella " href="javascript:deleteRowCpv('[condition]')">Cancella</>
+						</td>
+					</c:if>
+					<td nowrap class="garaTd" id="[condition]CodCPV">[condition]</td>
+					<td nowrap class="garaTd" id="[condition]DescrizioneCPV">[condition]</td>
+					<td><input type="hidden" name="[condition]CodCPV" value="[variable]" />
+					    <input type="hidden" name="[condition]DescrizioneCPV" value="[variable]" />
+				   </td>
+				</tr>
+				[condition]
+			</c:forEach> 
+			</tbody>		
+			</table> 			
+		</div>	 	
+		[condition]<a class="getCPV" href="#"  onclick="apripopup('ricercaCPV.jsp?nameField=Field', '')" title="Lista CPV Correnti"><img src="img/icon_info_sml.gif"></a>
+				</td>						
+				</tr>
+				<tr><td class="hmenu">
+						<a id="AddMod" href="javascript:callCpvDesc(['CPV'],['CPV','DESCRIZIONE_CPV'],'Field')">Aggiungi</a>
+					</td>
+				</tr>							
+			</table>
+			<input type="hidden" id="Modificato" name ="Nr" value="[variable]"/>
+			<input type="hidden" id="maxCpvIndex" name ="maxCpvIndex" value="[variable]"/>
+		</div>
+	

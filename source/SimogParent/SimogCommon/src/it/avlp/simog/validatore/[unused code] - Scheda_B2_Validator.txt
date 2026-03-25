@@ -1,0 +1,139 @@
+package it.avlp.simog.validatore;
+
+
+public class Scheda_B2_Validator implements BaseValidator {
+
+//	private boolean mValidata = false;	
+//	private AllValidationBeans mEccezioni = new AllValidationBeans();
+//
+//	private Scheda_B2 mDati = null;
+//	
+//	private Connection conn = null;
+//
+//	public Scheda_B2_Validator(Connection connect,Scheda_B2 lDati) {  
+//		mDati    = lDati;
+//		
+//		conn     = connect;
+//	} 
+//	
+//	public Object getDati() {
+//		return mDati;
+//	}
+//
+//	public AllValidationBeans getEccezioni() {
+//		return mEccezioni;
+//	}
+//
+//	
+//	/**
+//	 * Indica se è stata chiamata la validazione
+//	 * @return
+//	 */
+//	public boolean isValidata() {
+//		return mValidata;
+//	}
+//	
+//	private void setValidata(boolean validata) {
+//		mValidata = validata;
+//	}
+//
+//	public boolean valida() {
+//		if (isValidata()) mEccezioni.clear();
+//		statiAvanzamento(mDati.getStatiAvanzamento());
+//		//motiviSospensione(mDati.getMotiviSospensione());
+//		//motiviVarianti(mDati.getMotiviVarianti());
+//		attiAgiuntivi(mDati.getAttiAggiuntivi());
+//		certificatipagamento(mDati.getCertificatiPagamento());
+//		
+//		
+//		setValidata(true);
+//		
+//		return (mEccezioni.getAllBySeverity(ValidationBean.VALBEAN_SEV_ERR).getSize() == 0);
+//		
+//	}
+//
+//	public String getSezione() {
+//		return null;
+//	}
+//	
+//	private void statiAvanzamento(StatiAvanzamentoBean avanzamentoBean){
+//		try{
+//			if (!Checkers.campoValorizzato(avanzamentoBean.getDataRaggiungimento()))throw new Exception();
+//		}catch (Exception e) {
+//			mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_083);
+//		}
+//		
+//	}
+//	
+//	private void motiviSospensione(MotiviSospensioneBean[] sospensioneBean){
+//		
+//	}
+//	
+//	private void motiviVarianti(MotiviVariantiBean[] variantiBean){
+//		
+//	}
+//	
+//	private void attiAgiuntivi(AttiAggiuntiviBean[] attiBean){
+//		if(attiBean == null) return;
+//		for(int i = 0; i < attiBean.length; i++){
+//			try{
+//				if(!Checkers.campoValorizzato(attiBean[i].getDataAtto()) )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_087, i+1);
+//			}
+//			try{
+//				if(!Checkers.campoValorizzato(attiBean[i].getOggetto()) )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_088, i+1);
+//			}
+//			
+//			
+//			try{
+//				if(attiBean[i].getImporto().intValue() < 0 )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_090, i+1);
+//			}
+//			
+//		}
+//		
+//	}
+//	
+//	private void certificatipagamento(CertificatiPagamentoBean[] certificatiBean){
+//		if(certificatiBean == null) return;
+//		for(int i = 0; i < certificatiBean.length; i++){
+//			try{
+//				if(certificatiBean[i].getNumStatoAvanzamento() < 1 )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_084, i+1);
+//			}
+//			
+//			try{
+//				if(!Checkers.campoValorizzato(certificatiBean[i].getDataEmissione()) )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_085,i +1);
+//			}
+//			
+//			try{
+//				if(certificatiBean[i].getImportoPagamento().intValue() < 0 )
+//						throw new Exception();
+//			}catch(Exception e){
+//				mEccezioni.addValidationErr(Messaggi.SIMOG_VALIDAZIONE_086, i+1);
+//			}
+//			
+//			
+//		}
+//		
+//	}
+//	
+//	private static Boolean tipoScheda(String lista,String tipoScheda){
+//	    
+//	    if(lista!= null && lista.contains(tipoScheda))
+//	    	return true;
+//	    else return false;
+//	}
+}

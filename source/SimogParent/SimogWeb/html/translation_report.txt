@@ -1,0 +1,12 @@
+TRANSLATION AUDIT REPORT
+============================================================
+
+Total JSP files: 141
+Files with missing keys: 1
+Total missing keys: 3
+
+WebContent\schedaAvanzamento.jsp:
+  - button.inserimento\
+  - button.visualizzazione\
+  - button.modifica\
+

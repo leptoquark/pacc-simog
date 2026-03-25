@@ -1,0 +1,131 @@
+/*
+ * XML Type:  ContraenteType
+ * Namespace: xmlbeans.massload.simog.avlp.it
+ * Java type: it.avlp.simog.massload.xmlbeans.ContraenteType
+ *
+ * Automatically generated - do not modify.
+ */
+package it.avlp.simog.massload.xmlbeans;
+
+
+/**
+ * An XML ContraenteType(@xmlbeans.massload.simog.avlp.it).
+ *
+ * This is a complex type.
+ */
+public interface ContraenteType extends org.apache.xmlbeans.XmlObject
+{
+    public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(ContraenteType.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s36328917151C07A83E2A5DDFFEA9F1B7").resolveHandle("contraentetype846dtype");
+    
+    /**
+     * Gets the "ADDRESS_CONTRACTOR" element
+     */
+    it.avlp.simog.massload.xmlbeans.AddrS5Type getADDRESSCONTRACTOR();
+    
+    /**
+     * Sets the "ADDRESS_CONTRACTOR" element
+     */
+    void setADDRESSCONTRACTOR(it.avlp.simog.massload.xmlbeans.AddrS5Type addresscontractor);
+    
+    /**
+     * Appends and returns a new empty "ADDRESS_CONTRACTOR" element
+     */
+    it.avlp.simog.massload.xmlbeans.AddrS5Type addNewADDRESSCONTRACTOR();
+    
+    /**
+     * Gets the "AWARDED_IS_SME" attribute
+     */
+    it.avlp.simog.massload.xmlbeans.FlagSNType.Enum getAWARDEDISSME();
+    
+    /**
+     * Gets (as xml) the "AWARDED_IS_SME" attribute
+     */
+    it.avlp.simog.massload.xmlbeans.FlagSNType xgetAWARDEDISSME();
+    
+    /**
+     * Sets the "AWARDED_IS_SME" attribute
+     */
+    void setAWARDEDISSME(it.avlp.simog.massload.xmlbeans.FlagSNType.Enum awardedissme);
+    
+    /**
+     * Sets (as xml) the "AWARDED_IS_SME" attribute
+     */
+    void xsetAWARDEDISSME(it.avlp.simog.massload.xmlbeans.FlagSNType awardedissme);
+    
+    /**
+     * A factory class with static methods for creating instances
+     * of this type.
+     */
+    
+    public static final class Factory
+    {
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType newInstance() {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType newInstance(org.apache.xmlbeans.XmlOptions options) {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newInstance( type, options ); }
+        
+        /** @param xmlAsString the string value to parse */
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.lang.String xmlAsString) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.lang.String xmlAsString, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xmlAsString, type, options ); }
+        
+        /** @param file the file from which to load an xml document */
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.File file) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.File file, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( file, type, options ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.net.URL u) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.net.URL u, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( u, type, options ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.InputStream is) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.InputStream is, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( is, type, options ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.Reader r) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(java.io.Reader r, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( r, type, options ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(javax.xml.stream.XMLStreamReader sr) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(javax.xml.stream.XMLStreamReader sr, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( sr, type, options ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(org.w3c.dom.Node node) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, null ); }
+        
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(org.w3c.dom.Node node, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( node, type, options ); }
+        
+        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, null ); }
+        
+        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
+        public static it.avlp.simog.massload.xmlbeans.ContraenteType parse(org.apache.xmlbeans.xml.stream.XMLInputStream xis, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return (it.avlp.simog.massload.xmlbeans.ContraenteType) org.apache.xmlbeans.XmlBeans.getContextTypeLoader().parse( xis, type, options ); }
+        
+        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
+        public static org.apache.xmlbeans.xml.stream.XMLInputStream newValidatingXMLInputStream(org.apache.xmlbeans.xml.stream.XMLInputStream xis) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newValidatingXMLInputStream( xis, type, null ); }
+        
+        /** @deprecated {@link org.apache.xmlbeans.xml.stream.XMLInputStream} */
+        public static org.apache.xmlbeans.xml.stream.XMLInputStream newValidatingXMLInputStream(org.apache.xmlbeans.xml.stream.XMLInputStream xis, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, org.apache.xmlbeans.xml.stream.XMLStreamException {
+          return org.apache.xmlbeans.XmlBeans.getContextTypeLoader().newValidatingXMLInputStream( xis, type, options ); }
+        
+        private Factory() { } // No instance of this class allowed
+    }
+}

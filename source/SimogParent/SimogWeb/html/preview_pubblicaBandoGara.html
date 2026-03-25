@@ -1,0 +1,942 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" dir="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="description" content="Servizi Autorita' Contratti Pubblici" />
+<link rel="stylesheet" href="/theme/newstile.css" type="text/css" />
+<link rel="stylesheet" href="/theme/screen.css" type="text/css" />
+<link rel="stylesheet" href="/theme/footer.css" type="text/css" />
+<link rel="stylesheet" href="/theme/rtl.css" type="text/css" />
+<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+ <div id="banner">
+	      <div class="PORTLET-FRAGMENT"  style="">
+<!-- Start Time = 1469437556684 -->
+	<div id="div_head"> 
+	<div id="topbar">
+	<div id="internal">
+	    <table><tr><td class="nameApp">
+			   <span>Simog</span></td>
+			    <!-- Menu top --> 
+				<td><ul class="menu_head1"> 
+				<li><a href="https://www.anticorruzione.it/accessibilit%C3%A0">إمكانية الوصول</a></li><li><a href="https://www.anticorruzione.it/contattaci">اتصل بنا</a></li><li><a href="https://www.anticorruzione.it/privacy-cookies">الخصوصية-ملفات تعريف الارتباط</a></li>
+				</ul></td>
+		      </tr>
+			</table>			
+		<!-- Fine Menu top --> 
+	</div>
+	</div>
+<img src="img/logo.jpg" usemap="#Map" alt="ANAC" /> 
+<img src="img/pacc.png" alt="PACC" style="margin-left: 10px;" />
+			<map name="Map" id="Map"> 
+	      <area shape="rect" coords="75,18,335,124" href="http://www.anticorruzione.it" alt="" /> 
+		  </map> 
+		   <span class="nascosto">ANAC</span>
+	</div>
+	      </div>
+	    </div>  
+  	  <div id="toolbar">
+	      <div class="PORTLET-FRAGMENT"  style="">
+	       <div id="UINavigationPortlet" style="min-width:300px" class="UINavigationPortlet">
+<div id="header_bottom"> 
+<ul id="menu_header_bottom"> 
+<li class="primo"><a href="https://www.anticorruzione.it/anticorruzione">مكافحة الفساد</a></li><li><a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a></li><li><a href="https://www.anticorruzione.it/mission-e-competenze">المهمة والاختصاصات</a></li><li><a href="https://www.anticorruzione.it/amministrazione-trasparente">الإدارة الشفافة</a></li>
+	</ul> 
+ </div> 
+</div>
+	      </div>
+	    </div>  
+<div id="breadcrumb">
+<p><a class="primo" href="http://www.anticorruzione.it/">الرئيسية</a>
+/ <a href="https://www.anticorruzione.it/per-le-amministrazioni-pubbliche">الخدمات للإدارات العامة</a>
+/ <a href="https://simog.anticorruzione.it">خدمة SIMOG</a>
+</div>
+<noscript>&#10; <div style="font-size: medium;  top: 50%; left: 50%; margin-left: auto; margin-top: auto;  background-color: white; border: 4px solid red; padding: 20px; "><center>&#10; تحذير: يجب تفعيل JavaScript للسماح بعمل SIMOG بشكل صحيح.&#10; </center></div>&#10;</noscript>
+<!-- calendar stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="calendar/calendar-blue.css" title="win2k-cold-1" />
+<!-- main calendar program -->
+<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- language for the calendar -->
+<script type="text/javascript" src="calendar/calendar-it.js"></script>
+<script type="text/javascript" src="xtree/treeutils.js"></script>
+<!-- the following script defines the Calendar.setup helper function, which makes
+     adding a calendar a matter of 1 or 2 lines of code. -->
+<script type="text/javascript" src="calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="script/pageutils.js"></script>
+<title>SIMOG - Pubblica Gara</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+</head>
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript">
+//mev 3.04.10 43345
+$(document).ready(function () {
+	$(".derogaRow11").hide();
+	if (document.querySelectorAll('#TAB_MESSAGGI_ERRORE li').length >1){
+		if ($('.elencoQualificazioneSA input').is(':checked')) {
+			$('.elencoQualificazioneSA input').attr("disabled", false);
+			if ($('.derogaRow11 input').is(':checked')) {
+				$('.elencoQualificazioneSA input').attr("disabled", false);
+				$(".derogaRow11").show();
+				$("#flagIS_KO").val("S");
+			}
+		}else {
+			for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+					if (li.textContent.indexOf('SIMOG_LOTTO_040') != -1){
+						$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+					if (li.textContent.indexOf('SIMOG_LOTTO_041') != -1){
+						$(".derogaRow11").show();
+						$("#flagIS_KO").val("S");
+						$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+			}
+		}
+	 }
+	 else {
+		 if ($('.elencoQualificazioneSA input').is(':checked')) {
+				$('.elencoQualificazioneSA input').attr("disabled", false);
+				if ($('.derogaRow11 input').is(':checked')) {
+					$('.elencoQualificazioneSA input').attr("disabled", false);
+					$(".derogaRow11").show();
+					$("#flagIS_KO").val("S");
+				}
+		}else {
+			 	for (let li of document.querySelectorAll('#TAB_MESSAGGI_ERRORE li')){
+			 		if (li.textContent.indexOf('SIMOG_LOTTO_040') != -1){
+			 			console.log("pop-up 2");
+			 			$('.elencoQualificazioneSA input').attr("disabled", false); 
+					}
+			 		if (li.textContent.indexOf('SIMOG_LOTTO_041') != -1){
+			 			$(".derogaRow11").show();
+			 			$("#flagIS_KO").val("S");
+			 			$('.elencoQualificazioneSA input').attr("disabled", false); 
+			 		}
+				}
+		}
+	 }
+});  
+//fine mev 3.04.10 43345
+    var impGaraLoc;
+	var tipoPubblicazioneLoc;
+	var numeroLottiPerfezionatiODaPerfezionareLoc;
+	var popupIsClose = 'false';
+	function checkMessaggio(){
+			alert ("");
+	}
+	function doActionModifica(action){
+		if(!hasErrors(document.forms[0]))
+			doAction(action);
+	}
+	function isPubblicazione(){
+		// ciclare sui cig attivi no checked
+		//gm gestisce l'alert di pubblicazione/perfezionamento in base al risultato
+		var beni_culturali = document.getElementById("");
+		var temp = document.forms[0].id_lotti_cancellare;
+		var retVal = false;
+		var count = 0;
+		// non ci sono lotti non ammessa pubblicazione
+		if(!temp) return false;
+		// PP organi costituzionali
+		var isOrgano = "";
+		if(isOrgano == "" ) return false;
+		var num = temp.length;
+		if(!num){
+			// esiste un solo lotto
+			// bah if(!document.forms[0].id_scelta.value){retVal=true;}
+				//TICKET ALM #3922-06.1 e 06.2
+			if(document.forms[0].id_scelta.value == ""
+	               || document.forms[0].id_scelta.value == ""
+	               || document.forms[0].id_scelta.value == ""
+	               || document.forms[0].id_scelta.value == ""
+	            	|| (document.forms[0].id_scelta.value == "" && document.getElementById("") != null && document.getElementById("").checked)
+		            ){
+	               console.log("TECHNIS 1: document.forms[0].id_scelta.value: "+document.forms[0].id_scelta.value);
+	               retVal = true;
+		    }
+          // unico lotto cancellato
+          if(temp.checked) retVal = false;
+		}	
+		//se ho un elenco di lotti in lavorazione
+		else if(num>0){		    
+		    for (i = 0; i < num; i++) {
+		        if (!temp[i].checked) {
+		        // controlli su scelta contraente (creare un nuovo set di hidden parallelo ai checkbox)
+		        //TICKET ALM #3922-06.1 e 06.2
+		            if(document.forms[0].id_scelta[i].value == ""
+		               || document.forms[0].id_scelta[i].value == ""
+		               || document.forms[0].id_scelta[i].value == ""
+		               || document.forms[0].id_scelta[i].value == ""
+			            || (document.forms[0].id_scelta[i].value == "" && document.getElementById("") != null && document.getElementById("").checked)
+			            ){
+		            	console.log("TECHNIS 2: document.forms[0].id_scelta.value: "+document.forms[0].id_scelta[i].value);
+		               retVal = true;
+		        }}
+		        else{count = count +1;}
+		    }
+		    //se tutti i lotti sono cancellati non effettuo la pubblicazione
+		    if(num==count){retVal=false;}    
+	   }
+		//se non ho nessun lotto non effettuo la pubblicazione
+		else if (num==0){retVal=false;}
+		return retVal;
+	}
+	/* MEV 25895 POP-UP */
+	//PARTE CHE APRE LA POPUP INFORMATIVA
+	function apripopupPubblicaBandoGara(path){
+		var dialogArgs = new MyDialogArguments();
+		dialogArgs.Sender = window;
+		//TB: Ticket risoluzione popup
+		if (!window.showModalDialog) {
+			return opendialogPubblicaBandoGara(path);
+		} 			
+	}
+	/* MEV 25895 POP-UP */
+function opendialogPubblicaBandoGara(page, idDialog) {
+      var divDialog = '#dialog';
+      if(idDialog)
+          divDialog = '#dialog'+idDialog;
+	  var $dialog = $(divDialog)
+	  .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+	  .dialog({
+	    title: "ANAC: Autorit&agrave; Nazionale Anticorruzione",
+	    autoOpen: false,
+	    dialogClass: 'no-close',
+	    modal: true,
+	    height: 550,
+	    width: 800,
+	    draggable:true,
+	    buttons: {
+	        Ok: function() {
+	          $( this ).dialog( "close" );
+	        }
+	     },
+	    close:function(){  
+	       dialog_confirm_callback('true', '', '', '','','');
+	    }
+	  });
+	  $dialog.dialog('open');
+	  $('.ui-button').removeClass( "ui-widget" );
+	}
+	function dialog_confirm_callback(value) {
+	  if (value === 'true') 
+	  {	    
+	    popupIsClose = value;
+	  } 
+	  else if(value === 'false') 
+	  {
+	    popupIsClose = value;
+	  }
+	  checkAndGo(impGaraLoc,tipoPubblicazioneLoc,numeroLottiPerfezionatiODaPerfezionareLoc);
+	}
+	function checkAndGo(impGara,tipoPubblicazione,numeroLottiPerfezionatiODaPerfezionare){
+		������ impGaraLoc = impGara;
+		������ tipoPubblicazioneLoc = tipoPubblicazione;�
+		������ numeroLottiPerfezionatiODaPerfezionareLoc = numeroLottiPerfezionatiODaPerfezionare;
+		������� //MARRA MEV 25895 3.04.8
+		������� var isRup1 = "";
+		������� if(isRup1 === 'true' && popupIsClose === 'false')
+		������� {���������
+		��������� apripopupPubblicaBandoGara('popupPubblicaBandoGara.jsp');��������������
+		������� }
+		������� //FINE MEV 25895 FINE 3.04.8
+		���� if(popupIsClose === 'true' || isRup1 === 'false') //MARRA MEV 25895 3.04.8
+		���� {����
+		������� /* alert("TEST USER IS RUP - FINE "+ popupIsClose); */
+		������� // se tutti i lotti sono cancellati impossibile proseguire
+		������� var dacanc = document.forms[0].id_lotti_cancellare;
+		������� var ok = true;
+		������� //se dacanc non esiste, sono in pubblicazione senza lotti da cancellare oppure in avviso di aggiudicazione
+		������� if(dacanc){
+		����������� var num = dacanc.length;
+		����������� if(!num)�
+		��������������� num = 1;
+		����������� var numDaCanc = 0;
+		����������� for (i = 0; i < num; i++) {
+		��������������� if (num>1 && dacanc[i].checked) {
+		������������������� numDaCanc=numDaCanc+1;
+		��������������� }
+		��������������� if (num==1 && dacanc.checked) {
+		������������������� numDaCanc=numDaCanc+1;
+		��������������� }
+		����������� }
+		����������� if(numDaCanc>=numeroLottiPerfezionatiODaPerfezionare)
+		��������������� ok = false;
+		����������� if(!ok){����������������
+		��������������� alert("Almeno un lotto deve essere incluso nella pubblicazione");
+		��������������� return false;
+		����������� }
+		������� }
+		������� var p = isPubblicazione();
+		������� if(p==true && impGara >= && (document.getElementById("inputGazzettaRI").value == ""�
+		����������� || document.getElementById("numeroGuri").value == ""�
+		����������� || document.getElementById("linkSitoCommittente").value == "")){
+		����������� console.log("if prima di do action");
+		����������� msg="ATTENZIONE: a norma dell'art. 36 comma 9, e' prevista la pubblicazione sulla GURI e sul profilo del committente. Proseguire comunque?";
+		����������� //FIX MEV 25895
+		����������� if(confirm(msg)){
+		��������������� if(tipoPubblicazione=='pubblicazione')
+		������������������� doAction('salvaBandoGara');
+		��������������� if(tipoPubblicazione=='pubblicazioneAvviso')
+		������������������� doAction('salvaAvviso');
+		����������� }�
+		����������� else return false;
+		����������� //FINE FIX
+		������ }
+		������ else {
+		����������� if(tipoPubblicazione=='pubblicazione')
+		��������������� doAction('salvaBandoGara');
+		����������� if(tipoPubblicazione=='pubblicazioneAvviso')
+		��������������� doAction('salvaAvviso');�������������
+		������ }
+		����� } // FINE POPUPISCLOSE
+		�������� //MARRA MEV 25895 3.04.8 RESETTO LA VARIABILE DOPO CHE HO CHIUSO LA POPUP�
+		������� popupIsClose === 'false';
+		��� } //FINE FUNCTION
+	function alertInvito(url, campo, campoPres){
+		var isPres = document.getElementById(campoPres);
+		if(isPres)
+		{
+			if(isPres.value == ""){
+				alert("Attenzione! Le lettere d'invito ai sensi dell'art. 204 del Codice devono essere acquisite prive d'indicazioni relative ai soggetti invitati.");
+			}
+			apripopupAllegati(url, campo);
+		}
+	}
+	function confirmCup(prfx_valido, prfx_okutente)
+	{
+// 		$("td[id^='row'][id$='" + prfx_valido + "']:contains('Si')").each(function(idx, item){
+// 			var pos = item.getAttribute("tabindex");
+// 			$("input[name='hiddenrowCUP" + pos + prfx_okutente + "']").attr("value","S");
+// 			$("td[id='row" + pos + prfx_okutente + "']").html("Si");
+// 			$("td[id='row" + pos + prfx_okutente + "']").css("background-color","#BBFFBB");
+// 		});	
+		doAction('');
+	}
+</script>
+<body>
+<!-- TB: ticket popup modali. Import css e js -->
+<link rel="stylesheet" href="theme/jquery-ui-popup.css" />
+<script type="text/javascript" src="script/other/jquery.js"></script>
+<script type="text/javascript" src="script/other/jquery-ui.min.js"></script>
+<div id="dialog"></div> 
+<div id="dialogALLEGATO1"></div>
+<div id="dialogALLEGATO2"></div>
+<div id="dialogALLEGATO3"></div>
+<div id="dialogALLEGATO_AVVISO_AGGIUDICAZIONE"></div>
+<!-- fine import popup modali -->
+<div id="gabbia">
+<div id="header">
+</div>
+	<div id="bodypage">
+		<div class="bodypage-e">
+			<h1>إتمام نشر المناقصة</h1>
+			<h1>نشر إعلان الترسية</h1>
+<div class="errore" title=" ">
+</div>
+<div class="avviso">
+</div>	
+			<div class="hmenu">
+				<ul><li><a title="الصفحة السابقة" href="
+				?=
+				&=">عودة</a></li></ul>
+				<ul><li><a title="الصفحة السابقة" href="
+				?=
+				&=">عودة</a></li></ul>
+			</div>
+			<h4>Informazioni Gara</h4>
+				<div class="gara">
+					<table>
+						<tr>
+							<th class="garaTh" width="40%">Numero Gara</th>
+							<td class="garaTd"></td>
+						</tr>				
+						<tr>
+							<th class="garaTh" width="40%">Oggetto della Gara</th>
+							<td class="garaTd"></td>
+						</tr>
+						<tr>
+							<th class="garaTh" width="40%">Importo della Gara &euro;</th>
+							<td class="garaTd"></td>
+						</tr>
+						<tr>
+							<th class="garaTh" width="40%">Numero totale dei Lotti</th>
+							<td class="garaTd"></td>
+						</tr>
+						<tr>
+							<th class="garaTh" width="40%">Stato gara</th>
+							<td class="garaTd"></td>
+						</tr>
+					</table>	
+		      </div>	
+		<form method="post" action="" onsubmit="return controllaData()">
+		<input type="hidden" name="" value="" />	
+	   <input type="hidden" name="" value="" />	
+	   <input type="hidden" name="" value="" />	
+	   <input type="hidden" name="" value="" />	
+			<div id="infoLotti" style="">
+				<h4>Informazioni sui Lotti componenti</h4>	
+					<table width="100%">	
+					<tr>
+						<th class="garaTh">Cancella</th>
+						<th class="garaTh">Lotto CIG</th>
+						<th class="garaTh">Oggetto</th>
+						<th class="garaTh">Importo</th>
+						<td class="garaTh">Stato Lotto</td>
+					</tr>		
+						<tr>
+						      <input type="hidden" name="id_scelta" value=""/>	
+						         <td  class="garaTd"><input type="checkbox" name="" value="" checked /></td>					
+						         <td  class="garaTd"><input type="checkbox" name="" value="" /></td>						
+						         <td class="garaTd">Non cancellabile</td>			         
+						   <td  class="garaTd"></td>
+						   <td  class="garaTd"></td>
+						   <td  nowrap class="garaTd"></td>
+						   <td  class="garaTd"><strong></strong></td>
+						</tr>
+			   </table>			
+	   </div>		
+	     	<div id="cancDiv" style="">	
+			    <h4>Giustificazione della cancellazione dei lotti selezionati</h4>  	
+	    <table>
+		    <tr>
+			  <th>Motivazione</th>
+			    <td>
+				   <select name="">
+				   	<option></option>				   	
+				   	<h:options name="" scope="request" value='' />				     
+				   </select>
+			   </td>
+		   </tr>
+		   <tr>
+		     <th>Note</th>
+			  <td>
+				 <textarea rows="2" cols="35" name=""></textarea>
+			  </td>
+		   </tr>
+	    </table>
+		</div>
+		<div id="confCup" style="">
+			<h4>تأكيد CUP</h4>
+			<div style="max-height: 200px; overflow-y: auto;">
+				<table width="100%">
+				<thead>
+				<tr>
+					<th class="garaTh">CIG</th>
+					<th class="garaTh">CUP</th>
+					<th class="garaTh">Confermato</th>
+					<th class="garaTh">Valido</th>
+					<th class="garaTh">Dati DIPE</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="garaTd" tabindex="" id="row"> </td>
+						<td class="garaTd" tabindex="" id="row"> </td>
+						<td class="garaTd" tabindex="" id="row"> </td>
+						<td class="garaTd" tabindex="" id="row"> </td>
+						<td class="garaTd" tabindex="" id="row"> </td>
+						<!-- hidden input -->
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+						<input type="hidden" name="hiddenrowCUP" value=""/>
+					</tr>
+				</tbody>
+				</table>	
+			</div>
+			<div class="hmenu">
+				<a id="ConfirmCup" href="javascript:confirmCup('', '')">Conferma CUP</a>
+				<a id="disabledMenu">Conferma CUP</a>
+			</div>
+		</div>
+	   <div id="datePerf" style="">			       
+	    <h4>Perfezionamento dei lotti non selezionati</h4>
+	   <table width="100%">
+	     <tbody>
+				<tr>
+					<th><label  for="Data_pubblicazione"><small></small> </label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="1" 
+						onblur="Calendar.validaData(this)" 
+						type="text" 
+						id="dtpubblicazione" 
+						name="" 
+						value="<h:requestParameter property=""/>" >
+							<img  src="calendar/img.gif" id="CALdtpubblicazionestart" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtpubblicazione",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtpubblicazionestart",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+					<td style="display: none;"><input type="hidden" id="" value="1" /></td>
+					<th><label  for="Data_scadenza_invito"><small></small> Data di scadenza per la presentazione della richiesta di invito</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtscadenzainvito" 
+						name="" 
+						value="<h:requestParameter property="" />">
+							<img  src="calendar/img.gif" id="CALdtscadenzainvito" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtscadenzainvito",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtscadenzainvito",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+				</tr>
+<!-- 3.04.8 34190 fix -->
+				<tr>
+					<th><label  for="Data_scadenza_pagamenti"><small></small> Data scadenza per la presentazione delle offerte</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtscadenza" 
+						name="" 
+						value="<h:requestParameter property="" />">
+							<img  src="calendar/img.gif" id="CALdtscadenza" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtscadenza",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtscadenza",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+					<th><label  for="Data_lettera_invito"><small></small>Data della lettera di invito</label></th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						onblur="Calendar.validaData(this)" 
+						type="text" id="dtletterainvito" 
+						name="" 
+						value="<h:requestParameter property="" />">
+							<img  src="calendar/img.gif" id="CALdtletterainvito" style="cursor: pointer; border: 1px solid red;" title="Date selector"
+	  							onmouseover="this.style.background='red';" onmouseout="this.style.background=''" />
+							<script type="text/javascript">
+									    Calendar.setup({
+									        inputField     :    "dtletterainvito",     // id of the input field
+									        ifFormat       :    "%d/%m/%Y",      // format of the input field
+									        button         :    "CALdtletterainvito",  // trigger for the calendar (button ID)
+										    align          :    "Tl",           // alignment (defaults to "Bl")
+										    singleClick    :    true
+									    });
+						   </script>
+					</td>
+				</tr>	
+<!-- 3.04.8 34190 fix -->
+					<tr>
+					<th><label  for=ora_scadenza_pagamenti>Ora scadenza<br>per la presentazione delle offerte (hh:mm)</th>
+					<td nowrap="nowrap">
+						<input style="text-align:center" tabindex="2" 
+						type="text" maxlength="5" id="" 
+						name="" 
+						value="<h:requestParameter property="" />">
+					</td>
+					</tr>
+			</tbody>
+			<tfoot>
+				<tr><td><br/></td></tr>
+				<tr>
+					<td colspan="4" class="garaTd">
+						<a href="javascript:apripopup('help/ProceduraHelp.html');">Guida alla procedura a piu' fasi</a>
+					</td>
+				</tr>
+			</tfoot>
+	    </table>
+		</div>
+			<h4>Pubblicita' dell'appalto</h4>
+	   <table>
+	     <tbody>
+	       [condition]
+	       [condition] [condition]">
+				    [condition]
+					  <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaCE",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaCE",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			   </td>
+			   <th><label for="numeroGuce">Numero</label></th>
+				<td>
+					<input maxlength="20"  
+					type="text" id="numeroGuce"  
+					name="" 
+					" />" --%>
+					value="[condition]">	
+				</td>
+		    </tr>
+		    <tr>
+	         <td><label >Gazzetta Ufficiale Regionale o Bollettino Regionale</label></td>
+ 			   <td>
+				  <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				    [condition] [condition]">
+				    [condition]
+					   <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaBR",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaBR",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			   </td>
+				<th><label for="numeroBore">Numero</label></th>
+				  <td>
+					 <input maxlength="20"  
+					   type="text" id="numeroBore"  
+					   name="" 
+					   " />"--%>
+					   value="[condition]">
+				  </td>
+		    </tr>
+		    <tr>
+	         <td><label >Gazzetta Ufficiale Repubblica Italiana - GURI</label></td>
+ 			   <td>
+				  <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				    [condition] [condition]">
+				    [condition]
+					   <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaRI",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaRI",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				   </c:if>
+			    </td>
+				<th><label for="numeroGuri">Numero</label></th>
+				<td>
+					<input maxlength="20"
+					type="text" id="numeroGuri"  
+					name="" 
+					" />"--%>
+					value="[condition]">		
+				</td>
+	   	 </tr>   	
+		    <tr>
+	        <td><label >Albo pretorio del Comune ove si eseguono i lavori</label></td>
+ 			  <td>
+				 <input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				   [condition] [condition]">
+				   [condition]
+					  <script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputAP",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarAP",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					  </script>
+				  </c:if>
+			  </td>
+	   	</tr>
+   		<tr>
+ 			  <th><label >Quotidiani nazionali</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;"  
+				   [condition] [condition]" onblur="validateNumber(this)" maxlength="9"/>
+			  </td>
+	   	</tr>
+	   	<tr>
+ 			  <th><label >Quotidiani locali</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;" 
+				 [condition] [condition]"  onblur="validateNumber(this)" maxlength="9"/>
+			  </td>
+	   	</tr> 
+	   	<tr>
+ 			  <th><label >Periodici</label></th>
+ 			  <td>
+				 <input  name=""  tabindex="" style="text-align:right;" 
+				 [condition] [condition]"  onblur="validateNumber(this)" maxlength="4"/>
+			  </td>
+	   	</tr>   
+	   	<tr>
+			   <th><label >Sito Informatico Ministero Infrastrutture<br>e piattaforma digitale ANAC tramite i sistemi<br>informatizzati regionali</label></th>
+		  	     <td>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check2N" type="radio" name="" value="N" [condition] [condition] />NO			   
+		  	       </c:if>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check2N" type="radio" name="" value="N" [condition] [condition] />NO
+  			       </c:if>
+  			     </td>
+		    </tr>
+		    " id="check3Y" type="radio" name="" value="S" [condition] [condition] />SI 
+  			         <input  tabindex="" id="check3N" type="radio" name="" value="N" [condition] [condition] />NO
+		          </c:if>
+	 	          [condition] [condition] />SI 
+  			         <input  tabindex="" id="check3N" type="radio" name="" value="N" [condition] [condition] />NO
+  			       </c:if>
+  			     </td>
+		    </tr>
+		    <tr>
+			   <th><label >Profilo del Committente</label></th>
+		  	     <td>
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check1N" type="radio" name="" value="N" [condition] [condition] />NO
+                </c:if>		  	   
+		  	       [condition] [condition] />SI 
+  			         <input  tabindex="" id="check1N" type="radio" name="" value="N" [condition] [condition] />NO
+                </c:if>  			
+  			     </td>
+		    </tr>
+		    --%>
+		    <tr>
+			   <th><label for="Link Sito Committente">Link Sito Committente</label></th>
+				  <td colspan="3">
+					 <input maxlength="250"  size="100%"
+					 type="text" id="linkSitoCommittente"
+					 name="" 
+					 " />"> --%>
+				    value="[condition]">
+				  </td>
+		    </tr>
+			   <tr>
+				   <th><label >Procedura negoziata ex art. 204 comma 1 D.Lgs. 163/2006</label></th>
+			  	     <td>
+			  	       [condition] [condition] />SI 
+	  			         <input  tabindex="" id="" type="radio" name="" value="N" [condition] [condition] />NO
+	                </c:if>		  	   
+			  	       [condition] [condition] />SI 
+	  			         <input  tabindex="" id="" type="radio" name="" value="N" [condition] [condition] />NO
+	                </c:if>  			
+	  			     </td>
+			    </tr>
+	    </tbody>
+	  </table>
+			<br>
+			<div id="divAllegati">
+				<h4>Allegati al bando di gara</h4>
+				<table>
+				<tr>
+				<th><label for="">Bando di Gara</label></th>
+				<td>
+				<input type="button" 
+								onclick="" 
+								value="Gestisci Bando di Gara" />
+					<input type="hidden" id="" name=""
+						value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				<td>
+				<input type="text" id="" name="" 
+					value='<h:requestParameter property="" defaultValue=""/>' readonly="readonly"/>
+				</td>
+				</tr>
+				<tr>
+				<th><label for="">Disciplinare</label></th>
+				<td>
+				<input type="button" 
+								onclick="" 
+								value="Gestisci Disciplinare" />
+				<input type="hidden" id="" name=""
+					value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				<td>
+				<input type="text" id="" name=""
+					value='<h:requestParameter property="" defaultValue=""/>' readonly="readonly"/>
+				</td>
+				</tr>
+				<tr>
+				<th><label for="">Lettera di Invito o avviso<br>di preinformazione</label></th>
+				<td>
+				<input type="button" 
+								onclick="" 
+								value="Gestisci Lettera di Invito" />		
+				<input type="hidden" id="" name=""
+						value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				<td>
+				<input type="text" id="" name="" 
+					value='<h:requestParameter property="" defaultValue=""/>' readonly="readonly"/>
+				</td>
+				</tr>
+				</table>
+				<h4>Allegati alla pubblicazione</h4>
+				<table>
+				<tr>
+				<th><label for="">Avviso di Aggiudicazione</label></th>
+				<td>
+				<input type="button" 
+								onclick="" 
+								value="Gestisci Avviso di Aggiudicazione" />
+				<input type="hidden" id="" name=""
+						value='<h:requestParameter property="" defaultValue=""/>'/>
+				</td>
+				<td>
+				<input type="text" id="" name="" 
+					value='<h:requestParameter property="" defaultValue=""/>' readonly="readonly"/>
+				</td>
+				</tr>
+			  </table>
+			</div>
+			<br>
+		<!-- MEV 34470 3.04.8-->
+	    <div id="linkDiv" style="">	
+			    <h4>Bandi e Contratti</h4>  	
+			    <table>
+				   <tr>
+				     <th>
+				     <label  for="bandi_e_contratti">Link ai documenti relativi all'affidamento diretto in somma urgenza e protezione civile</label></th>
+					  <td nowrap="nowrap">
+								<input style="text-align:center" tabindex="2" 
+								type="text" maxlength="100" id="" 
+								name="" 
+								value="<h:requestParameter property="" />">
+					 </td>
+				   </tr>
+			    </table>
+		</div>	
+		<!--  FINE MEV -->
+		<!-- mev 3.04.10 43345 -->
+		<tr id="tr_derogaQualificazioneStazioneAppaltante_1_mod2">
+			<td colspan="2">
+				<h5>Autodichiarazione Deroga qualificazione Stazione Appaltante</h5>
+				<div>La dichiarazione ha valore di autocertificazione ai fini delle successive verifiche, con correlativa applicazione delle sanzioni previste in caso di dichiarazioni mendaci</div>
+			</td>
+		</tr>
+			<div colspan="2">
+		<div class="inthead elencoQualificazioneSA">
+		<table>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+				<tr class="derogaRow">
+				<td><label for="derogaQualificazioneSA[]"></label></td>
+				<td><input disabled="disabled" type="radio" name="" value=""  id="SelDerogaQualificazioneSA"></td>
+				</tr>
+		</table>
+	</div>
+	</div>
+	<table cellpadding="3" style="display: none;">
+				<tbody>
+				<tr id="tr_flagIsKo">
+					<th align="left" width="50%"><label
+						for="">is qualificata ko</label></th>
+					<td>[condition] 
+							<select id= "flagIS_KO"
+							name="" CLASS="BOTTONE" > 
+								<option value=""></option>
+								<option value="N" [condition] >NO</option> 
+								<option value="S" [condition] >SI</option> 
+						</select>
+					</td>
+				</tr>
+				</tbody>
+				</table>
+			<!-- fine  mev 3.04.10 43345 -->
+	  <div class="infoBlock">	
+			 <div class="leftLineInfo">
+			 <input type="button" value="Procedi" onclick="checkAndGo(,'','')">
+			 <input type="hidden"  value="" name="toDo" id="toDo"/>
+			 <input type="button" value="Reimposta" onclick="reimpostaForm('')"/>
+			 <input type="button" value="Reimposta" onclick="reimpostaForm('')"/>
+		  </div>
+     </div>
+	</form>
+		</div>
+	</div>
+</div>
+<footer _ngcontent-exg-c5="" class="it-footer">
+	<div _ngcontent-exg-c5="" class="d-flex float-right my-3 mr-2">
+		<p _ngcontent-exg-c5="" style="color: white;">V3.04.16 (build 03)</p>
+			</div>
+	<div _ngcontent-exg-c5="" class="it-footer-main">
+		<div _ngcontent-exg-c5="" class="container">
+			<section _ngcontent-exg-c5="" class="footer-secondary">
+				<div _ngcontent-exg-c5="" class="row">
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							جهات الاتصال
+						</h4>
+						<a _ngcontent-exg-c5="" href="mailto:protocollo@pec.anticorruzione.it">
+							protocollo@pec.anticorruzione.it
+						</a>
+						<p _ngcontent-exg-c5="">
+							مركز الاتصال<br> +39 06 62289571
+						</p>
+		</div> 
+					<div _ngcontent-exg-c5="" class="col-md-6">
+						<h4 _ngcontent-exg-c5="" class="text-uppercase h5">
+							روابط سريعة
+						</h4>
+						<div _ngcontent-exg-c5="" class="link-list-wrapper">
+							<ul _ngcontent-exg-c5="" class="footer-list link-list">
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="http://www.anticorruzione.it" title="البوابة المؤسسية">البوابة المؤسسية</a>
+								</li>
+								<li _ngcontent-exg-c5="">
+									<a _ngcontent-exg-c5="" class="list-item" href="https://servizi.anticorruzione.it" title="بوابة الخدمات">بوابة الخدمات</a>
+								</li>
+							</ul>
+	</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div _ngcontent-exg-c5="" class="it-footer-small-prints">
+		<div _ngcontent-exg-c5="" class="container">
+			<div _ngcontent-exg-c5="" class="row">
+				<div _ngcontent-exg-c5="" class="col-12">
+					<h2 _ngcontent-exg-c5="" class="sr-only">Sezione Link Utili</h2>
+					<div _ngcontent-exg-c5="">
+						<ul _ngcontent-exg-c5="" class="it-list">
+							<li _ngcontent-exg-c5="" class="list-inline-item">
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		  try {
+			  var u="https://ingestion.webanalytics.italia.it/";
+			    _paq.push(['setTrackerUrl', u+'matomo.php']);
+			    _paq.push(['setSiteId', 'XKqJ1e6pYR']);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				console.log("fine caricamento analytics");
+		  } catch (e) {
+			console.error("errore script google analytics" + e);
+		}
+	  })();
+	} catch (error) {
+	  console.error("errore script google analytics" + error);
+	  // expected output: ReferenceError: nonExistentFunction is not defined
+	  // Note - error messages will vary depending on browser
+	}
+</script>
+<!-- End Matomo Code -->
+</div>
+<script type="text/javascript">
+checkMessaggio();
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "codiceCUP": "Z79H11000890007",
+  "dettaglio": {
+    "codiceInvestimento": "PNC-B.1.1",
+    "descrizioneInvestimento": "Città e paesi sicuri, sostenibili e connessi (A)",
+    "descrizioneNorma": "Descrizione Norma 2",
+    "tipoPiano": "PNC",
+    "importoFinanziato": 123456788.11,
+    "datascarico": "1651570243",
+    "ts": {
+      "$date": "2022-05-26T14:23:07.504Z"
+    }
+  },
+  "storico": [
+    {
+      "codiceInvestimento": "PNC-B.1.1",
+      "descrizioneInvestimento": "Città e paesi sicuri, sostenibili e connessi (A)",
+      "descrizioneNorma": "Descrizione Norma 2",
+      "tipoPiano": "PNC",
+      "importoFinanziato": 123456788.11,
+      "datascarico": "1651570243",
+      "ts": {
+        "$date": "2022-05-26T14:23:07.504Z"
+      }
+    },
+    {
+      "codiceInvestimento": "PNC-B.1.1",
+      "descrizioneInvestimento": "Città e paesi sicuri, sostenibili e connessi (A)",
+      "descrizioneNorma": "Descrizione Norma 1",
+      "tipoPiano": "PNC",
+      "importoFinanziato": 12345.11,
+      "datascarico": "1651570232",
+      "ts": {
+        "$date": "2022-01-26T12:22:02.224Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+package it.avlp.simog.beans.conclusione;
+
+public class Scheda_B4 {
+//	private FineLavoriBean fineLavori;
+//	private SubappaltiBean[] subappalti;
+//	private ResponsabileFineBean[] responsabili;
+//	
+//	public FineLavoriBean getFineLavori() {
+//		return fineLavori;
+//	}
+//	public void setFineLavori(FineLavoriBean fineLavori) {
+//		this.fineLavori = fineLavori;
+//	}
+//	public SubappaltiBean[] getSubappalti() {
+//		return subappalti;
+//	}
+//	public void setSubappalti(SubappaltiBean[] subappalti) {
+//		this.subappalti = subappalti;
+//	}
+//	public ResponsabileFineBean[] getResponsabili() {
+//		return responsabili;
+//	}
+//	public void setResponsabili(ResponsabileFineBean[] responsabili) {
+//		this.responsabili = responsabili;
+//	}
+
+}

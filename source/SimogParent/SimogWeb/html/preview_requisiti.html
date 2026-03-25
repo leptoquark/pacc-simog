@@ -1,0 +1,130 @@
+
+<script type="text/javascript">
+function checkFlags(oForm,campoId){
+campo = getElementById(campoId);
+if(campo.id == "" && campo.checked){
+document.forms[oForm.name]..checked=false;
+document.forms[oForm.name]..checked=true;}
+else if(campo.id == "" && campo.checked){
+document.forms[oForm.name]..checked=false;
+document.forms[oForm.name]..checked=true;}
+}
+</script>
+[condition]
+[condition]
+</c:if>
+[condition]
+</c:if>
+<table>		
+	<colgroup>
+		<col width="20%"/>
+		<col width="40%"/>
+		<col width="40%"/>
+	</colgroup>	
+	<tr>
+		<th rowspan="2">متطلبات القطاعات الخاصة</th>		
+		<th ><label for="">معايير الاختيار المحددة من قبل محطة التعاقد</label></th>
+		<td >
+			<u:selectBooleanRadio name=""  onclick="javascript:checkFlags(this.form,this.id);"
+		   			  value="[variable]" trueId="" 
+		  			  falseId="" readonly="[variable]" 
+		  			  tabindex="" onchange="setFormModified('Modificato0')" />
+		</td>
+	</tr>			
+	<tr>
+		<th><label for="">نظام التأهيل الداخلي</label></th>
+		<td>
+			<u:selectBooleanRadio name=""  onclick="javascript:checkFlags(this.form,this.id);"
+		   			  value="[variable]" trueId="" 
+		  			  falseId=""  readonly="[variable]"  
+		  			  tabindex="" onchange="setFormModified('Modificato0')" />
+		</td>
+	</tr>
+</table>
+<label style="color:black;">
+[condition]
+			[condition]
+			<tr id="[condition]">
+				[condition]',[],[],'')" title="تعديل">تعديل</a>
+						&nbsp;<a title="حذف" href="javascript:deleteRow('[condition]',[],[],'')"  title="حذف">حذف</a></td>					
+				</c:if>
+				[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>																
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td nowrap class="garaTd" id="[condition]">[condition]</td>
+				<td style="display: none;" id="[condition]">[condition]</td>
+				<td style="display: none;" id="[condition]">[condition]</td>	
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>										
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>
+				<td style="display: none;"><input type="hidden" id="hidden[condition]" name="[condition]" value="[condition]"></td>				
+			</tr>
+			[condition]
+			</c:forEach>							
+		</tbody>
+		</table>
+	</div> 
+	<!-- FINE 3.04.8.1 MAC 34181 -->
+	--%>
+	[condition]
+					</select>
+				</td>					
+			</tr>	
+			<tr>
+				<th><label>فئة المبلغ</label></th>
+				<td colspan="2">
+					<select onchange="setFormModified('Modificato')"  id="" CLASS="BOTTONE">
+						<option value=" "></option>
+						<u:options name="" scope="request"/>
+					</select>
+				</td>					
+			</tr>	
+			<tr style="display: none;">
+				<td>
+					<input disabled type="text" id="" value=""/>
+				</td>							
+			</tr>	
+			<tr>
+			<th><label>La categoria � Prevalente</label></th>
+				<td>
+				    <select onchange="setFormModified('Modificato')" id="" Class="BOTTONE">
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<th><label>La categoria � Scorporabile</label></th>
+				<td>
+				    <select onchange="setFormModified('Modificato')" id="" Class="BOTTONE">
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<th><label>La categoria � Sub-Appaltabile</label></th>
+				<td>
+					<select onchange="setFormModified('Modificato')" id="" Class="BOTTONE"> 
+						<option value=""></option>
+						<option value="S">SI</option>
+						<option value="N">NO</option>
+				    </select>
+				</td>
+			</tr>												
+			<tr><td class="hmenu"><a id="AddMod" href="javascript:addRow([],[],'')">إضافة</a></td></tr>
+		</table>			
+		<input type="hidden" id="Modificato" name ="Modificato" value="0">
+	</div> 
+	<!-- FINE 3.04.8.1 MAC 34181 -->
+	--%>
+<!--/div-->			
+<input type="hidden" id="Modificato3" name ="Modificato3" value="[condition]">
+<input type="hidden" id="selected" value="0" />

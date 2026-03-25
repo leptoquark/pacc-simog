@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check_login>
+	<soggetto>
+		<cognome>NNCFNC77A06C352U</cognome>
+		<nome>Nome</nome>
+		<tel>065544332</tel>
+    	<fax>06778866</fax>
+    	<email>utente@sito.it</email>
+            <admin_or>000</admin_or>
+	</soggetto>
+	<collaborazioni>
+		<collaborazione index="0">
+			<azienda>
+				<denominazione>Amministrazione 1</denominazione>
+				<codice_fiscale>06771101000</codice_fiscale>
+			<id_osservatorio>12</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 1</denominazione>
+				<id_ufficio>06771101000</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+		<collaborazione index="1">
+			<azienda>
+				<denominazione>Amministrazione 2</denominazione>
+				<codice_fiscale>97163520584</codice_fiscale>
+			<id_osservatorio>12</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 2</denominazione>
+				<id_ufficio>97163520584</id_ufficio>
+				<profilo>1</profilo>
+			</ufficio>
+		</collaborazione>
+		<collaborazione index="2">
+			<azienda>
+				<denominazione>Amministrazione 1</denominazione>
+				<codice_fiscale>06771101000</codice_fiscale>
+			<id_osservatorio>12</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 1</denominazione>
+				<id_ufficio>06771101000</id_ufficio>
+				<profilo>5</profilo>
+			</ufficio>
+		</collaborazione>
+		<collaborazione index="3">
+			<azienda>
+				<denominazione>Amministrazione 2</denominazione>
+				<codice_fiscale>97163520584</codice_fiscale>
+			<id_osservatorio>12</id_osservatorio></azienda>
+			<ufficio>
+				<denominazione>Stazione Appaltante 2</denominazione>
+				<id_ufficio>97163520584</id_ufficio>
+				<profilo>5</profilo>
+			</ufficio>
+		</collaborazione>
+	</collaborazioni>
+	<stato>4</stato>
+</check_login>

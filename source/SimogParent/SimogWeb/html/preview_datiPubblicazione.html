@@ -1,0 +1,135 @@
+	<input type="hidden" name="" value='[condition]'>
+	<input type="hidden" name="" value='[condition]'>
+	[condition]
+	[condition]
+	<tr>
+	     <td><label >Gazzetta Ufficiale Comunit Europea - GUCE</label></td>
+ 			<td>
+				<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')" 
+				    [variable]
+					type="text" id="inputGazzettaCE" name="" 
+					onblur="Calendar.validaData(this)" value="[condition]">
+				[condition]
+					<script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaCE",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaCE",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					</script>
+				</c:if>
+			</td>
+	   	</tr>
+	   	<tr>
+	     <td><label >Gazzetta Ufficiale o Bollettino Regionale</label></td>
+ 			<td>
+				<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				  [variable]
+					type="text" id="inputGazzettaBR" name="" 
+					onblur="Calendar.validaData(this)" value="[condition]">
+				[condition]
+					<script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaBR",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaBR",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					</script>
+				</c:if>
+			</td>
+	   	</tr>
+	   	<tr>
+	     <td><label >Gazzetta Ufficiale Repubblica Italiana - GURI</label></td>
+ 			<td>
+				<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				  [variable]
+					type="text" id="inputGazzettaRI" name="" 
+					onblur="Calendar.validaData(this)" value="[condition]">
+				[condition]
+					<script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputGazzettaRI",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarGazzettaRI",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					</script>
+				</c:if>
+			</td>
+	   	</tr>
+	   	<tr>
+	     <td><label >Albo pretorio del Comune ove si eseguono i lavori</label></td>
+ 			<td>
+				<input  tabindex="" style="text-align:center;" onchange="setFormModified('Modificato')"  
+				[variable]
+					type="text" id="inputAP" name="" 
+					onblur="Calendar.validaData(this)" value="[condition]">
+				[condition]
+					<script type="text/javascript">
+						    Calendar.setup({
+					        inputField     :    "inputAP",     // id of the input field
+					        ifFormat       :    "%d/%m/%Y",      // format of the input field
+					        button         :    "calendarAP",  // trigger for the calendar (button ID)
+					        align          :    "Tl",           // alignment (defaults to "Bl")
+					        singleClick    :    true							       
+				    		});					    	
+					</script>
+				</c:if>
+			</td>
+	   	</tr>
+   		<tr>
+ 			<th><label >Quotidiani nazionali</label></th>
+ 			<td>
+				<input  name=""  tabindex="" style="text-align:right;"  
+				 [variable]
+				type="text" value="[condition]" onblur="validateNumber(this)" maxlength="9"/>
+			</td>
+	   	</tr>
+	   	<tr>
+ 			<th><label >Quotidiani locali</label></th>
+ 			<td>
+				<input  name=""  tabindex="" style="text-align:right;" 
+				 [variable]
+				type="text" value="[condition]"  onblur="validateNumber(this)" maxlength="9"/>
+			</td>
+	   	</tr>
+	   	<tr>
+ 			<th><label >Periodici</label></th>
+ 			<td>
+				<input  name=""  tabindex="" style="text-align:right;" 
+				[variable]
+				type="text" value="[condition]"  onblur="validateNumber(this)" maxlength="4"/>
+			</td>
+	   	</tr>
+	   	<tr>
+			<th><label >Profilo del Committente</label></th>
+		  	<td>
+		  	    <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check1Y" 
+			    falseId="check1N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>
+		<tr>
+			<th><label >Sito Informatico Ministero Infrastrutture<br>e piattaforma digitale ANAC tramite i sistemi<br>informatizzati regionali</label></th>
+		  	<td>
+		  	   <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check2Y" 
+			    falseId="check2N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>
+		<tr>
+			<th><label >Sito Informatico Osservatorio Contratti Pubblici</label></th>
+		  	<td>
+		  	    <u:selectBooleanRadio name="" 
+			    value="[variable]" trueId="check3Y" 
+			    falseId="check3N" readonly="[variable]" 
+			    tabindex="" />
+  			</td>
+		</tr>

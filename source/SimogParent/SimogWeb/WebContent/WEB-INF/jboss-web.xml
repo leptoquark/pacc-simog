@@ -1,0 +1,8 @@
+   <jboss-web>  
+<!-- IAM      <security-domain>avcp-riscossione-sp</security-domain>  -->
+      <resource-ref>  
+         <res-ref-name>jdbc/SIMOG</res-ref-name> <!-- matches web.xml -->  
+         <jndi-name>java:jdbc/SIMOG</jndi-name> <!-- matches oracle-ds.xml -->  
+         <res-type>javax.sql.DataSource</res-type>  
+      </resource-ref>  
+   </jboss-web>  

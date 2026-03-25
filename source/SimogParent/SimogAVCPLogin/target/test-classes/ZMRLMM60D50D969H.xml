@@ -1,0 +1,35 @@
+ <check_login>
+ <soggetto>
+  <cognome>SPINO</cognome> 
+  <nome>GIULIO LUCIO FRANCESCO</nome> 
+  <admin_or>000</admin_or> 
+  </soggetto>
+ <collaborazioni>
+ <collaborazione index="0">
+ <azienda>
+  <denominazione>COMUNE DI FORMIA</denominazione> 
+  <codice_fiscale>91008330903</codice_fiscale> 
+  				<id_osservatorio>12</id_osservatorio>
+
+  </azienda>
+ <ufficio>
+  <denominazione>SERVIZI ALLA PERSONA</denominazione> 
+  <id_ufficio>E571B551-2F15-4E06-BAB7-580A9423263A</id_ufficio> 
+  <profilo>1</profilo> 
+  </ufficio>
+  </collaborazione>
+ <collaborazione index="1">
+ <azienda>
+  <denominazione>COMUNE DI FORMIA</denominazione> 
+  <codice_fiscale>91008330903</codice_fiscale> 
+				<id_osservatorio>12</id_osservatorio>
+  </azienda>
+ <ufficio>
+  <denominazione>SERVIZI ALLA PERSONA</denominazione> 
+  <id_ufficio>E571B551-2F15-4E06-BAB7-580A9423263A</id_ufficio> 
+  <profilo>5</profilo> 
+  </ufficio>
+  </collaborazione>
+  </collaborazioni>
+  <stato>2</stato> 
+  </check_login>

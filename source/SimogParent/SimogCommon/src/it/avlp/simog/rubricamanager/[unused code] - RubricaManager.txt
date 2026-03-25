@@ -1,0 +1,93 @@
+//	public int modificaPartecipante ( Rubrica partecipanteDaAggiornare ) throws SQLException, ClassNotFoundException {
+//
+//		logger.debug("Modifica partecipante [" + partecipanteDaAggiornare + "]");
+//		PreparedStatement updateRubricaFunction = null;
+//		
+//	
+//		try {
+//			//data odierna
+//			Timestamp dataFineSoggetto = new Timestamp((System.currentTimeMillis()/1000)*1000);
+//			
+//			updateRubricaFunction = activeConnection.prepareStatement(aggiornamentoPartecipante);
+//			
+//			
+//			updateRubricaFunction.setObject(1, partecipanteDaAggiornare.getCf_rappresentante());
+//			logger.debug("Modifica cf_rappresentante 1[" + partecipanteDaAggiornare.getCf_rappresentante() + "]");
+//			
+//			updateRubricaFunction.setObject(2, partecipanteDaAggiornare.getCodice_fiscale());
+//			logger.debug("Modifica codice fiscale 2[" + partecipanteDaAggiornare.getCodice_fiscale() + "]");
+//			
+//			updateRubricaFunction.setObject(3, partecipanteDaAggiornare.getDenominazione());
+//			logger.debug("Modifica denominazione 3[" + partecipanteDaAggiornare.getDenominazione() + "]");
+//			
+//			updateRubricaFunction.setObject(4, partecipanteDaAggiornare.getCamera_commercio());
+//			logger.debug("Modifica camera commercio 4[" + partecipanteDaAggiornare.getCamera_commercio() + "]");
+//			
+//			updateRubricaFunction.setObject(5, partecipanteDaAggiornare.getPartitaIva());
+//			logger.debug("Modifica partita iva 5[" + partecipanteDaAggiornare.getPartitaIva() + "]");
+//			
+//			updateRubricaFunction.setObject(6, partecipanteDaAggiornare.getIndirizzo());
+//			logger.debug("Modifica indirizzo 6[" + partecipanteDaAggiornare.getIndirizzo() + "]");
+//			
+//			updateRubricaFunction.setObject(7, partecipanteDaAggiornare.getCivico());
+//			logger.debug("Modifica civico 7[" + partecipanteDaAggiornare.getCivico() + "]");
+//				
+//			updateRubricaFunction.setObject(8, partecipanteDaAggiornare.getCap());
+//			logger.debug("Modifica denominazione 8[" + partecipanteDaAggiornare.getCap() + "]");
+//			
+//			updateRubricaFunction.setObject(9, partecipanteDaAggiornare.getCitta());
+//			logger.debug("Modifica citt� 9[" + partecipanteDaAggiornare.getCitta() + "]");
+//			
+//			updateRubricaFunction.setObject(10, partecipanteDaAggiornare.getProvincia());
+//			logger.debug("Modifica provincia 10[" + partecipanteDaAggiornare.getProvincia() + "]");
+//				
+//			updateRubricaFunction.setObject(11, partecipanteDaAggiornare.getNome());
+//			logger.debug("Modifica nome[" + partecipanteDaAggiornare.getNome() + "]");
+//			
+//			updateRubricaFunction.setObject(12, partecipanteDaAggiornare.getCognome());
+//			logger.debug("Modifica cognome[" + partecipanteDaAggiornare.getCognome() + "]");
+//			
+//			updateRubricaFunction.setObject(13, dataFineSoggetto);
+//			logger.debug("Modifica dataFineSoggetto 13[" + dataFineSoggetto + "]");
+//			
+//			updateRubricaFunction.setObject(14, partecipanteDaAggiornare.getId_soggetto_partecipante());
+//			logger.debug("Modifica id_soggetto_partecipante 14[" + partecipanteDaAggiornare.getId_soggetto_partecipante() + "]");
+//			
+//			updateRubricaFunction.setObject(15, PageHelper.getFormattedDBDateTime(partecipanteDaAggiornare.getData_inizio_sogg()));
+//			logger.debug("Modifica data inizio soggetto 15[" + partecipanteDaAggiornare.getData_inizio_sogg() + "]");
+//			
+//			int result = updateRubricaFunction.executeUpdate();
+//			
+//			logger.debug ( "Eseguita query [" + aggiornamentoPartecipante + "] per idPartecipante [" + partecipanteDaAggiornare.getId_soggetto_partecipante() + "]" );
+//			logger.debug("Completato aggiornamento del partecipante [" + partecipanteDaAggiornare.getId_soggetto_partecipante() + "] CIG [" + "] Esito [" + result + "]");
+//			
+//			return result;
+//		} finally {
+//			try {
+//				updateRubricaFunction.close();
+//			} catch ( Exception e ) {}
+//			updateRubricaFunction = null;			
+//		}
+//	}
+//
+
+	/*private int getMaxId(String column, String table){
+		String queryMaxId = "SELECT MAX("+column+") AS MaxId from "+table;
+		int idMax=0;
+		try {
+			PreparedStatement pstmt = activeConnection.prepareStatement(queryMaxId);
+			pstmt.setString(1,"MaxInt");
+			logger.debug("queryMaxId "+queryMaxId);
+			logger.debug("MAX------ "+idMax);
+			ResultSet res = pstmt.executeQuery();
+			logger.debug("ARRIVO QUI");
+			
+		
+			idMax = Integer.parseInt(res.getString("MaxInt"));
+			logger.debug("MAX------ "+idMax);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return idMax;
+	}*/

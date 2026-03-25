@@ -1,0 +1,260 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<parent>
+	  <groupId>it.anticorruzione.simog</groupId>
+	  <artifactId>SimogParent</artifactId>
+  <version>3.04.16-i18n</version>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>SimogWSPDD</artifactId>
+	<packaging>war</packaging>
+	<dependencies>
+	
+	   <!-- custom depedency -->
+		<dependency>
+		    <groupId>it.anticorruzione.simog</groupId>
+		    <artifactId>AnagrafeWS</artifactId>
+		    <version>3.04.7</version>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogXmlBeansPDD</artifactId>
+			<version>3.04.7</version>
+			 <exclusions>
+		       <exclusion>
+		         <groupId>xmlbeans</groupId>
+		         <artifactId>xbean_xpath</artifactId>
+		       </exclusion>
+		       <exclusion>
+		         <groupId>org.apache.xmlbeans</groupId>
+		         <artifactId>xmlbeans-qname</artifactId>
+		       </exclusion>
+		       <exclusion>
+		         <groupId>org.apache.xmlbeans</groupId>
+		         <artifactId>xmlbeans-xmlpublic</artifactId>
+		       </exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>it.anticorruzione.simog</groupId>
+		    <artifactId>FeedBackScheda_A</artifactId>
+		    <version>3.04.7</version>
+		</dependency>
+<dependency>
+    <groupId>it.anticorruzione.simog</groupId>
+    <artifactId>PubblicazioneWS</artifactId>
+    <version>3.04.7</version>
+</dependency>
+<dependency>
+    <groupId>it.anticorruzione.simog</groupId>
+    <artifactId>TrasferimentoScheda_A</artifactId>
+    <version>3.04.7</version>
+</dependency>
+<dependency>
+		    <groupId>it.anticorruzione.simog</groupId>
+		    <artifactId>Scheda_AType</artifactId>
+		    <version>3.04.7</version>
+		</dependency>
+<dependency>
+		    <groupId>it.anticorruzione.simog</groupId>
+		    <artifactId>RequisitiWS</artifactId>
+		    <version>3.04.7</version>
+		</dependency>
+
+         <dependency>
+		    <groupId>it.anticorruzione.simog</groupId>
+		    <artifactId>xmlbeans-xbean</artifactId>
+		    <version>2.1.0</version>
+		</dependency>
+
+		<!-- Fine dipendenze custom -->
+	
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogWSCommon</artifactId>
+			<version>3.04.16</version>
+			<exclusions>
+			  <exclusion>
+				    <groupId>axis</groupId>
+				    <artifactId>axis-jaxrpc</artifactId>
+			  </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogMassLoader</artifactId>
+			<version>3.04.16</version>
+			<exclusions>
+			  <exclusion>
+			    <groupId>commons-beanutils</groupId>
+			    <artifactId>commons-beanutils-bean-collections</artifactId>
+			  </exclusion>
+			  <exclusion>
+			    <groupId>commons-beanutils</groupId>
+			    <artifactId>commons-beanutils-core</artifactId>
+			  </exclusion>
+			  <exclusion>
+			    <groupId>it.anticorruzione.simog</groupId>
+			    <artifactId>SimogXmlBeans</artifactId>
+			  </exclusion>
+			
+			   <exclusion>
+			      <groupId>it.anticorruzione.simog</groupId>
+			      <artifactId>SimogAVCPLogin</artifactId>
+			   </exclusion>
+			
+			</exclusions>
+
+		</dependency>
+		<dependency>
+			<groupId>it.anticorruzione.simog</groupId>
+			<artifactId>SimogCommon</artifactId>
+			<version>3.04.16</version>
+			<exclusions>
+			  <exclusion>
+			     <groupId>commons-beanutils</groupId>
+		      	<artifactId>commons-beanutils</artifactId>
+			  </exclusion>
+			  <exclusion>
+			    <groupId>commons-beanutils</groupId>
+			    <artifactId>commons-beanutils-bean-collections</artifactId>
+			  </exclusion>
+			  <exclusion>
+			    <groupId>commons-beanutils</groupId>
+			    <artifactId>commons-beanutils-core</artifactId>
+			  </exclusion>
+			  <exclusion>
+			    <groupId>it.anticorruzione.simog</groupId>
+			    <artifactId>SimogXmlBeans</artifactId>
+			  </exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+		  <groupId>javax.xml.bind</groupId>
+		  <artifactId>jaxb-api</artifactId>
+		  <version>2.1</version>
+		  <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.ws.native</groupId>
+			<artifactId>jbossws-native-jaxws</artifactId>
+			<version>3.1.2.GA</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.13</version>
+		</dependency>
+	
+		
+		<!-- https://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+		 <dependency>
+		    <groupId>commons-discovery</groupId>
+		    <artifactId>commons-discovery</artifactId>
+		    <version>0.2</version>
+		    <exclusions>
+		      <exclusion>
+		        <groupId>commons-logging</groupId>
+		        <artifactId>commons-logging</artifactId>
+		      </exclusion>
+		    </exclusions>
+		</dependency>  
+
+       <dependency>
+			<groupId>oro</groupId>
+			<artifactId>oro</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.mashape.unirest</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>1.4.9</version>
+		</dependency>
+       
+
+		<!-- <dependency>
+		    <groupId>saaj</groupId>
+		    <artifactId>saaj</artifactId>
+		    <version>saaj</version>
+		</dependency> -->
+	</dependencies>
+	<build>
+	<finalName>SimogWSPDD</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+			<!-- <plugin>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>2.8</version>
+			    <executions>
+			        <execution>
+			            <id>analyze</id>
+			            <goals>
+			                <goal>analyze-only</goal>
+			            </goals>
+			            <configuration>
+			                <failOnWarning>true</failOnWarning>
+			                <outputXML>true</outputXML>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin> -->
+			<plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-enforcer-plugin</artifactId>
+   <version>1.4.1</version>
+   <executions>
+      <execution>
+         <id>enforce-banned-dependencies</id>
+         <goals>
+            <goal>enforce</goal>
+         </goals>
+         <configuration>
+            <rules>
+               <bannedDependencies>
+                  <excludes>
+                     <!--this is to check we do not have the xml-apis included since JRE provides it already-->
+                     <exclude>xml-apis:xml-apis</exclude>
+
+                  </excludes>
+               </bannedDependencies>
+            </rules>
+            <fail>true</fail>
+         </configuration>
+      </execution>
+   </executions>
+</plugin>
+		</plugins>
+	</build>
+</project>

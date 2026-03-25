@@ -1,0 +1,17 @@
+	// PP non utilizzato	
+//	public Map<String, String> loadComboTipoAppalto(HttpServletRequest request) throws ActionException{
+//	
+//		InfoGaraBean igb = getDatiGara(request);
+//
+//		AggiudicazioniManager man = new AggiudicazioniManager(connection, logger);	
+//		try {
+//			
+//			return  man.caricaComboAppalto(igb.getTipoEnte(), igb.getTipoContratto());
+//				
+//		} catch (SQLException e) {
+////			log come fatal demandato al chiamante
+//			logger.error(e);
+//			throw new ActionException(e);
+//			
+//		}	
+//	}

@@ -1,0 +1,47 @@
+<Context path="/SimogWeb" docBase="/usr/share/tomcat5/webapps/SimogWeb"
+        debug="5" reloadable="true" crossContext="true">
+
+    <!-- maxActive: Maximum number of dB connections in pool. Make sure you
+         configure your mysqld max_connections large enough to handle
+         all of your db connections. Set to 0 for no limit.
+         -->
+
+    <!-- maxIdle: Maximum number of idle dB connections to retain in pool.
+         Set to -1 for no limit.  See also the DBCP documentation on this
+         and the minEvictableIdleTimeMillis configuration parameter.
+         -->
+
+    <!-- maxWait: Maximum time to wait for a dB connection to become available
+         in ms, in this example 10 seconds. An Exception is thrown if
+         this timeout is exceeded.  Set to -1 to wait indefinitely.
+         -->
+
+    <!-- username and password: MySQL dB username and password for dB connections  -->
+
+    <!-- driverClassName: Class name for the old mm.mysql JDBC driver is
+         org.gjt.mm.mysql.Driver - we recommend using Connector/J though.
+         Class name for the official MySQL Connector/J driver is com.mysql.jdbc.Driver.
+         -->
+    
+    <!-- url: The JDBC connection url for connecting to your MySQL dB.
+         The autoReconnect=true argument to the url makes sure that the
+         mm.mysql JDBC Driver will automatically reconnect if mysqld closed the
+         connection.  mysqld by default closes idle connections after 8 hours.
+
+            timeBetweenEvictionRunsMillis="1800000"
+            minEvictableIdleTimeMillis="1800000"
+         -->
+
+  <Resource name="jdbc/SIMOG" auth="Container" type="javax.sql.DataSource"
+            maxActive="150"
+            maxIdle="30"
+            maxWait="-1"
+            poolPreparedStatements="true"
+            username="simog"
+            password="simog.1"
+            driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            url="jdbc:sqlserver://simog-db.avcp.local\dbmsoltp02:1433;SelectMethod=cursor;user=simog;password=simog.1;DatabaseName=simog;sendStringParametersAsUnicode=true"
+            connectionProperties="SelectMethod=cursor"
+            reconnectEnabled="true"
+            validationQuery="Select 1"/>
+</Context>
