@@ -71,3 +71,10 @@ Several aspects should be explained verbally because they are not obvious from c
 - the operational runbook for failed integrations
 - the external authentication infrastructure and its historical evolution
 - the exact database schema ownership and release-management process
+
+# WS Documentation and data Model
+check this link:
+[gtihub link]([16_deployment_runtime_view.md](https://github.com/anticorruzione/simog-docs/tree/3.04.15))
+
+
+
