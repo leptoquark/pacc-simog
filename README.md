@@ -73,8 +73,7 @@ Several aspects should be explained verbally because they are not obvious from c
 - the exact database schema ownership and release-management process
 
 # WS Documentation and data Model
-check this link:
-[gtihub link]([16_deployment_runtime_view.md](https://github.com/anticorruzione/simog-docs/tree/3.04.15))
+check this link: https://github.com/anticorruzione/simog-docs/tree/3.04.15
 
 
 
